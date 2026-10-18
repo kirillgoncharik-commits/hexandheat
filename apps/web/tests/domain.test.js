@@ -67,7 +67,9 @@ test("witch cues are presentation-only and deterministic for spin, fast play, an
   const fast = await collect(outcome, "fast");
   const replay = await collect(await rgs.getReplay(outcome.id), "normal");
 
-  assert.deepEqual(normal, ["IDLE", "SMALL_WIN", "BONUS", "IDLE", "MEDIUM_WIN", "IDLE", "MEDIUM_WIN"]);
+  assert.deepEqual(normal, [null, "SMALL_WIN", null, null, "MEDIUM_WIN", null, "MEDIUM_WIN"]);
+  assert.equal(deriveWitchState({ type: "multiplier", from: 1, to: 3 }, outcome), null);
+  assert.equal(deriveWitchState({ type: "cascade" }, outcome), null);
   assert.deepEqual(fast, normal);
   assert.deepEqual(replay, normal);
   assert.equal(outcome.payoutMicro, 8_000_000);
