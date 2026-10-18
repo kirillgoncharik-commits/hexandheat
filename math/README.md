@@ -17,6 +17,14 @@ python3 -m unittest discover -s tests/math -p 'test_*.py' -v
 PYTHONPATH=math python3 -m hexandheat_math.simulate --rounds 10000 --seed 20261018
 ```
 
-Production books, lookup tables and compressed outputs remain generated
-artifacts. Store them outside Git and commit only the configuration, generator,
-toolchain SHA, manifests and independent verification evidence.
+Milestone 02 adds `STAKE_FORMAT_CANDIDATE_UNBALANCED_V0`, a mechanically
+0.1x-aligned candidate required by the official verifier, plus an adapter to the
+pinned `apps/scatter` BookEvents. Regenerate the six-case integration package:
+
+```bash
+python3 tools/generate_stake_sample.py
+```
+
+The small files under `math/publish_files/` are committed review evidence, not
+production books. Production-scale books remain outside Git and still require
+balancing, independent sign-off and approved storage.

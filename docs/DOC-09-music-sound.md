@@ -1,14 +1,20 @@
 ---
 id: DOC-09
-version: 0.9.0
+version: 1.0.0-rc1
 date: 2026-10-18
-status: POC_REQUIRED
+status: TEMPORARY_WEB_AUDIO_CONTROLLER_PROVEN
 dependencies: [DOC-05]
 related: [DOC-10, ASSET_REGISTER]
 confidence: MEDIUM
 ---
 
 # Music & Sound Design
+
+## Milestone 02 result
+
+`AdaptiveMusicController` creates temporary oscillator stems for BASE, ENERGY and HOT plus a BONUS gain state. All stems start on one calculated beat; transitions use scheduled gain ramps, while win and potion one-shots are independent. Mute, suspended-context resume, Fast Play and Replay share the event mapping. Initialization or one-shot failure is caught and never enters settlement.
+
+The tones are technical signals only and have no asset/licensing claim. No final composition, samples or paid service were used. Automated tests verify common start time, beat-aligned ramps, mute/unmute, resume and blocked-audio degradation. **HYPOTHESIS / open gate:** real stems still require phase/null inspection, Safari gesture/interruption tests and a 15-minute device soak before production approval.
 
 ## Direction
 

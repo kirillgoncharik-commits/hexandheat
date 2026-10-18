@@ -33,6 +33,19 @@ used as product evidence. The current official sample is therefore **partially
 reproduced but not a clean end-to-end pass** at this SHA. Do not copy or suppress
 the verifier failure; isolate it before adapting Hex & Heat into the SDK.
 
+### Milestone 02 root cause and verified correction
+
+The book/LUT message is misleading. In a clean 100-outcome-per-mode run, base
+book/LUT/sidecar all hash the same 100 payouts. Bonus book and LUT also hash the
+same 100 payouts, but its sidecar reports 200 entries because `_payout_ints`
+retains all base payouts when `run_sims` clears the mode library.
+
+Resetting `self._payout_ints = []` beside `self.library = {}` at the start of
+`GeneralGameState.run_sims` is the minimal correction. A second clean run then
+reported payout hash OK and 100 entries for both modes. Expected tiny-sample RTP
+and volatility warnings remained visible. The patch under `tools/patches/` does
+not alter any generated win.
+
 ## Web SDK
 
 The official `apps/scatter` production build completed successfully with the

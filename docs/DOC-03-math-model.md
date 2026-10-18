@@ -1,8 +1,8 @@
 ---
 id: DOC-03
-version: 1.0.0-rc1
+version: 1.1.0-rc1
 date: 2026-10-18
-status: FUNCTIONAL_PROTOTYPE_UNBALANCED
+status: STAKE_FORMAT_TECHNICAL_PROTOTYPE_UNBALANCED
 dependencies: [DOC-02]
 related: [DOC-04, DOC-10, DOC-12]
 confidence: MEDIUM
@@ -83,6 +83,14 @@ The local `math/hexandheat_math` package proves the round contract without exter
 The committed 10,000-round report is deterministic and independently verifies every outcome. Its observed sample return is 0.131762, which is intentionally far from the 96% hypothesis and therefore confirms that the current inputs are a mechanics fixture—not balanced math. No optimization or production RTP claim is authorized.
 
 The current official Math SDK pin and sample blocker are recorded in `reports/OFFICIAL_SDK_SMOKE_2026-10-18.md`.
+
+## Milestone 02 official-format evidence
+
+The pinned official Scatter sample failure is a verifier-sidecar lifecycle bug, not a book/LUT payout difference. `GeneralGameState.run_sims` clears `library` between modes but does not clear `_payout_ints`; after a 100-base/100-bonus run the bonus book and LUT each contain 100 equal payouts, while `books_bonus.verification.json` hashes 200 accumulated base+bonus payouts. The one-line compatibility patch resets `_payout_ints` at mode start. A clean rerun passes both payout hashes and entry counts; tiny-sample RTP/volatility warnings remain visible and expected.
+
+Hex & Heat now maps verified outcomes into official scatter-style events. `math/publish_files/` contains a six-row review package and SHA-256 evidence. The independent verifier rereads JSONL/CSV bytes and checks event order, 6×5 boards, official 0.1× increments, lookup weights and exact book/LUT/final-win equality.
+
+The original mechanics candidate contains some 0.05× award increments rejected by the official verifier. `STAKE_FORMAT_CANDIDATE_UNBALANCED_V0` applies a documented mechanical half-up transform to 0.1× configuration increments before generation. Generated payouts are never edited. This proves format compatibility only; it is not a balanced paytable or production RTP candidate.
 
 ## Official references
 

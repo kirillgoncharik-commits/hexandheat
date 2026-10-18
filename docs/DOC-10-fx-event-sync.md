@@ -1,14 +1,20 @@
 ---
 id: DOC-10
-version: 1.0.0-rc1
+version: 1.1.0-rc1
 date: 2026-10-18
-status: BOUNDED_PLACEHOLDER_IN_USE
+status: OFFICIAL_EVENT_MAPPING_IN_USE
 dependencies: [DOC-02, DOC-05, DOC-08, DOC-09]
 related: [DOC-12]
 confidence: MEDIUM_HIGH
 ---
 
 # Visual FX & Event Synchronization
+
+## Milestone 02 mapping
+
+The pinned official scatter vocabulary is translated once at the RGS boundary: `reveal → boardReveal`, `winInfo → win`, `updateGlobalMult → multiplier`, `tumbleBoard → cascade`, and `finalWin → finalWin`; bookkeeping events are consumed without payout arithmetic. The mapper regenerates contiguous presentation indices and rejects unknown symbols, malformed boards, multiplier discontinuity and any RGS/book final-payout disagreement.
+
+The same immutable stream drives normal, Fast Play and Replay. Witch requests and music states observe events after domain reduction. Their promises are not part of the settlement barrier; failed video/audio leaves the board and wallet path intact. Replay calls only the official replay endpoint and repeats the same event stream with no new wager.
 
 ## One timeline model
 

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-18",
+  "mathSdk": {
+    "repository": "https://github.com/engineio/math-sdk.git",
+    "commit": "a6dccd86de740cc5d318079483cb6204cc5c19bc",
+    "python": "3.12.14",
+    "sample": "games/0_0_scatter",
+    "license": "MIT",
+    "compatibilityPatch": "tools/patches/math-sdk-a6dccd8-reset-payout-sidecar.patch",
+    "dependencies": {
+      "numpy": "2.2.5",
+      "pytest": "8.3.5",
+      "zstandard": "0.23.0"
+    }
+  },
+  "webSdk": {
+    "repository": "https://github.com/engineio/web-sdk.git",
+    "commit": "1843d60cedb94b390e641b563f32ad64353bec5e",
+    "node": "24.9.0",
+    "pnpm": "10.5.0",
+    "sample": "apps/scatter",
+    "license": "MIT",
+    "versions": {
+      "svelte": "5.20.5",
+      "vite": "6.2.0",
+      "pixi": "8.x via pinned workspace lockfile"
+    }
+  }
+}

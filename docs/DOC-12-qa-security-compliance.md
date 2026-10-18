@@ -1,8 +1,8 @@
 ---
 id: DOC-12
-version: 0.9.0
+version: 1.0.0-rc1
 date: 2026-10-18
-status: PROPOSED
+status: TECHNICAL_PROTOTYPE_VERIFIED_DEVICE_GATE_OPEN
 dependencies: [DOC-03, DOC-04, DOC-05, DOC-10]
 related: [DOC-13]
 confidence: HIGH
@@ -61,3 +61,15 @@ PR gates: repository/document validation, test suite, source lint/typecheck when
 - [ ] Performance/bundle/media budgets passed.
 - [ ] Security findings resolved or explicitly accepted.
 - [ ] ACP/account-specific checklist re-read; submission blurb and rollback tag ready.
+
+## Milestone 02 evidence
+
+- Dependency-free suite: repository policy + 14 math/replay/Stake adapter tests + 22 browser-domain/media tests.
+- Six exported cases: loss, normal win, cascade, multiplier, five-win chain and max win; lookup/book/final payouts and hashes match.
+- Tampered lookup and RGS payout disagreement fail closed.
+- Fast Play and Replay converge; live browser replay kept balance unchanged and made no play call.
+- Multiplier resets per round; witch priority/latency/full-cycle, video decode failure and audio initialization failure are automated.
+- Desktop and 390×844 emulated layouts rendered; opt-in native-video POC ran with no captured console warnings/errors.
+- Reduced Motion disables the synthetic video POC; CSS remains available.
+
+Still open and release-blocking: real Safari/iOS/Android devices, codec and memory/FPS measurements, 15–30 minute soak, live Studio RGS/resume, accessibility audit, dependency/SBOM scan after production stack selection, production math review and complete rules/localization.

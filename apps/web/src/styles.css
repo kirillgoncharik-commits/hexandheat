@@ -432,6 +432,24 @@ h2 {
 
 .witch-figure.is-active { opacity: 1; }
 
+.witch-video-layer {
+  position: absolute;
+  inset: 8px 12px 0;
+  z-index: 1;
+  width: calc(100% - 24px);
+  height: calc(100% - 8px);
+  border-radius: 18px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 180ms linear;
+  background: #09070d;
+  pointer-events: none;
+}
+
+.witch-video-layer.is-active { opacity: 1; }
+.witch-stage.uses-video-poc .witch-figure.is-active { opacity: 0.26; }
+.witch-stage.media-failed .witch-video-layer { display: none; }
+
 /* The incoming layer is reset to the universal neutral pose before crossfade. */
 .witch-figure.is-preparing,
 .witch-figure.is-preparing .witch-arm { animation: none !important; }
@@ -549,10 +567,9 @@ body[data-debug-mode="false"] .side-column {
 /* All loops share the same full-body pose at 0% and 100% (anchor A).
    Their timing is deliberately multi-second, never a 500ms state flip. */
 @keyframes witch-idle {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  25% { transform: translateY(-2px) rotate(-1deg) scale(1.008); }
-  55% { transform: translateY(-4px) rotate(1deg) scale(1.014); }
-  78% { transform: translateY(-1px) rotate(0deg) scale(1.005); }
+  0%, 25%, 50%, 75%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  12.5%, 62.5% { transform: translateY(-3px) rotate(-1deg) scale(1.01); }
+  37.5%, 87.5% { transform: translateY(-4px) rotate(1deg) scale(1.014); }
 }
 @keyframes witch-small-win {
   0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }

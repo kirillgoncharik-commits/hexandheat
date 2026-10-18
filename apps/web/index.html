@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="dark" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'"
     />
     <title>Hex &amp; Heat — Functional Prototype</title>
     <link rel="stylesheet" href="./src/styles.css" />
@@ -18,9 +18,9 @@
           <p class="eyebrow">Local functional prototype</p>
           <h1 id="game-title">Hex &amp; Heat</h1>
         </div>
-        <div class="connection-pill" aria-label="Connection: local mock RGS">
+        <div class="connection-pill" aria-label="Outcome source">
           <span class="connection-dot" aria-hidden="true"></span>
-          Mock RGS
+          <span id="rgs-source">Connecting…</span>
         </div>
       </header>
 
@@ -84,6 +84,8 @@
             </div>
             <div class="witch-viewport">
               <div class="stage-aura" aria-hidden="true"></div>
+              <video class="witch-video-layer" muted loop playsinline preload="auto" aria-hidden="true"></video>
+              <video class="witch-video-layer" muted loop playsinline preload="auto" aria-hidden="true"></video>
               <div
                 id="witch-figure"
                 class="witch-figure"
@@ -99,7 +101,7 @@
               </div>
               <div class="stage-floor" aria-hidden="true"></div>
             </div>
-            <p class="stage-note">Seam-stitched dance loops · CSS placeholder · no video</p>
+            <p id="media-status" class="stage-note">Seam-stitched loops · CSS fallback · add ?media=video for synthetic native-video POC</p>
           </aside>
         </div>
       </section>
@@ -124,10 +126,16 @@
           <span aria-hidden="true" class="toggle-track"><span></span></span>
           <span>Fast play</span>
         </label>
+
+        <label class="toggle-control" for="mute-toggle">
+          <input id="mute-toggle" type="checkbox" />
+          <span aria-hidden="true" class="toggle-track"><span></span></span>
+          <span>Mute</span>
+        </label>
       </section>
 
       <p id="status" class="status" role="status" aria-live="polite">
-        Outcomes are fixture-driven. Presentation never changes payout.
+        Outcomes use official Stake publish/event shapes. Presentation never changes payout.
       </p>
     </main>
 
