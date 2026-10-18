@@ -4,7 +4,7 @@ The package intentionally contains a candidate, unbalanced configuration.  It is
 not a production PAR sheet and makes no RTP claim.
 """
 
-from .config import CANDIDATE_CONFIG, MathConfig, PayAward, SymbolWeight
+from .config import CANDIDATE_CONFIG, STAKE_CANDIDATE_CONFIG, MathConfig, PayAward, SymbolWeight
 from .engine import (
     Board,
     CascadeLimitExceeded,
@@ -37,6 +37,7 @@ __all__ = [
     "PayAward",
     "ReplayResult",
     "SymbolWeight",
+    "STAKE_CANDIDATE_CONFIG",
     "VerificationError",
     "WeightedOutcome",
     "board_from_flat",

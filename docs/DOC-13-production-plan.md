@@ -1,8 +1,8 @@
 ---
 id: DOC-13
-version: 1.0.0-rc1
+version: 1.1.0-rc1
 date: 2026-10-18
-status: UPDATED_AFTER_FUNCTIONAL_PROTOTYPE
+status: UPDATED_AFTER_MILESTONE_02_TECHNICAL_PROTOTYPE
 dependencies: [DOC-05, DOC-12]
 related: [DOC-14, RISK_REGISTER, PILOT_BACKLOG]
 confidence: MEDIUM
@@ -29,9 +29,10 @@ spike may start only after the Product Owner accepts the functional gate.
 | 9 | SDK Integration | Map contract to official BookEvents and local RGS tooling | official adapter branch/build; blockers evidenced |
 | 10 | Technical Review + PO | Full regression, known issues, budget and gate review | PR with GO/PIVOT/KILL recommendation |
 
-Days 1–8 are represented by the current local milestone; Day 9 remains partial
-because the official Math SDK sample fails its own bonus hash verification at the
-tested SHA. Day 10 is this Product Owner review.
+Days 1–9 are now represented by the stacked technical prototype. The Math SDK
+failure is isolated to accumulated sidecar payouts and passes after the committed
+one-line compatibility patch. Day 10 remains Product Owner and Technical Reviewer
+approval; PR #14 and #16 must land before the Milestone 02 PR.
 
 ## Cost model (USD, planning ranges; no spend authorized)
 
@@ -67,5 +68,10 @@ device QA or human quality judgment.
   adult-content review cannot be satisfied, or forecast exceeds the PO cap with
   no credible commercial case.
 
-Current recommendation: **conditional GO for official SDK/RGS integration only**.
-Production math, interaction media and art/audio remain gated.
+## Milestone 02 actuals and next-stage estimate
+
+Recorded execution used approximately 1.5 wall-clock agent hours, local CPU/browser resources, two public SDK clones and one isolated Python dependency install. Cash spend was **$0**; no paid generation, external media, account, wallet or Stake service was used. This timing is automation elapsed time, not a human-equivalent estimate.
+
+Recommended next gate: 40–80 engineering/reviewer hours and $0–$1,500 cash for a live Studio session, production-sized math experiment, independent math review, dual-codec synthetic/device lab and real audio-stem POC. Final art/video/music production remains the existing $2,500–$12,000 planning range and requires a separate purchase/rightsholder decision.
+
+Current recommendation: **GO for review and real-device/live-RGS validation; do not enter content production yet**. PIVOT only the video runtime to spritesheets if mobile decode/memory fails. KILL remains appropriate if independent payout verification or platform replay/resume cannot be closed.

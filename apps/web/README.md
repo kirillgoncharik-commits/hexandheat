@@ -1,8 +1,8 @@
-# Primitive browser prototype
+# Integrated browser technical prototype
 
-This is a dependency-free local presentation prototype for Hex & Heat. It uses colored squares and a CSS-only witch silhouette: there is no production witch art, audio, Stake SDK, authenticated session, or external service.
+This dependency-free shell now consumes official Stake scatter-style BookEvents through a local RGS implementing the official request lifecycle. It still uses colored squares and contains no production witch art, video or music.
 
-The mock RGS returns an immutable, precomputed event stream. The browser validates and presents that stream; it does not calculate the payout. Normal play, fast play, and replay consume the same ordered events and converge on the same final state.
+The default local RGS selects the committed Math SDK-format book, returns immutable precomputed events, and settles through `end-round`. The browser validates and maps those events; it does not calculate payout. Mock RGS is available only through `?rgs=mock` for fallback tests.
 
 ## Launch
 
@@ -21,14 +21,15 @@ HEX_HEAT_PORT=8080 npm start
 
 Controls:
 
-- **Spin** or **Space** requests the next deterministic fixture from the local mock RGS.
+- **Spin** or **Space** requests the next deterministic official-format book from the local RGS.
 - **Fast play** shortens presentation delays but does not skip or reorder domain events.
 - **Replay last** replays the exact frozen outcome without a new play request or wallet mutation.
-- **Bet amount** exercises the mock RGS bet-level contract; returned event amounts are already resolved integer micro-units (`1,000,000 = 1.00`).
+- **Mute** controls temporary synchronized oscillator stems; audio failure never blocks settlement.
+- **Bet amount** exercises six-decimal API money (`1,000,000 = 1.00`).
 
-The right column is split into a compact development-only Game Events panel and a larger Witch Stage. The placeholder stage consumes the same authoritative event stream as the board: reveal/cascade maps to `IDLE`, win amounts map to `SMALL_WIN`/`MEDIUM_WIN`/`BIG_WIN`, and potion multiplier events map to the reserved `BONUS` magic reaction. Spin, fast play and Replay therefore produce the same character-state sequence. Set `data-debug-mode="false"` on `<body>` in a production shell to hide debug information and give the full column to Witch Stage.
+The Witch Stage consumes the same authoritative stream. Win amounts queue `SMALL_WIN`/`MEDIUM_WIN`/`BIG_WIN`; potion multipliers trigger only an independent FX accent; `BONUS` is reserved for a real bonus-start event. IDLE can hand off at four anchor-A points per loop, while a win loop completes fully. Add `?media=video` to record two abstract local clips at runtime and exercise native-video preload/crossfade/failure fallback. Reduced Motion keeps the CSS fallback.
 
-The mock cycles through `potion-chain`, `quiet-loss`, and `double-potion`, then repeats.
+The official-format sample cycles through loss, normal win, cascade, multiplier, long-chain and max-win cases.
 
 ## Test
 
@@ -37,14 +38,17 @@ cd apps/web
 npm test
 ```
 
-The tests cover 6×5 validation, malformed outcomes, multiplier continuity, fixture determinism, amount scaling, outcome immutability, wallet settlement, replay isolation, deterministic witch cues, and final-state convergence across normal/fast/replay playback.
+The tests cover official event mapping/RGS calls, 6×5 validation, payout disagreement, settlement/replay isolation, witch latency and priority, video lifecycle/failure, audio transitions/mute/resume and normal/fast/replay convergence.
 
 ## Module map
 
 - `src/fixtures.js` — deterministic reference outcome templates.
 - `src/mock-rgs.js` — local play, settlement, balance, bet-level, and replay boundary.
+- `src/stake-rgs.js` / `src/stake-events.js` — official request and BookEvent adaptation.
+- `src/video-loop.js` / `src/synthetic-video.js` — bounded native-video POC and generator.
+- `src/adaptive-music.js` — temporary beat-aligned Web Audio stems.
 - `src/domain.js` — validation, immutable reducer, money formatting, and timeline playback.
 - `src/app.js` — DOM renderer and controls.
 - `src/styles.css` — responsive desktop, portrait, small-screen, safe-area, and reduced-motion presentation.
 
-This is a functional prototype, not a submission build. Replacing `MockRgs` with the reviewed Stake client should preserve the validated outcome contract and keep presentation code payout-blind.
+This is an integrated technical prototype, not a submission build or full copy of the official Svelte/Pixi shell. The pinned official request/event vocabulary is adapted at the boundary so the working UX remains payout-blind.

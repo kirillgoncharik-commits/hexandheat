@@ -172,3 +172,31 @@ CANDIDATE_CONFIG = MathConfig(
     ),
     potion_increments=(("P1", 1), ("P2", 2), ("P3", 3)),
 )
+
+
+def _stake_compatible_award(award: PayAward) -> PayAward:
+    """Round candidate awards to the RGS-required 0.1x payout increment.
+
+    The official verifier accepts integer payout multipliers in increments of
+    ten (where 100 is 1x).  This mechanical transform is an integration input,
+    not a balancing decision or a manual correction of generated outcomes.
+    """
+
+    amount = max(10, ((award.amount + 5) // 10) * 10)
+    return PayAward(symbol=award.symbol, threshold=award.threshold, amount=amount)
+
+
+# CANDIDATE / UNBALANCED / NOT PRODUCTION. This variant exists only to prove
+# Stake publish-file compatibility; it carries no RTP or volatility claim.
+STAKE_CANDIDATE_CONFIG = MathConfig(
+    label="STAKE_FORMAT_CANDIDATE_UNBALANCED_V0",
+    columns=CANDIDATE_CONFIG.columns,
+    rows=CANDIDATE_CONFIG.rows,
+    payout_units_per_bet=CANDIDATE_CONFIG.payout_units_per_bet,
+    max_win=CANDIDATE_CONFIG.max_win,
+    max_cascades=CANDIDATE_CONFIG.max_cascades,
+    symbol_weights=CANDIDATE_CONFIG.symbol_weights,
+    paytable=tuple(_stake_compatible_award(award) for award in CANDIDATE_CONFIG.paytable),
+    potion_increments=CANDIDATE_CONFIG.potion_increments,
+    mode=CANDIDATE_CONFIG.mode,
+)

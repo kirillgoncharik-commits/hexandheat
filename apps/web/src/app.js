@@ -1,5 +1,9 @@
 import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
+import { AdaptiveMusicController, MUSIC_STATES } from "./adaptive-music.js";
 import { MockRgs } from "./mock-rgs.js";
+import { StakeRgs, launchConfigFromUrl } from "./stake-rgs.js";
+import { createSyntheticVideoSources } from "./synthetic-video.js";
+import { NativeVideoLoopController } from "./video-loop.js";
 import { WitchDanceController } from "./witch-dance.js";
 
 const SYMBOL_LABELS = Object.freeze({
@@ -29,15 +33,26 @@ const elements = {
   spin: document.querySelector("#spin-button"),
   replay: document.querySelector("#replay-button"),
   fast: document.querySelector("#fast-toggle"),
-  status: document.querySelector("#status")
+  mute: document.querySelector("#mute-toggle"),
+  status: document.querySelector("#status"),
+  rgsSource: document.querySelector("#rgs-source"),
+  mediaStatus: document.querySelector("#media-status"),
+  videoLayers: [...document.querySelectorAll(".witch-video-layer")]
 };
 
-const rgs = new MockRgs();
 const locale = navigator.language || "en-US";
-let session = rgs.getSession();
+let rgs = null;
+let session = null;
 let lastOutcome = null;
 let busy = false;
 let witchController = null;
+let videoController = null;
+let videoObjectUrls = [];
+const musicController = new AdaptiveMusicController({
+  onError(error) {
+    console.warn("Adaptive music disabled:", error);
+  }
+});
 
 function updateWallet() {
   session = rgs.getSession();
@@ -81,7 +96,7 @@ function renderState(state) {
  * same neutral pose, so the next multi-second loop can crossfade at the seam.
  * Production media will replace each silhouette with a decoded video layer.
  */
-function prepareWitchStage() {
+async function prepareWitchStage() {
   const first = elements.witchFigure;
   const standby = first.cloneNode(true);
   standby.removeAttribute("id");
@@ -96,6 +111,32 @@ function prepareWitchStage() {
   const figures = [first, standby];
   let active = first;
 
+  const videoRequested = new URL(window.location.href).searchParams.get("media") === "video";
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+  if (videoRequested && !reducedMotion) {
+    try {
+      const sources = await createSyntheticVideoSources();
+      videoObjectUrls = Object.values(sources);
+      videoController = new NativeVideoLoopController({
+        layers: elements.videoLayers,
+        sources,
+        onError(error) {
+          elements.witchStage.classList.add("media-failed");
+          elements.mediaStatus.textContent = `Video POC fell back safely: ${error.message}`;
+        }
+      });
+      if (await videoController.start("IDLE")) {
+        elements.witchStage.classList.add("uses-video-poc");
+        elements.mediaStatus.textContent = "Synthetic native-video POC · preloaded two-layer crossfade · CSS fallback armed";
+      }
+    } catch (error) {
+      elements.witchStage.classList.add("media-failed");
+      elements.mediaStatus.textContent = `Video POC unavailable; CSS fallback active: ${error.message}`;
+    }
+  } else if (videoRequested && reducedMotion) {
+    elements.mediaStatus.textContent = "Reduced Motion: native-video POC disabled; static CSS fallback active";
+  }
+
   witchController = new WitchDanceController({
     onLoop({ from, to, durationMs }) {
       const state = to.toLowerCase();
@@ -106,6 +147,8 @@ function prepareWitchStage() {
         active.style.setProperty("--witch-loop-duration", String(durationMs) + "ms");
         return;
       }
+
+      videoController?.switchTo(to);
 
       const incoming = figures.find((figure) => figure !== active);
       incoming.classList.add("is-preparing");
@@ -126,6 +169,9 @@ function prepareWitchStage() {
       elements.witchStage.classList.remove("has-potion-accent");
       void elements.witchStage.offsetWidth;
       elements.witchStage.classList.add("has-potion-accent");
+    },
+    onRequest({ target }) {
+      videoController?.preload(target);
     }
   });
 
@@ -135,7 +181,12 @@ function prepareWitchStage() {
     }
   });
   witchController.start();
-  window.addEventListener("pagehide", () => witchController.destroy(), { once: true });
+  window.addEventListener("pagehide", () => {
+    witchController.destroy();
+    videoController?.destroy();
+    videoObjectUrls.forEach((url) => URL.revokeObjectURL(url));
+    videoObjectUrls = [];
+  }, { once: true });
 }
 
 function gamePhase(event, source) {
@@ -171,7 +222,7 @@ async function presentOutcome(outcome, source) {
   witchController.beginRound();
   elements.status.textContent = source === "replay"
     ? `Replay ${outcome.id}: no wallet or play request will be made.`
-    : `Round ${outcome.id}: payout is already fixed by the mock RGS.`;
+    : `Round ${outcome.id}: payout is fixed by the received Stake-format book.`;
   const speed = elements.fast.checked ? "fast" : "normal";
 
   return playOutcome(outcome, {
@@ -182,6 +233,7 @@ async function presentOutcome(outcome, source) {
       elements.debugGameState.textContent = gamePhase(event, source);
       elements.debugLastEvent.textContent = `${event.index + 1}/${outcome.events.length} · ${description.title}`;
       witchController.onEvent(event, outcome);
+      musicController.onEvent(event, outcome, { source, speed });
     }
   });
 }
@@ -189,6 +241,7 @@ async function presentOutcome(outcome, source) {
 async function spin() {
   if (busy) return;
   setBusy(true, "spin");
+  await musicController.unlock();
   let outcome = null;
   let failed = false;
   try {
@@ -214,6 +267,7 @@ async function spin() {
     elements.status.textContent = "The fixture failed closed; no replacement outcome was requested.";
   } finally {
     witchController.endRound({ failed });
+    musicController.setState(MUSIC_STATES.BASE);
     setBusy(false);
   }
 }
@@ -221,6 +275,7 @@ async function spin() {
 async function replay() {
   if (busy || !lastOutcome) return;
   setBusy(true, "replay");
+  await musicController.unlock();
   let failed = false;
   try {
     const outcome = await rgs.getReplay(lastOutcome.id);
@@ -233,12 +288,18 @@ async function replay() {
     elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Unknown replay error";
   } finally {
     witchController.endRound({ failed });
+    musicController.setState(MUSIC_STATES.BASE);
     setBusy(false, "replay");
   }
 }
 
-function initialize() {
-  prepareWitchStage();
+async function initialize() {
+  const useMock = new URL(window.location.href).searchParams.get("rgs") === "mock";
+  rgs = useMock ? new MockRgs() : new StakeRgs({ config: launchConfigFromUrl() });
+  if (typeof rgs.initialize === "function") await rgs.initialize();
+  session = rgs.getSession();
+  elements.rgsSource.textContent = useMock ? "Mock fallback" : "Stake-compatible local RGS";
+  await prepareWitchStage();
   for (const betMicro of session.betLevels) {
     const option = document.createElement("option");
     option.value = String(betMicro);
@@ -252,6 +313,10 @@ function initialize() {
   elements.spin.addEventListener("click", spin);
   elements.replay.addEventListener("click", replay);
   elements.betSelect.addEventListener("change", updateWallet);
+  elements.mute.addEventListener("change", () => musicController.mute(elements.mute.checked));
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") musicController.restore();
+  });
   document.addEventListener("keydown", (event) => {
     const target = event.target;
     const isFormControl = target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLButtonElement;
@@ -260,6 +325,14 @@ function initialize() {
       spin();
     }
   });
+  window.addEventListener("pagehide", () => musicController.destroy(), { once: true });
 }
 
-initialize();
+initialize().catch((error) => {
+  elements.spin.disabled = true;
+  elements.replay.disabled = true;
+  elements.betSelect.disabled = true;
+  elements.debugGameState.textContent = "RGS ERROR";
+  elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Initialization failed";
+  elements.status.textContent = "The Stake-compatible RGS failed closed. Add ?rgs=mock only for explicit fallback testing.";
+});

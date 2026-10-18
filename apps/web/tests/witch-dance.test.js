@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { WitchDanceController, WITCH_LOOP_MS } from "../src/witch-dance.js";
+import { WitchDanceController, WITCH_IDLE_ANCHOR_MS, WITCH_LOOP_MS } from "../src/witch-dance.js";
 
 function fakeScheduler() {
   let now = 0;
@@ -51,7 +51,7 @@ function harness() {
 
 const bet = Object.freeze({ betMicro: 1_000_000 });
 
-test("rapid events only queue a tier; a complete dance loop always reaches its seam", () => {
+test("IDLE reactions use an intermediate anchor while win dances complete a full loop", () => {
   const { controller, clock, clips, accents } = harness();
   controller.beginRound();
   controller.onEvent({ type: "win", amount: 2_000_000 }, bet);
@@ -63,7 +63,7 @@ test("rapid events only queue a tier; a complete dance loop always reaches its s
   assert.equal(controller.active, "IDLE");
   assert.equal(controller.pending, "MEDIUM_WIN");
   assert.equal(accents.length, 1);
-  clock.advance(WITCH_LOOP_MS.IDLE - 1);
+  clock.advance(WITCH_IDLE_ANCHOR_MS - 1);
   assert.deepEqual(clips.map((clip) => clip.to), ["IDLE"]);
   clock.advance(1);
   assert.deepEqual(clips.map((clip) => clip.to), ["IDLE", "MEDIUM_WIN"]);
@@ -82,7 +82,7 @@ test("rapid win escalation selects the strongest next loop, without false BONUS"
   controller.onEvent({ type: "multiplier", increment: 5, to: 6 }, bet);
   controller.endRound();
 
-  clock.advance(WITCH_LOOP_MS.IDLE);
+  clock.advance(WITCH_IDLE_ANCHOR_MS);
   assert.deepEqual(clips.map((clip) => clip.to), ["IDLE", "BIG_WIN"]);
   assert.deepEqual(accents.map((cue) => cue.type), ["POTION"]);
   clock.advance(WITCH_LOOP_MS.BIG_WIN);
@@ -93,7 +93,7 @@ test("long cascade chain keeps the active dance looping until round completion",
   const { controller, clock, clips } = harness();
   controller.beginRound();
   controller.onEvent({ type: "win", amount: 6_000_000 }, bet);
-  clock.advance(WITCH_LOOP_MS.IDLE);
+  clock.advance(WITCH_IDLE_ANCHOR_MS);
   assert.equal(controller.active, "MEDIUM_WIN");
 
   controller.onEvent({ type: "cascade" }, bet);
@@ -110,7 +110,7 @@ test("BIG win waits for the current SMALL loop seam instead of interrupting it",
   const { controller, clock, clips } = harness();
   controller.beginRound();
   controller.onEvent({ type: "win", amount: 1_000_000 }, bet);
-  clock.advance(WITCH_LOOP_MS.IDLE);
+  clock.advance(WITCH_IDLE_ANCHOR_MS);
   assert.equal(controller.active, "SMALL_WIN");
   controller.onEvent({ type: "win", amount: 12_000_000 }, bet);
   controller.endRound();
@@ -127,13 +127,13 @@ test("BONUS is reserved for bonusStart; errors clear unplayed requests", () => {
   controller.beginRound();
   controller.onEvent({ type: "bonusStart" }, bet);
   controller.endRound({ failed: true });
-  clock.advance(WITCH_LOOP_MS.IDLE);
+  clock.advance(WITCH_IDLE_ANCHOR_MS);
   assert.deepEqual(clips.map((clip) => clip.to), ["IDLE"]);
 
   controller.beginRound();
   controller.onEvent({ type: "bonusStart" }, bet);
   controller.endRound();
-  clock.advance(WITCH_LOOP_MS.IDLE);
+  clock.advance(WITCH_IDLE_ANCHOR_MS);
   assert.equal(controller.active, "BONUS");
   controller.destroy();
   assert.equal(clock.pending, 0);

@@ -1,8 +1,8 @@
 ---
 id: DOC-04
-version: 1.0.0-rc1
+version: 1.1.0-rc1
 date: 2026-10-18
-status: VERIFIED_PUBLIC_BASELINE_LOCAL_ADAPTER_PENDING
+status: LOCAL_OFFICIAL_CONTRACT_INTEGRATED_SUBMISSION_PENDING
 dependencies: [DOC-03]
 related: [DOC-05, DOC-06, DOC-12]
 confidence: HIGH_FOR_PUBLIC_DOCS
@@ -30,7 +30,13 @@ Detect `replay=true` and parse `game`, `version`, `mode`, `event`, `rgs_url`; op
 
 Test IDs per mode: loss, normal win, big win, max win and bonus trigger if applicable.
 
-The local prototype implements the required safety shape: immutable round data, no authenticated/session calls during replay, identical normal/fast/replay event order, Play Again behavior and zero wallet mutation. It does not yet implement the public URL parameter and live RGS fetch path; those remain mandatory before platform submission.
+The Milestone 02 prototype parses `sessionID`, `rgs_url`, `lang`, `currency`, game/version/mode parameters; defaults to a Stake-compatible local RGS; and uses `/wallet/authenticate`, `/wallet/play`, `/wallet/end-round` and `/bet/replay/...`. Replay makes no play or wallet call and was browser-verified with an unchanged balance. The old Mock RGS is explicit `?rgs=mock` fallback only. A live Studio session and account-specific resume/replay behavior remain mandatory before submission.
+
+## Pin and compatibility boundary
+
+`sdk-lock.json` pins Math SDK `a6dccd86de740cc5d318079483cb6204cc5c19bc` and Web SDK `1843d60cedb94b390e641b563f32ad64353bec5e`. The browser keeps the proven UX instead of copying official sample visuals; its adapter follows the pinned `rgs-requests` payloads and `apps/scatter` BookEvent vocabulary. A later full Svelte/Pixi migration is optional unless packaging or performance evidence requires it.
+
+Local integration is not ACP certification. Authentication is a test session, the six-entry book is evidence only, bonus mode is absent, and no external Stake endpoint or account was called.
 
 ## Statelessness and content
 

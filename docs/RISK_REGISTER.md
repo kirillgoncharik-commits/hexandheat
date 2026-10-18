@@ -1,6 +1,6 @@
 # Risk Register
 
-Version 0.9.0 · 2026-10-18 · Owner: Product Owner / Technical Reviewer.
+Version 1.0.0-rc1 · 2026-10-18 · Owner: Product Owner / Technical Reviewer.
 
 Scale: probability/impact L/M/H. Residual is reassessed after mitigation.
 
@@ -22,3 +22,6 @@ Scale: probability/impact L/M/H. Residual is reassessed after mitigation.
 | R14 | pilot exceeds cost/time | M/M | stop-loss and daily evidence | PIVOT/KILL | Producer |
 | R15 | platform/account-only rule missed | M/H | ACP checklist/support before G5 | rescope before submission | Compliance |
 | R16 | security via untrusted RGS/localization | L/H | schema, allowlist, CSP, no innerHTML | fail closed, patch before release | Security |
+| R17 | official verifier sidecar accumulates prior mode payouts | H/M at pinned SHA | reset `_payout_ints` per mode; assert sidecar count/hash | carry reviewed patch or upgrade when upstream fixes | Math/Integration |
+| R18 | emulated media POC mistaken for device sign-off | M/H | label Safari/mobile/FPS/memory as unverified | block production video until real-device matrix | QA/PO |
+| R19 | full Web SDK migration duplicates working shell | M/M | adapt pinned HTTP/Event boundary first | migrate only with packaging/performance evidence | Integration |

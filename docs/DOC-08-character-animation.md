@@ -1,14 +1,28 @@
 ---
 id: DOC-08
-version: 0.9.0
+version: 1.0.0-rc1
 date: 2026-10-18
-status: POC_REQUIRED
+status: CONTROLLER_AND_NATIVE_VIDEO_POC_PARTIAL
 dependencies: [DOC-05, DOC-07]
 related: [DOC-10, ASSET_REGISTER]
 confidence: MEDIUM_LOW
 ---
 
 # Character Animation & Video Pipeline
+
+## Milestone 02 result
+
+IDLE now exposes anchor A at 0/25/50/75/100% of its 4.2-second loop, bounding a newly queued reaction to 1.05 seconds while preserving continuous motion. SMALL/MEDIUM/BIG/BONUS still switch only after a full loop. Higher tiers coalesce, potion FX remains independent, and settlement never waits for the dancer.
+
+`NativeVideoLoopController` proves two native `<video>` layers, preload, current-time reset, 180 ms crossfade, continuous loop flags, delayed outgoing pause, decode timeout/error fallback and cleanup. `?media=video` records two abstract rights-safe clips locally with equal first/last synthetic frames; it adds no media master to Git. The normal default remains CSS and Reduced Motion disables the video POC.
+
+| Runtime | Result | Decision |
+|---|---|---|
+| Native video elements | implemented; smallest control surface and broad codec path | preferred production POC runtime |
+| Pixi video textures | not needed for fixed plate; adds GPU upload/renderer coupling | reserve for compositing evidence |
+| Spritesheet | CSS silhouette proves the fallback lifecycle | production fallback after asset benchmark |
+
+Local Chromium verification passed with no console errors. **HYPOTHESIS / open gate:** Safari, real iOS/Android decode, H.264/VP9 dual assets, memory, dropped-frame/FPS and long soak were not measured; do not approve production video on this evidence alone.
 
 ## Decision
 

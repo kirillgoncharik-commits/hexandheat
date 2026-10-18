@@ -1,0 +1,12 @@
+diff --git a/src/state/state.py b/src/state/state.py
+index f8f3f9b..f9ee951 100644
+--- a/src/state/state.py
++++ b/src/state/state.py
+@@ -267,6 +267,7 @@ class GeneralGameState(ABC):
+         self.win_manager = WinManager(self.config.basegame_type, self.config.freegame_type, mode_max_win)
+         self.library = {}
+         self.recorded_events = {}
++        self._payout_ints = []
+         self.betmode = betmode
+         self.num_sims = num_sims
+         for sim in range(

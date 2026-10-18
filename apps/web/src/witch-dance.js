@@ -9,6 +9,10 @@ export const WITCH_LOOP_MS = Object.freeze({
   [WITCH_STATES.BONUS]: 4800
 });
 
+// IDLE returns to anchor A four times per loop. Win/bonus performances still
+// complete a full cycle, while a fresh reaction waits at most 1.05 seconds.
+export const WITCH_IDLE_ANCHOR_MS = WITCH_LOOP_MS[WITCH_STATES.IDLE] / 4;
+
 const PRIORITY = Object.freeze({
   [WITCH_STATES.IDLE]: 0,
   [WITCH_STATES.SMALL_WIN]: 1,
@@ -26,10 +30,12 @@ const PRIORITY = Object.freeze({
 export class WitchDanceController {
   constructor({
     loopMs = WITCH_LOOP_MS,
+    idleAnchorMs = WITCH_IDLE_ANCHOR_MS,
     schedule = (callback, ms) => setTimeout(callback, ms),
     cancel = (id) => clearTimeout(id),
     onLoop = () => {},
-    onAccent = () => {}
+    onAccent = () => {},
+    onRequest = () => {}
   } = {}) {
     for (const state of Object.values(WITCH_STATES)) {
       if (!Number.isFinite(loopMs[state]) || loopMs[state] <= 0) {
@@ -37,10 +43,15 @@ export class WitchDanceController {
       }
     }
     this.loopMs = loopMs;
+    if (!Number.isFinite(idleAnchorMs) || idleAnchorMs <= 0 || loopMs[WITCH_STATES.IDLE] % idleAnchorMs !== 0) {
+      throw new Error("IDLE anchor interval must divide the IDLE loop");
+    }
+    this.idleAnchorMs = idleAnchorMs;
     this.schedule = schedule;
     this.cancel = cancel;
     this.onLoop = onLoop;
     this.onAccent = onAccent;
+    this.onRequest = onRequest;
     this.active = WITCH_STATES.IDLE;
     this.pending = null;
     this.roundOpen = false;
@@ -75,6 +86,7 @@ export class WitchDanceController {
     if (PRIORITY[target] > PRIORITY[this.active] &&
         (!this.pending || PRIORITY[target] > PRIORITY[this.pending])) {
       this.pending = target;
+      this.onRequest({ target });
     }
   }
 
@@ -93,7 +105,9 @@ export class WitchDanceController {
   }
 
   #scheduleSeam() {
-    const durationMs = this.loopMs[this.active];
+    const durationMs = this.active === WITCH_STATES.IDLE
+      ? this.idleAnchorMs
+      : this.loopMs[this.active];
     this.timer = this.schedule(() => {
       this.timer = null;
       if (!this.started) return;

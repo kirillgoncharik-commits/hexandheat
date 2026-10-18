@@ -1,8 +1,8 @@
 ---
 id: DOC-05
-version: 1.0.0-rc1
+version: 1.1.0-rc1
 date: 2026-10-18
-status: FUNCTIONAL_PROTOTYPE_IMPLEMENTED_TARGET_STACK_PENDING
+status: INTEGRATED_TECHNICAL_PROTOTYPE
 dependencies: [DOC-03, DOC-04]
 related: [DOC-08, DOC-09, DOC-10, TECH_STACK_DECISIONS]
 confidence: MEDIUM_HIGH
@@ -88,4 +88,12 @@ PR: validate schemas/docs, lint/typecheck/unit, math fixtures, Storybook smoke, 
 
 A reviewer can trace every displayed number to a domain event; playback policy cannot modify events; fixtures converge in normal/fast/replay; unsupported media falls back; version manifests pin SDK/toolchain/assets; no runtime service other than approved RGS/CDN is required.
 
-For Gate 1 the first three conditions are automated in the local prototype. SDK/RGS replacement, media fallback and production version manifests remain next-slice work.
+Milestone 02 automates those conditions through the SDK pin manifest, publish-file verifier, official-contract local RGS, mapping tests, native-video/CSS fallback and Web Audio failure isolation. Production Svelte/Pixi packaging, real Studio RGS, full assets and device evidence remain gated.
+
+## Implemented Milestone 02 chain
+
+`STAKE_FORMAT_CANDIDATE_UNBALANCED_V0 → math publish adapter → local Stake-compatible RGS → Stake BookEvent mapper → immutable domain reducer → board / WitchDanceController / AdaptiveMusicController`.
+
+The RGS owns balance, book selection, payout and settlement. The mapper only converts units and symbols after asserting `finalWin == payoutMultiplier`; disagreement fails closed. Video and audio run after domain reduction and are not awaited by settlement. Mock RGS is excluded from the default path.
+
+The full official Web SDK monorepo is not vendored: `apps/scatter` couples to many workspace packages and copying it would duplicate the existing working shell. This boundary reuses its HTTP and BookEvent contracts at exact pins while retaining the current composition. Reassess a full Svelte 5/PixiJS 8 migration when production rendering or Engine upload proves a concrete need.

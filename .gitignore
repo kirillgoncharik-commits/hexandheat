@@ -39,6 +39,8 @@ math/**/library/optimization_files/
 math/**/library/configs/
 *.jsonl
 *.jsonl.zst
+!math/publish_files/books_base.jsonl
+!math/publish_files/books_base.jsonl.zst
 
 # Heavy/generated media masters
 assets/raw/
