@@ -31,11 +31,20 @@ The timeline clock owns presentation order. Board, witch, FX and audio do not ca
 | `bonusStart` | mode/cost/counter | BONUS clip/music | intro deadline |
 | `finalWin` | exact final amount | tier celebration | final counter |
 
-## Current functional placeholder
+## Current functional placeholder — stitched loops
 
-The approved prototype implements a presentation-only Witch Stage beside the board. Its CSS silhouette consumes each event through the existing `playOutcome` callback; it never writes game, wallet or payout state. `boardReveal` and `cascade` select `IDLE`; win values below 4× bet select `SMALL_WIN`, values from 4× to below 10× select `MEDIUM_WIN`, and values of at least 10× select `BIG_WIN`. A potion `multiplier` event selects the temporary `BONUS` magic reaction; a future real `bonusStart` event reserves the same state name.
+The prototype now uses a presentation-only `WitchDanceController` in `apps/web/src/witch-dance.js`. All states are **multi-second continuous dance loops** (IDLE 4.2s / SMALL_WIN 3.6s / MEDIUM_WIN 4.2s / BIG_WIN 4.8s / BONUS 4.8s, provisional).
 
-The adjacent Game Events panel shows only game phase, last event and current multiplier. It is explicitly development-only: setting `data-debug-mode="false"` on the document body removes it and lets Witch Stage occupy the full right column. On mobile, the board, Witch Stage, debug panel and controls remain separate document-flow regions, so the character cannot cover symbols or controls.
+- `win` and positive `finalWin` events request an intensity tier using prototype thresholds <4× / 4–<10× / ≥10× bet.
+- Requests during a single round are coalesced to the strongest pending tier; no intermediate frame flips.
+- `boardReveal` and `cascade` do not change character state.
+- A `multiplier` event triggers a transient potion aura, **not BONUS**. A real `bonusStart` event is reserved for BONUS and is not present in the pilot RGS schema.
+- The current loop may exit **only at the neutral anchor seam**, where two CSS figure layers overlap with a 180ms opacity crossfade. Every non-idle loop plays through at least once, even when the bet has already settled.
+- The video implementation will honor the same state contract using media-confirmed seams and predecoded clips; the CSS version is only a prototype of the controller and transition composition.
+- Playback continues independently after the RGS round settles. Spin, Fast Play and Replay use the same authoritative outcome events and never change payout or balance from character callbacks.
+- `endRound({failed:true})` clears unplayed celebrations but does not cut an active loop mid-cycle.
+
+The adjacent Game Events panel remains development-only: `data-debug-mode="false"` hides it and expands Witch Stage. Mobile keeps the game board, Witch Stage and controls in separate flow regions.
 
 ## Scheduling and interruption
 
