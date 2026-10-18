@@ -6,7 +6,7 @@ Every agent must start with: (1) `README.md`, (2) this file, (3) `docs/DOC-00-pr
 
 ## Phase gate
 
-Work Task 01 authorizes Phase 0 and the primitive Phase 1 functional prototype. Agents may maintain the dependency-free math/replay core, mock-RGS browser prototype, tests, CI and evidence needed for Gate 1. They must not begin Phase 2 interaction work or Phase 3 art/audio production, claim production RTP, generate paid assets, upload to Stake Engine, publish the game or purchase tools without the next explicit Product Owner gate.
+Work Task 01 authorizes Phase 0 and the primitive Phase 1 functional prototype. A subsequent Product Owner instruction authorizes one bounded interaction slice: the CSS-only Witch Stage placeholder and its deterministic `IDLE`, `SMALL_WIN`, `MEDIUM_WIN`, `BIG_WIN`, and `BONUS` event mapping. Agents may maintain that slice, the dependency-free math/replay core, mock-RGS browser prototype, tests, CI and Gate 1 evidence. They must not add production video/audio/art, broaden Phase 2, begin Phase 3, claim production RTP, generate paid assets, upload to Stake Engine, publish the game or purchase tools without the next explicit Product Owner gate.
 
 ## Git and review rules
 

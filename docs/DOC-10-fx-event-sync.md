@@ -1,8 +1,8 @@
 ---
 id: DOC-10
-version: 0.9.0
+version: 1.0.0-rc1
 date: 2026-10-18
-status: PROPOSED
+status: BOUNDED_PLACEHOLDER_IN_USE
 dependencies: [DOC-02, DOC-05, DOC-08, DOC-09]
 related: [DOC-12]
 confidence: MEDIUM_HIGH
@@ -30,6 +30,12 @@ The timeline clock owns presentation order. Board, witch, FX and audio do not ca
 | `cascade` | remove/fall/refill | trails/shake | stable next board |
 | `bonusStart` | mode/cost/counter | BONUS clip/music | intro deadline |
 | `finalWin` | exact final amount | tier celebration | final counter |
+
+## Current functional placeholder
+
+The approved prototype implements a presentation-only Witch Stage beside the board. Its CSS silhouette consumes each event through the existing `playOutcome` callback; it never writes game, wallet or payout state. `boardReveal` and `cascade` select `IDLE`; win values below 4× bet select `SMALL_WIN`, values from 4× to below 10× select `MEDIUM_WIN`, and values of at least 10× select `BIG_WIN`. A potion `multiplier` event selects the temporary `BONUS` magic reaction; a future real `bonusStart` event reserves the same state name.
+
+The adjacent Game Events panel shows only game phase, last event and current multiplier. It is explicitly development-only: setting `data-debug-mode="false"` on the document body removes it and lets Witch Stage occupy the full right column. On mobile, the board, Witch Stage, debug panel and controls remain separate document-flow regions, so the character cannot cover symbols or controls.
 
 ## Scheduling and interruption
 

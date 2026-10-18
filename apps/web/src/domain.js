@@ -4,6 +4,14 @@ export const MICRO_UNITS = 1_000_000;
 
 const EVENT_TYPES = new Set(["boardReveal", "win", "multiplier", "cascade", "finalWin"]);
 
+export const WITCH_STATES = Object.freeze({
+  IDLE: "IDLE",
+  SMALL_WIN: "SMALL_WIN",
+  MEDIUM_WIN: "MEDIUM_WIN",
+  BIG_WIN: "BIG_WIN",
+  BONUS: "BONUS"
+});
+
 function assert(condition, message) {
   if (!condition) {
     throw new Error(`Invalid outcome: ${message}`);
@@ -82,6 +90,25 @@ export function createInitialState(board = null) {
     cascade: 0,
     settled: false
   });
+}
+
+/**
+ * Convert an authoritative game event into a presentation-only character cue.
+ * This function reads settled outcome values but never changes payout state.
+ */
+export function deriveWitchState(event, outcome) {
+  if (!event) return WITCH_STATES.IDLE;
+  if (event.type === "multiplier" || event.type === "bonusStart") return WITCH_STATES.BONUS;
+  if (event.type !== "win" && event.type !== "finalWin") return WITCH_STATES.IDLE;
+
+  const amount = Number(event.amount ?? 0);
+  const bet = Number(outcome?.betMicro ?? 0);
+  if (!Number.isSafeInteger(amount) || !Number.isSafeInteger(bet) || amount <= 0 || bet <= 0) {
+    return WITCH_STATES.IDLE;
+  }
+  if (amount >= bet * 10) return WITCH_STATES.BIG_WIN;
+  if (amount >= bet * 4) return WITCH_STATES.MEDIUM_WIN;
+  return WITCH_STATES.SMALL_WIN;
 }
 
 /** Apply one authoritative event and return a new presentation snapshot. */

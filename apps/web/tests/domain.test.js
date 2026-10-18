@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { applyEvent, createInitialState, formatMoney, playOutcome, validateOutcome } from "../src/domain.js";
+import { applyEvent, createInitialState, deriveWitchState, formatMoney, playOutcome, validateOutcome } from "../src/domain.js";
 import { MockRgs } from "../src/mock-rgs.js";
 
 test("mock RGS returns a frozen precomputed outcome with a valid 6x5 board", async () => {
@@ -48,6 +48,31 @@ test("normal, fast, and replay playback converge on the same domain snapshot", a
   assert.equal(normal.winMicro, 16_000_000);
   assert.equal(normal.multiplier, 3);
   assert.equal(normal.settled, true);
+});
+
+test("witch cues are presentation-only and deterministic for spin, fast play, and replay", async () => {
+  const rgs = new MockRgs();
+  const outcome = await rgs.play({ betMicro: 1_000_000 });
+  const collect = async (candidate, speed) => {
+    const cues = [];
+    await playOutcome(candidate, {
+      speed,
+      delay: () => Promise.resolve(),
+      onEvent: (event) => cues.push(deriveWitchState(event, candidate))
+    });
+    return cues;
+  };
+
+  const normal = await collect(outcome, "normal");
+  const fast = await collect(outcome, "fast");
+  const replay = await collect(await rgs.getReplay(outcome.id), "normal");
+
+  assert.deepEqual(normal, ["IDLE", "SMALL_WIN", "BONUS", "IDLE", "MEDIUM_WIN", "IDLE", "MEDIUM_WIN"]);
+  assert.deepEqual(fast, normal);
+  assert.deepEqual(replay, normal);
+  assert.equal(outcome.payoutMicro, 8_000_000);
+  assert.equal(deriveWitchState({ type: "win", amount: 10_000_000 }, outcome), "BIG_WIN");
+  assert.equal(deriveWitchState({ type: "bonusStart" }, outcome), "BONUS");
 });
 
 test("replay performs no new play or settlement and cannot change the wallet", async () => {

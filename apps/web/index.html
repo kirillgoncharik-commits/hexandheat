@@ -11,7 +11,7 @@
     <title>Hex &amp; Heat — Functional Prototype</title>
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
-  <body>
+  <body data-debug-mode="true">
     <main class="game-shell" aria-labelledby="game-title">
       <header class="topbar">
         <div>
@@ -52,18 +52,56 @@
           <div id="board" class="board" role="grid" aria-label="Six columns by five rows"></div>
         </div>
 
-        <aside class="cue-panel" aria-labelledby="cue-title">
-          <div class="cauldron-cue" aria-hidden="true">
-            <span>Primitive cue</span>
-            <strong id="cue-multiplier">×1</strong>
-          </div>
-          <div>
-            <p class="eyebrow">Timeline event</p>
-            <h2 id="cue-title">Waiting</h2>
-            <p id="cue-copy">Spin to play a precomputed local outcome.</p>
-          </div>
-          <ol id="event-log" class="event-log" aria-label="Current round event log"></ol>
-        </aside>
+        <div class="side-column">
+          <section class="debug-panel" aria-labelledby="debug-title">
+            <div class="panel-heading">
+              <h2 id="debug-title">Debug / Game Events</h2>
+              <span class="dev-chip">Dev only</span>
+            </div>
+            <dl class="debug-grid">
+              <div>
+                <dt>Game state</dt>
+                <dd id="debug-game-state">READY</dd>
+              </div>
+              <div>
+                <dt>Last event</dt>
+                <dd id="debug-last-event">Waiting</dd>
+              </div>
+              <div>
+                <dt>Multiplier</dt>
+                <dd id="debug-multiplier">×1</dd>
+              </div>
+            </dl>
+          </section>
+
+          <aside class="witch-stage" data-state="idle" aria-labelledby="witch-stage-title">
+            <div class="panel-heading stage-heading">
+              <div>
+                <p class="eyebrow">Presentation layer</p>
+                <h2 id="witch-stage-title">Witch Stage</h2>
+              </div>
+              <span id="witch-state-label" class="witch-state-label" aria-live="polite">IDLE</span>
+            </div>
+            <div class="witch-viewport">
+              <div class="stage-aura" aria-hidden="true"></div>
+              <div
+                id="witch-figure"
+                class="witch-figure"
+                data-state="idle"
+                role="img"
+                aria-label="Placeholder witch silhouette, state IDLE"
+              >
+                <span class="witch-hat" aria-hidden="true"></span>
+                <span class="witch-head" aria-hidden="true"></span>
+                <span class="witch-body" aria-hidden="true"></span>
+                <span class="witch-arm witch-arm-left" aria-hidden="true"></span>
+                <span class="witch-arm witch-arm-right" aria-hidden="true"></span>
+              </div>
+              <div class="stage-floor" aria-hidden="true"></div>
+            </div>
+            <p class="stage-note">CSS placeholder · no media</p>
+          </aside>
+        </div>
       </section>
 
       <section class="controls" aria-label="Game controls">

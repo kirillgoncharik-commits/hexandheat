@@ -1,4 +1,4 @@
-import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
+import { createInitialState, deriveWitchState, describeEvent, formatMoney, playOutcome } from "./domain.js";
 import { MockRgs } from "./mock-rgs.js";
 
 const SYMBOL_LABELS = Object.freeze({
@@ -15,11 +15,13 @@ const elements = {
   bet: document.querySelector("#bet-value"),
   win: document.querySelector("#win-value"),
   multiplier: document.querySelector("#multiplier-value"),
-  cueMultiplier: document.querySelector("#cue-multiplier"),
   board: document.querySelector("#board"),
-  cueTitle: document.querySelector("#cue-title"),
-  cueCopy: document.querySelector("#cue-copy"),
-  eventLog: document.querySelector("#event-log"),
+  debugMultiplier: document.querySelector("#debug-multiplier"),
+  debugGameState: document.querySelector("#debug-game-state"),
+  debugLastEvent: document.querySelector("#debug-last-event"),
+  witchStage: document.querySelector(".witch-stage"),
+  witchFigure: document.querySelector("#witch-figure"),
+  witchStateLabel: document.querySelector("#witch-state-label"),
   roundLabel: document.querySelector("#round-label"),
   fixtureLabel: document.querySelector("#fixture-label"),
   betSelect: document.querySelector("#bet-select"),
@@ -69,17 +71,27 @@ function renderState(state) {
   renderBoard(state);
   elements.win.textContent = formatMoney(state.winMicro, session.currency, locale);
   elements.multiplier.textContent = `×${state.multiplier}`;
-  elements.cueMultiplier.textContent = `×${state.multiplier}`;
+  elements.debugMultiplier.textContent = `×${state.multiplier}`;
 }
 
-function addEventLog(event, description) {
-  const item = document.createElement("li");
-  const index = document.createElement("span");
-  const label = document.createElement("span");
-  index.textContent = String(event.index + 1).padStart(2, "0");
-  label.textContent = description.title;
-  item.append(index, label);
-  elements.eventLog.append(item);
+function setWitchState(state) {
+  const dataState = state.toLowerCase();
+  elements.witchStage.dataset.state = dataState;
+  elements.witchFigure.dataset.state = dataState;
+  elements.witchFigure.setAttribute("aria-label", `Placeholder witch silhouette, state ${state}`);
+  elements.witchStateLabel.textContent = state;
+}
+
+function gamePhase(event, source) {
+  const mode = source === "replay" ? "REPLAY" : "SPIN";
+  const phases = {
+    boardReveal: "REVEAL",
+    win: "WIN",
+    multiplier: "POTION",
+    cascade: "CASCADE",
+    finalWin: "COMPLETE"
+  };
+  return `${mode} · ${phases[event.type] ?? "EVENT"}`;
 }
 
 function setBusy(value, source = "spin") {
@@ -87,6 +99,9 @@ function setBusy(value, source = "spin") {
   elements.spin.disabled = value;
   elements.betSelect.disabled = value;
   elements.replay.disabled = value || !lastOutcome;
+  if (value) {
+    elements.debugGameState.textContent = source === "replay" ? "REPLAY · REQUEST" : "SPIN · REQUEST";
+  }
   elements.roundLabel.textContent = value
     ? source === "replay"
       ? "Replaying immutable outcome"
@@ -95,8 +110,9 @@ function setBusy(value, source = "spin") {
 }
 
 async function presentOutcome(outcome, source) {
-  elements.eventLog.replaceChildren();
   elements.fixtureLabel.textContent = `Fixture ${outcome.fixtureId}`;
+  elements.debugLastEvent.textContent = "Waiting for event 1";
+  setWitchState("IDLE");
   elements.status.textContent = source === "replay"
     ? `Replay ${outcome.id}: no wallet or play request will be made.`
     : `Round ${outcome.id}: payout is already fixed by the mock RGS.`;
@@ -107,9 +123,9 @@ async function presentOutcome(outcome, source) {
     onEvent(event, state) {
       const description = describeEvent(event, outcome.currency, locale);
       renderState(state);
-      elements.cueTitle.textContent = description.title;
-      elements.cueCopy.textContent = description.copy;
-      addEventLog(event, description);
+      elements.debugGameState.textContent = gamePhase(event, source);
+      elements.debugLastEvent.textContent = `${event.index + 1}/${outcome.events.length} · ${description.title}`;
+      setWitchState(deriveWitchState(event, outcome));
     }
   });
 }
@@ -126,6 +142,7 @@ async function spin() {
     await presentOutcome(outcome, "spin");
     await rgs.settle(outcome.id);
     updateWallet();
+    elements.debugGameState.textContent = "SETTLED";
     elements.status.textContent = `Settled ${outcome.id}. Replay uses the same frozen ${outcome.events.length}-event stream.`;
   } catch (error) {
     // An accepted RGS outcome remains authoritative even if presentation fails.
@@ -134,8 +151,9 @@ async function spin() {
       await rgs.settle(outcome.id);
       updateWallet();
     }
-    elements.cueTitle.textContent = "Round stopped";
-    elements.cueCopy.textContent = error instanceof Error ? error.message : "Unknown playback error";
+    elements.debugGameState.textContent = "STOPPED";
+    elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Presentation error";
+    setWitchState("IDLE");
     elements.status.textContent = "The fixture failed closed; no replacement outcome was requested.";
   } finally {
     setBusy(false);
@@ -148,10 +166,12 @@ async function replay() {
   try {
     const outcome = await rgs.getReplay(lastOutcome.id);
     await presentOutcome(outcome, "replay");
+    elements.debugGameState.textContent = "REPLAY COMPLETE";
     elements.status.textContent = `Replay complete. Balance remained ${formatMoney(rgs.getSession().balanceMicro, outcome.currency, locale)}.`;
   } catch (error) {
-    elements.cueTitle.textContent = "Replay stopped";
-    elements.cueCopy.textContent = error instanceof Error ? error.message : "Unknown replay error";
+    elements.debugGameState.textContent = "REPLAY STOPPED";
+    elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Unknown replay error";
+    setWitchState("IDLE");
   } finally {
     setBusy(false, "replay");
   }

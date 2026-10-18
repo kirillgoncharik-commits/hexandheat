@@ -1,6 +1,6 @@
 # Primitive browser prototype
 
-This is a dependency-free local presentation prototype for Hex & Heat. It uses colored squares only: there is no production witch art, audio, Stake SDK, authenticated session, or external service.
+This is a dependency-free local presentation prototype for Hex & Heat. It uses colored squares and a CSS-only witch silhouette: there is no production witch art, audio, Stake SDK, authenticated session, or external service.
 
 The mock RGS returns an immutable, precomputed event stream. The browser validates and presents that stream; it does not calculate the payout. Normal play, fast play, and replay consume the same ordered events and converge on the same final state.
 
@@ -26,6 +26,8 @@ Controls:
 - **Replay last** replays the exact frozen outcome without a new play request or wallet mutation.
 - **Bet amount** exercises the mock RGS bet-level contract; returned event amounts are already resolved integer micro-units (`1,000,000 = 1.00`).
 
+The right column is split into a compact development-only Game Events panel and a larger Witch Stage. The placeholder stage consumes the same authoritative event stream as the board: reveal/cascade maps to `IDLE`, win amounts map to `SMALL_WIN`/`MEDIUM_WIN`/`BIG_WIN`, and potion multiplier events map to the reserved `BONUS` magic reaction. Spin, fast play and Replay therefore produce the same character-state sequence. Set `data-debug-mode="false"` on `<body>` in a production shell to hide debug information and give the full column to Witch Stage.
+
 The mock cycles through `potion-chain`, `quiet-loss`, and `double-potion`, then repeats.
 
 ## Test
@@ -35,7 +37,7 @@ cd apps/web
 npm test
 ```
 
-The tests cover 6×5 validation, malformed outcomes, multiplier continuity, fixture determinism, amount scaling, outcome immutability, wallet settlement, replay isolation, and final-state convergence across normal/fast/replay playback.
+The tests cover 6×5 validation, malformed outcomes, multiplier continuity, fixture determinism, amount scaling, outcome immutability, wallet settlement, replay isolation, deterministic witch cues, and final-state convergence across normal/fast/replay playback.
 
 ## Module map
 

@@ -2,7 +2,7 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
-> **Current gate:** Work Task 01 authorizes Phase 0 and a primitive Phase 1 functional prototype. Final art, character video, production audio, paid tools, balancing claims and platform submission remain blocked. Current status: **Functional Prototype ready for Gate 1 review**.
+> **Current gate:** Work Task 01 authorizes Phase 0 and the primitive Phase 1 functional prototype; a bounded follow-up authorizes the event-driven CSS Witch Stage placeholder. Final art, character video, production audio, paid tools, balancing claims and platform submission remain blocked. Current status: **Functional Prototype ready for Gate 1 review**.
 
 ## Start here
 
@@ -27,6 +27,7 @@ AI-first implementation and production record for an HTML5 casino game targeting
 ## Proven prototype
 
 - Responsive 6×5 colored-square browser game with Spin, balance, bet, cascades, potion cues, a per-round cauldron multiplier, fast play and exact replay.
+- Separate compact debug panel and responsive Witch Stage with deterministic presentation-only placeholder states during Spin and Replay.
 - Immutable, precomputed Python outcome books with canonical SHA-256, external weighted selection and an independent verifier.
 - One command runs repository, math/replay and browser-domain checks without installing dependencies.
 
