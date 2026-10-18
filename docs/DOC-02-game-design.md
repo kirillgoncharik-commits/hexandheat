@@ -55,17 +55,20 @@ stateDiagram-v2
 
 Input is locked from `REQUESTING` through `SETTLE`. Fast play changes cue durations and skips decoration, never event order or displayed final values.
 
-## Reaction mapping
+## Reaction mapping — continuous loops
 
-| Deterministic tier | Candidate trigger | Character | Audio |
+Every dance tier, including a Small Win, is a complete multi-second loop rather than an instantaneous pose or a one-shot. Direct transitions between any tiers use one common neutral anchor pose and occur only at a seam. A Potion triggers a short separate FX accent instead of a BONUS character state.
+
+| Pilot event/tier | Temporary prototype threshold | Character behavior | Audio concept |
 |---|---|---|---|
-| IDLE | ready/loss | idle loop | BASE |
-| SMALL | final <5× | short accent | BASE + one-shot |
-| MEDIUM | 5–20× or cascade ≥3 | medium loop once | ENERGY at bar boundary |
-| BIG | ≥20× or approved high tier | big sequence | HOT layer + sting |
-| BONUS | bonus-start event | signature sequence | BONUS phase |
+| IDLE | no active win tier | 4.2s continuous subtle sway loop | BASE |
+| SMALL_WIN | paid event <4× bet | 3.6s light dance loop | small sting |
+| MEDIUM_WIN | paid event ≥4× and <10× bet | 4.2s more active dance loop | ENERGY |
+| BIG_WIN | paid event ≥10× bet | 4.8s climax dance loop | HOT + sting |
+| BONUS | real `bonusStart` event (not in pilot) | 4.8s distinctive bonus dance loop | BONUS phase |
+| POTION ACCENT | `multiplier` event | FX overlay without switching current loop | short cauldron cue |
 
-Thresholds are configuration, versioned with the frontend. A presentation tier must not reveal an undisclosed result before its math event.
+Those thresholds are **prototype-only**, not approved production math or volatility. A win sequence requests the strongest tier, while board reveals and cascades never reset the dancer. The animation controller does not block a Spin settling; a queued winning dance finishes at least one full loop before returning to IDLE. See DOC-08 and DOC-10 for stitching, priority and interruption rules.
 
 ## UI behavior
 

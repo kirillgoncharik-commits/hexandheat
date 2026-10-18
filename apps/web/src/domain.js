@@ -97,15 +97,18 @@ export function createInitialState(board = null) {
  * This function reads settled outcome values but never changes payout state.
  */
 export function deriveWitchState(event, outcome) {
-  if (!event) return WITCH_STATES.IDLE;
-  if (event.type === "multiplier" || event.type === "bonusStart") return WITCH_STATES.BONUS;
-  if (event.type !== "win" && event.type !== "finalWin") return WITCH_STATES.IDLE;
+  if (!event) return null;
+  if (event.type === "bonusStart") return WITCH_STATES.BONUS;
+  // Only genuine win events can request a new dance tier. A cascade, a
+  // board reveal or a potion must never reset the dancer to IDLE or BONUS.
+  if (event.type !== "win" && event.type !== "finalWin") return null;
 
   const amount = Number(event.amount ?? 0);
   const bet = Number(outcome?.betMicro ?? 0);
   if (!Number.isSafeInteger(amount) || !Number.isSafeInteger(bet) || amount <= 0 || bet <= 0) {
-    return WITCH_STATES.IDLE;
+    return null;
   }
+  // Provisional prototype thresholds; production values require PO approval.
   if (amount >= bet * 10) return WITCH_STATES.BIG_WIN;
   if (amount >= bet * 4) return WITCH_STATES.MEDIUM_WIN;
   return WITCH_STATES.SMALL_WIN;

@@ -27,7 +27,7 @@ AI-first implementation and production record for an HTML5 casino game targeting
 ## Proven prototype
 
 - Responsive 6×5 colored-square browser game with Spin, balance, bet, cascades, potion cues, a per-round cauldron multiplier, fast play and exact replay.
-- Separate compact debug panel and responsive Witch Stage with deterministic presentation-only placeholder states during Spin and Replay.
+- Responsive Witch Stage with a double-buffered CSS dance player: multi-second IDLE / SMALL / MEDIUM / BIG / BONUS loops stitched at shared pose A, while gameplay cues queue the next tier and potion FX plays independently. Spin and Replay cannot mutate payout from animation.
 - Immutable, precomputed Python outcome books with canonical SHA-256, external weighted selection and an independent verifier.
 - One command runs repository, math/replay and browser-domain checks without installing dependencies.
 

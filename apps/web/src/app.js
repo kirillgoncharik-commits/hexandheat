@@ -1,5 +1,6 @@
-import { createInitialState, deriveWitchState, describeEvent, formatMoney, playOutcome } from "./domain.js";
+import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
 import { MockRgs } from "./mock-rgs.js";
+import { WitchDanceController } from "./witch-dance.js";
 
 const SYMBOL_LABELS = Object.freeze({
   amber: "Amber square",
@@ -36,6 +37,7 @@ const locale = navigator.language || "en-US";
 let session = rgs.getSession();
 let lastOutcome = null;
 let busy = false;
+let witchController = null;
 
 function updateWallet() {
   session = rgs.getSession();
@@ -74,12 +76,66 @@ function renderState(state) {
   elements.debugMultiplier.textContent = `×${state.multiplier}`;
 }
 
-function setWitchState(state) {
-  const dataState = state.toLowerCase();
-  elements.witchStage.dataset.state = dataState;
-  elements.witchFigure.dataset.state = dataState;
-  elements.witchFigure.setAttribute("aria-label", `Placeholder witch silhouette, state ${state}`);
-  elements.witchStateLabel.textContent = state;
+/**
+ * Prototype double-buffered dance player. Both CSS silhouettes start/end in the
+ * same neutral pose, so the next multi-second loop can crossfade at the seam.
+ * Production media will replace each silhouette with a decoded video layer.
+ */
+function prepareWitchStage() {
+  const first = elements.witchFigure;
+  const standby = first.cloneNode(true);
+  standby.removeAttribute("id");
+  standby.removeAttribute("role");
+  standby.removeAttribute("aria-label");
+  first.setAttribute("aria-hidden", "true");
+  standby.setAttribute("aria-hidden", "true");
+  standby.classList.remove("is-active");
+  first.classList.add("is-active");
+  first.parentElement.append(standby);
+
+  const figures = [first, standby];
+  let active = first;
+
+  witchController = new WitchDanceController({
+    onLoop({ from, to, durationMs }) {
+      const state = to.toLowerCase();
+      elements.witchStage.dataset.state = state;
+      elements.witchStateLabel.textContent = to;
+      if (from === null) {
+        active.dataset.state = state;
+        active.style.setProperty("--witch-loop-duration", String(durationMs) + "ms");
+        return;
+      }
+
+      const incoming = figures.find((figure) => figure !== active);
+      incoming.classList.add("is-preparing");
+      incoming.classList.remove("is-active");
+      incoming.dataset.state = state;
+      incoming.style.setProperty("--witch-loop-duration", String(durationMs) + "ms");
+      // Reset a hidden CSS loop at neutral pose A. A future video player will
+      // instead pre-decode the corresponding first frame before this handoff.
+      void incoming.offsetWidth;
+      incoming.classList.remove("is-preparing");
+      incoming.classList.add("is-active");
+      active.classList.remove("is-active");
+      active = incoming;
+    },
+    onAccent({ type }) {
+      if (type !== "POTION") return;
+      // Potion is an independent magical accent, not a BONUS dance state.
+      elements.witchStage.classList.remove("has-potion-accent");
+      void elements.witchStage.offsetWidth;
+      elements.witchStage.classList.add("has-potion-accent");
+    }
+  });
+
+  elements.witchStage.addEventListener("animationend", (event) => {
+    if (event.animationName === "witch-potion-accent") {
+      elements.witchStage.classList.remove("has-potion-accent");
+    }
+  });
+  witchController.start();
+  window.addEventListener("pagehide", () => witchController.destroy(), { once: true });
 }
 
 function gamePhase(event, source) {
@@ -112,7 +168,7 @@ function setBusy(value, source = "spin") {
 async function presentOutcome(outcome, source) {
   elements.fixtureLabel.textContent = `Fixture ${outcome.fixtureId}`;
   elements.debugLastEvent.textContent = "Waiting for event 1";
-  setWitchState("IDLE");
+  witchController.beginRound();
   elements.status.textContent = source === "replay"
     ? `Replay ${outcome.id}: no wallet or play request will be made.`
     : `Round ${outcome.id}: payout is already fixed by the mock RGS.`;
@@ -125,7 +181,7 @@ async function presentOutcome(outcome, source) {
       renderState(state);
       elements.debugGameState.textContent = gamePhase(event, source);
       elements.debugLastEvent.textContent = `${event.index + 1}/${outcome.events.length} · ${description.title}`;
-      setWitchState(deriveWitchState(event, outcome));
+      witchController.onEvent(event, outcome);
     }
   });
 }
@@ -134,6 +190,7 @@ async function spin() {
   if (busy) return;
   setBusy(true, "spin");
   let outcome = null;
+  let failed = false;
   try {
     const betMicro = Number(elements.betSelect.value);
     outcome = await rgs.play({ betMicro });
@@ -145,6 +202,7 @@ async function spin() {
     elements.debugGameState.textContent = "SETTLED";
     elements.status.textContent = `Settled ${outcome.id}. Replay uses the same frozen ${outcome.events.length}-event stream.`;
   } catch (error) {
+    failed = true;
     // An accepted RGS outcome remains authoritative even if presentation fails.
     // Settle it once and fail closed instead of asking for a replacement outcome.
     if (outcome && rgs.pending?.id === outcome.id) {
@@ -153,9 +211,9 @@ async function spin() {
     }
     elements.debugGameState.textContent = "STOPPED";
     elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Presentation error";
-    setWitchState("IDLE");
     elements.status.textContent = "The fixture failed closed; no replacement outcome was requested.";
   } finally {
+    witchController.endRound({ failed });
     setBusy(false);
   }
 }
@@ -163,21 +221,24 @@ async function spin() {
 async function replay() {
   if (busy || !lastOutcome) return;
   setBusy(true, "replay");
+  let failed = false;
   try {
     const outcome = await rgs.getReplay(lastOutcome.id);
     await presentOutcome(outcome, "replay");
     elements.debugGameState.textContent = "REPLAY COMPLETE";
     elements.status.textContent = `Replay complete. Balance remained ${formatMoney(rgs.getSession().balanceMicro, outcome.currency, locale)}.`;
   } catch (error) {
+    failed = true;
     elements.debugGameState.textContent = "REPLAY STOPPED";
     elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Unknown replay error";
-    setWitchState("IDLE");
   } finally {
+    witchController.endRound({ failed });
     setBusy(false, "replay");
   }
 }
 
 function initialize() {
+  prepareWitchStage();
   for (const betMicro of session.betLevels) {
     const option = document.createElement("option");
     option.value = String(betMicro);
