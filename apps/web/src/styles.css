@@ -417,14 +417,24 @@ h2 {
 
 .witch-figure {
   position: relative;
+  grid-area: 1 / 1;
   z-index: 1;
   width: 112px;
   height: 255px;
   margin-bottom: 6%;
+  opacity: 0;
   transform-origin: 50% 100%;
-  animation: witch-idle 2.8s ease-in-out infinite;
+  animation: witch-idle var(--witch-loop-duration, 4200ms) ease-in-out infinite;
+  transition: opacity 180ms linear;
   filter: drop-shadow(0 0 20px color-mix(in srgb, var(--witch-color) 35%, transparent));
+  pointer-events: none;
 }
+
+.witch-figure.is-active { opacity: 1; }
+
+/* The incoming layer is reset to the universal neutral pose before crossfade. */
+.witch-figure.is-preparing,
+.witch-figure.is-preparing .witch-arm { animation: none !important; }
 
 .witch-head,
 .witch-body,
@@ -484,39 +494,39 @@ h2 {
 }
 
 .witch-figure[data-state="small_win"] {
-  animation: witch-small-win 620ms ease-in-out infinite alternate;
+  animation: witch-small-win var(--witch-loop-duration, 3600ms) ease-in-out infinite;
 }
 
 .witch-figure[data-state="medium_win"] {
-  animation: witch-medium-win 760ms ease-in-out infinite alternate;
+  animation: witch-medium-win var(--witch-loop-duration, 4200ms) ease-in-out infinite;
 }
-
 .witch-figure[data-state="medium_win"] .witch-arm-right {
-  transform: rotate(-62deg);
+  animation: witch-arm-medium var(--witch-loop-duration, 4200ms) ease-in-out infinite;
 }
 
 .witch-figure[data-state="big_win"] {
-  animation: witch-big-win 540ms ease-in-out infinite alternate;
+  animation: witch-big-win var(--witch-loop-duration, 4800ms) ease-in-out infinite;
 }
-
 .witch-figure[data-state="big_win"] .witch-arm-left {
-  transform: rotate(64deg);
+  animation: witch-arm-big-left var(--witch-loop-duration, 4800ms) ease-in-out infinite;
 }
-
 .witch-figure[data-state="big_win"] .witch-arm-right {
-  transform: rotate(-68deg);
+  animation: witch-arm-big-right var(--witch-loop-duration, 4800ms) ease-in-out infinite;
 }
 
 .witch-figure[data-state="bonus"] {
-  animation: witch-bonus 680ms ease-in-out infinite alternate;
+  animation: witch-bonus var(--witch-loop-duration, 4800ms) ease-in-out infinite;
 }
-
 .witch-figure[data-state="bonus"] .witch-arm-left {
-  transform: rotate(52deg);
+  animation: witch-arm-bonus-left var(--witch-loop-duration, 4800ms) ease-in-out infinite;
+}
+.witch-figure[data-state="bonus"] .witch-arm-right {
+  animation: witch-arm-bonus-right var(--witch-loop-duration, 4800ms) ease-in-out infinite;
 }
 
-.witch-figure[data-state="bonus"] .witch-arm-right {
-  transform: rotate(-50deg);
+/* A potion may flare independently without interrupting the dance loop. */
+.witch-stage.has-potion-accent .stage-aura {
+  animation: witch-potion-accent 650ms ease-out both;
 }
 
 .stage-note {
@@ -536,29 +546,63 @@ body[data-debug-mode="false"] .side-column {
   gap: 0;
 }
 
+/* All loops share the same full-body pose at 0% and 100% (anchor A).
+   Their timing is deliberately multi-second, never a 500ms state flip. */
 @keyframes witch-idle {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-6px) rotate(1deg); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-2px) rotate(-1deg) scale(1.008); }
+  55% { transform: translateY(-4px) rotate(1deg) scale(1.014); }
+  78% { transform: translateY(-1px) rotate(0deg) scale(1.005); }
 }
-
 @keyframes witch-small-win {
-  from { transform: translateY(-2px) rotate(-3deg) scale(1); }
-  to { transform: translateY(-9px) rotate(3deg) scale(1.025); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  28% { transform: translateY(-7px) rotate(-3deg) scale(1.025); }
+  65% { transform: translateY(-8px) rotate(3deg) scale(1.03); }
 }
-
 @keyframes witch-medium-win {
-  from { transform: translateY(-4px) rotate(-5deg) scale(1.01); }
-  to { transform: translateY(-13px) rotate(5deg) scale(1.055); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-9px) rotate(-5deg) scale(1.045); }
+  62% { transform: translateY(-12px) rotate(5deg) scale(1.05); }
 }
-
 @keyframes witch-big-win {
-  from { transform: translateY(-7px) rotate(-6deg) scale(1.04); }
-  to { transform: translateY(-18px) rotate(6deg) scale(1.1); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-13px) rotate(-7deg) scale(1.07); }
+  58% { transform: translateY(-18px) rotate(7deg) scale(1.10); }
+  80% { transform: translateY(-7px) rotate(-2deg) scale(1.045); }
 }
-
 @keyframes witch-bonus {
-  from { transform: translateY(-5px) scale(1.02); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--witch-color) 45%, transparent)); }
-  to { transform: translateY(-14px) scale(1.07); filter: drop-shadow(0 0 34px color-mix(in srgb, var(--witch-color) 75%, transparent)); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  32% { transform: translateY(-12px) rotate(-4deg) scale(1.06); }
+  68% { transform: translateY(-14px) rotate(4deg) scale(1.065); }
+}
+@keyframes witch-arm-medium {
+  0%, 100% { transform: rotate(-22deg); }
+  38% { transform: rotate(-62deg); }
+  70% { transform: rotate(-42deg); }
+}
+@keyframes witch-arm-big-left {
+  0%, 100% { transform: rotate(17deg); }
+  38% { transform: rotate(64deg); }
+  70% { transform: rotate(52deg); }
+}
+@keyframes witch-arm-big-right {
+  0%, 100% { transform: rotate(-22deg); }
+  38% { transform: rotate(-68deg); }
+  70% { transform: rotate(-54deg); }
+}
+@keyframes witch-arm-bonus-left {
+  0%, 100% { transform: rotate(17deg); }
+  35% { transform: rotate(52deg); }
+  72% { transform: rotate(37deg); }
+}
+@keyframes witch-arm-bonus-right {
+  0%, 100% { transform: rotate(-22deg); }
+  35% { transform: rotate(-50deg); }
+  72% { transform: rotate(-35deg); }
+}
+@keyframes witch-potion-accent {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  40% { opacity: 1; transform: scale(1.2); }
 }
 
 .controls {
@@ -706,7 +750,7 @@ button:disabled {
 
   .witch-figure {
     height: 205px;
-    transform: scale(0.82);
+    scale: 0.82;
     transform-origin: 50% 100%;
   }
 
