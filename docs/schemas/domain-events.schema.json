@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hexandheat.invalid/schemas/domain-events.schema.json",
+  "title": "Hex & Heat illustrative domain event stream",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {"$ref": "#/$defs/boardReveal"},
+      {"$ref": "#/$defs/win"},
+      {"$ref": "#/$defs/multiplier"},
+      {"$ref": "#/$defs/cascade"},
+      {"$ref": "#/$defs/finalWin"}
+    ]
+  },
+  "$defs": {
+    "base": {
+      "type": "object",
+      "required": ["index", "type"],
+      "properties": {"index": {"type": "integer", "minimum": 0}, "type": {"type": "string"}}
+    },
+    "board": {
+      "type": "array", "minItems": 6, "maxItems": 6,
+      "items": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"type": "string"}}
+    },
+    "boardReveal": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["board"], "properties": {"type": {"const": "boardReveal"}, "board": {"$ref": "#/$defs/board"}}}]},
+    "win": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["cascade", "amount", "positions"], "properties": {"type": {"const": "win"}, "cascade": {"type": "integer", "minimum": 0}, "amount": {"type": "integer", "minimum": 0}, "positions": {"type": "array", "uniqueItems": true, "items": {"type": "integer", "minimum": 0, "maximum": 29}}}]},
+    "multiplier": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["from", "increment", "to"], "properties": {"type": {"const": "multiplier"}, "from": {"type": "integer", "minimum": 1}, "increment": {"type": "integer", "minimum": 1}, "to": {"type": "integer", "minimum": 2}}}]},
+    "cascade": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["cascade", "board"], "properties": {"type": {"const": "cascade"}, "cascade": {"type": "integer", "minimum": 1}, "board": {"$ref": "#/$defs/board"}}}]},
+    "finalWin": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["amount"], "properties": {"type": {"const": "finalWin"}, "amount": {"type": "integer", "minimum": 0}}}]}
+  }
+}

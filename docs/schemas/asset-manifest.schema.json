@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hexandheat.invalid/schemas/asset-manifest.schema.json",
+  "title": "Hex & Heat asset manifest",
+  "type": "object",
+  "required": ["version", "assets"],
+  "properties": {
+    "version": {"type": "integer", "minimum": 1},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "sha256", "bytes", "uri", "provenance"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Z]+-[A-Z0-9_-]+$"},
+          "status": {"enum": ["exploration", "selected", "edited", "rights-reviewed", "technically-validated", "approved", "published", "superseded"]},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "uri": {"type": "string"},
+          "mime": {"type": "string"},
+          "provenance": {
+            "type": "object",
+            "required": ["creator_or_tool", "created_at", "rights_review"],
+            "properties": {
+              "creator_or_tool": {"type": "string"},
+              "model_version": {"type": ["string", "null"]},
+              "created_at": {"type": "string", "format": "date"},
+              "terms_url": {"type": ["string", "null"]},
+              "rights_review": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
