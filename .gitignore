@@ -1,0 +1,59 @@
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# JavaScript
+node_modules/
+.svelte-kit/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.turbo/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Math outputs: regenerate; commit manifests and small fixtures only
+math/**/library/books/
+math/**/library/books_compressed/
+math/**/library/lookup_tables/
+math/**/library/optimization_files/
+math/**/library/configs/
+*.jsonl
+*.jsonl.zst
+
+# Heavy/generated media masters
+assets/raw/
+assets/generated/
+assets/masters/
+assets/renders/
+*.psd
+*.aep
+*.blend
+*.mov
+*.mkv
+*.wav
+*.flac
+
+# Local caches
+.cache/
+tmp/
+*.log

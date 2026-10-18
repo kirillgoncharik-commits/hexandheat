@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'"
+    />
+    <title>Hex &amp; Heat — Functional Prototype</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="game-shell" aria-labelledby="game-title">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Local functional prototype</p>
+          <h1 id="game-title">Hex &amp; Heat</h1>
+        </div>
+        <div class="connection-pill" aria-label="Connection: local mock RGS">
+          <span class="connection-dot" aria-hidden="true"></span>
+          Mock RGS
+        </div>
+      </header>
+
+      <section class="meter-row" aria-label="Round values">
+        <div class="meter">
+          <span>Balance</span>
+          <strong id="balance-value">—</strong>
+        </div>
+        <div class="meter">
+          <span>Bet</span>
+          <strong id="bet-value">—</strong>
+        </div>
+        <div class="meter win-meter">
+          <span>Win</span>
+          <strong id="win-value">—</strong>
+        </div>
+        <div class="meter multiplier-meter">
+          <span>Cauldron</span>
+          <strong id="multiplier-value">×1</strong>
+        </div>
+      </section>
+
+      <section class="play-area">
+        <div class="board-frame">
+          <div class="board-heading">
+            <span id="round-label">Ready for a deterministic spin</span>
+            <span id="fixture-label">Fixture —</span>
+          </div>
+          <div id="board" class="board" role="grid" aria-label="Six columns by five rows"></div>
+        </div>
+
+        <aside class="cue-panel" aria-labelledby="cue-title">
+          <div class="cauldron-cue" aria-hidden="true">
+            <span>Primitive cue</span>
+            <strong id="cue-multiplier">×1</strong>
+          </div>
+          <div>
+            <p class="eyebrow">Timeline event</p>
+            <h2 id="cue-title">Waiting</h2>
+            <p id="cue-copy">Spin to play a precomputed local outcome.</p>
+          </div>
+          <ol id="event-log" class="event-log" aria-label="Current round event log"></ol>
+        </aside>
+      </section>
+
+      <section class="controls" aria-label="Game controls">
+        <label class="bet-control" for="bet-select">
+          <span>Bet amount</span>
+          <select id="bet-select" aria-label="Bet amount"></select>
+        </label>
+
+        <button id="spin-button" class="primary-button" type="button">
+          <span>Spin</span>
+          <small>Space</small>
+        </button>
+
+        <button id="replay-button" class="secondary-button" type="button" disabled>
+          Replay last
+        </button>
+
+        <label class="toggle-control" for="fast-toggle">
+          <input id="fast-toggle" type="checkbox" />
+          <span aria-hidden="true" class="toggle-track"><span></span></span>
+          <span>Fast play</span>
+        </label>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite">
+        Outcomes are fixture-driven. Presentation never changes payout.
+      </p>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
