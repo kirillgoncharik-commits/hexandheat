@@ -12,8 +12,8 @@ jobs:
   blueprint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Validate repository policy
@@ -27,14 +27,14 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Require implementation manifests
         shell: bash
         run: |
           test -f package.json
           test -f pnpm-lock.yaml
           test -f math/requirements.lock
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22.16.0'
           cache: pnpm
@@ -42,7 +42,7 @@ jobs:
         run: corepack enable
       - name: Frontend quality and static build
         run: pnpm install --frozen-lockfile && pnpm run lint && pnpm run test && pnpm run build
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Math tests
