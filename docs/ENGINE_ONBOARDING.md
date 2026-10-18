@@ -1,8 +1,8 @@
 # Engine Studio onboarding
 
-Status: `AWAITING USER`  
-Checked: 2026-10-18  
-Project: *Hex & Heat: Witch's Wild Mixer*  
+Status: `AWAITING USER`
+Checked: 2026-10-18
+Project: *Hex & Heat: Witch's Wild Mixer*
 Scope: developer/provider account only; no Stake player account
 
 > This is an engineering and commercial due-diligence record, not legal or tax advice. Registration, contract acceptance, KYC, wallet setup, commercial selection, upload and submission all remain gated by the Product Owner.
@@ -22,7 +22,7 @@ Scope: developer/provider account only; no Stake player account
 | Wallet | NOT CONFIGURED | No wallet was created, entered or transmitted. |
 | Game project/upload/submission | NOT CREATED / NOT UPLOADED | The phase gate and the work task prohibit prototype upload and commercial submission. |
 
-Official Studio base URL: `https://studio.engine.io/`  
+Official Studio base URL: `https://studio.engine.io/`
 Official sign-in URL: `https://studio.engine.io/signin`
 
 The legacy `https://stake-engine.com/` documentation host is still serving current documentation pages, but `engine.io` and `studio.engine.io` are the current public entry points. Do not enter credentials on lookalike domains.
@@ -327,4 +327,3 @@ Support/legal contact shown in current public materials: `legal@engine.io`. Veri
 - Serbian Law on Games of Chance 18/2020 and 94/2024 (English PDF): `https://uis.gov.rs/static/uploads/2753_Law_on_games_of_chance.pdf`
 - National Bank of Serbia digital-assets guidance: `https://nbs.rs/en/ciljevi-i-funkcije/nadzor-nad-finansijskim-institucijama/digital-imo/`
 - Serbian Tax Administration freelancer FAQ: `https://frilenseri.purs.gov.rs/en/faq.html`
-

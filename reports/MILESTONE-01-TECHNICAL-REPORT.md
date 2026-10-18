@@ -1,6 +1,6 @@
 # Milestone 01 technical report
 
-Date: 2026-10-18  
+Date: 2026-10-18
 Status: Functional Prototype ready for Product Owner review; not submission-ready
 
 ## Delivered

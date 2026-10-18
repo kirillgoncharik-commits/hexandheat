@@ -1,7 +1,7 @@
 # Handoff — Work Task 02: Engine Studio onboarding
 
-Date: 2026-10-18  
-Issue/branch/commit: not available; the supplied workspace is a non-Git project mirror  
+Date: 2026-10-18
+Issue/branch/commit: not available; the supplied workspace is a non-Git project mirror
 Status: `AWAITING USER`
 
 ## Inputs
