@@ -4,6 +4,10 @@
 
 Every agent must start with: (1) `README.md`, (2) this file, (3) `docs/DOC-00-project-index.md`, (4) its assigned issue, and (5) every specification listed under that issue’s **Required reading**. If instructions conflict, stop and ask the Product Owner; never silently choose a different product direction.
 
+## M03 authorization effective 2026-10-30
+
+Product Owner explicitly authorizes Issue #19: first-pass raster art, 4-frame/4000ms witch cycles, Figma full journey/layouts, styled main screen, launch architecture and M04 task. This supersedes the prior draft-art/video gate below for this bounded work. Branch from the PR #18 head to preserve its stacked implementation; do not auto-merge older PRs. Production math, paid purchases, legal terms and Stake submission remain gated. The private Sites review build uses explicit mock sample outcomes only. M03 files under docs/m03/ take precedence over older video/duration proposals. All five states switch only at full-cycle end, including IDLE.
+
 ## Phase gate
 
 Work Task 01 authorized Phase 0 and the primitive Phase 1 functional prototype. Issue #15 authorized the seamless CSS Witch Stage. Work Task Milestone 02 / Issue #17 additionally authorizes a bounded official SDK-format adapter, Stake-compatible local RGS, synthetic video technology POC and temporary Web Audio controller. Agents may implement and verify those interfaces, but must not create final video/audio/art, claim production RTP, accept commercial/legal terms, upload to Stake Engine, publish the game or purchase tools without a later explicit Product Owner gate.

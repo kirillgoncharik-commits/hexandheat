@@ -2,16 +2,15 @@ import { deriveWitchState, WITCH_STATES } from "./domain.js";
 
 /** Each character performance is a full, independently looping dance clip. */
 export const WITCH_LOOP_MS = Object.freeze({
-  [WITCH_STATES.IDLE]: 4200,
-  [WITCH_STATES.SMALL_WIN]: 3600,
-  [WITCH_STATES.MEDIUM_WIN]: 4200,
-  [WITCH_STATES.BIG_WIN]: 4800,
-  [WITCH_STATES.BONUS]: 4800
+  [WITCH_STATES.IDLE]: 4000,
+  [WITCH_STATES.SMALL_WIN]: 4000,
+  [WITCH_STATES.MEDIUM_WIN]: 4000,
+  [WITCH_STATES.BIG_WIN]: 4000,
+  [WITCH_STATES.BONUS]: 4000
 });
 
-// IDLE returns to anchor A four times per loop. Win/bonus performances still
-// complete a full cycle, while a fresh reaction waits at most 1.05 seconds.
-export const WITCH_IDLE_ANCHOR_MS = WITCH_LOOP_MS[WITCH_STATES.IDLE] / 4;
+// M03 PO decision: all states last exactly 4 s; switches only at cycle end.
+export const WITCH_IDLE_ANCHOR_MS = WITCH_LOOP_MS[WITCH_STATES.IDLE];
 
 const PRIORITY = Object.freeze({
   [WITCH_STATES.IDLE]: 0,
