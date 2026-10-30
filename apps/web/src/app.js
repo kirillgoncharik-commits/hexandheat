@@ -219,7 +219,7 @@ async function replay() {
 }
 
 async function initialize() {
-  const useMock = new URL(window.location.href).searchParams.get("rgs") === "mock";
+  const useMock = new URL(window.location.href).searchParams.get("rgs") === "mock" || document.body.dataset.reviewMode === "mock";
   rgs = useMock ? new MockRgs() : new StakeRgs({ config: launchConfigFromUrl() });
   if (typeof rgs.initialize === "function") await rgs.initialize();
   session = rgs.getSession();
