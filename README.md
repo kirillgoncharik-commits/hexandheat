@@ -2,7 +2,7 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
-> **Current gate:** Work Task Milestone 02 authorizes a bounded official-SDK-format integration and temporary media technology POC. Final art/video/music, paid tools, commercial math claims and Stake submission remain blocked. Current status: **Integrated Technical Prototype ready for review on stacked PR history**.
+> **Current gate M03 2026-10-30:** Raster visual slice implemented on the PR #18 stack for review. [Start with M03 specification](docs/m03/MASTER_SPEC_RU.md), [Stake gaps](docs/m03/STAKE_TRACEABILITY_RU.md), [M04 launch architecture](docs/m03/NEXT_MILESTONE_RU.md), and [art/Spine guide](docs/m03/ART_GUIDE_RU.md). Figma: https://www.figma.com/design/OgvkrSrVyQtqXbzzi1pkxr . Sample outcomes only; production math, live RGS/resume and submission are not approved. The older sections below describe M02 history; video has been superseded by the M03 raster decision.
 
 ## Start here
 
@@ -62,3 +62,8 @@ python3 tools/verify_milestone.py
 ```
 
 No paid service, production asset generation, platform upload or release is authorized by this milestone.
+
+
+## M03 review
+
+Use `npm start` in apps/web; open `/index.html?rgs=mock` for explicit offline samples and `/design.html` for all 30 screen contracts and the animation lab. The default local RGS remains for integration tests. Private hosted preview is an offline art/UX review, not Stake distribution. Exactly 20 small PNG witch frames, 12 item PNGs, a WebP backdrop, and editable HTML/CSS are included. See reports/MILESTONE-03-REPORT.md for actual verification and remaining gaps.

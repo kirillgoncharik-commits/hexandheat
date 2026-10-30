@@ -1,5 +1,534 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 1,
-  "assets": []
+  "version": 2,
+  "assets": [
+    {
+      "id": "M03-ATELIER",
+      "status": "exploration",
+      "sha256": "df351f0fb9e3d6ead754ab985b4f3e979e187ee04a40552551a53807c0e37ba5",
+      "bytes": 106106,
+      "uri": "apps/web/assets/atelier.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_00",
+      "status": "exploration",
+      "sha256": "46b0191aad6445f71fa2fdbb8ae80424cf2a5f80e4e4ca68700b8432a55edde5",
+      "bytes": 98672,
+      "uri": "apps/web/assets/symbols/item-00.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_01",
+      "status": "exploration",
+      "sha256": "6635479b4a86a625f2feb85b977df7c4541733bec6f81fb59e59d3e938ba6bb1",
+      "bytes": 103487,
+      "uri": "apps/web/assets/symbols/item-01.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_02",
+      "status": "exploration",
+      "sha256": "9702528fc92d5ab701243838ac7efe6473a947b43c0545169dd9e231f934b599",
+      "bytes": 92283,
+      "uri": "apps/web/assets/symbols/item-02.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_03",
+      "status": "exploration",
+      "sha256": "6540adaff5da932dafd762cc11cf0a260c88593e8efa2265921b799c5769900c",
+      "bytes": 97786,
+      "uri": "apps/web/assets/symbols/item-03.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_04",
+      "status": "exploration",
+      "sha256": "9ca4e54513b9fcfa1bdab568d8c938df1a4f4eed1d5f40f178e4b304bfb30cb4",
+      "bytes": 69605,
+      "uri": "apps/web/assets/symbols/item-04.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_05",
+      "status": "exploration",
+      "sha256": "ff42ac87b6b5913288d8aae7e62902e7e087e29aca0c501692252d5c9ccc30eb",
+      "bytes": 85975,
+      "uri": "apps/web/assets/symbols/item-05.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_06",
+      "status": "exploration",
+      "sha256": "28f0ac54c44935b3146f3d47e0b22ead304c5b9371fbe4a6f8cc0da2b0b41a4d",
+      "bytes": 81492,
+      "uri": "apps/web/assets/symbols/item-06.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_07",
+      "status": "exploration",
+      "sha256": "1890583d3e801276e347427faabb9c3630eb64a1c88a38b142b41d1fc656b171",
+      "bytes": 86103,
+      "uri": "apps/web/assets/symbols/item-07.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_08",
+      "status": "exploration",
+      "sha256": "59ba9a258b17bb59b051c16189da12556a08649740c9402cbc7330b838234f85",
+      "bytes": 52344,
+      "uri": "apps/web/assets/symbols/item-08.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_09",
+      "status": "exploration",
+      "sha256": "68bbbebcd9fe1cac94cbe101e9b7ef5ab331392697b0855abcf4df1585df45fa",
+      "bytes": 100539,
+      "uri": "apps/web/assets/symbols/item-09.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_10",
+      "status": "exploration",
+      "sha256": "6f75643233340d925aa1e52a2d0f34b50bd39623eef5d09aefc29ff6b3547162",
+      "bytes": 104974,
+      "uri": "apps/web/assets/symbols/item-10.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-ITEM_11",
+      "status": "exploration",
+      "sha256": "5ec5ccae1ae10d4b48b6d8509e3d680692750c6d281779c8bb8bb3d965b38ba9",
+      "bytes": 106678,
+      "uri": "apps/web/assets/symbols/item-11.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_00",
+      "status": "exploration",
+      "sha256": "5b0e53b4025bf4f95a7274a15016c93ad584de747e2c2bd47cd94585d43b1493",
+      "bytes": 73223,
+      "uri": "apps/web/assets/witch/frame-00.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_01",
+      "status": "exploration",
+      "sha256": "87f51b2031d865cd5ab4f0ad96017ad7e69354f53a3d5c1fec212faf1aa5e6cd",
+      "bytes": 81268,
+      "uri": "apps/web/assets/witch/frame-01.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_02",
+      "status": "exploration",
+      "sha256": "38cf550da6cbf9b775ec7f58e49a048b976b8fe1daf01159ddcaac2598cb73a3",
+      "bytes": 72239,
+      "uri": "apps/web/assets/witch/frame-02.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_03",
+      "status": "exploration",
+      "sha256": "af4332fd280099d45eba93383ad803e84764be69a5cad9a56f3204eca38d0d08",
+      "bytes": 82330,
+      "uri": "apps/web/assets/witch/frame-03.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_04",
+      "status": "exploration",
+      "sha256": "1358254df803a5e73b50300a7e94d1c5c5535ddae3f1a74831a9928d3681ae22",
+      "bytes": 76490,
+      "uri": "apps/web/assets/witch/frame-04.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_05",
+      "status": "exploration",
+      "sha256": "2030c047b5278089d36cd123451c76ac244240c188e67668e7c21e3fb4cb7638",
+      "bytes": 81069,
+      "uri": "apps/web/assets/witch/frame-05.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_06",
+      "status": "exploration",
+      "sha256": "a6218193d6fd6e14f1b8d9a31f37c8afcc08c9ede6360eaed13318a17b905e9d",
+      "bytes": 75355,
+      "uri": "apps/web/assets/witch/frame-06.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_07",
+      "status": "exploration",
+      "sha256": "0f0ccaff84ee316c345977b9f6f2b712c46449a2dd317e9e94b88b586e6a0d91",
+      "bytes": 85088,
+      "uri": "apps/web/assets/witch/frame-07.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_08",
+      "status": "exploration",
+      "sha256": "125a92f093e5818db52b58d543d2240aeb7111ac71132e9a64a99029c8ee163e",
+      "bytes": 96715,
+      "uri": "apps/web/assets/witch/frame-08.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_09",
+      "status": "exploration",
+      "sha256": "a60e7cca3dd679087fa11140086c07e893e35d824a13378f03b603c19facd7d5",
+      "bytes": 104898,
+      "uri": "apps/web/assets/witch/frame-09.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_10",
+      "status": "exploration",
+      "sha256": "9c6769185cdcddee9125ed26f90c8f45049b6efa0d54963113b4588aab82f765",
+      "bytes": 100839,
+      "uri": "apps/web/assets/witch/frame-10.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_11",
+      "status": "exploration",
+      "sha256": "753fe927a843a39eaaefb982d5c1e14d8777c52981c6539bea66147efec6051f",
+      "bytes": 101313,
+      "uri": "apps/web/assets/witch/frame-11.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_12",
+      "status": "exploration",
+      "sha256": "79ff9d699d96be29d27fd4e7f77ef4ebbd4778929a4b959a3105fd163f8fc26e",
+      "bytes": 88641,
+      "uri": "apps/web/assets/witch/frame-12.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_13",
+      "status": "exploration",
+      "sha256": "e1f236adab02644df62ab2adf4801bded3a9a87b6d5b638641bfa0a5f74995ba",
+      "bytes": 101132,
+      "uri": "apps/web/assets/witch/frame-13.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_14",
+      "status": "exploration",
+      "sha256": "91044734174fc5a294d67777e97c5ae4e2632347fcfa7a78814a0bc83ae31453",
+      "bytes": 86242,
+      "uri": "apps/web/assets/witch/frame-14.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_15",
+      "status": "exploration",
+      "sha256": "efca4a89dd9fac553142b3b2f42f2c3ba1441bf993d0840bb212115304d0721c",
+      "bytes": 96851,
+      "uri": "apps/web/assets/witch/frame-15.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_16",
+      "status": "exploration",
+      "sha256": "5b025440fc13d1eea50ed19e5474fbae7004667e03ecd644e2347bb5051f7d88",
+      "bytes": 96095,
+      "uri": "apps/web/assets/witch/frame-16.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_17",
+      "status": "exploration",
+      "sha256": "d4059b5b3d3849c0e8727c29fa05bd296ff2d6d2185926b8ad9c68c729893091",
+      "bytes": 133446,
+      "uri": "apps/web/assets/witch/frame-17.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_18",
+      "status": "exploration",
+      "sha256": "9c4c5d2bca03e8e8e4c4790db4b23921acc50ea98e32274c8c51129a77fa7c07",
+      "bytes": 150635,
+      "uri": "apps/web/assets/witch/frame-18.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M03-FRAME_19",
+      "status": "exploration",
+      "sha256": "e723e3d1a80a98eb676051db27a93b2bf54319ae30031d2b6ceb0e8aad95b61e",
+      "bytes": 97273,
+      "uri": "apps/web/assets/witch/frame-19.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; ImageMagick deterministic crop/resize",
+        "model_version": null,
+        "created_at": "2026-10-30",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    }
+  ]
 }

@@ -51,7 +51,7 @@ function harness() {
 
 const bet = Object.freeze({ betMicro: 1_000_000 });
 
-test("IDLE reactions use an intermediate anchor while win dances complete a full loop", () => {
+test("all reactions wait for the complete 4000ms cycle before changing state", () => {
   const { controller, clock, clips, accents } = harness();
   controller.beginRound();
   controller.onEvent({ type: "win", amount: 2_000_000 }, bet);

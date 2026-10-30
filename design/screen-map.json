@@ -1,0 +1,482 @@
+{
+  "version": "m03-2026-10-30",
+  "figma": "https://www.figma.com/design/OgvkrSrVyQtqXbzzi1pkxr",
+  "screen_count": 30,
+  "screens": [
+    {
+      "id": "S01",
+      "name": "Loading",
+      "trigger": "Вход в iframe",
+      "content": "Название игры, прогресс обязательных ассетов, mute, текст ошибки загрузки",
+      "action": "Дождаться загрузки; повторить только ассеты",
+      "next": [
+        "S02"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S02",
+      "name": "Welcome",
+      "trigger": "Первая загрузка",
+      "content": "Три правила: сбор одинаковых символов, каскады, котёл внутри раунда; Continue; доступ к правилам",
+      "action": "Continue не делает ставку",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S03",
+      "name": "Base idle",
+      "trigger": "Успешная авторизация и нет активного раунда",
+      "content": "Поле 6×5, баланс, выбранная ставка, итог прошлого раунда, котёл ×1, Spin, info, Settings, Fast, Replay",
+      "action": "Spin или Space; менять ставку; открыть окна",
+      "next": [
+        "S04",
+        "S05",
+        "S19",
+        "S20",
+        "S21",
+        "S17"
+      ],
+      "errors": [
+        "S22",
+        "S24"
+      ],
+      "requirement": "platform",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S04",
+      "name": "Bet picker",
+      "trigger": "Нажатие на сумму",
+      "content": "Все уровни из auth, текущая сумма, валюта, min/max/step, подтверждение и Cancel",
+      "action": "Выбор без отправки play; блокировка при активном раунде",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S22"
+      ],
+      "requirement": "platform",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S05",
+      "name": "Request pending",
+      "trigger": "Spin после локальных preflight проверок",
+      "content": "Поле остаётся; индикатор ожидания; заблокированы Spin и ставка",
+      "action": "Одна отправка; повторный Space игнорируется",
+      "next": [
+        "S06"
+      ],
+      "errors": [
+        "S23",
+        "S24",
+        "S30"
+      ],
+      "requirement": "architecture",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S06",
+      "name": "Reveal",
+      "trigger": "Принят валидный outcome",
+      "content": "Тридцать символов; новая цепочка; котёл ×1; round win 0; корректный mode",
+      "action": "Без ставок до settlement",
+      "next": [
+        "S07",
+        "S10"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S07",
+      "name": "Symbol win",
+      "trigger": "win event",
+      "content": "Все выигравшие позиции, выплата текущего каскада отдельно от accumulated total, валюта, активный множитель",
+      "action": "Дождаться читаемого подсвечивания",
+      "next": [
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "partial"
+    },
+    {
+      "id": "S08",
+      "name": "Potion increment",
+      "trigger": "multiplier event",
+      "content": "Флакон, старый множитель, приращение, новый множитель; отдельный FX, без ложного BONUS",
+      "action": "Продолжить timeline; числовое значение только из события",
+      "next": [
+        "S09"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S09",
+      "name": "Cascade",
+      "trigger": "Следующая board snapshot",
+      "content": "Удаление выплаченных символов, падение по колонкам, новые символы, номер каскада",
+      "action": "Не сбрасывать накопленный выигрыш или ведьму",
+      "next": [
+        "S07",
+        "S10"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "partial"
+    },
+    {
+      "id": "S10",
+      "name": "Final result",
+      "trigger": "finalWin и settlement",
+      "content": "Точная окончательная сумма; при нуле спокойное состояние; новая ставка только после подтверждения RGS",
+      "action": "Возврат в idle; сохранять итог на экране",
+      "next": [
+        "S03",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "implemented"
+    },
+    {
+      "id": "S11",
+      "name": "Big win",
+      "trigger": "Presentation tier на реальном выигрыше",
+      "content": "Сумма, название tier, прогресс count-up, Continue; точный финал доступен",
+      "action": "Пропуск сокращает оформление, не settlement",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S12",
+      "name": "Max win",
+      "trigger": "Явный cap event утверждённой математики",
+      "content": "Max win reached, точная сумма и лимит режима, сообщение об окончании bonus если применимо",
+      "action": "Без обещания следующего бонуса или gamble",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S13",
+      "name": "Free Spins awarded",
+      "trigger": "bonusStart в одном outcome book",
+      "content": "Число бесплатных спинов из события, trigger symbols, правила множителя, Start",
+      "action": "Start продолжает уже купленный раунд, не play",
+      "next": [
+        "S14"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S14",
+      "name": "Free Spins active",
+      "trigger": "Внутри bonus book",
+      "content": "Осталось/всего, bonus total и current spin win отдельно, multiplier, режим; ставка зафиксирована",
+      "action": "Переход между spin events, без списания новых ставок",
+      "next": [
+        "S15",
+        "S16"
+      ],
+      "errors": [
+        "S23",
+        "S25"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S15",
+      "name": "Free Spins retrigger",
+      "trigger": "Явное событие retrigger",
+      "content": "Сколько добавлено и новый остаток; условия из утверждённых правил",
+      "action": "Продолжение того же bonus book",
+      "next": [
+        "S14"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "conditional",
+      "runtime": "layout"
+    },
+    {
+      "id": "S16",
+      "name": "Bonus summary",
+      "trigger": "bonusEnd и финальный итог",
+      "content": "Bonus total, spins played, точная сумма, Continue; settlement единожды",
+      "action": "Возврат в base idle после settlement",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "product",
+      "runtime": "layout"
+    },
+    {
+      "id": "S17",
+      "name": "Autoplay setup",
+      "trigger": "Пользователь открыл autoplay",
+      "content": "Количество раундов, ставка, итоговая плановая стоимость, Stop условия, Confirm и Cancel; никакого запуска одним открытием",
+      "action": "Confirm запускает выбранный план; не бессрочный режим",
+      "next": [
+        "S18",
+        "S03"
+      ],
+      "errors": [
+        "S22"
+      ],
+      "requirement": "conditional",
+      "runtime": "layout"
+    },
+    {
+      "id": "S18",
+      "name": "Autoplay running",
+      "trigger": "Явное подтверждение",
+      "content": "Осталось раундов, текущие деньги и win, всегда доступный Stop",
+      "action": "Stop отменяет будущие ставки; текущую завершить",
+      "next": [
+        "S03",
+        "S18"
+      ],
+      "errors": [
+        "S22",
+        "S23",
+        "S24"
+      ],
+      "requirement": "conditional",
+      "runtime": "layout"
+    },
+    {
+      "id": "S19",
+      "name": "Settings",
+      "trigger": "Кнопка Settings",
+      "content": "Mute, music, SFX, Fast, reduced motion, Close; сохранить локальные настройки",
+      "action": "Escape/Close возвращают фокус; Space не ставит при открытом окне",
+      "next": [
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "partial"
+    },
+    {
+      "id": "S20",
+      "name": "Rules and UI guide",
+      "trigger": "Info",
+      "content": "Все правила и границы раунда; кнопки; server-authoritative result; connectivity/resume; disclaimer",
+      "action": "Вкладки rules/paytable; Close; текст прокручивается внутри окна",
+      "next": [
+        "S03",
+        "S21"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "partial"
+    },
+    {
+      "id": "S21",
+      "name": "Paytable",
+      "trigger": "Info paytable",
+      "content": "Все symbol tiers/thresholds/payouts, Potion значения, Scatter trigger/retrigger, RTP, max win и cost каждого режима",
+      "action": "Все числа берутся из versioned rules-content; до approval в дизайн-файле TBD",
+      "next": [
+        "S20",
+        "S03"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S22",
+      "name": "Insufficient balance",
+      "trigger": "Preflight либо ERR_IPB",
+      "content": "Недостаточно средств, баланс/стоимость, Close или уменьшить ставку; не списывать повторно",
+      "action": "Возвращает выбор ставки; пополнение принадлежит оболочке оператора",
+      "next": [
+        "S04",
+        "S03"
+      ],
+      "errors": [
+        "S24"
+      ],
+      "requirement": "platform",
+      "runtime": "partial"
+    },
+    {
+      "id": "S23",
+      "name": "Network or assets error",
+      "trigger": "Timeout/decode/API error",
+      "content": "Понятный текст; отличать до outcome от неизвестного результата play; безопасный Retry; запрошенный ID в redacted diagnostic",
+      "action": "После ambiguous play только re-auth/reconcile, не повторять play",
+      "next": [
+        "S25",
+        "S01"
+      ],
+      "errors": [
+        "S24"
+      ],
+      "requirement": "architecture",
+      "runtime": "layout"
+    },
+    {
+      "id": "S24",
+      "name": "Session expired",
+      "trigger": "ERR_IS или ERR_ATE",
+      "content": "Session expired; Relaunch via casino; повторная ставка заблокирована",
+      "action": "Релонч через оператора; не создавать фальшивую локальную сессию",
+      "next": [
+        "S01"
+      ],
+      "errors": [
+        "S30"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S25",
+      "name": "Resume active round",
+      "trigger": "auth вернул active round",
+      "content": "Восстановленная ставка, mode, состояние книги, продолжить с event cursor; никакой второй оплаты",
+      "action": "Один authoritative book; /bet/event checkpoints; settle один раз",
+      "next": [
+        "S06",
+        "S14",
+        "S10"
+      ],
+      "errors": [
+        "S23"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S26",
+      "name": "Replay loading and ready",
+      "trigger": "replay=true отдельная точка входа",
+      "content": "Загрузка replay; оригинальная ставка, cost multiplier и реальная стоимость; Play после загрузки",
+      "action": "GET replay без session/auth; без balance/bet/autoplay",
+      "next": [
+        "S27"
+      ],
+      "errors": [
+        "S29"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S27",
+      "name": "Replay playing",
+      "trigger": "Play replay",
+      "content": "Та же цепочка событий, win, multiplier, исходная стоимость, индикатор Replay",
+      "action": "Не совершать wallet/play/end-round; нельзя перейти к обычным ставкам",
+      "next": [
+        "S28"
+      ],
+      "errors": [
+        "S29"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S28",
+      "name": "Replay result",
+      "trigger": "Конец replay",
+      "content": "Финал, первоначальная base ставка, mode cost multiplier, фактическая стоимость, Play Again",
+      "action": "Повтор только воспроизведения",
+      "next": [
+        "S27"
+      ],
+      "errors": [
+        "S29"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S29",
+      "name": "Replay unavailable",
+      "trigger": "404 или некорректные параметры",
+      "content": "Replay unavailable, понятная причина без внутренних данных, Retry только GET",
+      "action": "Никакой автоматической авторизации или перехода к ставкам",
+      "next": [
+        "S26"
+      ],
+      "errors": [
+        "S29"
+      ],
+      "requirement": "platform",
+      "runtime": "layout"
+    },
+    {
+      "id": "S30",
+      "name": "Jurisdiction restriction",
+      "trigger": "ERR_LOC/ERR_GLE/operator restriction",
+      "content": "Игра недоступна / достигнут лимит; безопасный выход к оператору",
+      "action": "Не обходить ограничение; не fallback на mock",
+      "next": [
+        "S01"
+      ],
+      "errors": [],
+      "requirement": "platform",
+      "runtime": "layout"
+    }
+  ]
+}

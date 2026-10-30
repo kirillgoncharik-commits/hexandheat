@@ -29,3 +29,8 @@ ID, semantic role, source/master URI, runtime URI, SHA-256, bytes, MIME/codec/di
 ## Git limits
 
 No raw generations or masters. CI blocks files >1 MiB unless allow-listed test fixture ≤5 MiB. Store small review proxies only when their rights permit repository access. Every external asset URI must be immutable or paired with a digest.
+
+
+## M03 first-pass raster pack 2026-10-30
+
+33 runtime files registered with SHA256/bytes and pending rights review in assets/ASSET_MANIFEST.json: 20 witch frames, 12 item images, 1 environment. Original prompt set: assets/prompts/M03_PROMPTS.md. These are exploration assets, not approved masters. See docs/m03/ART_GUIDE_RU.md for identity/seam/crop issues and Spine deliverables.
