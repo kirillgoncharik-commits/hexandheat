@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { AdaptiveMusicController, MUSIC_STATES } from "../src/adaptive-music.js";
+import { SceneTransport } from '../src/scene-transport.js';
 
 class FakeParam {
   constructor() { this.value = 0; this.actions = []; }
@@ -62,4 +63,19 @@ test("audio initialization failure degrades without throwing into game flow", as
   music.onEvent({ type: "win", amount: 10_000_000 }, { betMicro: 1_000_000 });
   assert.deepEqual(errors, ["blocked audio"]);
   assert.equal(music.failed, true);
+});
+
+test('scene-owned audio beats, deduplicated impacts and hidden/muted cues never replay a backlog', async () => {
+  let wall = 0; const transport = new SceneTransport({ now: () => wall, requestFrame: () => 1, cancelFrame: () => {} });
+  const context = new FakeContext(); const music = new AdaptiveMusicController({ contextFactory: () => context, transport });
+  await music.unlock(); wall = 123; transport.tick(wall);
+  assert.ok(Math.abs(music.nextBeat() - (context.currentTime + 0.377)) < 1e-8);
+  const before = context.oscillators.length;
+  music.playOneShot('WIN', { key: 'a', sceneAt: transport.now }); music.playOneShot('WIN', { key: 'a', sceneAt: transport.now });
+  assert.equal(context.oscillators.length, before + 1);
+  music.suspend(); music.playOneShot('POTION', { key: 'hidden' }); await music.restore(); music.playOneShot('POTION', { key: 'hidden' });
+  assert.equal(context.oscillators.length, before + 1);
+  music.mute(true); music.playOneShot('WIN', { key: 'muted' }); music.mute(false); music.playOneShot('WIN', { key: 'muted' });
+  assert.equal(context.oscillators.length, before + 1);
+  music.beginRound(); assert.equal(music.oneShots.size, 0); music.destroy();
 });

@@ -14,10 +14,13 @@ export function rasterSource(state, frame) {
 
 /** Four real raster frames per state. Decorative playback never settles money. */
 export class RasterWitchPlayer {
-  constructor(container, { reducedMotion = false } = {}) {
+  constructor(container, { reducedMotion = false, transport = null, atlasUrl = null } = {}) {
     this.container = container;
     this.reducedMotion = reducedMotion;
     this.state = "IDLE";
+    this.transport = transport;
+    this.atlasUrl = atlasUrl;
+    this.atlasReady = false;
     this.startedAt = performance.now();
     this.lastFrame = -1;
     this.front = 0;
@@ -38,27 +41,42 @@ export class RasterWitchPlayer {
       const img = new Image(); img.src = rasterSource(s, f);
       return img.decode().catch(() => null);
     })));
+    if (atlasUrl) {
+      const atlas = new Image(); atlas.src = atlasUrl;
+      this.atlasPreload = atlas.decode().then(() => {
+        if (this.destroyed) return;
+        this.atlasReady = true;
+        this.sprite = document.createElement('div'); this.sprite.className = 'witch-atlas';
+        this.sprite.style.backgroundImage = `url("${atlasUrl}")`; container.append(this.sprite);
+        this.layers.forEach(img => img.hidden = true); this.lastFrame = -1;
+      }).catch(() => { container.dataset.degraded = 'true'; });
+    }
     this.tick = () => {
-      const frame = this.reducedMotion ? 0 : rasterFrameAt(performance.now() - this.startedAt);
+      const frame = this.reducedMotion ? 0 : rasterFrameAt(this.transport ? this.transport.now : performance.now() - this.startedAt);
       if (frame !== this.lastFrame) {
+        if (this.atlasReady) {
+          this.sprite.style.backgroundPosition = `${frame * 100 / 3}% ${RASTER_STATES.indexOf(this.state) * 25}%`;
+        } else {
         this.front = 1 - this.front;
         this.layers[this.front].src = rasterSource(this.state, frame);
         this.layers[this.front].classList.add("visible");
         this.layers[1 - this.front].classList.remove("visible");
+        }
         this.lastFrame = frame;
         this.container.dataset.frame = String(frame);
       }
-      this.raf = requestAnimationFrame(this.tick);
+      if (!this.transport) this.raf = requestAnimationFrame(this.tick);
     };
+    if (transport) this.unsubscribe = transport.subscribe(this.tick, 2);
     this.tick();
   }
   switchTo(state) {
     if (!RASTER_STATES.includes(state)) return;
     this.state = state;
-    this.startedAt = performance.now();
+    if (!this.transport) this.startedAt = performance.now();
     this.lastFrame = -1;
     this.container.dataset.state = state;
   }
   setReducedMotion(value) { this.reducedMotion = value; this.lastFrame = -1; }
-  destroy() { cancelAnimationFrame(this.raf); this.layers.forEach(img => img.remove()); }
+  destroy() { this.destroyed = true; this.unsubscribe?.(); if (this.raf) cancelAnimationFrame(this.raf); this.layers.forEach(img => img.remove()); this.sprite?.remove(); }
 }

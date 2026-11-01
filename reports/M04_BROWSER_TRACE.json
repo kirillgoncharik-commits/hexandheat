@@ -1,0 +1,293 @@
+{
+  "version": "m04.1-1",
+  "trace": [
+    {
+      "at": 0,
+      "type": "witch.seam",
+      "generation": 0,
+      "from": null,
+      "to": "IDLE"
+    },
+    {
+      "at": 2071.9,
+      "type": "round.begin",
+      "generation": 1
+    },
+    {
+      "at": 2071.9,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal",
+      "duration": 420,
+      "deadlineMs": 3420
+    },
+    {
+      "at": 2071.9,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal",
+      "marker": "boardReveal.start"
+    },
+    {
+      "at": 3088.4,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal"
+    },
+    {
+      "at": 3088.4,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "duration": 750,
+      "deadlineMs": 3750
+    },
+    {
+      "at": 3088.4,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "marker": "win.start"
+    },
+    {
+      "at": 4104.8,
+      "type": "witch.seam",
+      "generation": 1,
+      "from": "IDLE",
+      "to": "SMALL_WIN"
+    },
+    {
+      "at": 5621.2,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-1/win"
+    },
+    {
+      "at": 5621.2,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-2/multiplier",
+      "duration": 500,
+      "deadlineMs": 3500
+    },
+    {
+      "at": 5621.2,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-2/multiplier",
+      "marker": "potion.impact"
+    },
+    {
+      "at": 6637.5,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-2/multiplier"
+    },
+    {
+      "at": 6637.5,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "duration": 720,
+      "deadlineMs": 3720
+    },
+    {
+      "at": 6637.5,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "marker": "cascade.start"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 0,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 1,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 2,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 3,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 4,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-3/cascade",
+      "column": 5,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 7654,
+      "type": "board.settled",
+      "generation": 1,
+      "id": "round-1/event-3/cascade"
+    },
+    {
+      "at": 7654,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-3/cascade"
+    },
+    {
+      "at": 7654,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-4/win",
+      "duration": 750,
+      "deadlineMs": 3750
+    },
+    {
+      "at": 7654,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-4/win",
+      "marker": "win.start"
+    },
+    {
+      "at": 8670.4,
+      "type": "witch.seam",
+      "generation": 1,
+      "from": "SMALL_WIN",
+      "to": "MEDIUM_WIN"
+    },
+    {
+      "at": 9686.9,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-4/win"
+    },
+    {
+      "at": 9686.9,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "duration": 720,
+      "deadlineMs": 3720
+    },
+    {
+      "at": 9686.9,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "marker": "cascade.start"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 0,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 1,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 2,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 3,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 4,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.reconcile",
+      "generation": 1,
+      "id": "round-1/event-5/cascade",
+      "column": 5,
+      "reason": "sample target has no compatible survivor suffix"
+    },
+    {
+      "at": 10703.3,
+      "type": "board.settled",
+      "generation": 1,
+      "id": "round-1/event-5/cascade"
+    },
+    {
+      "at": 10703.3,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-5/cascade"
+    },
+    {
+      "at": 10703.3,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-6/finalWin",
+      "duration": 450,
+      "deadlineMs": 3450
+    },
+    {
+      "at": 10703.3,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-6/finalWin",
+      "marker": "finalWin.start"
+    },
+    {
+      "at": 11719.8,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-6/finalWin"
+    },
+    {
+      "at": 12736.3,
+      "type": "witch.seam",
+      "generation": 1,
+      "from": "MEDIUM_WIN",
+      "to": "IDLE"
+    }
+  ]
+}

@@ -10,6 +10,10 @@ confidence: MEDIUM_HIGH
 
 # Visual FX & Event Synchronization
 
+## M04.1 implementation update — 2026-11-01
+
+The [M04 synchronization contract](m04/SYNCHRONIZATION_DESIGN_RU.md) and [implementation report](../reports/MILESTONE-04-REPORT.md) supersede the historical video, variable-duration and independent-timer proposals below for the current raster scene. `SceneTransport`, `CueDirector`, `BoardPlayer`, `ScenePresentation` and `ModalManager` are implemented on the M03 stack for review. Body and raster phase share the same transport, all body states use full 4000ms cycles, and previous-round pending reactions are discarded. Domain playback now awaits actual presentation completion. Legacy timer/video modules remain only for historical isolated POCs and compatibility tests; they are not the main scene runtime. Device timing and human seam/UX acceptance remain pending.
+
 ## Milestone 02 mapping
 
 The pinned official scatter vocabulary is translated once at the RGS boundary: `reveal → boardReveal`, `winInfo → win`, `updateGlobalMult → multiplier`, `tumbleBoard → cascade`, and `finalWin → finalWin`; bookkeeping events are consumed without payout arithmetic. The mapper regenerates contiguous presentation indices and rejects unknown symbols, malformed boards, multiplier discontinuity and any RGS/book final-payout disagreement.

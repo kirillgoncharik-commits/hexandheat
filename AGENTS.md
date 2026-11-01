@@ -4,6 +4,10 @@
 
 Every agent must start with: (1) `README.md`, (2) this file, (3) `docs/DOC-00-project-index.md`, (4) its assigned issue, and (5) every specification listed under that issue’s **Required reading**. If instructions conflict, stop and ask the Product Owner; never silently choose a different product direction.
 
+## M04 implementation authorization effective 2026-11-01
+
+Product Owner explicitly requested: «начинаем разработку кода, арта и документации по мл 4». M04.1 implementation, original raster refinement and documentation are now authorized under Issue #20 and docs/m04/. Continue the existing M03 implementation stack in a separate branch; the M04 scope PR #22 is a documentation input. Do not auto-merge older PRs. This bounded start supersedes NOT STARTED/proposed implementation gates in the scope documents. Full 4000ms witch body cycles, including IDLE, remain required. Production math sign-off, paid tools, commercial terms, live Stake operations/submission and real-device certification retain their separate gates. The review build uses explicit sample outcomes.
+
 ## M03 authorization effective 2026-10-30
 
 Product Owner explicitly authorizes Issue #19: first-pass raster art, 4-frame/4000ms witch cycles, Figma full journey/layouts, styled main screen, launch architecture and M04 task. This supersedes the prior draft-art/video gate below for this bounded work. Branch from the PR #18 head to preserve its stacked implementation; do not auto-merge older PRs. Production math, paid purchases, legal terms and Stake submission remain gated. The private Sites review build uses explicit mock sample outcomes only. M03 files under docs/m03/ take precedence over older video/duration proposals. All five states switch only at full-cycle end, including IDLE.
