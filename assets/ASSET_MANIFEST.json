@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 2,
+  "version": 3,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -528,6 +528,40 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Pending human review; first-pass animatic only; no licensing or platform approval claim",
         "prompt_file": "assets/prompts/M03_PROMPTS.md"
+      }
+    },
+    {
+      "id": "M04-WITCH-ATLAS-V2",
+      "status": "exploration",
+      "sha256": "7a7ec08690274e9aa17003847176638eccf4c25c6faac4afa1c7f3a97335c47b",
+      "bytes": 367012,
+      "uri": "apps/web/assets/witch/witch-atlas-m04.webp",
+      "mime": "image/webp",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "grid": {
+        "columns": 4,
+        "rows": 5,
+        "cycle_ms": 4000,
+        "frame_ms": 1000,
+        "states": [
+          "IDLE",
+          "SMALL_WIN",
+          "MEDIUM_WIN",
+          "BIG_WIN",
+          "BONUS"
+        ]
+      },
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image generation; FFmpeg WebP encoding, no retouch",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; art iteration; no licensing or platform approval claim",
+        "prompt_file": "assets/prompts/M04_PROMPTS.md",
+        "source_sha256": "fefd7baed7df8ad5e47c88d71429022e17e2a2fe56b14cfcb737397a457c3599"
       }
     }
   ]

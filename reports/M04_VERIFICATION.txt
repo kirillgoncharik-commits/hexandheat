@@ -1,0 +1,92 @@
+
+== repository policy ==
+Repository validation passed: 16 controlled documents
+
+== controlled-document tests ==
+test_asset_manifest_matches_registered_raster_outputs (test_blueprint.BlueprintTests.test_asset_manifest_matches_registered_raster_outputs) ... ok
+test_functional_prototype_is_primitive (test_blueprint.BlueprintTests.test_functional_prototype_is_primitive) ... ok
+test_validator_passes (test_blueprint.BlueprintTests.test_validator_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.034s
+
+OK
+
+== math and replay tests ==
+test_candidate_inputs_are_explicitly_unbalanced (test_engine.FunctionalMathTests.test_candidate_inputs_are_explicitly_unbalanced) ... ok
+test_highest_threshold_only_and_simultaneous_groups (test_engine.FunctionalMathTests.test_highest_threshold_only_and_simultaneous_groups) ... ok
+test_independent_verifier_rejects_tampered_payout (test_engine.FunctionalMathTests.test_independent_verifier_rejects_tampered_payout) ... ok
+test_max_win_caps_immediately_but_records_potion_state (test_engine.FunctionalMathTests.test_max_win_caps_immediately_but_records_potion_state) ... ok
+test_non_paying_board_does_not_activate_potion (test_engine.FunctionalMathTests.test_non_paying_board_does_not_activate_potion) ... ok
+test_outcome_is_deeply_immutable_and_replay_is_exact (test_engine.FunctionalMathTests.test_outcome_is_deeply_immutable_and_replay_is_exact) ... ok
+test_potion_applies_to_next_cascade_then_round_resets (test_engine.FunctionalMathTests.test_potion_applies_to_next_cascade_then_round_resets) ... ok
+test_seed_is_deterministic_and_distinct (test_engine.FunctionalMathTests.test_seed_is_deterministic_and_distinct) ... ok
+test_seeded_report_is_reproducible_and_disclaimed (test_engine.FunctionalMathTests.test_seeded_report_is_reproducible_and_disclaimed) ... ok
+test_weighted_book_is_immutable_canonical_and_ticket_selected (test_engine.FunctionalMathTests.test_weighted_book_is_immutable_canonical_and_ticket_selected) ... ok
+test_event_mapping_is_deterministic_and_contiguous (test_stake_adapter.StakeAdapterTests.test_event_mapping_is_deterministic_and_contiguous) ... ok
+test_publish_sources_match_lookup_and_reject_tampering (test_stake_adapter.StakeAdapterTests.test_publish_sources_match_lookup_and_reject_tampering) ... ok
+test_sdk_pins_and_compatibility_patch_are_explicit (test_stake_adapter.StakeAdapterTests.test_sdk_pins_and_compatibility_patch_are_explicit) ... ok
+test_six_required_outcomes_are_math_verified_and_stake_compatible (test_stake_adapter.StakeAdapterTests.test_six_required_outcomes_are_math_verified_and_stake_compatible) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.148s
+
+OK
+
+== browser-domain tests ==
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> hexandheat-web-prototype@0.1.0 test
+> node --test
+
+✔ temporary stems start together and transition on beat-aligned gain ramps (2.057014ms)
+✔ mute and resume are presentation-only and survive suspended contexts (0.384931ms)
+✔ audio initialization failure degrades without throwing into game flow (0.337379ms)
+✔ scene-owned audio beats, deduplicated impacts and hidden/muted cues never replay a backlog (0.632033ms)
+✔ mock RGS returns a frozen precomputed outcome with a valid 6x5 board (3.030141ms)
+✔ normal, fast, and replay playback converge on the same domain snapshot (3.70501ms)
+✔ witch cues are presentation-only and deterministic for spin, fast play, and replay (2.251527ms)
+✔ replay performs no new play or settlement and cannot change the wallet (1.909051ms)
+✔ mock RGS cycles fixtures deterministically and scales authoritative amounts (1.734407ms)
+✔ outcome validation fails closed on malformed board and multiplier continuity (1.149975ms)
+✔ mock RGS validates a fixture before mutating wallet or sequence state (0.498442ms)
+✔ domain reducer keeps event input immutable and formats six-decimal API units (15.260526ms)
+✔ close during opening followed by a new open cannot let stale callbacks steal focus (2.954969ms)
+✔ repeated opens are idempotent, reduced motion completes without changing focus ownership (0.630311ms)
+✔ four raster frames cover exactly one 4000ms cycle for every state (2.221212ms)
+✔ each state has four existing distinct raster source files (1.324418ms)
+✔ all 30 screen records have valid outgoing routes and content contracts (1.206069ms)
+✔ all subscribers share one timestamp in deterministic priority order; 30-minute phase has no drift (84.184687ms)
+✔ visibility pauses active-time tween, including overlapping pause reasons (0.611152ms)
+✔ aborted renderer tween releases listeners without committing a late end state (2.159619ms)
+✔ barrier waits for every required participant, times out in active time and rejects missing participants (1.491361ms)
+✔ replacing a round cancels pending barriers without stale fallback or listeners (0.621037ms)
+✔ all 25 ordered body transitions respect a full 4000ms seam, including lower tiers in a new round (1.057395ms)
+✔ new loss removes an unstarted old BIG and lets an already started BIG finish exactly once (0.208285ms)
+✔ late foreground callbacks defer a body change to a future seam instead of entering mid-pose (0.153151ms)
+✔ sparse frames can stitch at the shared neutral pose and jitter never shortens the protected full cycle (0.211809ms)
+✔ tumble retains valid survivor identities and flags noncanonical sample boards without inventing a target (0.405572ms)
+✔ anchored sub-timelines catch up in the same sparse frame without adding a new artificial delay (0.313242ms)
+✔ a win read hold starts after the final value is actually visible in a sparse frame (13.828145ms)
+✔ real CueDirector event playback preserves sample outcomes in Normal, Fast, Replay and Reduced Motion (15.587579ms)
+✔ all generated Stake books map to deterministic presentation outcomes (7.546836ms)
+✔ Stake RGS client uses authenticate/play/end-round/replay without replay wager (1.570149ms)
+✔ Stake event mapping rejects payout disagreement instead of correcting it (0.612254ms)
+✔ native video controller preloads and crossfades without a black-frame stop (1.717482ms)
+✔ decode failure keeps the existing layer active and reports a fallback (0.70875ms)
+✔ all reactions wait for the complete 4000ms cycle before changing state (2.224606ms)
+✔ rapid win escalation selects the strongest next loop, without false BONUS (0.281795ms)
+✔ long cascade chain keeps the active dance looping until round completion (0.221875ms)
+✔ BIG win waits for the current SMALL loop seam instead of interrupting it (0.269877ms)
+✔ BONUS is reserved for bonusStart; errors clear unplayed requests (0.228826ms)
+✔ fast/replay event bursts cannot alter frozen payouts or skip the chosen dance tier (0.244669ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 249.720059
+
+Milestone verification passed.

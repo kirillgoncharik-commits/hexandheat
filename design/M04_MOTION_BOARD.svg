@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1690" viewBox="0 0 1600 1690">
+<rect x="0" y="0" width="1600" height="1690" rx="0" fill="#110e18" stroke="#110e18"/>
+<text x="64" y="65" font-size="18" fill="#dfb374" font-family="Arial">HEX &amp; HEAT / M04.1</text>
+<text x="64" y="126" font-size="52" fill="#f4e2c9" font-family="Georgia">One scene. One rhythm.</text>
+<text x="64" y="170" font-size="20" fill="#baaac5" font-family="Arial">Motion specification - editable Figma import board - 2026-11-01</text>
+<text x="64" y="206" font-size="19" fill="#baaac5" font-family="Arial">Runtime tokens are authoritative. Four-second body loops remain independent of settlement.</text>
+<text x="64" y="270" font-size="26" fill="#dfb374" font-family="Arial">01 / Event choreography</text>
+<rect x="64" y="300" width="251.68" height="96" rx="12" fill="#33233e" stroke="#654d6c"/>
+<text x="76" y="338" font-size="18" fill="#f4e2c9" font-family="Arial">Reveal</text>
+<text x="76" y="373" font-size="16" fill="#78e4ba" font-family="Arial">420ms</text>
+<rect x="322.68" y="300" width="454.92" height="96" rx="12" fill="#33233e" stroke="#654d6c"/>
+<text x="334.6778242677824" y="338" font-size="18" fill="#f4e2c9" font-family="Arial">Win / read</text>
+<text x="334.6778242677824" y="373" font-size="16" fill="#78e4ba" font-family="Arial">750ms</text>
+<rect x="784.6" y="300" width="300.95" height="96" rx="12" fill="#263a32" stroke="#654d6c"/>
+<text x="796.602510460251" y="338" font-size="18" fill="#f4e2c9" font-family="Arial">Potion impact</text>
+<text x="796.602510460251" y="373" font-size="16" fill="#78e4ba" font-family="Arial">500ms</text>
+<rect x="1092.55" y="300" width="103.86" height="96" rx="12" fill="#33233e" stroke="#654d6c"/>
+<text x="1104.55230125523" y="338" font-size="18" fill="#f4e2c9" font-family="Arial">Remove</text>
+<text x="1104.55230125523" y="373" font-size="16" fill="#78e4ba" font-family="Arial">180ms</text>
+<rect x="1203.41" y="300" width="325.59" height="96" rx="12" fill="#33233e" stroke="#654d6c"/>
+<text x="1215.4142259414225" y="338" font-size="18" fill="#f4e2c9" font-family="Arial">Fall / settle</text>
+<text x="1215.4142259414225" y="373" font-size="16" fill="#78e4ba" font-family="Arial">540ms</text>
+<text x="64" y="433" font-size="20" fill="#baaac5" font-family="Arial">Each stage awaits renderer completion + required read hold. Accent markers share one onset.</text>
+<text x="64" y="493" font-size="26" fill="#dfb374" font-family="Arial">02 / Protected body grid</text>
+<text x="365" y="536" font-size="18" fill="#78e4ba" font-family="Arial">0ms / seam</text>
+<text x="655" y="536" font-size="18" fill="#78e4ba" font-family="Arial">1000ms / pose 2</text>
+<text x="945" y="536" font-size="18" fill="#78e4ba" font-family="Arial">2000ms / pose 3</text>
+<text x="1235" y="536" font-size="18" fill="#78e4ba" font-family="Arial">3000ms / pose 4</text>
+<text x="64" y="596" font-size="19" fill="#f4e2c9" font-family="Arial">IDLE</text>
+<rect x="350" y="556" width="270" height="52" rx="12" fill="#332c23" stroke="#654d6c"/>
+<text x="367" y="589" font-size="17" fill="#dfb374" font-family="Arial">shared anchor</text>
+<rect x="640" y="556" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="657" y="589" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="930" y="556" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="947" y="589" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="1220" y="556" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1237" y="589" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<text x="64" y="666" font-size="19" fill="#f4e2c9" font-family="Arial">SMALL_WIN</text>
+<rect x="350" y="626" width="270" height="52" rx="12" fill="#332c23" stroke="#654d6c"/>
+<text x="367" y="659" font-size="17" fill="#dfb374" font-family="Arial">shared anchor</text>
+<rect x="640" y="626" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="657" y="659" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="930" y="626" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="947" y="659" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="1220" y="626" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1237" y="659" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<text x="64" y="736" font-size="19" fill="#f4e2c9" font-family="Arial">MEDIUM_WIN</text>
+<rect x="350" y="696" width="270" height="52" rx="12" fill="#332c23" stroke="#654d6c"/>
+<text x="367" y="729" font-size="17" fill="#dfb374" font-family="Arial">shared anchor</text>
+<rect x="640" y="696" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="657" y="729" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="930" y="696" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="947" y="729" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="1220" y="696" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1237" y="729" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<text x="64" y="806" font-size="19" fill="#f4e2c9" font-family="Arial">BIG_WIN</text>
+<rect x="350" y="766" width="270" height="52" rx="12" fill="#332c23" stroke="#654d6c"/>
+<text x="367" y="799" font-size="17" fill="#dfb374" font-family="Arial">shared anchor</text>
+<rect x="640" y="766" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="657" y="799" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="930" y="766" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="947" y="799" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="1220" y="766" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1237" y="799" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<text x="64" y="876" font-size="19" fill="#f4e2c9" font-family="Arial">BONUS</text>
+<rect x="350" y="836" width="270" height="52" rx="12" fill="#332c23" stroke="#654d6c"/>
+<text x="367" y="869" font-size="17" fill="#dfb374" font-family="Arial">shared anchor</text>
+<rect x="640" y="836" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="657" y="869" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="930" y="836" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="947" y="869" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<rect x="1220" y="836" width="270" height="52" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1237" y="869" font-size="17" fill="#baaac5" font-family="Arial">same pivot / identity</text>
+<text x="64" y="950" font-size="20" fill="#baaac5" font-family="Arial">4000ms -&gt; next seam. New rounds discard unstarted old reactions; an active dance completes.</text>
+<text x="64" y="1010" font-size="26" fill="#dfb374" font-family="Arial">03 / Motion tokens</text>
+<text x="64" y="1052" font-size="18" fill="#78e4ba" font-family="Arial">Stage</text>
+<text x="700" y="1052" font-size="18" fill="#78e4ba" font-family="Arial">Normal</text>
+<text x="1000" y="1052" font-size="18" fill="#78e4ba" font-family="Arial">Fast</text>
+<text x="64" y="1090" font-size="18" fill="#f4e2c9" font-family="Arial">Win presentation</text>
+<text x="700" y="1090" font-size="18" fill="#f4e2c9" font-family="Arial">750ms</text>
+<text x="1000" y="1090" font-size="18" fill="#f4e2c9" font-family="Arial">310ms</text>
+<text x="64" y="1126" font-size="18" fill="#f4e2c9" font-family="Arial">Count-up maximum</text>
+<text x="700" y="1126" font-size="18" fill="#f4e2c9" font-family="Arial">250ms</text>
+<text x="1000" y="1126" font-size="18" fill="#f4e2c9" font-family="Arial">60ms</text>
+<text x="64" y="1162" font-size="18" fill="#f4e2c9" font-family="Arial">Read hold minimum</text>
+<text x="700" y="1162" font-size="18" fill="#f4e2c9" font-family="Arial">450ms</text>
+<text x="1000" y="1162" font-size="18" fill="#f4e2c9" font-family="Arial">250ms</text>
+<text x="64" y="1198" font-size="18" fill="#f4e2c9" font-family="Arial">Potion</text>
+<text x="700" y="1198" font-size="18" fill="#f4e2c9" font-family="Arial">500ms</text>
+<text x="1000" y="1198" font-size="18" fill="#f4e2c9" font-family="Arial">250ms</text>
+<text x="64" y="1234" font-size="18" fill="#f4e2c9" font-family="Arial">Column stagger</text>
+<text x="700" y="1234" font-size="18" fill="#f4e2c9" font-family="Arial">28ms</text>
+<text x="1000" y="1234" font-size="18" fill="#f4e2c9" font-family="Arial">12ms</text>
+<text x="64" y="1310" font-size="26" fill="#dfb374" font-family="Arial">04 / Window ownership</text>
+<rect x="64" y="1338" width="346" height="70" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="82" y="1381" font-size="20" fill="#f4e2c9" font-family="Arial">CLOSED</text>
+<rect x="434" y="1338" width="346" height="70" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="452" y="1381" font-size="20" fill="#f4e2c9" font-family="Arial">OPENING 220ms</text>
+<rect x="804" y="1338" width="346" height="70" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="822" y="1381" font-size="20" fill="#f4e2c9" font-family="Arial">OPEN</text>
+<rect x="1174" y="1338" width="346" height="70" rx="12" fill="#231a2d" stroke="#654d6c"/>
+<text x="1192" y="1381" font-size="20" fill="#f4e2c9" font-family="Arial">CLOSING 160ms</text>
+<text x="64" y="1450" font-size="19" fill="#baaac5" font-family="Arial">Backdrop + panel + audio duck share the transition. One focus owner. Reduced Motion removes travel.</text>
+<text x="64" y="1510" font-size="26" fill="#dfb374" font-family="Arial">05 / Screen coverage</text>
+<text x="64" y="1550" font-size="18" fill="#f4e2c9" font-family="Arial">S01-05 launch | S06-12 round | S13-16 bonus | S17-21 controls | S22-25/30 recovery | S26-29 replay</text>
+<text x="64" y="1590" font-size="19" fill="#baaac5" font-family="Arial">For every screen: trigger, data source, enter, impact/readable, exit, barrier, focus and fallback.</text>
+<text x="64" y="1635" font-size="18" fill="#dfb374" font-family="Arial">Import into M04 / Motion &amp; Timing. Native Figma page and physical-device acceptance remain pending.</text>
+</svg>

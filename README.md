@@ -2,6 +2,8 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
+> **M04.1 in development, 2026-11-01:** PO authorized code, art and documentation. Shared active-time transport, completion barriers, persistent board animation, modal transitions, scene-aligned audio and a new 20-pose raster atlas are implemented for review. [Implementation report](reports/MILESTONE-04-REPORT.md), [scope](docs/m04/MILESTONE_SCOPE_RU.md), [motion contract](docs/m04/SYNCHRONIZATION_DESIGN_RU.md). Run `/motion.html` for deterministic samples, phase/trace, pause, Fast/Reduced Motion and viewport controls. Physical-device/AV measurements, Figma native motion page and M04.2 release packages remain open; no release-readiness claim.
+
 > **Current gate M03 2026-10-30:** Raster visual slice implemented on the PR #18 stack for review. [Start with M03 specification](docs/m03/MASTER_SPEC_RU.md), [Stake gaps](docs/m03/STAKE_TRACEABILITY_RU.md), [M04 launch architecture](docs/m03/NEXT_MILESTONE_RU.md), and [art/Spine guide](docs/m03/ART_GUIDE_RU.md). Figma: https://www.figma.com/design/OgvkrSrVyQtqXbzzi1pkxr . Sample outcomes only; production math, live RGS/resume and submission are not approved. The older sections below describe M02 history; video has been superseded by the M03 raster decision.
 
 ## Start here

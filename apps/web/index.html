@@ -15,7 +15,7 @@
     <main class="game-shell" aria-labelledby="game-title">
       <header class="topbar">
         <div class="brandline"><div class="brandmark"><span>H</span></div><div><h1 id="game-title">HEX &amp; HEAT</h1><p class="subtitle">Witch’s Wild Mixer</p></div></div>
-        <div class="header-actions"><span class="preview-pill">Visual preview · M03</span><button class="icon-button" type="button" data-open="rules-dialog" aria-label="Game rules">?</button><button class="icon-button" type="button" data-open="settings-dialog" aria-label="Settings">⚙</button></div>
+        <div class="header-actions"><span class="preview-pill">Motion preview · M04</span><button class="icon-button" type="button" data-open="rules-dialog" aria-label="Game rules">?</button><button class="icon-button" type="button" data-open="settings-dialog" aria-label="Settings">⚙</button></div>
         <span id="rgs-source" hidden>Connecting</span>
       </header>
       <section class="play-area">
@@ -76,7 +76,7 @@
               </div>
               <div class="stage-floor" aria-hidden="true"></div>
             </div>
-            <p id="media-status" class="stage-note">Seam-stitched loops · CSS fallback · add ?media=video for synthetic native-video POC</p>
+            <p id="media-status" class="stage-note">Shared scene clock · raster loops · 4000ms</p>
           </aside><div class="cauldron-plaque"><img src="./assets/symbols/item-11.png" alt="Cauldron"/><div><small>Cauldron multiplier</small><strong id="multiplier-value">×1</strong><p>Resets each round</p></div></div>
         </div>
       </section>
@@ -87,7 +87,7 @@
         <div class="mini-controls"><label class="toggle-control" for="fast-toggle"><input id="fast-toggle" type="checkbox"/> Fast</label><button id="replay-button" class="secondary-button" type="button" disabled>Replay last</button></div>
         <button id="spin-button" class="primary-button" type="button"><span>SPIN</span><small>SPACE</small></button>
       </section>
-      <div class="footer-row"><span>Original art · Draft animation</span><a href="./design.html">Player journey &amp; screens ↗</a><span>Sample outcomes only</span></div>
+      <div class="footer-row"><span>Original art · 4-second loops</span><a href="./design.html">Journey ↗</a><a href="./motion.html">Motion lab ↗</a><span>Sample outcomes only</span></div>
       <p id="status" class="status" role="status" aria-live="polite">
         Outcomes use official Stake publish/event shapes. Presentation never changes payout.
       </p>
@@ -95,6 +95,8 @@
 
     <dialog id="rules-dialog" aria-labelledby="rules-heading"><button class="icon-button" data-close aria-label="Close rules">×</button><h2 id="rules-heading">The art of alchemy</h2><p>Collect matching symbols anywhere on the 6 × 5 board. Winning symbols disappear and new symbols cascade into their place. Potion events increase the cauldron multiplier during this round.</p><h3>Round values</h3><p>The round win accumulates during the chain. The final result stays visible. The cauldron returns to ×1 for each independent round. Character reactions do not change results.</p><h3>Controls</h3><p>Spin or Space starts a round. Bet amount changes its size. Fast shortens the presentation. Replay last replays the previous preview round. Sound and motion options are in Settings.</p><h3>Rules and paytable status</h3><p class="design-note">This is an offline visual prototype. RTP, maximum win, symbol payouts, Potion values and Free Spins triggers remain unapproved. Free Spins and autoplay screens are documented in the storyboard for the next development milestone.</p><table><tr><th>Content</th><th>Status</th></tr><tr><td>RTP and maximum win</td><td>Awaiting math approval</td></tr><tr><td>Paytable and modifier values</td><td>Awaiting math approval</td></tr></table><p>Release rules must also explain interrupted rounds, connectivity, illustrative displays, long-term expected return and server-authoritative settlement.</p></dialog>
     <dialog id="settings-dialog" aria-labelledby="settings-heading"><button class="icon-button" data-close aria-label="Close settings">×</button><h2 id="settings-heading">Settings</h2><label for="mute-toggle"><input id="mute-toggle" type="checkbox" checked/> Mute sound</label><label for="reduce-toggle"><input id="reduce-toggle" type="checkbox"/> Reduce motion</label><p class="design-note">The four-frame character animatic is a first art pass. Sound is temporary. Use the screen library to review the full planned journey.</p></dialog>
-    <script type="module" src="./src/app.js"></script><script type="module" src="./src/visual-ui.js"></script>
+    <dialog id="result-dialog" aria-labelledby="result-heading"><button class="icon-button" data-close aria-label="Close result">×</button><p class="subtitle">The coven celebrates</p><h2 id="result-heading">Big win</h2><strong id="result-amount" class="result-amount">—</strong><p>Your round result is shown above. The witch completes her current dance.</p><p class="design-note">Sample outcome. Win tiers and artwork remain in review.</p></dialog>
+    <dialog id="bonus-motion-dialog" aria-labelledby="bonus-motion-heading"><button class="icon-button" data-close aria-label="Close bonus preview">×</button><p class="subtitle">Motion fixture only</p><h2 id="bonus-motion-heading">The ritual begins</h2><p>This previews the BONUS dance and window choreography. No Free Spins are awarded and no wager is placed.</p><p class="design-note">Live bonus events are a separate M04.2 integration task.</p></dialog>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

@@ -1,11 +1,15 @@
+import { SceneTransport } from "./scene-transport.js";
+import { CueDirector } from "./cue-director.js";
+import { BoardPlayer } from "./board-player.js";
+import { ScenePresentation } from "./scene-presentation.js";
+import { ModalManager } from "./modal-manager.js";
+import { moodForTier } from "./motion-tokens.js";
 import { RasterWitchPlayer } from "./raster-witch.js";
 import { OUTCOME_TEMPLATES } from "./fixtures.js";
 import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
 import { AdaptiveMusicController, MUSIC_STATES } from "./adaptive-music.js";
 import { MockRgs } from "./mock-rgs.js";
 import { StakeRgs, launchConfigFromUrl } from "./stake-rgs.js";
-import { createSyntheticVideoSources } from "./synthetic-video.js";
-import { NativeVideoLoopController } from "./video-loop.js";
 import { WitchDanceController } from "./witch-dance.js";
 
 const SYMBOL_LABELS = Object.freeze({
@@ -43,15 +47,21 @@ const elements = {
 };
 
 const locale = navigator.language || "en-US";
+const transport = new SceneTransport();
+const director = new CueDirector(transport);
+const boardPlayer = new BoardPlayer(elements.board, transport);
+let presentation = null;
+let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+const modalManager = new ModalManager(transport, { reducedMotion: () => reducedMotion, onChange: open => { musicController.duck(open); elements.spin.disabled = busy || open; elements.replay.disabled = busy || open || !lastOutcome; } });
+transport.start();
 let rgs = null;
 let session = null;
 let lastOutcome = null;
 let busy = false;
 let witchController = null;
-let videoController = null;
 let rasterPlayer = null;
-let videoObjectUrls = [];
 const musicController = new AdaptiveMusicController({
+  transport,
   onError(error) {
     console.warn("Adaptive music disabled:", error);
   }
@@ -63,31 +73,7 @@ function updateWallet() {
   elements.bet.textContent = formatMoney(Number(elements.betSelect.value), session.currency, locale);
 }
 
-function renderBoard(state) {
-  if (!state.board) return;
-  const highlights = new Set(state.highlightedPositions);
-  const fragment = document.createDocumentFragment();
-
-  for (let row = 0; row < 5; row += 1) {
-    for (let column = 0; column < 6; column += 1) {
-      const position = column * 5 + row;
-      const symbol = state.board[column][row];
-      const cell = document.createElement("div");
-      cell.className = `symbol symbol-${symbol}${highlights.has(position) ? " is-winning" : ""}`;
-      cell.setAttribute("role", "gridcell");
-      cell.setAttribute("aria-label", `${SYMBOL_LABELS[symbol] ?? symbol}, column ${column + 1}, row ${row + 1}${highlights.has(position) ? ", winning" : ""}`);
-      cell.dataset.position = String(position);
-      const mapping = {amber:0, violet:1, rose:2, blue:3, teal:6, potion:9};
-      const art = document.createElement("img");
-      art.src = `./assets/symbols/item-${String(mapping[symbol] ?? 0).padStart(2,"0")}.png`;
-      art.alt = "";
-      cell.append(art);
-      fragment.append(cell);
-    }
-  }
-
-  elements.board.replaceChildren(fragment);
-}
+function renderBoard(state) { boardPlayer.render(state); }
 
 function renderState(state) {
   renderBoard(state);
@@ -102,15 +88,22 @@ function renderState(state) {
  * Production media will replace each silhouette with a decoded video layer.
  */
 async function prepareWitchStage() {
-  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-  rasterPlayer = new RasterWitchPlayer(document.querySelector(".raster-container"), { reducedMotion });
+  rasterPlayer = new RasterWitchPlayer(document.querySelector(".raster-container"), {
+    reducedMotion, transport, atlasUrl: './assets/witch/witch-atlas-m04.webp'
+  });
   witchController = new WitchDanceController({
-    onLoop({to}) { rasterPlayer.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to; },
-    onAccent() { elements.witchStage.classList.add("has-potion-accent"); setTimeout(() => elements.witchStage.classList.remove("has-potion-accent"), 500); }
+    transport,
+    onMissedSeam: data => director.record('witch.missedSeam', data),
+    onLoop({ from, to }) {
+      rasterPlayer.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to;
+      director.record('witch.seam', { from, to });
+      if (to === 'IDLE' && !witchController.roundOpen && !witchController.pending) musicController.setState(MUSIC_STATES.BASE);
+    }
   });
   witchController.start();
-  document.addEventListener("motion-policy", event => rasterPlayer.setReducedMotion(event.detail || reducedMotion));
-  window.addEventListener("pagehide", () => { witchController.destroy(); rasterPlayer.destroy(); }, {once:true});
+  presentation = new ScenePresentation({ transport, director, board: boardPlayer, witch: witchController, music: musicController, elements, currency: () => session.currency, locale });
+  presentation.setReducedMotion(reducedMotion);
+  await boardPlayer.prepare();
 }
 
 function gamePhase(event, source) {
@@ -127,9 +120,9 @@ function gamePhase(event, source) {
 
 function setBusy(value, source = "spin") {
   busy = value;
-  elements.spin.disabled = value;
+  elements.spin.disabled = value || Boolean(modalManager.active);
   elements.betSelect.disabled = value;
-  elements.replay.disabled = value || !lastOutcome;
+  elements.replay.disabled = value || Boolean(modalManager.active) || !lastOutcome;
   if (value) {
     elements.debugGameState.textContent = source === "replay" ? "REPLAY · REQUEST" : "SPIN · REQUEST";
   }
@@ -143,27 +136,32 @@ function setBusy(value, source = "spin") {
 async function presentOutcome(outcome, source) {
   elements.fixtureLabel.textContent = "6 × 5 · SCATTER PAYS";
   elements.debugLastEvent.textContent = "Waiting for event 1";
-  witchController.beginRound();
+  presentation.begin();
   elements.status.textContent = source === "replay"
     ? `Replay ${outcome.id}: no wallet or play request will be made.`
     : "The potion is brewing…";
   const speed = elements.fast.checked ? "fast" : "normal";
 
-  return playOutcome(outcome, {
+  const finalState = await playOutcome(outcome, {
     speed,
-    onEvent(event, state) {
+    delay: async () => {}, // CueDirector owns actual completion and readable holds.
+    async onEvent(event, state) {
       const description = describeEvent(event, outcome.currency, locale);
-      renderState(state);
+      await presentation.event(event, state, outcome, speed);
       elements.debugGameState.textContent = gamePhase(event, source);
       elements.debugLastEvent.textContent = `${event.index + 1}/${outcome.events.length} · ${description.title}`;
-      witchController.onEvent(event, outcome);
-      musicController.onEvent(event, outcome, { source, speed });
+
     }
   });
+  if (outcome.payoutMicro >= outcome.betMicro * 10) {
+    document.querySelector('#result-amount').textContent = formatMoney(outcome.payoutMicro, outcome.currency, locale);
+    await modalManager.open(document.querySelector('#result-dialog'), elements.spin);
+  }
+  return finalState;
 }
 
 async function spin() {
-  if (busy) return;
+  if (busy || modalManager.active || transport.paused) return;
   setBusy(true, "spin");
   await musicController.unlock();
   let outcome = null;
@@ -192,13 +190,13 @@ async function spin() {
     elements.status.textContent = "The fixture failed closed; no replacement outcome was requested.";
   } finally {
     witchController.endRound({ failed });
-    musicController.setState(MUSIC_STATES.BASE);
+    if (failed) musicController.setState(MUSIC_STATES.BASE);
     setBusy(false);
   }
 }
 
 async function replay() {
-  if (busy || !lastOutcome) return;
+  if (busy || !lastOutcome || modalManager.active || transport.paused) return;
   setBusy(true, "replay");
   await musicController.unlock();
   let failed = false;
@@ -213,7 +211,7 @@ async function replay() {
     elements.debugLastEvent.textContent = error instanceof Error ? error.message : "Unknown replay error";
   } finally {
     witchController.endRound({ failed });
-    musicController.setState(MUSIC_STATES.BASE);
+    if (failed) musicController.setState(MUSIC_STATES.BASE);
     setBusy(false, "replay");
   }
 }
@@ -242,7 +240,8 @@ async function initialize() {
   elements.betSelect.addEventListener("change", updateWallet);
   elements.mute.addEventListener("change", () => musicController.mute(elements.mute.checked));
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") musicController.restore();
+    if (document.visibilityState === "visible") { transport.resume('visibility'); musicController.restore(); }
+    else { transport.pause('visibility'); musicController.suspend(); }
   });
   document.addEventListener("keydown", (event) => {
     const target = event.target;
@@ -252,7 +251,47 @@ async function initialize() {
       spin();
     }
   });
-  window.addEventListener("pagehide", () => musicController.destroy(), { once: true });
+  document.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => modalManager.open(document.getElementById(button.dataset.open), button)));
+  document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.querySelector('[data-close]')?.addEventListener('click', () => modalManager.close(dialog));
+    dialog.addEventListener('cancel', event => { event.preventDefault(); modalManager.close(dialog); });
+    dialog.addEventListener('click', event => { if (event.target === dialog) modalManager.close(dialog); });
+  });
+  const reduceToggle = document.querySelector('#reduce-toggle'); reduceToggle.checked = reducedMotion;
+  function motionPolicy(value) {
+    reducedMotion = value; document.documentElement.classList.toggle('reduce-motion', value);
+    rasterPlayer.setReducedMotion(value); presentation.setReducedMotion(value);
+  }
+  motionPolicy(reducedMotion);
+  reduceToggle.addEventListener('change', () => motionPolicy(reduceToggle.checked));
+  const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  preference?.addEventListener('change', event => { reduceToggle.checked = event.matches; motionPolicy(event.matches); });
+  window.addEventListener('pagehide', event => {
+    transport.pause('pagehide'); musicController.suspend();
+    if (!event.persisted) { modalManager.destroy(); presentation.destroy(); witchController.destroy(); rasterPlayer.destroy(); musicController.destroy(); transport.destroy(); }
+  });
+  window.addEventListener('pageshow', event => { if (event.persisted) { transport.resume('pagehide'); musicController.restore(); } });
+  if (document.hidden) { transport.pause('visibility'); musicController.suspend(); }
+  window.hexHeatReview = {
+    transport, director, witch: witchController, modal: modalManager, music: musicController,
+    exportTrace: () => JSON.stringify({ version: 'm04.1-1', trace: director.trace }, null, 2),
+    async playFixture(index) {
+      if (busy || modalManager.active || transport.paused) return false;
+      const template = OUTCOME_TEMPLATES[index]; if (!template) return false;
+      const outcome = { ...template, id: 'motion-fixture-' + template.fixtureId, betMicro: template.unitBetMicro, payoutMicro: template.events.at(-1).amount, currency: session.currency };
+      setBusy(true, 'replay'); await musicController.unlock(); let failed = false;
+      try { await presentOutcome(outcome, 'replay'); elements.status.textContent = 'Motion fixture complete. No wallet requests.'; }
+      catch (error) { failed = true; elements.status.textContent = 'Motion fixture interrupted: ' + error.message; }
+      finally { witchController.endRound({ failed }); setBusy(false, 'replay'); }
+      return !failed;
+    },
+    requestWitch(state) {
+      if (busy) return;
+      witchController.beginRound(); witchController.request(state); witchController.endRound();
+      musicController.setState(moodForTier(state));
+      if (state === 'BONUS') modalManager.open(document.querySelector('#bonus-motion-dialog'));
+    }
+  };
 }
 
 initialize().catch((error) => {

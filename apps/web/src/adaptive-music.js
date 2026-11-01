@@ -12,11 +12,17 @@ export class AdaptiveMusicController {
   constructor({
     contextFactory = () => new (globalThis.AudioContext ?? globalThis.webkitAudioContext)(),
     bpm = 120,
-    onError = () => {}
+    onError = () => {},
+    transport = null
   } = {}) {
     this.contextFactory = contextFactory;
     this.bpm = bpm;
     this.onError = onError;
+    this.transport = transport;
+    this.ducked = false;
+    this.hidden = false;
+    this.oneShots = new Set();
+    this.played = new Set();
     this.context = null;
     this.master = null;
     this.stems = [];
@@ -27,9 +33,29 @@ export class AdaptiveMusicController {
   }
 
   nextBeat() {
+    if (this.transport) {
+      const beatMs = 60000 / this.bpm;
+      let sceneAt = (Math.floor(this.transport.now / beatMs) + 1) * beatMs;
+      let at = this.sceneTimeToAudio(sceneAt);
+      while (at < this.context.currentTime + 0.01) { sceneAt += beatMs; at = this.sceneTimeToAudio(sceneAt); }
+      return at;
+    }
     const beat = 60 / this.bpm;
     return Math.ceil((this.context.currentTime + 0.01) / beat) * beat;
   }
+
+  sceneTimeToAudio(sceneAt) {
+    if (!this.transport) return this.context.currentTime;
+    const ts = this.context.getOutputTimestamp?.();
+    if (ts?.performanceTime > 0) {
+      const performanceAt = this.transport.wallNow() + sceneAt - this.transport.now;
+      return ts.contextTime + (performanceAt - ts.performanceTime) / 1000;
+    }
+    return this.context.currentTime + (sceneAt - this.transport.now) / 1000;
+  }
+
+  beginRound() { this.played.clear(); this.stopOneShots(); }
+  stopOneShots() { for (const node of this.oneShots) { try { node.stop(); } catch {} } this.oneShots.clear(); }
 
   async unlock() {
     if (this.failed) return false;
@@ -69,16 +95,19 @@ export class AdaptiveMusicController {
     const changeAt = this.nextBeat();
     TARGETS[state].forEach((target, index) => {
       const parameter = this.stems[index].gain.gain;
-      parameter.cancelScheduledValues(changeAt);
-      parameter.setValueAtTime(parameter.value, changeAt);
+      if (parameter.cancelAndHoldAtTime) parameter.cancelAndHoldAtTime(this.context.currentTime);
+      else { parameter.cancelScheduledValues(changeAt); parameter.setValueAtTime(parameter.value, changeAt); }
       parameter.linearRampToValueAtTime(target, changeAt + 0.12);
     });
   }
 
-  playOneShot(kind) {
-    if (!this.started || this.failed || this.muted) return;
+  playOneShot(kind, { key = null, sceneAt = this.transport?.now } = {}) {
+    if (key && this.played.has(key)) return;
+    if (key) this.played.add(key);
+    if (!this.started || this.failed || this.muted || this.hidden || this.context.state === 'suspended') return;
+    if (this.transport && sceneAt < this.transport.now - 80) return;
     try {
-      const now = this.context.currentTime;
+      const now = Math.max(this.context.currentTime + 0.008, sceneAt === undefined ? this.context.currentTime : this.sceneTimeToAudio(sceneAt));
       const oscillator = this.context.createOscillator();
       const gain = this.context.createGain();
       oscillator.frequency.value = kind === "POTION" ? 660 : 440;
@@ -88,6 +117,7 @@ export class AdaptiveMusicController {
       gain.connect(this.master);
       oscillator.start(now);
       oscillator.stop(now + 0.15);
+      this.oneShots.add(oscillator); oscillator.onended = () => { this.oneShots.delete(oscillator); oscillator.disconnect?.(); gain.disconnect?.(); };
     } catch (error) {
       this.onError(error);
     }
@@ -113,14 +143,19 @@ export class AdaptiveMusicController {
     if (!this.master || !this.context) return;
     const now = this.context.currentTime;
     this.master.gain.cancelScheduledValues(now);
-    this.master.gain.linearRampToValueAtTime(this.muted ? 0 : 1, now + 0.05);
+    this.master.gain.linearRampToValueAtTime(this.muted || this.hidden ? 0 : this.ducked ? 0.45 : 1, now + 0.05);
   }
 
+  duck(value) { this.ducked = Boolean(value); this.mute(this.muted); }
+  suspend() { this.hidden = true; this.stopOneShots(); this.mute(this.muted); this.context?.suspend?.().catch(this.onError); }
+
   async restore() {
+    this.hidden = false;
     if (!this.context || this.failed) return false;
     try {
       if (this.context.state === "suspended") await this.context.resume();
       this.setState(this.state);
+      this.mute(this.muted);
       return true;
     } catch (error) {
       this.onError(error);
@@ -129,6 +164,7 @@ export class AdaptiveMusicController {
   }
 
   destroy() {
+    this.stopOneShots();
     for (const stem of this.stems) {
       try { stem.oscillator.stop(); } catch { /* already stopped */ }
     }
