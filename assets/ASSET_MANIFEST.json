@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 3,
+  "version": 4,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -562,6 +562,134 @@
         "rights_review": "Pending human review; art iteration; no licensing or platform approval claim",
         "prompt_file": "assets/prompts/M04_PROMPTS.md",
         "source_sha256": "fefd7baed7df8ad5e47c88d71429022e17e2a2fe56b14cfcb737397a457c3599"
+      }
+    },
+    {
+      "id": "M04-RIG-FORE-LEFT",
+      "status": "exploration",
+      "sha256": "3f70bd22273c67548fc5b11f087504fed945a1228f2626f4f93fd731743e6a7a",
+      "bytes": 61287,
+      "uri": "apps/web/assets/witch/rig/fore-left.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-TORSO",
+      "status": "exploration",
+      "sha256": "5749e173b1cb1cf6ff598995e83973895315eac3b75151b534a003639052ef6f",
+      "bytes": 232324,
+      "uri": "apps/web/assets/witch/rig/torso.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-UPPER-LEFT",
+      "status": "exploration",
+      "sha256": "0ed731fcfc954fd4937ed8e7de7c36c425b1673dbae3b1a740126b12b584776a",
+      "bytes": 67482,
+      "uri": "apps/web/assets/witch/rig/upper-left.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-SKIRT",
+      "status": "exploration",
+      "sha256": "d83987cbdc145b6d65503d9f76523c9cd2565354d2b5b744da1b1c6735778727",
+      "bytes": 355838,
+      "uri": "apps/web/assets/witch/rig/skirt.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-FORE-RIGHT",
+      "status": "exploration",
+      "sha256": "b99827bc466e992db5d433d3a032102c4d02f90ea59385e6f9e28f2bb09b4876",
+      "bytes": 61010,
+      "uri": "apps/web/assets/witch/rig/fore-right.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-HAIR",
+      "status": "exploration",
+      "sha256": "0ad730b313001a7e6c79c4bd8a15e0a6935658fa80d75abacb5011cd6aaa46b3",
+      "bytes": 256190,
+      "uri": "apps/web/assets/witch/rig/hair.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-HEAD",
+      "status": "exploration",
+      "sha256": "7544fbbccb54a6a80e952d99ff35d6865b2d317faee31f305bf43e8fbaf3860e",
+      "bytes": 305551,
+      "uri": "apps/web/assets/witch/rig/head.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-RIG-UPPER-RIGHT",
+      "status": "exploration",
+      "sha256": "a60c29de29a61f27d710fef14d9c40f206900e0f76843548b2a26380f97a00db",
+      "bytes": 70536,
+      "uri": "apps/web/assets/witch/rig/upper-right.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; deterministic connected-component sprite extraction in Canvas",
+        "model_version": null,
+        "created_at": "2026-11-01",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Pending human review; cutout rig iteration",
+        "prompt_file": "assets/prompts/M04_RIG_PROMPT.md"
       }
     }
   ]

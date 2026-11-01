@@ -4,6 +4,7 @@ import { BoardPlayer } from "./board-player.js";
 import { ScenePresentation } from "./scene-presentation.js";
 import { ModalManager } from "./modal-manager.js";
 import { moodForTier } from "./motion-tokens.js";
+import { RigWitchPlayer } from "./rig-witch-player.js";
 import { RasterWitchPlayer } from "./raster-witch.js";
 import { OUTCOME_TEMPLATES } from "./fixtures.js";
 import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
@@ -88,9 +89,10 @@ function renderState(state) {
  * Production media will replace each silhouette with a decoded video layer.
  */
 async function prepareWitchStage() {
-  rasterPlayer = new RasterWitchPlayer(document.querySelector(".raster-container"), {
-    reducedMotion, transport, atlasUrl: './assets/witch/witch-atlas-m04.webp'
-  });
+  const legacy = new URL(location.href).searchParams.get('witch') === 'legacy';
+  rasterPlayer = legacy
+    ? new RasterWitchPlayer(document.querySelector('.raster-container'), { reducedMotion, transport, atlasUrl:'./assets/witch/witch-atlas-m04.webp' })
+    : new RigWitchPlayer(document.querySelector('.raster-container'), { reducedMotion, transport });
   witchController = new WitchDanceController({
     transport,
     onMissedSeam: data => director.record('witch.missedSeam', data),
@@ -273,7 +275,7 @@ async function initialize() {
   window.addEventListener('pageshow', event => { if (event.persisted) { transport.resume('pagehide'); musicController.restore(); } });
   if (document.hidden) { transport.pause('visibility'); musicController.suspend(); }
   window.hexHeatReview = {
-    transport, director, witch: witchController, modal: modalManager, music: musicController,
+    transport, director, witch: witchController, character: rasterPlayer, modal: modalManager, music: musicController,
     exportTrace: () => JSON.stringify({ version: 'm04.1-1', trace: director.trace }, null, 2),
     async playFixture(index) {
       if (busy || modalManager.active || transport.paused) return false;

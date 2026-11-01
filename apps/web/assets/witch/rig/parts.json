@@ -1,0 +1,94 @@
+{
+  "sourceWidth": 887,
+  "sourceHeight": 1774,
+  "parts": [
+    {
+      "name": "head",
+      "width": 439,
+      "height": 492,
+      "sourceBounds": [
+        21,
+        5,
+        439,
+        492
+      ]
+    },
+    {
+      "name": "torso",
+      "width": 333,
+      "height": 456,
+      "sourceBounds": [
+        507,
+        38,
+        333,
+        456
+      ]
+    },
+    {
+      "name": "skirt",
+      "width": 512,
+      "height": 567,
+      "sourceBounds": [
+        14,
+        503,
+        512,
+        567
+      ]
+    },
+    {
+      "name": "hair",
+      "width": 366,
+      "height": 548,
+      "sourceBounds": [
+        507,
+        511,
+        366,
+        548
+      ]
+    },
+    {
+      "name": "upper-left",
+      "width": 176,
+      "height": 319,
+      "sourceBounds": [
+        147,
+        1076,
+        176,
+        319
+      ]
+    },
+    {
+      "name": "fore-left",
+      "width": 176,
+      "height": 337,
+      "sourceBounds": [
+        585,
+        1075,
+        176,
+        337
+      ]
+    },
+    {
+      "name": "upper-right",
+      "width": 176,
+      "height": 327,
+      "sourceBounds": [
+        181,
+        1411,
+        176,
+        327
+      ]
+    },
+    {
+      "name": "fore-right",
+      "width": 160,
+      "height": 344,
+      "sourceBounds": [
+        578,
+        1410,
+        160,
+        344
+      ]
+    }
+  ]
+}

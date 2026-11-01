@@ -32,7 +32,7 @@ function draw() {
     $('play').disabled = playing;
     $('clock').textContent = `${r.transport.paused ? 'PAUSED' : 'SCENE'} ${(r.transport.now / 1000).toFixed(2)}s`;
     $('phase').textContent = `BODY ${(r.transport.now % 4000).toFixed(0)} / 4000ms`;
-    $('witch').textContent = `WITCH ${r.witch.active}${r.witch.pending ? ' → ' + r.witch.pending : ''}`;
+    $('witch').textContent = `WITCH ${r.witch.active}${r.witch.pending ? ' → ' + r.witch.pending : ''} · POSE ${r.character?.container.dataset.frame ?? 0} · TARGET ${r.character?.container.dataset.fps ?? 4} FPS`;
     $('mood').textContent = `MUSIC ${r.music.state}`;
     const last = r.director.trace.at(-1); $('cue').textContent = last ? `${last.type} · ${last.at}ms` : 'Ready';
     if (document.querySelector('details').open) $('trace').textContent = r.director.trace.slice(-35).map(t => JSON.stringify(t)).join('\n');
