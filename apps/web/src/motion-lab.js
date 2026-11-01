@@ -20,6 +20,7 @@ $('fast').addEventListener('change', event => syncCheck('fast-toggle', event.tar
 $('reduce').addEventListener('change', event => syncCheck('reduce-toggle', event.target.checked));
 $('sound').addEventListener('change', async event => { await review()?.music.unlock(); syncCheck('mute-toggle', !event.target.checked); });
 $('states').addEventListener('click', event => { const state = event.target.dataset.state; if (state) review()?.requestWitch(state); });
+$('atmosphere').addEventListener('change', event => review()?.ambient.setEnabled(event.target.checked));
 $('stall').addEventListener('click', () => { const end = performance.now() + 200; while (performance.now() < end) { /* explicit dev-only fault injection */ } });
 $('export').addEventListener('click', () => {
   const data = review()?.exportTrace(); if (!data) return;
@@ -34,6 +35,7 @@ function draw() {
     $('phase').textContent = `BODY ${(r.transport.now % 4000).toFixed(0)} / 4000ms`;
     $('witch').textContent = `WITCH ${r.witch.active}${r.witch.pending ? ' → ' + r.witch.pending : ''} · POSE ${r.character?.container.dataset.frame ?? 0} · TARGET ${r.character?.container.dataset.fps ?? 4} FPS`;
     $('mood').textContent = `MUSIC ${r.music.state}`;
+    $('ambient').textContent = `SCENERY ${r.ambient.reducedMotion || !r.ambient.enabled ? 'STILL' : 'LIVE'} · ${Math.floor(r.transport.now % 32000)} / 32000ms`;
     const last = r.director.trace.at(-1); $('cue').textContent = last ? `${last.type} · ${last.at}ms` : 'Ready';
     if (document.querySelector('details').open) $('trace').textContent = r.director.trace.slice(-35).map(t => JSON.stringify(t)).join('\n');
   }

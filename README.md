@@ -2,6 +2,8 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
+> Living atelier, 2026-11-01: candlelight, window clouds/mist and moonlight use the same active scene time. Motion Lab offers Living scenery A/B; Reduced Motion keeps the original still plate. [Implementation and remaining M04 work](docs/m04/AMBIENT_SCENE_RU.md).
+
 > **Dense character update, 2026-11-01:** Default character playback now samples an original eight-part cutout rig at **30 FPS /120 poses per 4000ms cycle**. Exported raster package contains 600 transparent WebP frames at 768×1024. A Spine 4.2 Import Data candidate is provided, not a native/editor-validated .spine project. [Animation details and limitations](docs/m04/DENSE_ANIMATION_RU.md). Use `?witch=legacy&rgs=mock` for the previous four-pose fallback.
 
 > **M04.1 in development, 2026-11-01:** PO authorized code, art and documentation. Shared active-time transport, completion barriers, persistent board animation, modal transitions, scene-aligned audio and a new 20-pose raster atlas are implemented for review. [Implementation report](reports/MILESTONE-04-REPORT.md), [scope](docs/m04/MILESTONE_SCOPE_RU.md), [motion contract](docs/m04/SYNCHRONIZATION_DESIGN_RU.md). Run `/motion.html` for deterministic samples, phase/trace, pause, Fast/Reduced Motion and viewport controls. Physical-device/AV measurements, Figma native motion page and M04.2 release packages remain open; no release-readiness claim.
