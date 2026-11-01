@@ -1,4 +1,5 @@
 import { SceneTransport } from "./scene-transport.js";
+import { AmbientScene } from "./ambient-scene.js";
 import { CueDirector } from "./cue-director.js";
 import { BoardPlayer } from "./board-player.js";
 import { ScenePresentation } from "./scene-presentation.js";
@@ -53,6 +54,7 @@ const director = new CueDirector(transport);
 const boardPlayer = new BoardPlayer(elements.board, transport);
 let presentation = null;
 let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+const ambient = new AmbientScene(document.querySelector('#ambient-scene'), transport, { reducedMotion });
 const modalManager = new ModalManager(transport, { reducedMotion: () => reducedMotion, onChange: open => { musicController.duck(open); elements.spin.disabled = busy || open; elements.replay.disabled = busy || open || !lastOutcome; } });
 transport.start();
 let rgs = null;
@@ -262,7 +264,7 @@ async function initialize() {
   const reduceToggle = document.querySelector('#reduce-toggle'); reduceToggle.checked = reducedMotion;
   function motionPolicy(value) {
     reducedMotion = value; document.documentElement.classList.toggle('reduce-motion', value);
-    rasterPlayer.setReducedMotion(value); presentation.setReducedMotion(value);
+    rasterPlayer.setReducedMotion(value); presentation.setReducedMotion(value); ambient.setReducedMotion(value);
   }
   motionPolicy(reducedMotion);
   reduceToggle.addEventListener('change', () => motionPolicy(reduceToggle.checked));
@@ -270,12 +272,12 @@ async function initialize() {
   preference?.addEventListener('change', event => { reduceToggle.checked = event.matches; motionPolicy(event.matches); });
   window.addEventListener('pagehide', event => {
     transport.pause('pagehide'); musicController.suspend();
-    if (!event.persisted) { modalManager.destroy(); presentation.destroy(); witchController.destroy(); rasterPlayer.destroy(); musicController.destroy(); transport.destroy(); }
+    if (!event.persisted) { modalManager.destroy(); presentation.destroy(); witchController.destroy(); rasterPlayer.destroy(); ambient.destroy(); musicController.destroy(); transport.destroy(); }
   });
   window.addEventListener('pageshow', event => { if (event.persisted) { transport.resume('pagehide'); musicController.restore(); } });
   if (document.hidden) { transport.pause('visibility'); musicController.suspend(); }
   window.hexHeatReview = {
-    transport, director, witch: witchController, character: rasterPlayer, modal: modalManager, music: musicController,
+    transport, director, witch: witchController, character: rasterPlayer, ambient, modal: modalManager, music: musicController,
     exportTrace: () => JSON.stringify({ version: 'm04.1-1', trace: director.trace }, null, 2),
     async playFixture(index) {
       if (busy || modalManager.active || transport.paused) return false;
