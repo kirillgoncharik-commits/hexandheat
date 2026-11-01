@@ -1,0 +1,39 @@
+{
+  "approximate_95_percent_interval": [
+    0.13145081672908276,
+    0.1370957832709172
+  ],
+  "cascade_depth_distribution": {
+    "0": 75736,
+    "1": 16332,
+    "2": 5119,
+    "3": 1774,
+    "4": 712,
+    "5": 247,
+    "6": 63,
+    "7": 12,
+    "8": 3,
+    "9": 2
+  },
+  "conditional_average_win": 55.33848499835147,
+  "config_label": "CANDIDATE_UNBALANCED_V0",
+  "config_sha256": "9213a1b0b848ac22c8da128329534e1ab13a4235e31653f45e61c43ee1cb9166",
+  "disclaimer": "CANDIDATE UNBALANCED SAMPLE ONLY. This is not a production RTP, certification, approval, or promise of player return.",
+  "hit_rate": 0.24264,
+  "max_observed_multiplier": 17,
+  "max_observed_win": 2063,
+  "payout_units_per_bet": 100,
+  "percentiles": {
+    "p50": 0,
+    "p90": 30,
+    "p95": 70,
+    "p99": 212
+  },
+  "report_sha256": "46ba5664d62cb7faf59e45413d05aef6bdcc89b638440f3d5b89aca0394f1f89",
+  "root_seed": 20261101,
+  "rounds": 100000,
+  "sample_return": 0.13427329999999998,
+  "standard_deviation": 45.53814180520654,
+  "standard_error": 0.001440042485161844,
+  "zero_win_rate": 0.75736
+}
