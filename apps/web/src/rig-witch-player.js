@@ -1,4 +1,4 @@
-import { drawRig, sampleRig, mixPose, RIG_WIDTH, RIG_HEIGHT, RIG_STATES, RIG_FPS } from './witch-rig.js';
+import { drawRig, sampleRig, mixPose, RIG_WIDTH, RIG_HEIGHT, RIG_STATES, RIG_FPS, ATTACHMENTS, RIG_ASSET_PATH } from './witch-rig.js';
 import { RasterWitchPlayer } from './raster-witch.js';
 
 /** 30 genuinely sampled poses/second; a small original cutout renderer, not Spine Runtime. */
@@ -10,11 +10,11 @@ export class RigWitchPlayer {
     this.canvas=document.createElement('canvas');this.canvas.width=RIG_WIDTH;this.canvas.height=RIG_HEIGHT;
     this.canvas.className='witch-rig';this.canvas.setAttribute('aria-hidden','true');this.canvas.hidden=true;
     this.context=this.canvas.getContext('2d');container.append(this.canvas);
-    this.preload=Promise.all(['head','torso','skirt','hair','upper-left','fore-left','upper-right','fore-right'].map(async name=> {
-      const image=new Image();image.src=`./assets/witch/rig/${name}.png`;await image.decode();this.images[name]=image;
+    this.preload=Promise.all(ATTACHMENTS.map(p=>p.name).map(async name=> {
+      const image=new Image();image.src=`${RIG_ASSET_PATH}${name}.png`;await image.decode();this.images[name]=image;
     })).then(()=> {
       if(this.destroyed)return;
-      this.ready=true;this.fallback.destroy();this.fallback=null;this.canvas.hidden=false;container.dataset.renderer='cutout-rig-30fps';this.tick();
+      this.ready=true;this.fallback.destroy();this.fallback=null;this.canvas.hidden=false;container.dataset.renderer='expressive-rig-30fps';this.tick();
     }).catch(()=>{container.dataset.degraded='true';container.dataset.renderer='four-pose-fallback';});
     this.unsubscribe=transport.subscribe(()=>this.tick(),2);
   }

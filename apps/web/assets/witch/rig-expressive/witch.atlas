@@ -1,0 +1,207 @@
+hair.png
+size: 296,337
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hair
+  rotate: false
+  xy: 0,0
+  size: 296,337
+  orig: 296,337
+  offset: 0,0
+  index: -1
+
+thigh-left.png
+size: 137,337
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+thigh-left
+  rotate: false
+  xy: 0,0
+  size: 137,337
+  orig: 137,337
+  offset: 0,0
+  index: -1
+
+boot-left.png
+size: 141,312
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+boot-left
+  rotate: false
+  xy: 0,0
+  size: 141,312
+  orig: 141,312
+  offset: 0,0
+  index: -1
+
+thigh-right.png
+size: 134,339
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+thigh-right
+  rotate: false
+  xy: 0,0
+  size: 134,339
+  orig: 134,339
+  offset: 0,0
+  index: -1
+
+boot-right.png
+size: 146,315
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+boot-right
+  rotate: false
+  xy: 0,0
+  size: 146,315
+  orig: 146,315
+  offset: 0,0
+  index: -1
+
+skirt-left.png
+size: 312,306
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skirt-left
+  rotate: false
+  xy: 0,0
+  size: 312,306
+  orig: 312,306
+  offset: 0,0
+  index: -1
+
+skirt-right.png
+size: 269,300
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skirt-right
+  rotate: false
+  xy: 0,0
+  size: 269,300
+  orig: 269,300
+  offset: 0,0
+  index: -1
+
+hips.png
+size: 290,235
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hips
+  rotate: false
+  xy: 0,0
+  size: 290,235
+  orig: 290,235
+  offset: 0,0
+  index: -1
+
+upper-left.png
+size: 228,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+upper-left
+  rotate: false
+  xy: 0,0
+  size: 228,272
+  orig: 228,272
+  offset: 0,0
+  index: -1
+
+upper-right.png
+size: 211,267
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+upper-right
+  rotate: false
+  xy: 0,0
+  size: 211,267
+  orig: 211,267
+  offset: 0,0
+  index: -1
+
+torso.png
+size: 237,318
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+torso
+  rotate: false
+  xy: 0,0
+  size: 237,318
+  orig: 237,318
+  offset: 0,0
+  index: -1
+
+fore-left.png
+size: 183,261
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fore-left
+  rotate: false
+  xy: 0,0
+  size: 183,261
+  orig: 183,261
+  offset: 0,0
+  index: -1
+
+fore-right.png
+size: 190,264
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fore-right
+  rotate: false
+  xy: 0,0
+  size: 190,264
+  orig: 190,264
+  offset: 0,0
+  index: -1
+
+hand-left.png
+size: 149,165
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hand-left
+  rotate: false
+  xy: 0,0
+  size: 149,165
+  orig: 149,165
+  offset: 0,0
+  index: -1
+
+hand-right.png
+size: 148,161
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hand-right
+  rotate: false
+  xy: 0,0
+  size: 148,161
+  orig: 148,161
+  offset: 0,0
+  index: -1
+
+head.png
+size: 339,346
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+head
+  rotate: false
+  xy: 0,0
+  size: 339,346
+  orig: 339,346
+  offset: 0,0
+  index: -1
