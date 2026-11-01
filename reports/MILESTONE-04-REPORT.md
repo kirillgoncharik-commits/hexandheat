@@ -67,3 +67,7 @@ The existing Site is reused with explicit mock sample outcomes. Its current acce
 7. All original M04.2 production math/rules/session/wallet/resume/replay/content/release packages retain their gates. Inherited live RGS recovery/ambiguous settlement weaknesses remain blockers for any production use.
 
 Next implementation step: native design integration and perception review, then close the remaining motion/device evidence before proceeding to the gated platform release work. Do not close Issue #20 or declare launch readiness based on this slice.
+
+## Published review build
+
+Implementation PR: https://github.com/kirillgoncharik-commits/hexandheat/pull/23 . Code/art commit: `6127739fde01d58f855ef06c2b62a3f62897f185`. Existing Site version **2** deployed successfully: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site . Deployment `appgdep_6ae7798ebba88191b0607ca65b5b9313`; source `661b6ffaddad2bbd489b9bd4f677165ea2bc3885`. Public sample-only audience is unchanged.

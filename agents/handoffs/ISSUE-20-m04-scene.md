@@ -27,3 +27,7 @@ No new paid dependency, purchase, legal acceptance or Stake upload. Original art
 ## Exact next action
 
 Review the synchronized sample scene and atlas. Import the editable motion SVG and atlas into the existing native Figma file when tooling is available; run device/AV/UX acceptance. Keep M04.2 platform blockers explicit and Issue #20 open. Hosting preserves the existing Site's observed public access; only sample outcomes are deployed.
+
+## Published review build
+
+Implementation PR: https://github.com/kirillgoncharik-commits/hexandheat/pull/23 . Code/art commit: `6127739fde01d58f855ef06c2b62a3f62897f185`. Existing Site version **2** deployed successfully: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site . Deployment `appgdep_6ae7798ebba88191b0607ca65b5b9313`; source `661b6ffaddad2bbd489b9bd4f677165ea2bc3885`. Public sample-only audience is unchanged.
