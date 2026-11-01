@@ -2,6 +2,8 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
+> Expressive dance update, 2026-11-01: five authored asymmetric phrases,16 raster parts, independent wrists/legs/skirt panels and896×1152 export. `/dance.html` compares v2/v3 on the same phase and camera. [Dance direction](docs/m04/DANCE_DIRECTION_RU.md), [review and limitations](reports/M04_EXPRESSIVE_REVIEW.md). Earlier banners below describe preceding iterations.
+
 > Living atelier, 2026-11-01: candlelight, window clouds/mist and moonlight use the same active scene time. Motion Lab offers Living scenery A/B; Reduced Motion keeps the original still plate. [Implementation and remaining M04 work](docs/m04/AMBIENT_SCENE_RU.md).
 
 > **Dense character update, 2026-11-01:** Default character playback now samples an original eight-part cutout rig at **30 FPS /120 poses per 4000ms cycle**. Exported raster package contains 600 transparent WebP frames at 768×1024. A Spine 4.2 Import Data candidate is provided, not a native/editor-validated .spine project. [Animation details and limitations](docs/m04/DENSE_ANIMATION_RU.md). Use `?witch=legacy&rgs=mock` for the previous four-pose fallback.

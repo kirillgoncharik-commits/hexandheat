@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {sampleRig,rigWorld,makeSpineData,RIG_STATES,RIG_FPS,RIG_SECONDS,BONES,ATTACHMENTS} from '../src/witch-rig.js';
+import {sampleRig,rigWorld,makeSpineData,RIG_STATES,RIG_FPS,RIG_SECONDS,BONES,ATTACHMENTS} from '../src/witch-rig-v2.js';
 
 test('30 FPS produces 120 actual skeletal samples per four-second clip, with five distinct choreographies',()=>{
   assert.equal(RIG_FPS*RIG_SECONDS,120);

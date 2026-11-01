@@ -22,8 +22,8 @@ class BlueprintTests(unittest.TestCase):
 
     def test_asset_manifest_matches_registered_raster_outputs(self):
         data = json.loads((ROOT / "assets/ASSET_MANIFEST.json").read_text())
-        self.assertEqual(data["version"], 4)
-        self.assertEqual(len(data["assets"]), 42)
+        self.assertEqual(data["version"], 5)
+        self.assertEqual(len(data["assets"]), 58)
         atlas = next(a for a in data["assets"] if a["id"] == "M04-WITCH-ATLAS-V2")
         self.assertEqual(atlas["grid"]["cycle_ms"], 4000)
         self.assertEqual(atlas["grid"]["columns"] * atlas["grid"]["rows"], 20)
