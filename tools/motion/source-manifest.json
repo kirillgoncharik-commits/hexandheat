@@ -1,0 +1,1392 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "09a07f54f3bbb58797325f009282d0b2048a2871",
+  "primarySource": "https://mocap.cs.cmu.edu/",
+  "conversionSource": "https://github.com/una-dinosauria/cmu-mocap",
+  "accessDate": "2026-11-02",
+  "notes": "Fixed reviewed windows and metadata, with generated frame arrays excluded. Output hashes pin the existing source-reference files, not artistic approval or native Spine certification.",
+  "clips": [
+    {
+      "id": "05_02",
+      "sourceFile": "05_02.bvh",
+      "outputFile": "05_02-manikin.json",
+      "sourceUrl": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/005/05_02.bvh",
+      "sourceSha256": "e0ed825644ba91538e1931673e24e0b7095c6caffe03cd647bf2df7de6a5e5fc",
+      "sourceBytes": 856244,
+      "outputSha256": "08b7c6eb181893ea829015771d26a036edac113311b8c99f1f14187d0b998c33",
+      "outputBytes": 246674,
+      "outputKeyOrder": [
+        "schemaVersion",
+        "id",
+        "description",
+        "source",
+        "sampling",
+        "coordinateSystem",
+        "joints",
+        "frames",
+        "rootTrack",
+        "loopFrames",
+        "loopRootTrack",
+        "loopCorrection",
+        "cameraRecommendation",
+        "metrics",
+        "limitations"
+      ],
+      "metadataTemplate": {
+        "schemaVersion": 1,
+        "id": "cmu-05_02",
+        "description": "dance - expressive arms, pirouette",
+        "source": {
+          "id": "05_02",
+          "description": "dance - expressive arms, pirouette",
+          "bytes": 856244,
+          "sha256": "e0ed825644ba91538e1931673e24e0b7095c6caffe03cd647bf2df7de6a5e5fc",
+          "gitBlob": "24d2c6f184f2f3251a3a950f1cbe5e0ff93f08f9",
+          "sourceCommit": "09a07f54f3bbb58797325f009282d0b2048a2871",
+          "source": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/005/05_02.bvh",
+          "primaryCatalogue": "https://mocap.cs.cmu.edu/search.php?subjectnumber=5",
+          "frames": 1124,
+          "frameTime": 0.0083333,
+          "fps": 120.00048000192001,
+          "durationSeconds": 9.3666292,
+          "channelCount": 96,
+          "rotationOrder": "Zrotation Yrotation Xrotation",
+          "joints": [
+            "Hips",
+            "LHipJoint",
+            "LeftUpLeg",
+            "LeftLeg",
+            "LeftFoot",
+            "LeftToeBase",
+            "RHipJoint",
+            "RightUpLeg",
+            "RightLeg",
+            "RightFoot",
+            "RightToeBase",
+            "LowerBack",
+            "Spine",
+            "Spine1",
+            "Neck",
+            "Neck1",
+            "Head",
+            "LeftShoulder",
+            "LeftArm",
+            "LeftForeArm",
+            "LeftHand",
+            "LeftFingerBase",
+            "LeftHandIndex1",
+            "LThumb",
+            "RightShoulder",
+            "RightArm",
+            "RightForeArm",
+            "RightHand",
+            "RightFingerBase",
+            "RightHandIndex1",
+            "RThumb"
+          ],
+          "validated": true
+        },
+        "sampling": {
+          "fps": 30,
+          "frameCount": 121,
+          "durationSeconds": 4.0,
+          "includesDuplicateEndpoint": true,
+          "cropStartSeconds": 1.1333333333333333,
+          "cropEndSeconds": 5.133333333333333,
+          "firstSourceFrameIndex": 136.000544002176,
+          "lastSourceFrameIndex": 616.002464009856,
+          "interpolation": "local translation lerp and shortest-arc local quaternion SLERP before forward kinematics"
+        },
+        "coordinateSystem": {
+          "handedness": "right",
+          "upAxis": "Y",
+          "positionOrigin": "Hips per frame",
+          "unit": "reference body height",
+          "bodyHeightSourceUnits": 26.07404357354984,
+          "bodyHeightDefinition": "Head End Site Y minus lower LeftToeBase/RightToeBase Y in source setup frame 0",
+          "rootMotion": "separate rootTrack arrays are displacement relative to first crop/loop frame in body heights"
+        },
+        "joints": [
+          {
+            "name": "Hips",
+            "parent": -1,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftUpLeg",
+            "parent": 1,
+            "restOffset": [
+              0.0631084,
+              -0.0655361,
+              0.032433
+            ]
+          },
+          {
+            "name": "LeftLeg",
+            "parent": 2,
+            "restOffset": [
+              0.0862785,
+              -0.2370488,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFoot",
+            "parent": 3,
+            "restOffset": [
+              0.104232,
+              -0.2863756,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftToeBase",
+            "parent": 4,
+            "restOffset": [
+              0.007198,
+              -0.019776,
+              0.0861918
+            ]
+          },
+          {
+            "name": "RHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightUpLeg",
+            "parent": 6,
+            "restOffset": [
+              -0.060915,
+              -0.0655361,
+              0.032433
+            ]
+          },
+          {
+            "name": "RightLeg",
+            "parent": 7,
+            "restOffset": [
+              -0.086295,
+              -0.2370944,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFoot",
+            "parent": 8,
+            "restOffset": [
+              -0.1046362,
+              -0.2874863,
+              0.0
+            ]
+          },
+          {
+            "name": "RightToeBase",
+            "parent": 9,
+            "restOffset": [
+              -0.0082615,
+              -0.0226988,
+              0.0807865
+            ]
+          },
+          {
+            "name": "LowerBack",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Spine",
+            "parent": 11,
+            "restOffset": [
+              0.001205,
+              0.0807301,
+              -0.0042333
+            ]
+          },
+          {
+            "name": "Spine1",
+            "parent": 12,
+            "restOffset": [
+              -0.0007145,
+              0.0808839,
+              -0.0026678
+            ]
+          },
+          {
+            "name": "Neck",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Neck1",
+            "parent": 14,
+            "restOffset": [
+              -0.0008694,
+              0.0664408,
+              0.000173
+            ]
+          },
+          {
+            "name": "Head",
+            "parent": 15,
+            "restOffset": [
+              -0.0022275,
+              0.0593402,
+              -0.0236822
+            ]
+          },
+          {
+            "name": "LeftShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftArm",
+            "parent": 17,
+            "restOffset": [
+              0.1322764,
+              0.0192904,
+              0.0084068
+            ]
+          },
+          {
+            "name": "LeftForeArm",
+            "parent": 18,
+            "restOffset": [
+              0.2078377,
+              -0.0,
+              -0.0
+            ]
+          },
+          {
+            "name": "LeftHand",
+            "parent": 19,
+            "restOffset": [
+              0.0937227,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFingerBase",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftHandIndex1",
+            "parent": 21,
+            "restOffset": [
+              0.0279013,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LThumb",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightArm",
+            "parent": 24,
+            "restOffset": [
+              -0.1238837,
+              0.0214121,
+              0.0119088
+            ]
+          },
+          {
+            "name": "RightForeArm",
+            "parent": 25,
+            "restOffset": [
+              -0.2143803,
+              -3.8e-06,
+              5.4e-06
+            ]
+          },
+          {
+            "name": "RightHand",
+            "parent": 26,
+            "restOffset": [
+              -0.0951368,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFingerBase",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightHandIndex1",
+            "parent": 28,
+            "restOffset": [
+              -0.0312959,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RThumb",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "loopCorrection": {
+          "method": "local quaternion overlap crossfade, quintic smoothstep",
+          "sourceCropSeconds": 4.0,
+          "sourceOverlapSeconds": 0.4,
+          "outputSeconds": 4.0,
+          "sourceSpeed": 0.9,
+          "phaseZeroSourceOffsetSeconds": 0.4,
+          "activeBlendOutputSeconds": [
+            3.555555555555556,
+            4.0
+          ],
+          "preservesBoneLengths": true,
+          "solvesFootContacts": false,
+          "claimsOriginalCapture": false,
+          "description": "Derived review loop: tail of 4s crop crossfades with first .4s, natural 3.6s cycle slowed to 4s. Original frames retained separately."
+        },
+        "cameraRecommendation": {
+          "yawDegrees": 170,
+          "meanProjectedLimbRatio": 0.9072927536554236,
+          "p10ProjectedLimbRatio": 0.7881678545000752,
+          "meanProjectedShoulderRatio": 0.9412609831212357,
+          "score": 1.4808391105289367
+        },
+        "metrics": {
+          "rawSeam": {
+            "poseRmsBodyHeights": 0.1681370706680743,
+            "poseMaxBodyHeights": 0.325271173992714,
+            "velocityRmsBodyHeightsPerSecond": 0.9044447151114655,
+            "velocityMaxBodyHeightsPerSecond": 2.3234300838933595,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.02790007306287641,
+            "velocityMaxBodyHeightsPerSecond": 0.043078927500290756,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedMicroDerivativeSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.025835025563001643,
+            "velocityMaxBodyHeightsPerSecond": 0.03993938034923571,
+            "derivativeEstimateSeconds": 0.0001
+          },
+          "maxNormalizedBoneLengthError": 4.4282811078119474e-16,
+          "selectedWindowHeuristic": {
+            "startSeconds": 1.1333333333333333,
+            "endSeconds": 5.133333333333333,
+            "score": 0.9639958665497427,
+            "poseRms": 0.16813707066807437,
+            "velocityRms": 0.9164123969022052,
+            "activity": 0.26512869977239717,
+            "headingRangeDegrees": 59.34890570993733,
+            "rootDriftBodyHeights": 0.06670512790553083,
+            "passesMinimumActivity": true,
+            "minimumActivityBodyHeights": 0.2538844284122863
+          },
+          "otherWindows": [
+            {
+              "startSeconds": 0.2,
+              "endSeconds": 4.2,
+              "score": 0.7486536314690871,
+              "poseRms": 0.13201141097084626,
+              "velocityRms": 0.6515048987549616,
+              "activity": 0.20412508530078124,
+              "headingRangeDegrees": 21.259987460197255,
+              "rootDriftBodyHeights": 0.05207994382130206
+            },
+            {
+              "startSeconds": 0.23333333333333334,
+              "endSeconds": 4.233333333333333,
+              "score": 0.8282921125485257,
+              "poseRms": 0.1471596155294812,
+              "velocityRms": 0.6730617297586095,
+              "activity": 0.21184729644404068,
+              "headingRangeDegrees": 22.603030287791967,
+              "rootDriftBodyHeights": 0.05863313665043278
+            }
+          ]
+        },
+        "limitations": [
+          "Not native Spine motion or artistic approval.",
+          "First source frame is a synthetic setup pose, excluded from crop.",
+          "CMU fingers/thumbs were not captured; hand/toe tracks can be noisy.",
+          "Crossfade may cause contact drift; no contact solver or cloth/face tracks are supplied.",
+          "Quaternion interpolation is piecewise SLERP; source velocity kinks remain. A zero pose seam does not certify a zero velocity seam.",
+          "Camera and window ranking are numerical heuristics, requiring visual review."
+        ]
+      }
+    },
+    {
+      "id": "05_12",
+      "sourceFile": "05_12.bvh",
+      "outputFile": "05_12-manikin.json",
+      "sourceUrl": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/005/05_12.bvh",
+      "sourceSha256": "7844dba87ed9f7b09d868af7fb1d6cfed15adbe006ab1a57062c5cc21d883ca7",
+      "sourceBytes": 1035705,
+      "outputSha256": "0f0aa858b402e157183e321937db04434c6c0b1a4c89aa76933f6a41193fc4ba",
+      "outputBytes": 246076,
+      "outputKeyOrder": [
+        "schemaVersion",
+        "id",
+        "description",
+        "source",
+        "sampling",
+        "coordinateSystem",
+        "joints",
+        "frames",
+        "rootTrack",
+        "loopFrames",
+        "loopRootTrack",
+        "loopCorrection",
+        "cameraRecommendation",
+        "metrics",
+        "limitations"
+      ],
+      "metadataTemplate": {
+        "schemaVersion": 1,
+        "id": "cmu-05_12",
+        "description": "dance - arms held high, pointe tendue a terre, upper body rotation",
+        "source": {
+          "id": "05_12",
+          "description": "dance - arms held high, pointe tendue a terre, upper body rotation",
+          "bytes": 1035705,
+          "sha256": "7844dba87ed9f7b09d868af7fb1d6cfed15adbe006ab1a57062c5cc21d883ca7",
+          "gitBlob": "5e767f44814ebc4db9d3297298b75c2a933e8d5c",
+          "sourceCommit": "09a07f54f3bbb58797325f009282d0b2048a2871",
+          "source": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/005/05_12.bvh",
+          "primaryCatalogue": "https://mocap.cs.cmu.edu/search.php?subjectnumber=5",
+          "frames": 1355,
+          "frameTime": 0.0083333,
+          "fps": 120.00048000192001,
+          "durationSeconds": 11.2916215,
+          "channelCount": 96,
+          "rotationOrder": "Zrotation Yrotation Xrotation",
+          "joints": [
+            "Hips",
+            "LHipJoint",
+            "LeftUpLeg",
+            "LeftLeg",
+            "LeftFoot",
+            "LeftToeBase",
+            "RHipJoint",
+            "RightUpLeg",
+            "RightLeg",
+            "RightFoot",
+            "RightToeBase",
+            "LowerBack",
+            "Spine",
+            "Spine1",
+            "Neck",
+            "Neck1",
+            "Head",
+            "LeftShoulder",
+            "LeftArm",
+            "LeftForeArm",
+            "LeftHand",
+            "LeftFingerBase",
+            "LeftHandIndex1",
+            "LThumb",
+            "RightShoulder",
+            "RightArm",
+            "RightForeArm",
+            "RightHand",
+            "RightFingerBase",
+            "RightHandIndex1",
+            "RThumb"
+          ],
+          "validated": true
+        },
+        "sampling": {
+          "fps": 30,
+          "frameCount": 121,
+          "durationSeconds": 4.0,
+          "includesDuplicateEndpoint": true,
+          "cropStartSeconds": 7.133333333333334,
+          "cropEndSeconds": 11.133333333333333,
+          "firstSourceFrameIndex": 856.0034240136961,
+          "lastSourceFrameIndex": 1336.005344021376,
+          "interpolation": "local translation lerp and shortest-arc local quaternion SLERP before forward kinematics"
+        },
+        "coordinateSystem": {
+          "handedness": "right",
+          "upAxis": "Y",
+          "positionOrigin": "Hips per frame",
+          "unit": "reference body height",
+          "bodyHeightSourceUnits": 26.074043573549844,
+          "bodyHeightDefinition": "Head End Site Y minus lower LeftToeBase/RightToeBase Y in source setup frame 0",
+          "rootMotion": "separate rootTrack arrays are displacement relative to first crop/loop frame in body heights"
+        },
+        "joints": [
+          {
+            "name": "Hips",
+            "parent": -1,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftUpLeg",
+            "parent": 1,
+            "restOffset": [
+              0.0631084,
+              -0.0655361,
+              0.032433
+            ]
+          },
+          {
+            "name": "LeftLeg",
+            "parent": 2,
+            "restOffset": [
+              0.0862785,
+              -0.2370488,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFoot",
+            "parent": 3,
+            "restOffset": [
+              0.104232,
+              -0.2863756,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftToeBase",
+            "parent": 4,
+            "restOffset": [
+              0.007198,
+              -0.019776,
+              0.0861918
+            ]
+          },
+          {
+            "name": "RHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightUpLeg",
+            "parent": 6,
+            "restOffset": [
+              -0.060915,
+              -0.0655361,
+              0.032433
+            ]
+          },
+          {
+            "name": "RightLeg",
+            "parent": 7,
+            "restOffset": [
+              -0.086295,
+              -0.2370944,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFoot",
+            "parent": 8,
+            "restOffset": [
+              -0.1046362,
+              -0.2874863,
+              0.0
+            ]
+          },
+          {
+            "name": "RightToeBase",
+            "parent": 9,
+            "restOffset": [
+              -0.0082615,
+              -0.0226988,
+              0.0807865
+            ]
+          },
+          {
+            "name": "LowerBack",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Spine",
+            "parent": 11,
+            "restOffset": [
+              0.001205,
+              0.0807301,
+              -0.0042333
+            ]
+          },
+          {
+            "name": "Spine1",
+            "parent": 12,
+            "restOffset": [
+              -0.0007145,
+              0.0808839,
+              -0.0026678
+            ]
+          },
+          {
+            "name": "Neck",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Neck1",
+            "parent": 14,
+            "restOffset": [
+              -0.0008694,
+              0.0664408,
+              0.000173
+            ]
+          },
+          {
+            "name": "Head",
+            "parent": 15,
+            "restOffset": [
+              -0.0022275,
+              0.0593402,
+              -0.0236822
+            ]
+          },
+          {
+            "name": "LeftShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftArm",
+            "parent": 17,
+            "restOffset": [
+              0.1322764,
+              0.0192904,
+              0.0084068
+            ]
+          },
+          {
+            "name": "LeftForeArm",
+            "parent": 18,
+            "restOffset": [
+              0.2078377,
+              -0.0,
+              -0.0
+            ]
+          },
+          {
+            "name": "LeftHand",
+            "parent": 19,
+            "restOffset": [
+              0.0937227,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFingerBase",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftHandIndex1",
+            "parent": 21,
+            "restOffset": [
+              0.0279013,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LThumb",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightArm",
+            "parent": 24,
+            "restOffset": [
+              -0.1238837,
+              0.0214121,
+              0.0119088
+            ]
+          },
+          {
+            "name": "RightForeArm",
+            "parent": 25,
+            "restOffset": [
+              -0.2143803,
+              -3.8e-06,
+              5.4e-06
+            ]
+          },
+          {
+            "name": "RightHand",
+            "parent": 26,
+            "restOffset": [
+              -0.0951368,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFingerBase",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightHandIndex1",
+            "parent": 28,
+            "restOffset": [
+              -0.0312959,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RThumb",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "loopCorrection": {
+          "method": "local quaternion overlap crossfade, quintic smoothstep",
+          "sourceCropSeconds": 4.0,
+          "sourceOverlapSeconds": 0.4,
+          "outputSeconds": 4.0,
+          "sourceSpeed": 0.9,
+          "phaseZeroSourceOffsetSeconds": 0.4,
+          "activeBlendOutputSeconds": [
+            3.555555555555556,
+            4.0
+          ],
+          "preservesBoneLengths": true,
+          "solvesFootContacts": false,
+          "claimsOriginalCapture": false,
+          "description": "Derived review loop: tail of 4s crop crossfades with first .4s, natural 3.6s cycle slowed to 4s. Original frames retained separately."
+        },
+        "cameraRecommendation": {
+          "yawDegrees": 25,
+          "meanProjectedLimbRatio": 0.9183335672458581,
+          "p10ProjectedLimbRatio": 0.7396865853327106,
+          "meanProjectedShoulderRatio": 0.9727327608945007,
+          "score": 1.492348317936836
+        },
+        "metrics": {
+          "rawSeam": {
+            "poseRmsBodyHeights": 0.12768167718048515,
+            "poseMaxBodyHeights": 0.2768620343672297,
+            "velocityRmsBodyHeightsPerSecond": 0.6012283508058957,
+            "velocityMaxBodyHeightsPerSecond": 1.714551157863929,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.019374148524705044,
+            "velocityMaxBodyHeightsPerSecond": 0.03206299646120685,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedMicroDerivativeSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.012883511567263247,
+            "velocityMaxBodyHeightsPerSecond": 0.02089251909203103,
+            "derivativeEstimateSeconds": 0.0001
+          },
+          "maxNormalizedBoneLengthError": 3.7470070912254935e-16,
+          "selectedWindowHeuristic": {
+            "startSeconds": 7.133333333333334,
+            "endSeconds": 11.133333333333333,
+            "score": 0.7661031054086629,
+            "poseRms": 0.12768167718048515,
+            "velocityRms": 0.5739714624602363,
+            "activity": 0.2614951459733348,
+            "headingRangeDegrees": 35.78716660633695,
+            "rootDriftBodyHeights": 0.2940907200550433,
+            "passesMinimumActivity": true,
+            "minimumActivityBodyHeights": 0.16999879608443688
+          },
+          "otherWindows": [
+            {
+              "startSeconds": 4.4,
+              "endSeconds": 8.4,
+              "score": 0.35872173915404376,
+              "poseRms": 0.010220595064470676,
+              "velocityRms": 0.09262639721718398,
+              "activity": 0.026225774778365,
+              "headingRangeDegrees": 10.592589060487445,
+              "rootDriftBodyHeights": 0.007033476395441575
+            },
+            {
+              "startSeconds": 4.333333333333333,
+              "endSeconds": 8.333333333333332,
+              "score": 0.3600488180896814,
+              "poseRms": 0.011342833438241563,
+              "velocityRms": 0.06075357705326647,
+              "activity": 0.026224478923784694,
+              "headingRangeDegrees": 10.592589060487445,
+              "rootDriftBodyHeights": 0.004710686736101948
+            }
+          ]
+        },
+        "limitations": [
+          "Not native Spine motion or artistic approval.",
+          "First source frame is a synthetic setup pose, excluded from crop.",
+          "CMU fingers/thumbs were not captured; hand/toe tracks can be noisy.",
+          "Crossfade may cause contact drift; no contact solver or cloth/face tracks are supplied.",
+          "Quaternion interpolation is piecewise SLERP; source velocity kinks remain. A zero pose seam does not certify a zero velocity seam.",
+          "Camera and window ranking are numerical heuristics, requiring visual review."
+        ]
+      }
+    },
+    {
+      "id": "49_12",
+      "sourceFile": "49_12.bvh",
+      "outputFile": "49_12-manikin.json",
+      "sourceUrl": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/049/49_12.bvh",
+      "sourceSha256": "73c3e2da3feea5a94b436051086ea4ef91befeec5feb5398183b51034452a350",
+      "sourceBytes": 862038,
+      "outputSha256": "f1d7a49f1bc2ad5823935cb529aae3637b30f8efa9fc836496f6dda337ebd748",
+      "outputBytes": 243032,
+      "outputKeyOrder": [
+        "schemaVersion",
+        "id",
+        "description",
+        "source",
+        "sampling",
+        "coordinateSystem",
+        "joints",
+        "frames",
+        "rootTrack",
+        "loopFrames",
+        "loopRootTrack",
+        "loopCorrection",
+        "cameraRecommendation",
+        "metrics",
+        "limitations"
+      ],
+      "metadataTemplate": {
+        "schemaVersion": 1,
+        "id": "cmu-49_12",
+        "description": "dance - lean forward, bring back leg forward, arching arms",
+        "source": {
+          "id": "49_12",
+          "description": "dance - lean forward, bring back leg forward, arching arms",
+          "bytes": 862038,
+          "sha256": "73c3e2da3feea5a94b436051086ea4ef91befeec5feb5398183b51034452a350",
+          "gitBlob": "ece118e5e22d6d262c2b20d67adadd28f4946bef",
+          "sourceCommit": "09a07f54f3bbb58797325f009282d0b2048a2871",
+          "source": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/09a07f54f3bbb58797325f009282d0b2048a2871/data/049/49_12.bvh",
+          "primaryCatalogue": "https://mocap.cs.cmu.edu/search.php?subjectnumber=49",
+          "frames": 1132,
+          "frameTime": 0.0083333,
+          "fps": 120.00048000192001,
+          "durationSeconds": 9.4332956,
+          "channelCount": 96,
+          "validated": true
+        },
+        "sampling": {
+          "fps": 30,
+          "frameCount": 121,
+          "durationSeconds": 4.0,
+          "includesDuplicateEndpoint": true,
+          "cropStartSeconds": 2.8,
+          "cropEndSeconds": 6.8,
+          "firstSourceFrameIndex": 336.001344005376,
+          "lastSourceFrameIndex": 816.003264013056,
+          "interpolation": "local translation lerp and shortest-arc local quaternion SLERP before forward kinematics"
+        },
+        "coordinateSystem": {
+          "handedness": "right",
+          "upAxis": "Y",
+          "positionOrigin": "Hips per frame",
+          "unit": "reference body height",
+          "bodyHeightSourceUnits": 26.625366207614615,
+          "bodyHeightDefinition": "Head End Site Y minus lower LeftToeBase/RightToeBase Y in source setup frame 0",
+          "rootMotion": "separate rootTrack arrays are displacement relative to first crop/loop frame in body heights"
+        },
+        "joints": [
+          {
+            "name": "Hips",
+            "parent": -1,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftUpLeg",
+            "parent": 1,
+            "restOffset": [
+              0.0608694,
+              -0.0668224,
+              0.0266622
+            ]
+          },
+          {
+            "name": "LeftLeg",
+            "parent": 2,
+            "restOffset": [
+              0.0880859,
+              -0.2420139,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFoot",
+            "parent": 3,
+            "restOffset": [
+              0.1029935,
+              -0.2829726,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftToeBase",
+            "parent": 4,
+            "restOffset": [
+              0.0063969,
+              -0.017575,
+              0.0781533
+            ]
+          },
+          {
+            "name": "RHipJoint",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightUpLeg",
+            "parent": 6,
+            "restOffset": [
+              -0.0585198,
+              -0.0668224,
+              0.0266622
+            ]
+          },
+          {
+            "name": "RightLeg",
+            "parent": 7,
+            "restOffset": [
+              -0.0876018,
+              -0.240684,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFoot",
+            "parent": 8,
+            "restOffset": [
+              -0.1047114,
+              -0.2876929,
+              0.0
+            ]
+          },
+          {
+            "name": "RightToeBase",
+            "parent": 9,
+            "restOffset": [
+              -0.0085283,
+              -0.0234318,
+              0.0766408
+            ]
+          },
+          {
+            "name": "LowerBack",
+            "parent": 0,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Spine",
+            "parent": 11,
+            "restOffset": [
+              0.0008274,
+              0.0719483,
+              0.0026895
+            ]
+          },
+          {
+            "name": "Spine1",
+            "parent": 12,
+            "restOffset": [
+              0.0006535,
+              0.0715577,
+              0.0043703
+            ]
+          },
+          {
+            "name": "Neck",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Neck1",
+            "parent": 14,
+            "restOffset": [
+              -0.0040717,
+              0.068944,
+              0.0019031
+            ]
+          },
+          {
+            "name": "Head",
+            "parent": 15,
+            "restOffset": [
+              0.0024792,
+              0.0656367,
+              -0.0189688
+            ]
+          },
+          {
+            "name": "LeftShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftArm",
+            "parent": 17,
+            "restOffset": [
+              0.1078141,
+              0.0508801,
+              0.006051
+            ]
+          },
+          {
+            "name": "LeftForeArm",
+            "parent": 18,
+            "restOffset": [
+              0.2041632,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftHand",
+            "parent": 19,
+            "restOffset": [
+              0.1222368,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftFingerBase",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LeftHandIndex1",
+            "parent": 21,
+            "restOffset": [
+              0.018713,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "LThumb",
+            "parent": 20,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightShoulder",
+            "parent": 13,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightArm",
+            "parent": 24,
+            "restOffset": [
+              -0.1076579,
+              0.0463798,
+              0.0172606
+            ]
+          },
+          {
+            "name": "RightForeArm",
+            "parent": 25,
+            "restOffset": [
+              -0.2004968,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightHand",
+            "parent": 26,
+            "restOffset": [
+              -0.1213685,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightFingerBase",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RightHandIndex1",
+            "parent": 28,
+            "restOffset": [
+              -0.0174135,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "RThumb",
+            "parent": 27,
+            "restOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "loopCorrection": {
+          "method": "local quaternion overlap crossfade, quintic smoothstep",
+          "sourceCropSeconds": 4.0,
+          "sourceOverlapSeconds": 0.4,
+          "outputSeconds": 4.0,
+          "sourceSpeed": 0.9,
+          "phaseZeroSourceOffsetSeconds": 0.4,
+          "activeBlendOutputSeconds": [
+            3.555555555555556,
+            4.0
+          ],
+          "preservesBoneLengths": true,
+          "solvesFootContacts": false,
+          "claimsOriginalCapture": false,
+          "description": "Derived review loop: tail of 4s crop crossfades with first .4s, natural 3.6s cycle slowed to 4s. Original frames retained separately."
+        },
+        "cameraRecommendation": {
+          "yawDegrees": 175,
+          "meanProjectedLimbRatio": 0.8676350853788656,
+          "p10ProjectedLimbRatio": 0.6154326528355392,
+          "meanProjectedShoulderRatio": 0.9994411102417851,
+          "score": 1.4212696926844643
+        },
+        "metrics": {
+          "rawSeam": {
+            "poseRmsBodyHeights": 0.13870693822529503,
+            "poseMaxBodyHeights": 0.35360103184464925,
+            "velocityRmsBodyHeightsPerSecond": 0.2239213990488683,
+            "velocityMaxBodyHeightsPerSecond": 0.6194033263735308,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.049483524609407054,
+            "velocityMaxBodyHeightsPerSecond": 0.08299700367716513,
+            "derivativeEstimateSeconds": 0.008333333333333333
+          },
+          "correctedMicroDerivativeSeam": {
+            "poseRmsBodyHeights": 0.0,
+            "poseMaxBodyHeights": 0.0,
+            "velocityRmsBodyHeightsPerSecond": 0.04209322816065516,
+            "velocityMaxBodyHeightsPerSecond": 0.07034610489820424,
+            "derivativeEstimateSeconds": 0.0001
+          },
+          "maxNormalizedBoneLengthError": 2.6686684052326437e-16,
+          "selectedWindowHeuristic": {
+            "startSeconds": 2.8,
+            "endSeconds": 6.8,
+            "score": 0.7307870497778932,
+            "poseRms": 0.13870693822529503,
+            "velocityRms": 0.21415485655658767,
+            "activity": 0.17657568923474512,
+            "headingRangeDegrees": 6.538251053765733,
+            "rootDriftBodyHeights": 0.05776887932313805,
+            "passesMinimumActivity": true,
+            "minimumActivityBodyHeights": 0.17545615074463394
+          },
+          "otherWindows": [
+            {
+              "startSeconds": 5.266666666666667,
+              "endSeconds": 9.266666666666666,
+              "score": 0.4036172170880312,
+              "poseRms": 0.036602958905730065,
+              "velocityRms": 0.061600128390785935,
+              "activity": 0.047474017404912555,
+              "headingRangeDegrees": 4.207393083086273,
+              "rootDriftBodyHeights": 0.015532383860683932
+            },
+            {
+              "startSeconds": 5.1,
+              "endSeconds": 9.1,
+              "score": 0.40472939120570406,
+              "poseRms": 0.043285653521385754,
+              "velocityRms": 0.06139916342894081,
+              "activity": 0.05557287883956151,
+              "headingRangeDegrees": 3.8887991828008985,
+              "rootDriftBodyHeights": 0.016123696727741853
+            }
+          ]
+        },
+        "limitations": [
+          "Not native Spine motion or artistic approval.",
+          "First source frame is a synthetic setup pose, excluded from crop.",
+          "CMU fingers/thumbs were not captured; hand/toe tracks can be noisy.",
+          "Crossfade may cause contact drift; no contact solver or cloth/face tracks are supplied.",
+          "Quaternion interpolation is piecewise SLERP; source velocity kinks remain. A zero pose seam does not certify a zero velocity seam.",
+          "Camera and window ranking are numerical heuristics, requiring visual review."
+        ]
+      }
+    }
+  ]
+}

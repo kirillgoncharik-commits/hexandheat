@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 5,
+  "version": 6,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -978,6 +978,166 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Pending human art and rights review; original adult character, no platform approval claim",
         "prompt_file": "assets/prompts/M04_EXPRESSIVE_PROMPT.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-05_02_MANIKIN",
+      "status": "exploration",
+      "sha256": "08b7c6eb181893ea829015771d26a036edac113311b8c99f1f14187d0b998c33",
+      "bytes": 246674,
+      "uri": "apps/web/assets/witch/reference-cycle/05_02-manikin.json",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "CMU Graphics Lab / Bruce Hahn BVH conversion; deterministic FK and loop preparation",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://mocap.cs.cmu.edu/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "docs/m04/MOTION_SOURCES_RU.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-05_12_MANIKIN",
+      "status": "exploration",
+      "sha256": "0f0aa858b402e157183e321937db04434c6c0b1a4c89aa76933f6a41193fc4ba",
+      "bytes": 246076,
+      "uri": "apps/web/assets/witch/reference-cycle/05_12-manikin.json",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "CMU Graphics Lab / Bruce Hahn BVH conversion; deterministic FK and loop preparation",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://mocap.cs.cmu.edu/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "docs/m04/MOTION_SOURCES_RU.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-49_12_MANIKIN",
+      "status": "exploration",
+      "sha256": "f1d7a49f1bc2ad5823935cb529aae3637b30f8efa9fc836496f6dda337ebd748",
+      "bytes": 243032,
+      "uri": "apps/web/assets/witch/reference-cycle/49_12-manikin.json",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "CMU Graphics Lab / Bruce Hahn BVH conversion; deterministic FK and loop preparation",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://mocap.cs.cmu.edu/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "docs/m04/MOTION_SOURCES_RU.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-ARM_LEFT",
+      "status": "edited",
+      "sha256": "11ed3d525d9aae10d4921a212b28722ac3935097a75ae44f78308437e2a1e9f8",
+      "bytes": 99901,
+      "uri": "apps/web/assets/witch/reference-cycle/arm-left.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-ARM_RIGHT",
+      "status": "edited",
+      "sha256": "5ff4ce69c9a237a0507bb4dcd4effa162f4e93501c16675d8b216e6ec626d925",
+      "bytes": 89574,
+      "uri": "apps/web/assets/witch/reference-cycle/arm-right.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-GARMENT",
+      "status": "edited",
+      "sha256": "e133c259aeb5f525b49aa1a64cd5595362e39fe71e5a49accdf6fd34cb8457a0",
+      "bytes": 1046799,
+      "uri": "apps/web/assets/witch/reference-cycle/garment.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-HEAD_HAIR",
+      "status": "edited",
+      "sha256": "dad3d1d0ee83a5b9aa59e60d256e8b1a851e4ef48d19adb461158cd2d6c3780a",
+      "bytes": 301470,
+      "uri": "apps/web/assets/witch/reference-cycle/head-hair.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-LAYERS",
+      "status": "edited",
+      "sha256": "c67745ebcfee3866445e15c85b521323791248e474051fd46e15cfa1e1abecc9",
+      "bytes": 13495,
+      "uri": "apps/web/assets/witch/reference-cycle/layers.json",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-LEG_LEFT",
+      "status": "edited",
+      "sha256": "f0716002fdf8aeaf934a4434e6dc31bdddeb9459869cdc8dcb3b61e099d7b96d",
+      "bytes": 103207,
+      "uri": "apps/web/assets/witch/reference-cycle/leg-left.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-LEG_RIGHT",
+      "status": "edited",
+      "sha256": "4c1a4f734a2852d90c29589dec1361b35854d592421cf4a78cb6d1061821d5f7",
+      "bytes": 101382,
+      "uri": "apps/web/assets/witch/reference-cycle/leg-right.png",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered polygon extraction",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
+        "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
       }
     }
   ]
