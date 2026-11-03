@@ -2,7 +2,19 @@
 
 Baseline: PR #27, `1c2170e6229e871fb48cc48ed986699545412fb8`. User accepted the plan to repair source preparation and adapt real dance motion; user confirmed no Spine license is available. Work is an isolated review candidate on `agent/animation/20-reference-cycle`, with no automatic merge or game-renderer replacement.
 
-## Delivered
+## V7 shoulder repair — supersedes v6 source assembly
+
+User rejected the v6 shoulder/dress overlap. Two new registered Imagegen masters now supply a connected shoulders/arms/corset/skirt painting and a clean head/hair source without attached clothing. V6 textures and renderer remain intact for a synchronized before/after comparison. The review page defaults to this comparison and a shoulder close-up.
+
+The new body uses alpha-traced adaptive triangles, with edge/interior sampling to preserve the narrow underarm gaps. Shoulder caps follow the chest and blend into arm controls; the separator follows the source gap, keeping sleeve edges off the waist and skirt edges off the arms. Two elbow support controls preserve sleeve volume. A disjoint hand/front partition shares the body vertices/weights, avoiding independent shoulder patches. Four textures, five draw partitions, 24 bones, 32617 exported vertex entries (body arrays shared between two partitions), 22125 triangles. No source rescaling.
+
+Verification: `tools/verify_milestone.py` passed 3 repository/asset +14 math/replay +56 JavaScript =73 tests. Six reference tests cover registered bind reconstruction, raw/loop retention, all three motions in both modes across all121 keys, continuous shoulder/draw partition boundaries, arm/skirt separation, a narrow alpha-slit regression, and independently traversed exported bone/skin transforms. Tests validate data and geometry, not artistic quality.
+
+Desktop browser inspection: A loop at2.40s, B raw at3.20s, C loop at1.60s, synchronized with v6. The v6 shoulder caps and dangling costume fragments are absent in the repaired assembly; underarm cloth spikes found during iteration were removed by contour-aware topology and corrected edge weights. Source assembly also rendered on dark/off-white/gray. Final public comparison: `/reference?v=7`. Native editor validation, human art acceptance, strong-foreshortening hand fixes and the remaining state cycles stay open.
+
+Rebuild source crops/contours with `tools/prepare_continuous_art.mjs` using the preserved masters; export the import candidate with `tools/export_reference_cycle.mjs <external-output-directory>`. Masters/prompts/checksums and corrected source package are documented in `assets/prompts/M04_SHOULDER_REPAIR.md`.
+
+## V6 delivery history — rejected shoulder assembly
 
 - Three original whole/setup, garment-overlap and hidden-leg Imagegen paintings; exact prompts and master hashes recorded. Heavy masters retained outside the Git checkout, and included in the local source package.
 - Six registered working PNGs, 1024×1536 source geometry, no per-part aspect scaling. One connected garment, complete sleeves crossing the elbow, collar overlap and covered leg reconstruction. Static assembly checked on dark/off-white/gray.

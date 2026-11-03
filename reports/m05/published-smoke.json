@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+  "sourceCommit": "8b6fee898d716dbee8de4503d14960ba73384203",
+  "configHash": "ef29d030a553ca6a24678bdbb1123f29d932f6ba1256f11b4389847c7644b6d3",
+  "fixturePackSha256": "bcf2f105bedc9b5e5d044806eb2073170bf7227fe154cda9776382f948c05cdc",
+  "productionReady": false,
+  "normal": {
+    "balance": "US$99.992",
+    "bet": "US$0.01",
+    "cells": 30,
+    "multiplier": "×1",
+    "ready": true,
+    "scroll": [
+      360,
+      640
+    ],
+    "viewport": [
+      360,
+      640
+    ],
+    "win": "US$0.002"
+  },
+  "fastReplay": {
+    "balance": "US$99.992",
+    "candidate": "fallback",
+    "degradedSymbols": 0,
+    "multiplier": "×1",
+    "ready": true,
+    "status": "Replay complete. Balance remained US$99.992.",
+    "win": "US$0.002"
+  },
+  "console": []
+}

@@ -49,3 +49,5 @@ dialog::backdrop{opacity:var(--modal-alpha,1);backdrop-filter:blur(4px)}
 
 /* Preserve character presence while keeping the padded wide-gesture canvas. */
 [data-renderer="expressive-rig-30fps"] .witch-rig{transform:scale(1.07);transform-origin:50% 100%}
+
+.board-slot{display:contents}

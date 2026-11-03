@@ -27,6 +27,12 @@ class FakeContext {
   async close() { this.state = "closed"; }
 }
 
+test('pagehide followed by visibility callbacks cannot suspend or reopen a destroyed audio context',async()=>{
+  const context=new FakeContext(),errors=[];let creates=0;
+  const music=new AdaptiveMusicController({contextFactory:()=>{creates++;return context;},onError:e=>errors.push(e)});
+  await music.unlock();music.destroy();music.suspend();assert.equal(await music.restore(),false);assert.equal(await music.unlock(),false);music.destroy();assert.equal(creates,1);assert.deepEqual(errors,[]);
+});
+
 test("temporary stems start together and transition on beat-aligned gain ramps", async () => {
   const context = new FakeContext();
   const music = new AdaptiveMusicController({ contextFactory: () => context, bpm: 120 });

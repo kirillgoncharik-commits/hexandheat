@@ -1,0 +1,106 @@
+
+== repository policy ==
+Repository validation passed: 16 controlled documents
+
+== controlled-document tests ==
+test_asset_manifest_matches_registered_raster_outputs (test_blueprint.BlueprintTests) ... ok
+test_functional_prototype_is_primitive (test_blueprint.BlueprintTests) ... ok
+test_validator_passes (test_blueprint.BlueprintTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.070s
+
+OK
+
+== math and replay tests ==
+test_candidate_inputs_are_explicitly_unbalanced (test_engine.FunctionalMathTests) ... ok
+test_highest_threshold_only_and_simultaneous_groups (test_engine.FunctionalMathTests) ... ok
+test_independent_verifier_rejects_tampered_payout (test_engine.FunctionalMathTests) ... ok
+test_max_win_caps_immediately_but_records_potion_state (test_engine.FunctionalMathTests) ... ok
+test_non_paying_board_does_not_activate_potion (test_engine.FunctionalMathTests) ... ok
+test_outcome_is_deeply_immutable_and_replay_is_exact (test_engine.FunctionalMathTests) ... ok
+test_potion_applies_to_next_cascade_then_round_resets (test_engine.FunctionalMathTests) ... ok
+test_seed_is_deterministic_and_distinct (test_engine.FunctionalMathTests) ... ok
+test_seeded_report_is_reproducible_and_disclaimed (test_engine.FunctionalMathTests) ... ok
+test_weighted_book_is_immutable_canonical_and_ticket_selected (test_engine.FunctionalMathTests) ... ok
+test_event_mapping_is_deterministic_and_contiguous (test_stake_adapter.StakeAdapterTests) ... ok
+test_publish_sources_match_lookup_and_reject_tampering (test_stake_adapter.StakeAdapterTests) ... ok
+test_sdk_pins_and_compatibility_patch_are_explicit (test_stake_adapter.StakeAdapterTests) ... ok
+test_six_required_outcomes_are_math_verified_and_stake_compatible (test_stake_adapter.StakeAdapterTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.195s
+
+OK
+
+== browser-domain tests ==
+
+> hexandheat-web-prototype@0.1.0 test
+> node --test
+
+✔ temporary stems start together and transition on beat-aligned gain ramps (4.26075ms)
+✔ mute and resume are presentation-only and survive suspended contexts (0.54325ms)
+✔ audio initialization failure degrades without throwing into game flow (0.122833ms)
+✔ scene-owned audio beats, deduplicated impacts and hidden/muted cues never replay a backlog (0.632875ms)
+✔ ambient loop closes without a brightness or position jump (7.482708ms)
+✔ scenery uses paused scene time and resumes without accumulating wall time (0.874917ms)
+✔ plate cover geometry stays aligned on desktop and mobile (0.258666ms)
+✔ mock RGS returns a frozen precomputed outcome with a valid 6x5 board (2.865541ms)
+✔ normal, fast, and replay playback converge on the same domain snapshot (1.374625ms)
+✔ witch cues are presentation-only and deterministic for spin, fast play, and replay (0.410583ms)
+✔ replay performs no new play or settlement and cannot change the wallet (0.248792ms)
+✔ mock RGS cycles fixtures deterministically and scales authoritative amounts (0.195042ms)
+✔ outcome validation fails closed on malformed board and multiplier continuity (0.252542ms)
+✔ mock RGS validates a fixture before mutating wallet or sequence state (0.208958ms)
+✔ domain reducer keeps event input immutable and formats six-decimal API units (44.4465ms)
+✔ expressive rig retains five closed cycles and continuous shared seam velocity (11.4935ms)
+✔ all 600 poses preserve intended foot contact while authored steps actually lift the free foot (4.554958ms)
+✔ choreography adds asymmetric wrists, larger hip travel and independent skirt parts (20.751375ms)
+✔ close during opening followed by a new open cannot let stale callbacks steal focus (3.068375ms)
+✔ repeated opens are idempotent, reduced motion completes without changing focus ownership (0.801625ms)
+✔ four raster frames cover exactly one 4000ms cycle for every state (0.983584ms)
+✔ each state has four existing distinct raster source files (0.440917ms)
+✔ all 30 screen records have valid outgoing routes and content contracts (1.425875ms)
+✔ bind skin reconstructs registered source pixels without per-layer aspect scaling (37.937666ms)
+✔ real source crops retain raw seams and preserve prepared loop endpoints separately (4.301625ms)
+✔ all retargeted poses are finite, close the seam and encode source forearm foreshortening (771.052792ms)
+✔ shoulder seam belongs to the chest and the shared body triangles never duplicate coverage (24.767375ms)
+✔ alpha mesh keeps a narrow transparent slit open even when coarse corners are opaque (1.532667ms)
+✔ weighted Spine data reproduces preview positions with noScale bone inheritance (102.485ms)
+✔ all subscribers share one timestamp in deterministic priority order; 30-minute phase has no drift (88.716458ms)
+✔ visibility pauses active-time tween, including overlapping pause reasons (0.404042ms)
+✔ aborted renderer tween releases listeners without committing a late end state (0.619833ms)
+✔ barrier waits for every required participant, times out in active time and rejects missing participants (1.220667ms)
+✔ replacing a round cancels pending barriers without stale fallback or listeners (0.2595ms)
+✔ all 25 ordered body transitions respect a full 4000ms seam, including lower tiers in a new round (0.57325ms)
+✔ new loss removes an unstarted old BIG and lets an already started BIG finish exactly once (0.077583ms)
+✔ late foreground callbacks defer a body change to a future seam instead of entering mid-pose (0.067875ms)
+✔ sparse frames can stitch at the shared neutral pose and jitter never shortens the protected full cycle (0.077959ms)
+✔ tumble retains valid survivor identities and flags noncanonical sample boards without inventing a target (0.209166ms)
+✔ anchored sub-timelines catch up in the same sparse frame without adding a new artificial delay (0.093041ms)
+✔ a win read hold starts after the final value is actually visible in a sparse frame (15.703291ms)
+✔ real CueDirector event playback preserves sample outcomes in Normal, Fast, Replay and Reduced Motion (10.19025ms)
+✔ all generated Stake books map to deterministic presentation outcomes (33.22925ms)
+✔ Stake RGS client uses authenticate/play/end-round/replay without replay wager (1.773792ms)
+✔ Stake event mapping rejects payout disagreement instead of correcting it (1.028459ms)
+✔ native video controller preloads and crossfades without a black-frame stop (0.946791ms)
+✔ decode failure keeps the existing layer active and reports a fallback (0.82975ms)
+✔ all reactions wait for the complete 4000ms cycle before changing state (1.897416ms)
+✔ rapid win escalation selects the strongest next loop, without false BONUS (0.143625ms)
+✔ long cascade chain keeps the active dance looping until round completion (0.0985ms)
+✔ BIG win waits for the current SMALL loop seam instead of interrupting it (0.107834ms)
+✔ BONUS is reserved for bonusStart; errors clear unplayed requests (0.1335ms)
+✔ fast/replay event bursts cannot alter frozen payouts or skip the chosen dance tier (0.099042ms)
+✔ 30 FPS produces 120 actual skeletal samples per four-second clip, with five distinct choreographies (10.154958ms)
+✔ all state seams are identical and the foot anchor stays fixed throughout every animation (4.185041ms)
+✔ Spine import candidate has valid bone/slot references, 121 closed keys and a four-second endpoint (14.096292ms)
+ℹ tests 56
+ℹ suites 0
+ℹ pass 56
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1239.298458
+
+Milestone verification passed.

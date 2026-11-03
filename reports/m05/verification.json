@@ -1,0 +1,68 @@
+{
+  "version": "m05-verification-1",
+  "configHash": "ef29d030a553ca6a24678bdbb1123f29d932f6ba1256f11b4389847c7644b6d3",
+  "valid": {
+    "F01": {
+      "status": "PASS",
+      "sha256": "fd0245277cc435d056fcf133056ce3d49c38414d1e9b8d0dde3fae8412594093",
+      "payoutUnits": 0
+    },
+    "F02": {
+      "status": "PASS",
+      "sha256": "a2815314906f668d8f6be8a9dfdbecba23fca036955fbc1cdc714b2ee46fd8ad",
+      "payoutUnits": 20
+    },
+    "F03": {
+      "status": "PASS",
+      "sha256": "4128c49556660b0686190ab69f8cc0f3c3b8f605af5d856e538c9aaccb6830a4",
+      "payoutUnits": 50
+    },
+    "F04": {
+      "status": "PASS",
+      "sha256": "9008fef0651fac1a8f3ed3939568e6753bebbb36a65c57c4a49df7407265892f",
+      "payoutUnits": 70
+    },
+    "F05": {
+      "status": "PASS",
+      "sha256": "e8868cd0b0d8a63b64c027ec32c1f938b0cacc61a33039ae41c7f78381377fe5",
+      "payoutUnits": 0
+    },
+    "F06": {
+      "status": "PASS",
+      "sha256": "b9ec6576883384f6ce0ce56ae99c51bf2d4242bb650e0be4bbc6c7c3be700be3",
+      "payoutUnits": 60
+    },
+    "F07": {
+      "status": "PASS",
+      "sha256": "eaa1a8f1e56ff8a587fe859af0993bd64138b000734d392e15aecf8efe4f6d64",
+      "payoutUnits": 120
+    },
+    "F08": {
+      "status": "PASS",
+      "sha256": "35b80ab3c642e2d3efa32b63e4960c668423fa5db655a5c1dea6475982948c12",
+      "payoutUnits": 0
+    },
+    "F09": {
+      "status": "PASS",
+      "sha256": "09940e805d4cc2daedff772711bbbd7c9268ed0d22490a3e61498be0da22142a",
+      "payoutUnits": 20
+    },
+    "F10": {
+      "status": "PASS",
+      "sha256": "06e4e7edb044ec3bac1d1c2a904f99dd3c3d1ccc71ee9c66ee8d3ba72e0cb72f",
+      "payoutUnits": 150
+    },
+    "F11": {
+      "status": "PASS",
+      "sha256": "c44e644c325537498125274713cbe6908a0efc937533743424826b458b2dbcfb",
+      "payoutUnits": 500000
+    },
+    "F12": {
+      "status": "PASS",
+      "sha256": "16ad656e2dbd825dd39956711e0210f360468a2e4ca93e840218abdf0649fbc7",
+      "payoutUnits": 20
+    }
+  },
+  "invalid": "covered by strict JS mutation tests",
+  "generator": "unchanged resolve_round + independent verify_outcome"
+}

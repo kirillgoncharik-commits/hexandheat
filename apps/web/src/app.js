@@ -8,21 +8,15 @@ import { moodForTier } from "./motion-tokens.js";
 import { RigWitchPlayer } from "./rig-witch-player.js";
 import { RigWitchPlayer as PreviousRigPlayer } from "./rig-witch-player-v2.js";
 import { RasterWitchPlayer } from "./raster-witch.js";
+import { CandidateWitchPlayer } from './candidate-witch-player.js';
+import { ReviewRgs } from './review-rgs.js';
+import { BASE_RULES } from './m05-rules.js';
+import { SYMBOL_REGISTRY } from './symbol-registry.js';
 import { OUTCOME_TEMPLATES } from "./fixtures.js";
 import { createInitialState, describeEvent, formatMoney, playOutcome } from "./domain.js";
 import { AdaptiveMusicController, MUSIC_STATES } from "./adaptive-music.js";
-import { MockRgs } from "./mock-rgs.js";
 import { StakeRgs, launchConfigFromUrl } from "./stake-rgs.js";
 import { WitchDanceController } from "./witch-dance.js";
-
-const SYMBOL_LABELS = Object.freeze({
-  amber: "Moon goblet",
-  violet: "Raven mask",
-  teal: "Jade vial",
-  rose: "Thorn rose",
-  blue: "Crystal eye",
-  potion: "Potion"
-});
 
 const elements = {
   balance: document.querySelector("#balance-value"),
@@ -48,6 +42,13 @@ const elements = {
   mediaStatus: document.querySelector("#media-status"),
   videoLayers: [...document.querySelectorAll(".witch-video-layer")]
 };
+elements.cascadeWin=document.querySelector('#cascade-value');
+elements.cascadeLabel=document.querySelector('#cascade-label');
+elements.potionNote=document.querySelector('#potion-note');
+elements.winLabel=document.querySelector('#win-label');
+const query=new URL(location.href).searchParams;
+document.body.dataset.layout=query.get('layout')==='B'?'B':'A';
+if(query.get('layout')==='before')document.querySelector('#m05-style').disabled=true;
 
 const locale = navigator.language || "en-US";
 const transport = new SceneTransport();
@@ -55,6 +56,7 @@ const director = new CueDirector(transport);
 const boardPlayer = new BoardPlayer(elements.board, transport);
 let presentation = null;
 let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+if(query.get('motion')==='reduced')reducedMotion=true;
 const ambient = new AmbientScene(document.querySelector('#ambient-scene'), transport, { reducedMotion });
 const modalManager = new ModalManager(transport, { reducedMotion: () => reducedMotion, onChange: open => { musicController.duck(open); elements.spin.disabled = busy || open; elements.replay.disabled = busy || open || !lastOutcome; } });
 transport.start();
@@ -64,6 +66,8 @@ let lastOutcome = null;
 let busy = false;
 let witchController = null;
 let rasterPlayer = null;
+let recordPending=false;
+let recordUnsubscribe=null;
 const musicController = new AdaptiveMusicController({
   transport,
   onError(error) {
@@ -96,11 +100,14 @@ async function prepareWitchStage() {
   rasterPlayer = legacy
     ? new RasterWitchPlayer(document.querySelector('.raster-container'), { reducedMotion, transport, atlasUrl:'./assets/witch/witch-atlas-m04.webp' })
     : new (new URL(location.href).searchParams.get('witch') === 'rig-v2' ? PreviousRigPlayer : RigWitchPlayer)(document.querySelector('.raster-container'), { reducedMotion, transport });
+  rasterPlayer=new CandidateWitchPlayer(document.querySelector('.raster-container'),{transport,reducedMotion,fallback:rasterPlayer});
+  rasterPlayer.setEnabled(query.get('witch')==='candidate');
   witchController = new WitchDanceController({
     transport,
     onMissedSeam: data => director.record('witch.missedSeam', data),
     onLoop({ from, to }) {
       rasterPlayer.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to;
+      if(recordPending&&to==='SMALL_WIN'){recordPending=false;captureCandidate();}
       director.record('witch.seam', { from, to });
       if (to === 'IDLE' && !witchController.roundOpen && !witchController.pending) musicController.setState(MUSIC_STATES.BASE);
     }
@@ -109,6 +116,16 @@ async function prepareWitchStage() {
   presentation = new ScenePresentation({ transport, director, board: boardPlayer, witch: witchController, music: musicController, elements, currency: () => session.currency, locale });
   presentation.setReducedMotion(reducedMotion);
   await boardPlayer.prepare();
+}
+
+async function captureCandidate() {
+  try {
+    elements.status.textContent='Exporting candidate · 120 samples / 4 seconds · no wager';
+    const {exportCandidate}=await import('./candidate-recording.js');
+    const blob=await exportCandidate(rasterPlayer),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='m05-small-win-candidate.webm';a.click();
+    const video=document.querySelector('#recording-preview');video.src=a.href;video.hidden=false;
+    elements.status.textContent='4-second candidate export ready · 120 timestamped samples · art review pending';
+  }catch(error){elements.status.textContent=error.message;}
 }
 
 function gamePhase(event, source) {
@@ -125,8 +142,10 @@ function gamePhase(event, source) {
 
 function setBusy(value, source = "spin") {
   busy = value;
+  document.body.dataset.gameState=value?'busy':'ready';
   elements.spin.disabled = value || Boolean(modalManager.active);
   elements.betSelect.disabled = value;
+  document.querySelector('#fixture-select').disabled=value;
   elements.replay.disabled = value || Boolean(modalManager.active) || !lastOutcome;
   if (value) {
     elements.debugGameState.textContent = source === "replay" ? "REPLAY · REQUEST" : "SPIN · REQUEST";
@@ -139,18 +158,21 @@ function setBusy(value, source = "spin") {
 }
 
 async function presentOutcome(outcome, source) {
-  elements.fixtureLabel.textContent = "6 × 5 · SCATTER PAYS";
+  elements.fixtureLabel.textContent = outcome.contractVersion?`${outcome.fixtureId} · 6 × 5`:'LEGACY ART · 6 × 5';
+  document.querySelector('#round-details').replaceChildren();
   elements.debugLastEvent.textContent = "Waiting for event 1";
   presentation.begin();
   elements.status.textContent = source === "replay"
     ? `Replay ${outcome.id}: no wallet or play request will be made.`
     : "The potion is brewing…";
   const speed = elements.fast.checked ? "fast" : "normal";
+  let injectedJank=false;
 
   const finalState = await playOutcome(outcome, {
     speed,
     delay: async () => {}, // CueDirector owns actual completion and readable holds.
     async onEvent(event, state) {
+      if(query.get('fault')==='jank'&&!injectedJank&&event.type==='win'){injectedJank=true;const started=performance.now();while(performance.now()-started<200){}document.body.dataset.injectedJankMs='200';}
       const description = describeEvent(event, outcome.currency, locale);
       await presentation.event(event, state, outcome, speed);
       elements.debugGameState.textContent = gamePhase(event, source);
@@ -159,16 +181,17 @@ async function presentOutcome(outcome, source) {
     }
   });
   if (outcome.payoutMicro >= outcome.betMicro * 10) {
+    document.querySelector('#result-heading').textContent=outcome.events.at(-1).capped?'Sample cap reached · 5000×':'Big win';
     document.querySelector('#result-amount').textContent = formatMoney(outcome.payoutMicro, outcome.currency, locale);
     await modalManager.open(document.querySelector('#result-dialog'), elements.spin);
   }
   return finalState;
 }
 
-async function spin() {
+async function spin(options = {}) {
   if (busy || modalManager.active || transport.paused) return;
   setBusy(true, "spin");
-  await musicController.unlock();
+  if(!options.silent)await musicController.unlock();
   let outcome = null;
   let failed = false;
   try {
@@ -222,11 +245,12 @@ async function replay() {
 }
 
 async function initialize() {
-  const useMock = new URL(window.location.href).searchParams.get("rgs") === "mock" || document.body.dataset.reviewMode === "mock";
-  rgs = useMock ? new MockRgs() : new StakeRgs({ config: launchConfigFromUrl() });
+  elements.fast.checked=query.get('speed')==='fast';
+  const useMock = query.get('rgs') !== 'local';
+  rgs = useMock ? new ReviewRgs({fixture:query.get('fixture')??'F06',...(query.has('long')?{balanceMicro:9_000_000_000_000_000}:{})}) : new StakeRgs({ config: launchConfigFromUrl() });
   if (typeof rgs.initialize === "function") await rgs.initialize();
   session = rgs.getSession();
-  elements.rgsSource.textContent = useMock ? "Mock fallback" : "Stake-compatible local RGS";
+  elements.rgsSource.textContent = useMock ? 'Verified M05 samples · no real funds' : 'Stake-compatible local RGS';
   await prepareWitchStage();
   for (const betMicro of session.betLevels) {
     const option = document.createElement("option");
@@ -240,6 +264,35 @@ async function initialize() {
   renderState(createInitialState(rgs.getFixturePreview() ?? OUTCOME_TEMPLATES[0].events[0].board));
   musicController.mute(elements.mute.checked);
   elements.status.textContent = "Visual prototype · sample outcomes · no real funds";
+  document.body.dataset.gameState='ready';
+  document.querySelector('#rules-version').textContent=`${BASE_RULES.label} · ${BASE_RULES.version} · ${BASE_RULES.configHash.slice(0,12)}`;
+  const paytable=document.querySelector('#paytable-body');
+  for(const info of Object.values(SYMBOL_REGISTRY)) {
+    const tr=document.createElement('tr'),name=document.createElement('th');
+    const img=document.createElement('img');img.src=info.asset;img.alt='';name.append(img,document.createTextNode(`${info.id} ${info.name}`));tr.append(name);
+    if(info.increment){const td=document.createElement('td');td.colSpan=5;td.textContent=`Each bottle: +${info.increment} after a paying cascade. No count threshold.`;tr.append(td);}
+    else for(const threshold of [8,10,12,15,20]) {const td=document.createElement('td');const award=BASE_RULES.paytable.find(p=>p.symbol===info.id&&p.threshold===threshold);td.textContent=award?`${award.amount/100}×`:'—';tr.append(td);}
+    paytable.append(tr);
+  }
+  const fixtureSelect=document.querySelector('#fixture-select');
+  if(useMock) {
+    for(const c of rgs.catalog.cases){const option=document.createElement('option');option.value=c.id;option.textContent=`${c.id} · ${c.purpose}`;fixtureSelect.append(option);}
+    fixtureSelect.value=rgs.fixture;
+    const choose=()=>{rgs.fixture=fixtureSelect.value;const c=rgs.catalog.cases.find(c=>c.id===rgs.fixture);elements.betSelect.value=String(c.betMicro);updateWallet();if(!lastOutcome){renderState(createInitialState(rgs.getFixturePreview()));elements.fixtureLabel.textContent=`${c.id} · 6 × 5`;}else elements.fixtureLabel.textContent=`${lastOutcome.fixtureId} · NEXT ${c.id}`;};
+    fixtureSelect.addEventListener('change',choose);choose();
+  } else fixtureSelect.disabled=true;
+  const candidateToggle=document.querySelector('#candidate-toggle');candidateToggle.checked=query.get('witch')==='candidate';
+  candidateToggle.addEventListener('change',()=>rasterPlayer.setEnabled(candidateToggle.checked));
+  document.querySelector('#record-candidate').addEventListener('click',async()=>{
+    if(busy)return;await rasterPlayer.preload;if(!rasterPlayer.ready||rasterPlayer.failed){elements.status.textContent='Candidate source unavailable; fallback preserved.';return;}
+    await modalManager.close();candidateToggle.checked=true;rasterPlayer.setEnabled(true);recordPending=true;witchController.beginRound();witchController.request('SMALL_WIN');witchController.endRound();elements.status.textContent='Candidate recording starts on the next four-second seam · no wager';
+    recordUnsubscribe?.();recordUnsubscribe=transport.subscribe(({phaseMs})=>{if(!recordPending){recordUnsubscribe?.();recordUnsubscribe=null;return;}if(phaseMs<50&&witchController.active==='SMALL_WIN'){recordPending=false;captureCandidate();}},5);
+  });
+  if(query.has('compare')) {
+    await rasterPlayer.preload;await rasterPlayer.fallback.preload;
+    transport.pause('comparison');transport.time=Number(query.get('phase')??1200);rasterPlayer.switchTo('SMALL_WIN');rasterPlayer.fallback.tick();rasterPlayer.tick();
+    elements.status.textContent='Comparison pose · SMALL_WIN · 1.20 / 4.00s · no wager';elements.spin.disabled=true;
+  }
   elements.spin.addEventListener("click", spin);
   elements.replay.addEventListener("click", replay);
   elements.betSelect.addEventListener("change", updateWallet);
@@ -285,7 +338,7 @@ async function initialize() {
       const template = OUTCOME_TEMPLATES[index]; if (!template) return false;
       const outcome = { ...template, id: 'motion-fixture-' + template.fixtureId, betMicro: template.unitBetMicro, payoutMicro: template.events.at(-1).amount, currency: session.currency };
       setBusy(true, 'replay'); await musicController.unlock(); let failed = false;
-      try { await presentOutcome(outcome, 'replay'); elements.status.textContent = 'Motion fixture complete. No wallet requests.'; }
+      try { await presentOutcome(outcome, 'replay'); elements.status.textContent = 'Legacy art showcase · not math verification · no wallet requests.'; }
       catch (error) { failed = true; elements.status.textContent = 'Motion fixture interrupted: ' + error.message; }
       finally { witchController.endRound({ failed }); setBusy(false, 'replay'); }
       return !failed;
@@ -297,6 +350,26 @@ async function initialize() {
       if (state === 'BONUS') modalManager.open(document.querySelector('#bonus-motion-dialog'));
     }
   };
+  // Explicit bounded F14 diagnostic: no real funds, no recurring autoplay.
+  if(query.get('sequence')==='F14'&&rgs instanceof ReviewRgs){
+    rgs.fixture='F06';
+    const run=async()=>{
+      await spin({silent:true});
+      while(witchController.active!=='SMALL_WIN')await transport.wait(30);
+      const retained=elements.win.textContent;
+      document.querySelector('#fixture-select').value='F01';
+      document.querySelector('#fixture-select').dispatchEvent(new Event('change'));
+      const retainedAfterSelection=elements.win.textContent;
+      await spin({silent:true});
+      const result={speed:elements.fast.checked?'fast':'normal',retainedBeforeNewRound:retained,retainedAfterSelection,
+        win:elements.win.textContent,multiplier:elements.multiplier.textContent,cascade:elements.cascadeLabel.textContent,
+        bodyState:witchController.active,spinDisabled:elements.spin.disabled,sourceOutcome:lastOutcome.fixtureId};
+      document.body.dataset.f14Result=JSON.stringify(result);transport.pause('review-capture');
+      elements.status.textContent='F14 inspection paused · old body / new loss · press P to resume';
+    };
+    document.addEventListener('keydown',e=>{if(e.code==='KeyP')transport.resume('review-capture');});
+    run().catch(error=>{elements.status.textContent='F14 stopped: '+error.message;});
+  }
 }
 
 initialize().catch((error) => {

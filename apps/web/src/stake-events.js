@@ -1,127 +1,49 @@
-import { deepFreeze } from "./fixtures.js";
-import { MICRO_UNITS, validateOutcome } from "./domain.js";
-
-const SYMBOL_MAP = Object.freeze({
-  L1: "amber",
-  L2: "violet",
-  L3: "teal",
-  L4: "rose",
-  L5: "blue",
-  H1: "amber",
-  H2: "violet",
-  H3: "teal",
-  H4: "rose",
-  P1: "potion",
-  P2: "potion",
-  P3: "potion"
-});
-
-function assert(condition, message) {
-  if (!condition) throw new Error(`Invalid Stake round: ${message}`);
+import { deepFreeze } from './fixtures.js';
+import { validateOutcome } from './domain.js';
+import { SYMBOL_REGISTRY } from './symbol-registry.js';
+import { BASE_RULES } from './m05-rules.js';
+const SYMBOL_MAP = Object.freeze(Object.fromEntries(Object.keys(SYMBOL_REGISTRY).map(id=>[id,id])));
+function assert(ok,message) { if(!ok)throw Error('Invalid Stake round: '+message); }
+export function positionIndex(p) {
+  assert(p&&Number.isInteger(p.reel)&&p.reel>=0&&p.reel<6&&Number.isInteger(p.row)&&p.row>=0&&p.row<5,'invalid symbol position');return p.reel*5+p.row;
 }
-
-function positionIndex(position) {
-  assert(position && Number.isInteger(position.reel) && Number.isInteger(position.row), "invalid symbol position");
-  const value = position.reel * 5 + position.row;
-  assert(value >= 0 && value < 30, "position outside 6x5 board");
-  return value;
-}
-
 function mapBoard(board) {
-  assert(Array.isArray(board) && board.length === 6, "reveal board must have six reels");
-  return board.map((reel) => {
-    assert(Array.isArray(reel) && reel.length === 5, "reveal board reels must have five rows");
-    return reel.map((symbol) => {
-      const mapped = SYMBOL_MAP[symbol];
-      assert(mapped, `unknown math symbol ${String(symbol)}`);
-      return mapped;
-    });
-  });
+  assert(Array.isArray(board)&&board.length===6,'board must have six reels');
+  return board.map(reel=>{assert(Array.isArray(reel)&&reel.length===5,'board reels must have five rows');return reel.map(id=>{assert(SYMBOL_REGISTRY[id],`unknown math symbol ${id}`);return id;});});
 }
-
-function unitsToMicro(amount, betMicro) {
-  assert(Number.isSafeInteger(amount) && amount >= 0, "event amount must be an integer payout multiplier");
-  const result = (amount * betMicro) / 100;
-  assert(Number.isSafeInteger(result), "payout cannot be represented in six-decimal currency units");
-  return result;
+export function unitsToMicro(amount,betMicro) {
+  assert(Number.isSafeInteger(amount)&&amount>=0,'amount must be integer units');const value=BigInt(amount)*BigInt(betMicro);
+  assert(value%100n===0n,'payout cannot be represented in six-decimal currency units');const result=Number(value/100n);assert(Number.isSafeInteger(result),'payout exceeds exact currency range');return result;
 }
-
-/** Map the pinned official scatter BookEvent vocabulary to the proven UI domain. */
-export function mapStakeRoundToOutcome(round, options) {
-  const betMicro = options.betMicro;
-  const currency = options.currency ?? "USD";
-  assert(Number.isSafeInteger(betMicro) && betMicro > 0, "positive bet amount is required");
-  assert(round && Array.isArray(round.state) && round.state.length > 0, "round.state is required");
-
-  const events = [];
-  let cascade = 0;
-  let multiplier = 1;
-  let finalUnits = null;
-
-  const emit = (type, payload = {}) => events.push({ index: events.length, type, ...payload });
-
-  for (const bookEvent of round.state) {
-    switch (bookEvent.type) {
-      case "reveal":
-        emit("boardReveal", { board: mapBoard(bookEvent.board) });
-        cascade = 0;
-        multiplier = 1;
-        break;
-      case "winInfo": {
-        const positions = [...new Set(
-          bookEvent.wins.flatMap((win) => win.positions.map(positionIndex))
-        )].sort((a, b) => a - b);
-        emit("win", {
-          cascade,
-          amount: unitsToMicro(bookEvent.totalWin, betMicro),
-          positions
-        });
-        break;
+export function mapStakeRoundToOutcome(round,options) {
+  const {betMicro,currency='USD'}=options;
+  assert(Number.isSafeInteger(betMicro)&&betMicro>0,'positive bet amount required');assert(round&&Array.isArray(round.state)&&round.state.length,'round.state required');
+  const events=[];let cascade=0,multiplier=1,finalUnits=null,total=0,win=null;
+  const emit=(type,payload={})=>events.push({index:events.length,type,...payload});
+  round.state.forEach((e,index)=>{
+    assert(e.index===index,'book event index mismatch');
+    switch(e.type) {
+      case 'reveal':emit('boardReveal',{board:mapBoard(e.board)});break;
+      case 'winInfo': {
+        assert(Array.isArray(e.wins)&&e.wins.length,'win groups required');
+        const groups=e.wins.map(g=>({symbol:g.symbol,positions:g.positions.map(positionIndex),count:g.count??g.positions.length,threshold:g.threshold,
+          baseUnits:g.meta.winWithoutMult,computedUnits:g.computedWin??g.win,paidUnits:g.win,
+          baseAmount:unitsToMicro(g.meta.winWithoutMult,betMicro),computedAmount:unitsToMicro(g.computedWin??g.win,betMicro),amount:unitsToMicro(g.win,betMicro)}));
+        win={cascade,amount:unitsToMicro(e.totalWin,betMicro),amountUnits:e.totalWin,baseAmount:groups.reduce((s,g)=>s+g.baseAmount,0),
+          computedAmount:groups.reduce((s,g)=>s+g.computedAmount,0),multiplier:e.multiplier??multiplier,groups,
+          positions:groups.flatMap(g=>g.positions).sort((a,b)=>a-b),removedPositions:(e.removedPositions??e.wins.flatMap(g=>g.positions)).map(positionIndex).sort((a,b)=>a-b),capped:e.capped??false};
+        emit('win',win);total+=e.totalWin;break;
       }
-      case "updateGlobalMult": {
-        const next = bookEvent.globalMult;
-        const previous = bookEvent.previousGlobalMult ?? multiplier;
-        assert(previous === multiplier && Number.isSafeInteger(next) && next > previous, "multiplier continuity mismatch");
-        emit("multiplier", { from: previous, increment: next - previous, to: next });
-        multiplier = next;
-        break;
-      }
-      case "tumbleBoard":
-        cascade += 1;
-        assert(bookEvent.cascade === cascade, "cascade index mismatch");
-        emit("cascade", { cascade, board: mapBoard(bookEvent.newSymbols) });
-        break;
-      case "finalWin":
-        finalUnits = bookEvent.amount;
-        emit("finalWin", { amount: unitsToMicro(finalUnits, betMicro) });
-        break;
-      case "updateTumbleWin":
-      case "setTotalWin":
-      case "setWin":
-        // Official presentation bookkeeping; the local reducer needs only the
-        // immutable win facts above. These events never recalculate payout.
-        break;
-      default:
-        throw new Error(`Unsupported Stake BookEvent: ${String(bookEvent.type)}`);
+      case 'updateGlobalMult':assert(win,'Potion without win');emit('multiplier',{from:e.previousGlobalMult,increment:e.increment,to:e.globalMult,potions:(e.potions??[]).map(p=>({...p,position:positionIndex(p.position)}))});multiplier=e.globalMult;break;
+      case 'tumbleBoard':assert(win,'cascade without win');cascade++;assert(e.cascade===cascade,'cascade index mismatch');emit('cascade',{cascade,board:mapBoard(e.newSymbols),removedPositions:e.explodingSymbols.map(positionIndex).sort((a,b)=>a-b)});break;
+      case 'updateTumbleWin':assert(e.amount===total,'running award mismatch');break;
+      case 'setTotalWin':case 'setWin':assert(e.amount===total,'total award mismatch');break;
+      case 'finalWin':finalUnits=e.amount;emit('finalWin',{amount:unitsToMicro(e.amount,betMicro),finalMultiplier:e.finalMultiplier??multiplier,capped:total===BASE_RULES.maxWin,capMicro:unitsToMicro(BASE_RULES.maxWin,betMicro)});break;
+      default:throw Error(`Unsupported Stake BookEvent: ${e.type}`);
     }
-  }
-
-  assert(events[0]?.type === "boardReveal", "first mapped event must reveal the board");
-  assert(events.at(-1)?.type === "finalWin", "last mapped event must be finalWin");
-  const payoutMultiplierUnits = Number.isSafeInteger(round.payoutMultiplierUnits)
-    ? round.payoutMultiplierUnits
-    : Math.round(Number(round.payoutMultiplier) * 100);
-  assert(finalUnits === payoutMultiplierUnits, "book finalWin must match RGS payoutMultiplier");
-
-  return validateOutcome(deepFreeze({
-    id: String(round.roundID),
-    fixtureId: `stake-book-${String(round.bookID ?? round.roundID)}`,
-    label: "Official SDK-format outcome",
-    currency,
-    betMicro,
-    payoutMicro: unitsToMicro(finalUnits, betMicro),
-    events
-  }));
+  });
+  const payout=Number.isSafeInteger(round.payoutMultiplierUnits)?round.payoutMultiplierUnits:Math.round(Number(round.payoutMultiplier)*100);
+  assert(finalUnits===payout,'book finalWin must match RGS payoutMultiplier');
+  return validateOutcome(deepFreeze({id:String(round.roundID),fixtureId:options.fixtureId??`stake-book-${round.bookID??round.roundID}`,contractVersion:'m05-base-1',configHash:BASE_RULES.configHash,label:options.label??'Verified base sample',currency,betMicro,payoutMicro:unitsToMicro(finalUnits,betMicro),events}));
 }
-
-export { SYMBOL_MAP, unitsToMicro };
+export {SYMBOL_MAP};
