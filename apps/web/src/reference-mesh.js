@@ -5,6 +5,7 @@ const mix=(a,b,t)=>a+(b-a)*t;
 const angle=(a,b)=>Math.atan2(b[1]-a[1],b[0]-a[0]);
 const distance=(a,b)=>Math.hypot(b[0]-a[0],b[1]-a[1]);
 const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+const smooth=x=>{const t=clamp(x,0,1);return t*t*(3-2*t);};
 function rotate(p,a){return [p[0]*Math.cos(a)-p[1]*Math.sin(a),p[0]*Math.sin(a)+p[1]*Math.cos(a)];}
 export function makeSkeleton(landmarks){
  const l=landmarks, at=(k,f)=>l[k]??f;
@@ -15,6 +16,7 @@ export function makeSkeleton(landmarks){
   ...['left','right'].flatMap(s=>[
    ['upper-'+s,'chest',at('shoulder-'+s,s==='left'?[394,380]:[634,380])],
    ['fore-'+s,'upper-'+s,at('elbow-'+s,s==='left'?[304,568]:[729,568])],
+   ['joint-'+s,'upper-'+s,at('elbow-'+s,s==='left'?[304,568]:[729,568])],
    ['hand-'+s,'fore-'+s,at('wrist-'+s,s==='left'?[202,704]:[808,704])],
    ['thigh-'+s,'hips',at('hip-'+s,s==='left'?[464,785]:[564,785])],
    ['shin-'+s,'thigh-'+s,at('knee-'+s,s==='left'?[424,1140]:[589,1140])],
@@ -54,7 +56,7 @@ export function retargetPose(clip,seconds,bones,{clean=true,strength=1,contact=t
   const restA=angle(rest[upper].position,rest[fore].position),restB=angle(rest[fore].position,rest[hand].position);
   const da=wrap(a-restA)*strength, db=wrap(b-restB)*strength;
   const ratio=(a,b)=>{const aa=f.points[map[a]],bb=f.points[map[b]],v=aa.map((x,k)=>bb[k]-x);return clamp(distance(p(a),p(b))/Math.hypot(...v),.58,1);};
-  under(upper,'chest',da);result[upper].scaleX=ratio(s+'Arm',s+'ForeArm');under(fore,upper,db);result[fore].scaleX=ratio(s+'ForeArm',s+'Hand');under(hand,fore,db);
+  under(upper,'chest',da);result[upper].scaleX=ratio(s+'Arm',s+'ForeArm');under(fore,upper,db);result[fore].scaleX=ratio(s+'ForeArm',s+'Hand');under('joint-'+side,upper,da+wrap(db-da)*.5);under(hand,fore,db);
   const thigh='thigh-'+side,shin='shin-'+side,foot='foot-'+side;
   under(thigh,'hips',0);
   const base=rest[foot].position,src=p(s+'Foot'),start=p0(s+'Foot');
@@ -81,12 +83,31 @@ export function retargetPose(clip,seconds,bones,{clean=true,strength=1,contact=t
 function segmentPoint(p,a,b){const dx=b[0]-a[0],dy=b[1]-a[1],t=clamp(((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy),0,1);return {t,d:distance(p,[a[0]+t*dx,a[1]+t*dy])};}
 export function vertexWeights(layer,p,bones){
  const rest=Object.fromEntries(bones.map(b=>[b.name,b.position])), blend=(a,b,t)=>t<=0?[[a,1]]:t>=1?[[b,1]]:[[a,1-t],[b,t]];
+ if(layer==='body-continuous'){
+  const body=vertexWeights('garment',p,bones);if(p[1]<320||p[1]>870)return body;
+  const side=p[0]<512?'left':'right',shoulder=rest['upper-'+side],elbow=rest['fore-'+side];
+  const v=elbow.map((x,k)=>x-shoulder[k]),length=Math.hypot(...v),along=((p[0]-shoulder[0])*v[0]+(p[1]-shoulder[1])*v[1])/length;
+  // The arm/body separator follows the transparent gap in the setup painting.
+  // Below the wrist it must turn outwards, away from the widening skirt.
+  const knots=side==='left'?[[320,450],[382,430],[430,420],[450,404],[470,406],[490,410],[520,417],[550,422],[571,417],[595,403],[610,394],[625,385],[640,376],[655,368],[670,359],[685,348],[705,325],[735,290],[770,260],[810,235],[855,230]]:[[320,580],[382,600],[430,610],[450,620],[470,630],[490,635],[520,614],[550,614],[571,618],[595,629],[610,638],[625,646],[640,654],[655,662],[670,670],[685,680],[705,701],[735,749],[770,770],[810,800],[855,800]];
+  let segment=0;while(segment<knots.length-2&&p[1]>knots[segment+1][0])segment++;
+  const [ay,ax]=knots[segment],[by,bx]=knots[segment+1],inner=mix(ax,bx,clamp((p[1]-ay)/(by-ay),0,1));
+  const outside=side==='left'?inner-p[0]:p[0]-inner;
+  // One continuous weight field: the proximal shoulder stays on the chest,
+  // then bends progressively into the arm. No independently rotating cap.
+  const amount=smooth((along-12)/95)*smooth(outside/6)*(1-smooth((p[1]-840)/30));
+  const arm=vertexWeights('arm-'+side,p,bones),weights=new Map();
+  for(const [name,w]of body)weights.set(name,w*(1-amount));for(const [name,w]of arm)weights.set(name,(weights.get(name)??0)+w*amount);
+  return [...weights].filter(([,w])=>w>1e-8);
+ }
  if(layer.startsWith('arm-')){
   const side=layer.slice(4),a='upper-'+side,b='fore-'+side,c='hand-'+side;
   const first=segmentPoint(p,rest[a],rest[b]),last=segmentPoint(p,rest[b],rest[c]);
-  if(first.d<last.d)return blend(a,b,clamp((first.t-.72)/.55,0,1));
-  if(last.t<.23)return blend(a,b,.5+last.t/.46);
-  return blend(b,c,clamp((last.t-.8)/.25,0,1));
+  let weights;if(first.d<last.d)weights=blend(a,b,clamp((first.t-.72)/.55,0,1));
+  else if(last.t<.23)weights=blend(a,b,.5+last.t/.46);
+  else weights=blend(b,c,clamp((last.t-.8)/.25,0,1));
+  const support=.85*smooth(1-distance(p,rest[b])/160);
+  return support>0?[...weights.map(([name,w])=>[name,w*(1-support)]),['joint-'+side,support]]:weights;
  }
  if(layer.startsWith('leg-')){
   const side=layer.slice(4),a='thigh-'+side,b='shin-'+side,c='foot-'+side;
@@ -95,7 +116,7 @@ export function vertexWeights(layer,p,bones){
  }
  if(layer==='head-hair'){
   const inHair=p[1]>325&&(p[0]<430||p[0]>610);
-  if(p[0]>=395&&p[0]<=644&&p[1]>290)return blend('head','chest',clamp((p[1]-290)/85,0,1));
+  if(p[0]>=465&&p[0]<=565&&p[1]>276)return blend('head','chest',smooth((p[1]-276)/18));
   return inHair?blend('head',p[0]<512?'hair-left':'hair-right',clamp((p[1]-325)/180,0,.7)):[['head',1]];
  }
  if(p[1]<rest.waist[1])return blend('chest','waist',clamp((p[1]-440)/140,0,1));
@@ -104,16 +125,27 @@ export function vertexWeights(layer,p,bones){
  return blend('hips',skirt,clamp((p[1]-800)/500,0,1));
 }
 export function buildMeshes(art,bones){
- const order=['leg-left','leg-right','garment','head-hair','arm-left','arm-right'];
- return [...art.layers].sort((a,b)=>order.indexOf(a.name)-order.indexOf(b.name)).map(layer=>{
+ const order=['leg-left','leg-right','garment','body-continuous','head-hair','arm-left','arm-right'];
+ const result=[...art.layers].sort((a,b)=>order.indexOf(a.name)-order.indexOf(b.name)).map(layer=>{
   const [x,y,w,h]=layer.sourceBounds,nx=layer.name==='garment'?14:6,ny=layer.name==='garment'?22:14;
+  if(layer.geometry){const vertices=layer.geometry.vertices;return {...layer,vertices,uvs:vertices.map(p=>[(p[0]-x)/w,(p[1]-y)/h]),weights:vertices.map(p=>vertexWeights(layer.name,p,bones)),indices:[...layer.geometry.triangles]};}
   const vertices=[],uvs=[],weights=[],indices=[];
-  for(let row=0;row<=ny;row++)for(let col=0;col<=nx;col++){
-   const p=[x+w*col/nx,y+h*row/ny];vertices.push(p);uvs.push([col/nx,row/ny]);weights.push(vertexWeights(layer.name,p,bones));
+  const xs=layer.name==='body-continuous'?[x,100,160,202,245,300,330,350,370,385,397,410,425,440,465,490,516,540,565,590,610,625,632,645,660,680,710,750,800,850,900,x+w]:Array.from({length:nx+1},(_,i)=>x+w*i/nx);
+  const ys=layer.name==='body-continuous'?[y,316,336,350,368,382,398,414,430,450,470,490,520,550,571,595,625,655,690,705,735,770,810,850,950,1050,1150,1250,1350,y+h]:Array.from({length:ny+1},(_,i)=>y+h*i/ny);
+  for(let row=0;row<ys.length;row++)for(let col=0;col<xs.length;col++){
+   const p=[xs[col],ys[row]];vertices.push(p);uvs.push([(p[0]-x)/w,(p[1]-y)/h]);weights.push(vertexWeights(layer.name,p,bones));
   }
-  for(let row=0;row<ny;row++)for(let col=0;col<nx;col++){const a=row*(nx+1)+col,b=a+1,c=a+nx+1,d=c+1;indices.push(a,c,b,b,c,d);}
+  for(let row=0;row<ys.length-1;row++)for(let col=0;col<xs.length-1;col++){const a=row*xs.length+col,b=a+1,c=a+xs.length,d=c+1;indices.push(a,c,b,b,c,d);}
   return {...layer,vertices,uvs,weights,indices};
  });
+ const body=result.find(m=>m.name==='body-continuous');
+ if(body){
+  const front=[],back=[];for(let i=0;i<body.indices.length;i+=3){const ids=body.indices.slice(i,i+3),p=[0,0];for(const id of ids){p[0]+=body.vertices[id][0]/3;p[1]+=body.vertices[id][1]/3;}
+   const hand=p[1]>625&&p[1]<850&&(p[0]<295||p[0]>740);(hand?front:back).push(...ids);
+  }
+  body.indices=back;result.push({...body,name:'body-front',texture:'body-continuous',indices:front});
+ }
+ return result;
 }
 export function deformVertices(mesh,pose,bones){
  const rest=Object.fromEntries(bones.map(b=>[b.name,b.position])),byName=Object.fromEntries(bones.map(b=>[b.name,b]));
@@ -123,9 +155,10 @@ export function deformVertices(mesh,pose,bones){
 }
 export function drawMeshCanvas(ctx,meshes,images,pose,bones,{wire=false}={}){
  for(const mesh of meshes){
-  const points=deformVertices(mesh,pose,bones),image=images[mesh.name];
+  const points=deformVertices(mesh,pose,bones),image=images[mesh.texture??mesh.name];
   for(let i=0;i<mesh.indices.length;i+=3){
    const ids=mesh.indices.slice(i,i+3),s=ids.map(id=>[mesh.uvs[id][0]*image.width,mesh.uvs[id][1]*image.height]),d=ids.map(id=>points[id]);
+   const area=(d[1][0]-d[0][0])*(d[2][1]-d[0][1])-(d[1][1]-d[0][1])*(d[2][0]-d[0][0]);if(Math.abs(area)<1e-6)continue;
    const denom=s[0][0]*(s[1][1]-s[2][1])+s[1][0]*(s[2][1]-s[0][1])+s[2][0]*(s[0][1]-s[1][1]);if(Math.abs(denom)<1e-8)continue;
    const coeff=k=>[(d[0][k]*(s[1][1]-s[2][1])+d[1][k]*(s[2][1]-s[0][1])+d[2][k]*(s[0][1]-s[1][1]))/denom,(d[0][k]*(s[2][0]-s[1][0])+d[1][k]*(s[0][0]-s[2][0])+d[2][k]*(s[1][0]-s[0][0]))/denom,(d[0][k]*(s[1][0]*s[2][1]-s[2][0]*s[1][1])+d[1][k]*(s[2][0]*s[0][1]-s[0][0]*s[2][1])+d[2][k]*(s[0][0]*s[1][1]-s[1][0]*s[0][1]))/denom];
    const xx=coeff(0),yy=coeff(1);ctx.save();ctx.beginPath();d.forEach((p,j)=>j?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.clip();ctx.transform(xx[0],yy[0],xx[1],yy[1],xx[2],yy[2]);ctx.drawImage(image,0,0);ctx.restore();
@@ -140,7 +173,7 @@ export class MeshStage{
   const gl=this.gl,shader=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
   const program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec2 p;attribute vec2 uv;varying vec2 v;uniform vec2 size;void main(){v=uv;gl_Position=vec4(p.x/size.x*2.0-1.0,1.0-p.y/size.y*2.0,0,1);}'));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,'precision mediump float;varying vec2 v;uniform sampler2D tex;void main(){gl_FragColor=texture2D(tex,v);}'));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
   this.program=program;this.position=gl.getAttribLocation(program,'p');this.uv=gl.getAttribLocation(program,'uv');gl.uniform2f(gl.getUniformLocation(program,'size'),canvas.width,canvas.height);gl.enable(gl.BLEND);gl.blendFuncSeparate(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA,gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.clearColor(0,0,0,0);
-  this.resources=meshes.map(m=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,images[m.name]);const buffer=gl.createBuffer();return {texture,buffer};});
+  this.resources=meshes.map(m=>{const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,images[m.texture??m.name]);const buffer=gl.createBuffer();return {texture,buffer};});
  }
  draw(pose){
   if(!this.gl){this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);this.ctx.save();this.ctx.translate(CAMERA.padX,CAMERA.padY);drawMeshCanvas(this.ctx,this.meshes,this.images,pose,this.bones);this.ctx.restore();return;}
@@ -152,7 +185,7 @@ export class MeshStage{
 export function makeSpineImport(art,bones,meshes,poses){
  const index=Object.fromEntries(bones.map((b,i)=>[b.name,i]));
  const converted=bones.map(b=>{const parent=bones.find(p=>p.name===b.parent),p=parent?.position??[512,1516],v=rotate(b.position.map((x,k)=>x-p[k]),-(parent?.axis??0));return {name:b.name,...(b.parent?{parent:b.parent,transform:'noScale'}:{}),x:v[0],y:-v[1],rotation:-(b.axis-(parent?.axis??0))*180/Math.PI};});
- const attachments=Object.fromEntries(meshes.map(m=>[m.name,{[m.name]:{type:'mesh',path:m.name,uvs:m.uvs.flat(),triangles:m.indices,vertices:m.vertices.flatMap((p,i)=>[m.weights[i].length,...m.weights[i].flatMap(([name,w])=>{const b=bones[index[name]],v=rotate(p.map((x,k)=>x-b.position[k]),-b.axis);return [index[name],v[0],-v[1],w];})]),width:m.sourceBounds[2],height:m.sourceBounds[3]}}]));
+ const attachments=Object.fromEntries(meshes.map(m=>[m.name,{[m.name]:{type:'mesh',path:m.texture??m.name,uvs:m.uvs.flat(),triangles:m.indices,vertices:m.vertices.flatMap((p,i)=>[m.weights[i].length,...m.weights[i].flatMap(([name,w])=>{const b=bones[index[name]],v=rotate(p.map((x,k)=>x-b.position[k]),-b.axis);return [index[name],v[0],-v[1],w];})]),width:m.sourceBounds[2],height:m.sourceBounds[3]}}]));
  const timeline={};for(const b of bones){const parent=bones.find(p=>p.name===b.parent);const translate=[],rotateKeys=[],scale=[];poses.forEach((pose,i)=>{const local=parent?rotateLocal(pose[b.name].position,pose[parent.name],parent.axis):[pose[b.name].position[0]-512,pose[b.name].position[1]-1516];const setup=converted[index[b.name]];translate.push({time:i/30,x:local[0]-setup.x,y:-local[1]-setup.y});rotateKeys.push({time:i/30,value:-(pose[b.name].rotation-(parent?pose[parent.name].rotation:0))*180/Math.PI});scale.push({time:i/30,x:pose[b.name].scaleX??1,y:1});});timeline[b.name]={translate,rotate:rotateKeys,scale};}
  return {skeleton:{spine:'4.2.0',width:1024,height:1536,fps:30,images:'./'},bones:converted,slots:meshes.map(m=>({name:m.name,bone:'root',attachment:m.name})),skins:[{name:'default',attachments}],animations:{REFERENCE_DANCE:{bones:timeline}}};
 }

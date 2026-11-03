@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 6,
+  "version": 7,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -1138,6 +1138,54 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Source terms recorded; human art/rights review pending; no production or native-editor approval",
         "prompt_file": "assets/prompts/M04_REFERENCE_ART.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-BODY_CONTINUOUS",
+      "status": "edited",
+      "sha256": "ea0d3297a63a46d4ac62af5cc8bed47166db3080f880f3e1dcf06a6f2ca5f5ba",
+      "bytes": 250100,
+      "uri": "apps/web/assets/witch/reference-cycle/body-continuous.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered crop, alpha contour geometry and uniform WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Human art and rights review pending; v7 shoulder repair candidate; no native-editor or production approval",
+        "prompt_file": "assets/prompts/M04_SHOULDER_REPAIR.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-HEAD_CLEAN",
+      "status": "edited",
+      "sha256": "1741c299a69add61e82064e7289a6777664daaa8dfc8dde8533c9c69f50ece60",
+      "bytes": 111000,
+      "uri": "apps/web/assets/witch/reference-cycle/head-clean.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered crop, alpha contour geometry and uniform WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Human art and rights review pending; v7 shoulder repair candidate; no native-editor or production approval",
+        "prompt_file": "assets/prompts/M04_SHOULDER_REPAIR.md"
+      }
+    },
+    {
+      "id": "M04-REFERENCE-LAYERS_V7",
+      "status": "edited",
+      "sha256": "d570eef7005f626ae0b837432f9badcdf0ae993d396550ccfb4d256db71105eb",
+      "bytes": 548507,
+      "uri": "apps/web/assets/witch/reference-cycle/layers-v7.json",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in Imagegen; registered crop, alpha contour geometry and uniform WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-02",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Human art and rights review pending; v7 shoulder repair candidate; no native-editor or production approval",
+        "prompt_file": "assets/prompts/M04_SHOULDER_REPAIR.md"
       }
     }
   ]

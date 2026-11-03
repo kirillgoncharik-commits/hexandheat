@@ -2,7 +2,7 @@
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.
 
-> Reference-cycle study, 2026-11-02: `/reference.html` compares three real CMU dance crops with a six-layer registered character and weighted mesh preview. One four-second import candidate is prepared; the game's existing renderer remains pending art review. Native Spine validation is unavailable because no editor/license is present. [Actual status and reproduction](docs/m04/REFERENCE_CYCLE_RU.md), [source provenance](docs/m04/MOTION_SOURCES_RU.md).
+> Reference-cycle study, 2026-11-02: `/reference.html` compares three real CMU dance crops with a repaired connected shoulder/body surface and weighted mesh preview (v7), with synchronized v6 comparison. One four-second import candidate is prepared; the game's existing renderer remains pending art review. Native Spine validation is unavailable because no editor/license is present. [Actual status and reproduction](docs/m04/REFERENCE_CYCLE_RU.md), [source provenance](docs/m04/MOTION_SOURCES_RU.md).
 
 > Expressive dance update, 2026-11-01: five authored asymmetric phrases,16 raster parts, independent wrists/legs/skirt panels and896×1152 export. `/dance.html` compares v2/v3 on the same phase and camera. [Dance direction](docs/m04/DANCE_DIRECTION_RU.md), [review and limitations](reports/M04_EXPRESSIVE_REVIEW.md). Earlier banners below describe preceding iterations.
 
