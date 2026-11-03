@@ -1,0 +1,2577 @@
+{
+  "version": "m05-browser-qa-1",
+  "cases": [
+    {
+      "id": "F01",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F01",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 500
+    },
+    {
+      "id": "F01",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F01",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F02",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F02",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 1350
+    },
+    {
+      "id": "F02",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F02",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F03",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F03",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 1350
+    },
+    {
+      "id": "F03",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F03",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "L1",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F04",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 700000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "H1",
+          "L1",
+          "H1",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F04",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 700000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "H1",
+          "L1",
+          "H1",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 1350
+    },
+    {
+      "id": "F04",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 700000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "H1",
+          "L1",
+          "H1",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F04",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 700000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "H1",
+          "L1",
+          "H1",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F05",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "L1",
+          "H1"
+        ],
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F05",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "L1",
+          "H1"
+        ],
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 500
+    },
+    {
+      "id": "F05",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "L1",
+          "H1"
+        ],
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F05",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "L1",
+          "H1"
+        ],
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F06",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 600000,
+      "multiplier": 2,
+      "board": [
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "H4",
+          "L3",
+          "H1",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "L4",
+          "H2",
+          "L4"
+        ],
+        [
+          "H2",
+          "L2",
+          "H4",
+          "L3",
+          "H3"
+        ],
+        [
+          "L2",
+          "L5",
+          "H4",
+          "L4",
+          "L5"
+        ],
+        [
+          "L2",
+          "H4",
+          "L4",
+          "L3",
+          "L4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4450
+    },
+    {
+      "id": "F06",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 600000,
+      "multiplier": 2,
+      "board": [
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "H4",
+          "L3",
+          "H1",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "L4",
+          "H2",
+          "L4"
+        ],
+        [
+          "H2",
+          "L2",
+          "H4",
+          "L3",
+          "H3"
+        ],
+        [
+          "L2",
+          "L5",
+          "H4",
+          "L4",
+          "L5"
+        ],
+        [
+          "L2",
+          "H4",
+          "L4",
+          "L3",
+          "L4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2350
+    },
+    {
+      "id": "F06",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 600000,
+      "multiplier": 2,
+      "board": [
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "H4",
+          "L3",
+          "H1",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "L4",
+          "H2",
+          "L4"
+        ],
+        [
+          "H2",
+          "L2",
+          "H4",
+          "L3",
+          "H3"
+        ],
+        [
+          "L2",
+          "L5",
+          "H4",
+          "L4",
+          "L5"
+        ],
+        [
+          "L2",
+          "H4",
+          "L4",
+          "L3",
+          "L4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4450
+    },
+    {
+      "id": "F06",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 600000,
+      "multiplier": 2,
+      "board": [
+        [
+          "H1",
+          "H1",
+          "H1",
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "H4",
+          "L3",
+          "H1",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "L4",
+          "H2",
+          "L4"
+        ],
+        [
+          "H2",
+          "L2",
+          "H4",
+          "L3",
+          "H3"
+        ],
+        [
+          "L2",
+          "L5",
+          "H4",
+          "L4",
+          "L5"
+        ],
+        [
+          "L2",
+          "H4",
+          "L4",
+          "L3",
+          "L4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4450
+    },
+    {
+      "id": "F07",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 1200000,
+      "multiplier": 7,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L5",
+          "H3",
+          "L1",
+          "H2",
+          "L4"
+        ],
+        [
+          "L3",
+          "L4",
+          "L3",
+          "H4",
+          "L4"
+        ],
+        [
+          "L2",
+          "L1",
+          "L2",
+          "L4",
+          "L4"
+        ],
+        [
+          "L4",
+          "L1",
+          "L3",
+          "L2",
+          "L4"
+        ],
+        [
+          "L5",
+          "L3",
+          "L1",
+          "L2",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4950
+    },
+    {
+      "id": "F07",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 1200000,
+      "multiplier": 7,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L5",
+          "H3",
+          "L1",
+          "H2",
+          "L4"
+        ],
+        [
+          "L3",
+          "L4",
+          "L3",
+          "H4",
+          "L4"
+        ],
+        [
+          "L2",
+          "L1",
+          "L2",
+          "L4",
+          "L4"
+        ],
+        [
+          "L4",
+          "L1",
+          "L3",
+          "L2",
+          "L4"
+        ],
+        [
+          "L5",
+          "L3",
+          "L1",
+          "L2",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2600
+    },
+    {
+      "id": "F07",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 1200000,
+      "multiplier": 7,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L5",
+          "H3",
+          "L1",
+          "H2",
+          "L4"
+        ],
+        [
+          "L3",
+          "L4",
+          "L3",
+          "H4",
+          "L4"
+        ],
+        [
+          "L2",
+          "L1",
+          "L2",
+          "L4",
+          "L4"
+        ],
+        [
+          "L4",
+          "L1",
+          "L3",
+          "L2",
+          "L4"
+        ],
+        [
+          "L5",
+          "L3",
+          "L1",
+          "L2",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4950
+    },
+    {
+      "id": "F07",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 1200000,
+      "multiplier": 7,
+      "board": [
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L5",
+          "H3",
+          "L1",
+          "H2",
+          "L4"
+        ],
+        [
+          "L3",
+          "L4",
+          "L3",
+          "H4",
+          "L4"
+        ],
+        [
+          "L2",
+          "L1",
+          "L2",
+          "L4",
+          "L4"
+        ],
+        [
+          "L4",
+          "L1",
+          "L3",
+          "L2",
+          "L4"
+        ],
+        [
+          "L5",
+          "L3",
+          "L1",
+          "L2",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4950
+    },
+    {
+      "id": "F08",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "P3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F08",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "P3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 500
+    },
+    {
+      "id": "F08",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "P3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F08",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 0,
+      "multiplier": 1,
+      "board": [
+        [
+          "P3",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L1"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ],
+        [
+          "H2",
+          "H3",
+          "H4",
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 950
+    },
+    {
+      "id": "F09",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 3,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L1",
+          "L2",
+          "L3",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2950
+    },
+    {
+      "id": "F09",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 3,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L1",
+          "L2",
+          "L3",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 1600
+    },
+    {
+      "id": "F09",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 3,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L1",
+          "L2",
+          "L3",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2950
+    },
+    {
+      "id": "F09",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 200000,
+      "multiplier": 3,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L1",
+          "L2",
+          "L3",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ],
+        [
+          "H3",
+          "H4",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        [
+          "L5",
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        [
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "H1"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2950
+    },
+    {
+      "id": "F10",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 1500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L2",
+          "L5",
+          "L3",
+          "H3",
+          "H1"
+        ],
+        [
+          "L4",
+          "L1",
+          "L5",
+          "H3",
+          "H3"
+        ],
+        [
+          "H1",
+          "L3",
+          "L5",
+          "H1",
+          "H1"
+        ],
+        [
+          "L1",
+          "L3",
+          "H2",
+          "L2",
+          "H4"
+        ],
+        [
+          "L5",
+          "L5",
+          "P2",
+          "L4",
+          "H2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L4",
+          "L3",
+          "H3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 8450
+    },
+    {
+      "id": "F10",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 1500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L2",
+          "L5",
+          "L3",
+          "H3",
+          "H1"
+        ],
+        [
+          "L4",
+          "L1",
+          "L5",
+          "H3",
+          "H3"
+        ],
+        [
+          "H1",
+          "L3",
+          "L5",
+          "H1",
+          "H1"
+        ],
+        [
+          "L1",
+          "L3",
+          "H2",
+          "L2",
+          "H4"
+        ],
+        [
+          "L5",
+          "L5",
+          "P2",
+          "L4",
+          "H2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L4",
+          "L3",
+          "H3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 4350
+    },
+    {
+      "id": "F10",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 1500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L2",
+          "L5",
+          "L3",
+          "H3",
+          "H1"
+        ],
+        [
+          "L4",
+          "L1",
+          "L5",
+          "H3",
+          "H3"
+        ],
+        [
+          "H1",
+          "L3",
+          "L5",
+          "H1",
+          "H1"
+        ],
+        [
+          "L1",
+          "L3",
+          "H2",
+          "L2",
+          "H4"
+        ],
+        [
+          "L5",
+          "L5",
+          "P2",
+          "L4",
+          "H2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L4",
+          "L3",
+          "H3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 8450
+    },
+    {
+      "id": "F10",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 1500000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L2",
+          "L5",
+          "L3",
+          "H3",
+          "H1"
+        ],
+        [
+          "L4",
+          "L1",
+          "L5",
+          "H3",
+          "H3"
+        ],
+        [
+          "H1",
+          "L3",
+          "L5",
+          "H1",
+          "H1"
+        ],
+        [
+          "L1",
+          "L3",
+          "H2",
+          "L2",
+          "H4"
+        ],
+        [
+          "L5",
+          "L5",
+          "P2",
+          "L4",
+          "H2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L4",
+          "L3",
+          "H3"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 8450
+    },
+    {
+      "id": "F11",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 5000000000,
+      "multiplier": 67,
+      "board": [
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 5200
+    },
+    {
+      "id": "F11",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 5000000000,
+      "multiplier": 67,
+      "board": [
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2700
+    },
+    {
+      "id": "F11",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 5000000000,
+      "multiplier": 67,
+      "board": [
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 5200
+    },
+    {
+      "id": "F11",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 5000000000,
+      "multiplier": 67,
+      "board": [
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ],
+        [
+          "H4",
+          "H4",
+          "H4",
+          "H4",
+          "H4"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 5200
+    },
+    {
+      "id": "F12",
+      "mode": "normal",
+      "status": "PASS",
+      "winMicro": 2000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F12",
+      "mode": "fast",
+      "status": "PASS",
+      "winMicro": 2000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 1350
+    },
+    {
+      "id": "F12",
+      "mode": "reduced",
+      "status": "PASS",
+      "winMicro": 2000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    },
+    {
+      "id": "F12",
+      "mode": "replay",
+      "status": "PASS",
+      "winMicro": 2000,
+      "multiplier": 1,
+      "board": [
+        [
+          "L1",
+          "L1",
+          "L1",
+          "H3",
+          "H4"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3",
+          "L2",
+          "L3"
+        ],
+        [
+          "L4",
+          "L5",
+          "H1",
+          "H2",
+          "H3"
+        ],
+        [
+          "H4",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "L2"
+        ],
+        [
+          "L3",
+          "L4",
+          "L5",
+          "H1",
+          "H2"
+        ]
+      ],
+      "presentationComplete": true,
+      "activeMs": 2450
+    }
+  ],
+  "faults": {
+    "characterDecode": "PASS",
+    "optionalSymbolAsset": "PASS",
+    "AudioContext": "PASS",
+    "pauseAnd200msJank": "PASS"
+  },
+  "candidate": {
+    "status": "PASS",
+    "renderer": "WebGL",
+    "pairs": 25,
+    "artAcceptance": "PENDING"
+  },
+  "soak": {
+    "status": "PASS",
+    "activeMs": 1800000,
+    "rounds": 720,
+    "terminalCells": 30,
+    "listeners": 0,
+    "clock": "accelerated; not a 30-minute wall-clock device run"
+  },
+  "errors": [],
+  "status": "PASS",
+  "wallDurationMs": 2005,
+  "unavailable": [
+    "Physical iPhone/Android/Safari",
+    "Physical AV/input p95 measurements",
+    "Human art/UX acceptance"
+  ]
+}

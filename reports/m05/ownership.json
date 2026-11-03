@@ -1,0 +1,24 @@
+[
+  {
+    "speed": "normal",
+    "retainedBeforeNewRound": "US$0.60",
+    "retainedAfterSelection": "US$0.60",
+    "win": "US$0.00",
+    "multiplier": "×1",
+    "cascade": "No cascade win",
+    "bodyState": "SMALL_WIN",
+    "spinDisabled": false,
+    "sourceOutcome": "F01"
+  },
+  {
+    "speed": "fast",
+    "retainedBeforeNewRound": "US$0.60",
+    "retainedAfterSelection": "US$0.60",
+    "win": "US$0.00",
+    "multiplier": "×1",
+    "cascade": "No cascade win",
+    "bodyState": "SMALL_WIN",
+    "spinDisabled": false,
+    "sourceOutcome": "F01"
+  }
+]

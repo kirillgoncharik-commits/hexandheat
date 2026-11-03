@@ -12,6 +12,10 @@ export class ScenePresentation {
   begin() {
     this.director.beginRound(); this.state = createInitialState(); this.moodTier = 'IDLE';
     this.witch.beginRound(); this.music.setState('BASE'); this.music.beginRound?.(); this.clearAccent();
+    if(this.elements.cascadeWin)this.elements.cascadeWin.textContent=formatMoney(0,this.currency(),this.locale);
+    if(this.elements.cascadeLabel)this.elements.cascadeLabel.textContent='Current cascade · ×1';
+    if(this.elements.potionNote)this.elements.potionNote.textContent='Potion increases only the following cascades.';
+    if(this.elements.winLabel)this.elements.winLabel.textContent='Round total';
   }
   clearAccent() {
     const plaque = this.elements.multiplier.closest('.cauldron-plaque');
@@ -30,6 +34,7 @@ export class ScenePresentation {
     const duration = event.type === 'cascade' ? tokens.remove + tokens.fall + 5 * tokens.stagger : tokens[event.type === 'boardReveal' ? 'reveal' : event.type] ?? 450;
     try { await this.director.run({ id, duration, fallback: () => this.commit(state), required: [async signal => {
       this.director.record('marker', { id, marker: event.type === 'multiplier' ? 'potion.impact' : event.type + '.start' });
+      this.explain(event,state);
       this.witch.onEvent(event, outcome);
       const tier = deriveWitchState(event, outcome);
       if (tier && TIER_PRIORITY[tier] > TIER_PRIORITY[this.moodTier]) { this.moodTier = tier; this.music.setState(moodForTier(tier)); }
@@ -61,6 +66,17 @@ export class ScenePresentation {
       if (signal.aborted) throw new DOMException('Cue aborted', 'AbortError');
       this.renderNumbers(state); this.state = state;
     }] }); } finally { if (generation === this.director.generation) this.clearAccent(); }
+  }
+  explain(event,state) {
+    const money=value=>formatMoney(value,this.currency(),this.locale),e=this.elements;
+    if(event.type==='win'&&e.cascadeWin) {
+      e.cascadeWin.textContent=money(event.amount);e.cascadeLabel.textContent=`Cascade ${event.cascade+1} · ×${event.multiplier??state.multiplier}`;
+      if(event.capped)e.potionNote.textContent='Cap reached · paid amount limited to 5000× for the whole round.';
+      const details=document.querySelector('#round-details');
+      if(details&&event.groups){const p=document.createElement('p');p.textContent=`Cascade ${event.cascade+1}: `+event.groups.map(g=>`${g.symbol} × ${g.count}: ${money(g.baseAmount)} × ${event.multiplier} = ${money(g.computedAmount)} computed; ${money(g.amount)} paid`).join('; ')+`. Paid ${money(event.amount)}; round total ${money(state.winMicro)}${event.capped?' · CAP':''}`;details.append(p);}
+    }
+    if(event.type==='multiplier'&&e.potionNote)e.potionNote.textContent=`×${event.from} → ×${event.to} · +${event.increment} for following cascades. Previous award stays the same.`;
+    if(event.type==='finalWin'&&e.winLabel){e.winLabel.textContent=event.capped?'Final · CAP 5000×':'Final win';if(!event.amount){e.potionNote.textContent='No win · any Potion stays inactive.';if(e.cascadeLabel)e.cascadeLabel.textContent='No cascade win';}}
   }
   destroy() { this.director.cancel(); this.unsubscribe(); }
 }

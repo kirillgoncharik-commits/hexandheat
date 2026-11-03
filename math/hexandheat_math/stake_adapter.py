@@ -66,12 +66,19 @@ def map_outcome_events(outcome: Outcome) -> list[dict[str, Any]]:
             running_win += int(payload["amount"])
             last_removed = list(payload["removedPositions"])
             wins = []
+            remaining_paid = int(payload["amount"])
             for group in payload["groups"]:
                 positions = [_position(int(value)) for value in group["positions"]]
+                computed = int(group["baseAmount"]) * int(payload["multiplier"])
+                paid = min(computed, remaining_paid)
+                remaining_paid -= paid
                 wins.append(
                     {
                         "symbol": group["symbol"],
-                        "win": int(group["baseAmount"]) * int(payload["multiplier"]),
+                        "win": paid,
+                        "computedWin": computed,
+                        "count": int(group["count"]),
+                        "threshold": int(group["threshold"]),
                         "positions": positions,
                         "meta": {
                             "globalMult": int(payload["multiplier"]),
@@ -81,7 +88,10 @@ def map_outcome_events(outcome: Outcome) -> list[dict[str, Any]]:
                         },
                     }
                 )
-            emit("winInfo", totalWin=int(payload["amount"]), wins=wins)
+            emit("winInfo", totalWin=int(payload["amount"]), wins=wins,
+                 baseAmount=int(payload["baseAmount"]), multiplier=int(payload["multiplier"]),
+                 capped=bool(payload["capped"]),
+                 removedPositions=[_position(value) for value in last_removed])
             emit("updateTumbleWin", amount=running_win)
         elif event.type == "multiplier":
             emit(
@@ -90,6 +100,7 @@ def map_outcome_events(outcome: Outcome) -> list[dict[str, Any]]:
                 previousGlobalMult=int(payload["from"]),
                 increment=int(payload["increment"]),
                 potionPositions=[_position(int(item["position"])) for item in payload["potions"]],
+                potions=[{**item, "position": _position(int(item["position"]))} for item in payload["potions"]],
             )
         elif event.type == "cascade":
             emit(
@@ -102,7 +113,8 @@ def map_outcome_events(outcome: Outcome) -> list[dict[str, Any]]:
             amount = int(payload["amount"])
             emit("setTotalWin", amount=amount)
             emit("setWin", amount=amount, winLevel=_win_level(amount))
-            emit("finalWin", amount=amount)
+            emit("finalWin", amount=amount, finalMultiplier=int(payload["finalMultiplier"]),
+                 payoutUnitsPerBet=int(payload["payoutUnitsPerBet"]))
         else:
             raise StakeFormatError(f"unsupported local event: {event.type}")
     return mapped

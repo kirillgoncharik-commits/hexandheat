@@ -58,7 +58,7 @@ export class AdaptiveMusicController {
   stopOneShots() { for (const node of this.oneShots) { try { node.stop(); } catch {} } this.oneShots.clear(); }
 
   async unlock() {
-    if (this.failed) return false;
+    if (this.failed || this.destroyed) return false;
     try {
       if (!this.context) {
         this.context = this.contextFactory();
@@ -147,7 +147,7 @@ export class AdaptiveMusicController {
   }
 
   duck(value) { this.ducked = Boolean(value); this.mute(this.muted); }
-  suspend() { this.hidden = true; this.stopOneShots(); this.mute(this.muted); this.context?.suspend?.().catch(this.onError); }
+  suspend() { this.hidden = true; this.stopOneShots(); this.mute(this.muted); if(this.context?.state!=='closed')this.context?.suspend?.().catch(this.onError); }
 
   async restore() {
     this.hidden = false;
@@ -164,12 +164,14 @@ export class AdaptiveMusicController {
   }
 
   destroy() {
+    this.destroyed = true;
     this.stopOneShots();
     for (const stem of this.stems) {
       try { stem.oscillator.stop(); } catch { /* already stopped */ }
     }
     this.stems = [];
     this.started = false;
-    this.context?.close?.();
+    const context=this.context;this.context=null;this.master=null;
+    if(context?.state!=='closed')context?.close?.();
   }
 }

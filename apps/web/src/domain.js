@@ -1,3 +1,4 @@
+import {validateBaseOutcome} from './base-contract.js';
 export const BOARD_COLUMNS = 6;
 export const BOARD_ROWS = 5;
 export const MICRO_UNITS = 1_000_000;
@@ -78,6 +79,7 @@ export function validateOutcome(outcome) {
   assert(outcome.events.at(-1).type === "finalWin", "last event must be finalWin");
   assert(finalWinCount === 1, "exactly one finalWin is required");
   assert(finalAmount === outcome.payoutMicro, "finalWin must match the RGS payout");
+  if (outcome.contractVersion === 'm05-base-1') validateBaseOutcome(outcome);
   return outcome;
 }
 
@@ -131,15 +133,20 @@ export function applyEvent(state, event) {
         ...state,
         winMicro: state.winMicro + event.amount,
         highlightedPositions: event.positions,
+        removedPositions: event.removedPositions ?? event.positions,
+        cascadeWinMicro: event.amount,
+        appliedMultiplier: event.multiplier,
         cascade: event.cascade
       });
     case "multiplier":
-      return Object.freeze({ ...state, multiplier: event.to });
+      return Object.freeze({ ...state, multiplier: event.to, activatedPotions: event.potions ?? [] });
     case "cascade":
       return Object.freeze({
         ...state,
         board: event.board,
         highlightedPositions: Object.freeze([]),
+        removedPositions: Object.freeze([]),
+        activatedPotions: Object.freeze([]),
         cascade: event.cascade
       });
     case "finalWin":
@@ -180,13 +187,18 @@ export function describeEvent(event, currency = "USD", locale = "en-US") {
   }
 }
 
+const MONEY_FORMATTERS=new Map();
 export function formatMoney(amountMicro, currency = "USD", locale = "en-US") {
-  return new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(amountMicro / MICRO_UNITS);
+  if(!Number.isSafeInteger(amountMicro))throw new RangeError('Money requires exact integer micro units');
+  const key=currency+'|'+locale;
+  if(!MONEY_FORMATTERS.has(key)){
+    const digits=new Intl.NumberFormat(locale,{useGrouping:false});
+    MONEY_FORMATTERS.set(key,{formatter:new Intl.NumberFormat(locale,{style:'currency',currency,minimumFractionDigits:2,maximumFractionDigits:6}),digits:Array.from({length:10},(_,i)=>digits.format(i))});
+  }
+  const {formatter,digits}=MONEY_FORMATTERS.get(key),value=BigInt(amountMicro),absolute=value<0n?-value:value,whole=absolute/1000000n;
+  const fraction=(absolute%1000000n).toString().padStart(6,'0').replace(/0+$/,'').padEnd(2,'0').replace(/\d/g,d=>digits[Number(d)]);
+  const signed=value<0n?(whole===0n?-1n:-whole):whole;
+  return formatter.formatToParts(signed).map(part=>part.type==='fraction'?fraction:part.type==='integer'&&value<0n&&whole===0n?digits[0]:part.value).join('');
 }
 
 export const DEFAULT_DURATIONS = Object.freeze({

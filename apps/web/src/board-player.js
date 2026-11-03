@@ -1,7 +1,5 @@
 import { easeOut } from './motion-tokens.js';
-
-const ART = { amber: 0, violet: 1, rose: 2, blue: 3, teal: 6, potion: 9 };
-const LABEL = { amber: 'Moon goblet', violet: 'Raven mask', rose: 'Thorn rose', blue: 'Crystal eye', teal: 'Jade vial', potion: 'Potion' };
+import {SYMBOL_REGISTRY, LEGACY_SYMBOLS, symbolInfo} from './symbol-registry.js';
 
 /** Preserve only server-compatible survivors. Never infer a different target board. */
 export function planColumn(before, after, removedRows = []) {
@@ -16,8 +14,8 @@ export class BoardPlayer {
   constructor(element, transport) { this.element = element; this.transport = transport; this.cells = []; this.serial = 0; this.reducedMotion = false; }
   async prepare() {
     this.failedArt = new Set();
-    await Promise.all(Object.entries(ART).map(async ([symbol, index]) => {
-      const image = new Image(); image.src = `./assets/symbols/item-${String(index).padStart(2, '0')}.png`;
+    await Promise.all(Object.entries({...SYMBOL_REGISTRY,...Object.fromEntries(Object.entries(LEGACY_SYMBOLS).map(([a,b])=>[a,SYMBOL_REGISTRY[b]]))}).map(async ([symbol, info]) => {
+      const image = new Image(); image.src = info.asset;
       let timer;
       try { await Promise.race([image.decode(), new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Asset deadline')), 1500); })]); }
       catch { this.failedArt.add(symbol); }
@@ -26,15 +24,19 @@ export class BoardPlayer {
   }
   make(symbol, position) {
     const node = document.createElement('div'); node.className = `symbol symbol-${symbol}`;
+    const info = symbolInfo(symbol); if (!info) throw Error('Unknown visual symbol '+symbol);
+    node.dataset.shape = info.shape;
     node.dataset.instance = `symbol-${++this.serial}`; node.dataset.symbol = symbol; node.setAttribute('role', 'gridcell');
-    const art = document.createElement('img'); art.src = `./assets/symbols/item-${String(ART[symbol] ?? 0).padStart(2, '0')}.png`; art.alt = ''; node.append(art);
-    art.addEventListener('error', () => { art.hidden = true; node.dataset.degraded = 'true'; node.textContent = LABEL[symbol] ?? symbol; }, { once: true });
-    if (this.failedArt?.has(symbol)) { art.hidden = true; node.dataset.degraded = 'true'; node.textContent = LABEL[symbol] ?? symbol; }
+    const art = document.createElement('img'); art.src = info.asset; art.alt = ''; node.append(art);
+    const fallback=document.createElement('span');fallback.className='symbol-fallback';fallback.textContent=info.fallback;fallback.hidden=true;node.append(fallback);
+    const badge=document.createElement('b');badge.className='symbol-badge';badge.textContent=info.increment?`+${info.increment}`:symbol;node.append(badge);
+    const degrade=()=>{art.hidden=true;fallback.hidden=false;node.dataset.degraded='true';};
+    art.addEventListener('error', degrade, {once:true});if(this.failedArt?.has(symbol))degrade();
     this.place(node, position); return node;
   }
   place(node, position) {
     node.dataset.position = String(position); node.style.gridColumn = String(Math.floor(position / 5) + 1); node.style.gridRow = String(position % 5 + 1);
-    node.setAttribute('aria-label', `${LABEL[node.dataset.symbol] ?? node.dataset.symbol}, column ${Math.floor(position / 5) + 1}, row ${position % 5 + 1}`);
+    node.setAttribute('aria-label', `${node.dataset.symbol} ${symbolInfo(node.dataset.symbol)?.name}, column ${Math.floor(position / 5) + 1}, row ${position % 5 + 1}`);
   }
   render(state) {
     if (!state.board) return;
@@ -44,6 +46,7 @@ export class BoardPlayer {
         const next = this.make(symbol, p); cell?.remove(); this.element.append(next); this.cells[p] = cell = next;
       }
       cell.classList.toggle('is-winning', state.highlightedPositions.includes(p));
+      cell.classList.toggle('is-potion-active', state.activatedPotions?.some(v=>v.position===p)??false);
       cell.style.opacity = ''; cell.style.transform = '';
     }
   }
@@ -60,7 +63,7 @@ export class BoardPlayer {
   }
   async cascade(previous, next, tokens, signal, record = () => {}) {
     const startAt = this.transport.now;
-    const removed = new Set(previous.highlightedPositions); const oldCells = [...this.cells];
+    const removed = new Set(previous.removedPositions ?? previous.highlightedPositions); const oldCells = [...this.cells];
     await this.transport.tween(tokens.remove, p => {
       for (const position of removed) {
         const cell = oldCells[position];
@@ -72,7 +75,7 @@ export class BoardPlayer {
     const rowHeight = this.element.clientHeight / 5;
     for (let col = 0; col < 6; col++) {
       const plan = planColumn(previous.board[col], next.board[col], [...removed].filter(p => Math.floor(p / 5) === col).map(p => p % 5));
-      if (!plan.compatible) record('board.reconcile', { column: col, reason: 'sample target has no compatible survivor suffix' });
+      if (!plan.compatible) record('board.reconcile', { column: col, reason: 'legacy showcase target has no compatible survivor suffix' });
       for (const cellPlan of plan.cells) {
         const position = col * 5 + cellPlan.row;
         const node = cellPlan.from === null ? this.make(cellPlan.symbol, position) : oldCells[col * 5 + cellPlan.from];

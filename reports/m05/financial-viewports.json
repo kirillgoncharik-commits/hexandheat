@@ -1,0 +1,77 @@
+[
+  {
+    "size": {
+      "width": 360,
+      "height": 640
+    },
+    "amountOverflow": false,
+    "jank": "200",
+    "longBalance": "US$8,999,999,999.20",
+    "multiplier": "×3",
+    "scroll": [
+      360,
+      640
+    ],
+    "win": "US$0.20"
+  },
+  {
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "amountOverflow": false,
+    "jank": "200",
+    "longBalance": "US$8,999,999,999.20",
+    "multiplier": "×3",
+    "scroll": [
+      390,
+      844
+    ],
+    "win": "US$0.20"
+  },
+  {
+    "size": {
+      "width": 480,
+      "height": 320
+    },
+    "amountOverflow": false,
+    "jank": "200",
+    "longBalance": "US$8,999,999,999.20",
+    "multiplier": "×3",
+    "scroll": [
+      480,
+      320
+    ],
+    "win": "US$0.20"
+  },
+  {
+    "size": {
+      "width": 1366,
+      "height": 768
+    },
+    "amountOverflow": false,
+    "jank": "200",
+    "longBalance": "US$8,999,999,999.20",
+    "multiplier": "×3",
+    "scroll": [
+      1366,
+      768
+    ],
+    "win": "US$0.20"
+  },
+  {
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "amountOverflow": false,
+    "jank": "200",
+    "longBalance": "US$8,999,999,999.20",
+    "multiplier": "×3",
+    "scroll": [
+      1440,
+      900
+    ],
+    "win": "US$0.20"
+  }
+]

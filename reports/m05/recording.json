@@ -1,0 +1,26 @@
+{
+  "file": "../hexheat-m05-media/m05-small-win-candidate.webm",
+  "bytes": 1313814,
+  "sha256": "1beaa7806e958d13991e3f85477f27c9bd01a660e17c50fd94aae8ad71456bbb",
+  "durationMs": 4000.0,
+  "videoBlocks": 120,
+  "lastTimestampMs": 3967,
+  "status": "PASS",
+  "browserDecode": {
+    "duration": 4,
+    "width": 1408,
+    "height": 1792,
+    "readyState": 4,
+    "error": null
+  },
+  "source": "v7 CMU 49_12; retargetPose; candidate-recording.js VP8/WebM export",
+  "recording": "120 deterministic timestamped samples; not measured hardware FPS; no audio",
+  "artAcceptance": "PENDING",
+  "captureLimit": "Host captureStream attempts were incomplete (0.997s/1.549s), replaced by deterministic 4s export. Main-scene screenshots are separate.",
+  "sourceFiles": {
+    "apps/web/src/reference-mesh.js": "4fa5b310848901469e10ffd04cb9027aa76cb1d18a8a16fa2bab39efc21b5a52",
+    "apps/web/src/candidate-recording.js": "c1ff1487adcd58b09d442f14e309498697a84a65ab15513ce71c2cc264e0db6f",
+    "apps/web/assets/witch/reference-cycle/49_12-manikin.json": "f1d7a49f1bc2ad5823935cb529aae3637b30f8efa9fc836496f6dda337ebd748",
+    "apps/web/assets/witch/reference-cycle/layers-v7.json": "d570eef7005f626ae0b837432f9badcdf0ae993d396550ccfb4d256db71105eb"
+  }
+}
