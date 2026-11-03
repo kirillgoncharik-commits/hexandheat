@@ -1,0 +1,29 @@
+{
+  "status": "succeeded",
+  "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+  "version": 8,
+  "versionId": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_e775316152d48191bb123f7d3eedbecb",
+  "deploymentId": "appgdep_6ae9d6fd6c148191a7a94a8fc0335b90",
+  "projectId": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+  "siteSourceCommit": "84d64e9debb8ecdaa3fde5e8550d99482010c5ac",
+  "githubRuntimeSourceCommit": "8b6fee898d716dbee8de4503d14960ba73384203",
+  "branch": "agent/product/29-m05-truthful-base-mobile",
+  "draftPR": "https://github.com/kirillgoncharik-commits/hexandheat/pull/30",
+  "basePR": 28,
+  "baseCommit": "53b9a11aff738193c999a850ac3ed6d81c80488e",
+  "audience": "public (unchanged)",
+  "productionReady": false,
+  "configHash": "ef29d030a553ca6a24678bdbb1123f29d932f6ba1256f11b4389847c7644b6d3",
+  "fixturePackSha256": "bcf2f105bedc9b5e5d044806eb2073170bf7227fe154cda9776382f948c05cdc",
+  "archive": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m05/HexHeat_M05_review.tar.gz",
+  "archiveSha256": "sha256:6c05afceb0a7882af3de64bf7c6899d45712e49509fe6a0484a59389a3fab34a",
+  "publishedAt": "2026-11-03T12:43:54.312750+00:00",
+  "ci": {
+    "sourceCommit": "8b6fee898d716dbee8de4503d14960ba73384203",
+    "status": "success",
+    "runId": 41638034602,
+    "url": "https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/41638034602"
+  },
+  "publishedSmoke": "reports/m05/published-smoke.json",
+  "note": "Post-publication receipt/evidence commit does not change runtime source. Manifest pins the exact saved implementation commit."
+}

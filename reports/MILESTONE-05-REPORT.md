@@ -2,7 +2,7 @@
 
 03.11.2026. Issue #29. **IMPLEMENTED FOR REVIEW** для ограниченного технического пакета; human art/UX acceptance PENDING; physical-device readiness UNAVAILABLE; `productionReady=false`. M04.1/M04.2, Issue #20, production math/FS и Stake submission не закрыты.
 
-Основная сборка: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site/ . Existing project `appgprj_6ae43bec02248191866ae51ec7721ec1`, прежняя public audience сохраняется. До native deployment success URL не считается обновлённым; точные version/deployment/source SHA записываются в итоговой квитанции и PR. Runtime `review-manifest.json` привязывает конкретный GitHub source commit, config/asset/rules/fixture versions и hashes файлов. Site source SHA и GitHub SHA — разные сущности.
+Основная сборка: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site/ . Existing project `appgprj_6ae43bec02248191866ae51ec7721ec1`, прежняя public audience сохраняется. **Version 8 опубликована, native status succeeded; published smoke PASS.** Квитанция: reports/m05/deployment.json. Runtime GitHub source 8b6fee898d716dbee8de4503d14960ba73384203; Site source 84d64e9debb8ecdaa3fde5e8550d99482010c5ac; deployment appgdep_6ae9d6fd6c148191a7a94a8fc0335b90. Draft PR: https://github.com/kirillgoncharik-commits/hexandheat/pull/30 . Последующий receipt-only commit на той же ветке меняет только отчёт/квитанцию/smoke evidence, runtime source остаётся 8b6fee8. Runtime `review-manifest.json` привязывает конкретный GitHub source commit, config/asset/rules/fixture versions и hashes файлов. Site source SHA и GitHub SHA — разные сущности.
 
 Ветка `agent/product/29-m05-truthful-base-mobile`, dependency PR #28 / agent/animation/20-reference-cycle / 53b9a11. V7 сохранена отдельным 4614a31. Один основной draft PR в рамках #29; ни один старый PR не слит.
 
@@ -36,7 +36,7 @@
 | 10 | 4s и sync сохранены | PASS automated — five 4000ms states/25 pairs, ownership, pause/cancel, F14; human transition quality PENDING |
 | 11 | Прозрачные статусы/evidence | PASS — этот отчёт, JSON/logs/screenshots; непроверенное не отмечено PASS |
 | 12 | Code/docs/fixtures/PR/manifest | PASS source package — regenerate --check, single config hash, source packaging guard; exact PR/publication metadata in receipt |
-| 13 | Публикация или воспроизводимый local build | Prepared from saved source; native publication result recorded separately before final handoff; tools/build_m05_review.py reproduces dist |
+| 13 | Публикация или воспроизводимый local build | PASS — Site v8 succeeded; manifest fetched from published URL matches source/config/pack; published F12 Normal/Fast replay .002 at bet .01, wallet unchanged; published-smoke.json / deployment.json; tools/build_m05_review.py reproduces dist |
 | 14 | Human review + следующий этап | PASS preparation — 6–8 adult participant protocol, manual device/art checks; participation itself PENDING |
 
 Baseline: 73 tests, PASS. Final: **3 repository/asset + 17 math/replay + 65 JavaScript = 85 tests**, PASS. Никакие проверки/thresholds не ослаблены. `python3 tools/verify_milestone.py`; `python3 tools/generate_m05.py --check`. Генератор, paytable, weights, Potion values и cap не менялись. Поменялись только adapter metadata, generated event books и display contract; общий payout/LUT hash `c7970b2923cb369b0d91fb9e68b892009092cfa66c5c3d1fe276bfb1ddd50314` / `2ac6f2147f1bafa30b3fc08060023a056e53c94f7ef044c0469ee7e2071c89f3` сохранены.
