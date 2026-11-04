@@ -1,0 +1,35 @@
+{
+  "githubSourceCommit": "6dc59ae6cce1f51b9f1a413722a9c761ce291262",
+  "siteSourceCommit": "3fceb33ab546a43fa87aade73b6fa7b97a7c08d8",
+  "version": 9,
+  "versionId": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_f2a9eb93f4888191a3185cdb41327f2b",
+  "deployment": {
+    "id": "appgdep_6aeb19b0a820819191267f69bf83cf56",
+    "project_id": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+    "title": "Hex & Heat M03",
+    "version_id": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_f2a9eb93f4888191a3185cdb41327f2b",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae43bec02248191866ae51ec7721ec1",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-04T11:40:47.659349+00:00"
+  },
+  "archive": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_00000000a39c82468fae98e7754f2bd4",
+    "content_hash": "sha256:487588d525bbaff152e7c636c1785de77bfa2bf8071305881e77a6db87c43f26",
+    "size_bytes": 24094720,
+    "file_count": 377
+  },
+  "audience": "public (preserved)",
+  "pr": "https://github.com/kirillgoncharik-commits/hexandheat/pull/32",
+  "ci": {
+    "run": 41822731146,
+    "status": "success"
+  },
+  "productionReady": false
+}

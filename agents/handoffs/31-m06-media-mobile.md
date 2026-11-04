@@ -13,3 +13,5 @@ Selected delivery: PNG420×336, IDLE6fps/fade40ms, SMALL_WIN12fps/fade20ms, 3.74
 Acceptance: technical review package; human art/layout ACCEPTED/REWORK pending. Physical iOS Safari/Android/Safari desktop, cold/warm throttling, thermal/memory and30min device soak UNAVAILABLE. Native Figma untouched. Production math/FS/live recovery/submission remain separate. Do not auto-merge or close issue on technical evidence alone.
 
 Next action: reviewer opens `/media.html`, `/compare.html`, and main `?witch=m06`; PO records separate IDLE, SMALL_WIN and mobile-layout decisions using `docs/m06/REVIEW_PROTOCOL_RU.md`. Fix specific poses if REWORK; run documented physical-device matrix. Only then decide the next bounded package for the remaining three logical clips.
+
+Publication complete: existing Sitev9, native succeeded; runtime GitHub6dc59ae, Site source3fceb33, PR32. Published F12Fast/replay smoke and manifest PASS; receipts in reports/m06. CI source6dc59ae succeeded.

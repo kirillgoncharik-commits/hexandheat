@@ -1,0 +1,9 @@
+{
+  "version": "m06-review-1",
+  "sourceCommit": "6dc59ae6cce1f51b9f1a413722a9c761ce291262",
+  "mediaManifestSha256": "fd3a0c03054385e64ed47c0120353285ead98c75a5ba443b5641750bb02a8445",
+  "configHash": "ef29d030a553ca6a24678bdbb1123f29d932f6ba1256f11b4389847c7644b6d3",
+  "fixturePackSha256": "bcf2f105bedc9b5e5d044806eb2073170bf7227fe154cda9776382f948c05cdc",
+  "productionReady": false,
+  "method": "Published manifest read in normal authenticated browser; direct unauthenticated HTTP client returned403."
+}

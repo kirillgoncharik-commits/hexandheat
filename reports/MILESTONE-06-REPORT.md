@@ -2,7 +2,7 @@
 
 04.11.2026 · Issue #31. **Review package; human art acceptance PENDING, physical device gate OPEN.** `productionReady=false`, sample outcomes, no real funds. Это техническая поставка к просмотру, не продуктовое закрытие M06 и не Stake release.
 
-Основа: PR #30, актуальный GitHub delivery `586d2f3`; сохранённая локальная подготовка `05c9d1d`. До работы Site v8/source `84d64e9`, runtime GitHub `8b6fee8`. Работа в `agent/animation/31-m06-media-mobile`, PR направлен на ветку M05; предыдущие PR не слиты. Exact publication source/version — `reports/m06/deployment.json` после публикации, runtime hashes — `/review-manifest.json`.
+Основа: PR #30, актуальный GitHub delivery `586d2f3`; сохранённая локальная подготовка `05c9d1d`. До работы Site v8/source `84d64e9`, runtime GitHub `8b6fee8`. Работа в `agent/animation/31-m06-media-mobile`, PR направлен на ветку M05; предыдущие PR не слиты. **Existing Site version9 опубликована, native status succeeded.** GitHub runtime `6dc59ae6cce1f51b9f1a413722a9c761ce291262`; отдельный Site source `3fceb33ab546a43fa87aade73b6fa7b97a7c08d8`; deployment `appgdep_6aeb19b0a820819191267f69bf83cf56`. [Review](https://hex-and-heat-m03.kirill-goncharik.chatgpt.site/?witch=m06), [draft PR32](https://github.com/kirillgoncharik-commits/hexandheat/pull/32). Квитанция `reports/m06/deployment.json`; runtime hashes `/review-manifest.json`.
 
 Результат:
 
@@ -30,3 +30,6 @@
 4. Native Figma и исходный backlog DOCX недоступны. M05 work task прочитан; scope HH13/15/16 покрыт в пределах M06. Новые внешние лицензии/покупки/production math/FS/recovery/submission не выполнялись.
 
 Воспроизведение: `python3 tools/verify_milestone.py`; `python3 tools/generate_m05.py --check`; `CODEX_PRIMARY_RUNTIME_NODE_MODULES=<bundled-node_modules> node tools/export_m06_media.mjs <output-dir>` (сравнить manifest SHA); `node apps/web/scripts/dev-server.js 4176`. Сборка сохранённого commit: `python3 tools/build_m06_review.py <existing-Site-checkout>/dist`.
+
+
+Опубликованный smoke PASS: manifest source/media hash совпали; F12Fast0.002 при ставке0.01,30 клеток, доступный Spin; Replay сохранил99.992 без нового списания. `published-manifest.json`, `published-smoke.json`, `published-360x640.png`. Manifest прочитан в обычном браузере; отдельный неавторизованный HTTP-клиент вернул403, поэтому его file-by-file проверка не объявляется пройденной. CI source6dc59ae [success run41822731146](https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/41822731146). Последующий receipt-only commit не меняет опубликованные runtime/code/assets.

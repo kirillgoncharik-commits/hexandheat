@@ -1,0 +1,11 @@
+{
+  "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site/?witch=m06&fixture=F12&speed=fast",
+  "sourceCommit": "6dc59ae6cce1f51b9f1a413722a9c761ce291262",
+  "win": "US$0.002",
+  "balanceBeforeReplay": "US$99.992",
+  "balanceAfterReplay": "US$99.992",
+  "spinEnabled": true,
+  "cells": 30,
+  "media": "IDLE/6fps",
+  "status": "PASS"
+}
