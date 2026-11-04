@@ -1,0 +1,16 @@
+[
+  {
+    "kind": "decode",
+    "mode": "neutral-error",
+    "win": "US$0.20",
+    "multiplier": "×3",
+    "spinEnabled": true
+  },
+  {
+    "kind": "manifest404",
+    "mode": "legacy-manifest-error",
+    "win": "US$0.20",
+    "multiplier": "×3",
+    "spinEnabled": true
+  }
+]

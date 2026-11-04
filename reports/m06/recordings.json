@@ -1,0 +1,40 @@
+{
+  "records": [
+    {
+      "state": "IDLE",
+      "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/m06-IDLE-png-preview.webm",
+      "sha256": "0069a1735095d30995dd3605a97e0e9f626bd6432a1e6b4c06aac5d24394305a",
+      "bytes": 746295,
+      "durationMs": 4000,
+      "width": 420,
+      "height": 336,
+      "videoCodec": "VP8",
+      "container": "WebM",
+      "audio": false,
+      "displaySamples": 120,
+      "sampleFps": 30,
+      "sourcePngFps": 6,
+      "fadeMs": 40,
+      "method": "Deterministic browser WebCodecs sampled PNG presentation; source-loop preview, not a distinct video motion master or gameplay screen recording."
+    },
+    {
+      "state": "SMALL_WIN",
+      "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/m06-SMALL_WIN-png-preview.webm",
+      "sha256": "d036eec49110f09d5421cf43316c6ee8fd66c1633fa8490878f8d8e4fbaa8ca5",
+      "bytes": 750382,
+      "durationMs": 4000,
+      "width": 420,
+      "height": 336,
+      "videoCodec": "VP8",
+      "container": "WebM",
+      "audio": false,
+      "displaySamples": 120,
+      "sampleFps": 30,
+      "sourcePngFps": 12,
+      "fadeMs": 20,
+      "method": "Deterministic browser WebCodecs sampled PNG presentation; source-loop preview, not a distinct video motion master or gameplay screen recording."
+    }
+  ],
+  "nativeDecode": "PASS in desktop Chromium: both duration4s,420x336,120 encoded samples; native-preview.json",
+  "physicalDevice": "UNAVAILABLE"
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "desktop-browser-wall-clock",
+  "activeMs": 120001.40000000002,
+  "wallMs": 119998.59999999986,
+  "loops": 30,
+  "cases": [
+    {
+      "fps": 6,
+      "state": "SMALL_WIN",
+      "mode": "SMALL_WIN/6fps",
+      "changes": 721,
+      "missedPoses": 0,
+      "p95LateMs": 16.70000000006985,
+      "maxLateMs": 149.66666666675383,
+      "estimatedDecodedBytes": 27659520,
+      "failures": {}
+    },
+    {
+      "fps": 8,
+      "state": "SMALL_WIN",
+      "mode": "SMALL_WIN/8fps",
+      "changes": 961,
+      "missedPoses": 0,
+      "p95LateMs": 16.600000000093132,
+      "maxLateMs": 108.00000000008731,
+      "estimatedDecodedBytes": 36691200,
+      "failures": {}
+    },
+    {
+      "fps": 12,
+      "state": "SMALL_WIN",
+      "mode": "SMALL_WIN/12fps",
+      "changes": 1441,
+      "missedPoses": 0,
+      "p95LateMs": 16.73333333341475,
+      "maxLateMs": 66.3333333334208,
+      "estimatedDecodedBytes": 54754560,
+      "failures": {}
+    }
+  ],
+  "physicalDevices": "UNAVAILABLE",
+  "memoryMeasurement": "ESTIMATE ONLY"
+}

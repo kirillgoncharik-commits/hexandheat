@@ -1,5 +1,8 @@
 # Hex & Heat: Witch’s Wild Mixer
 
+> M06 / Issue #31 — full-width mobile hero and two new authored PNG candidates on original v7 art. IDLE6fps/40ms + SMALL_WIN12fps/20ms; Settings → M06, or `?witch=m06`. Old renderer retained; other three states use the same neutral portrait in PNG mode. [M06 report](reports/MILESTONE-06-REPORT.md), [source/scope](docs/m06/SCOPE_RU.md), [delivery decision](docs/m06/MEDIA_DELIVERY_DECISION_RU.md). Human art/physical-device acceptance remains OPEN; `productionReady=false`.
+
+
 > M05 / Issue #29 — truthful base-round/mobile review. Default screen uses independently verified F01–F12, 12 stable math IDs, exact sub-cent awards and Potion removals; mobile A is recommended. Candidate v7 SMALL_WIN is opt-in in Settings; fallback preserved. [M05 report](reports/MILESTONE-05-REPORT.md), [baseline/source reconciliation](docs/m05/BASELINE_RU.md), [human review protocol](docs/m05/USER_REVIEW_SCRIPT_RU.md). `productionReady=false`; prior M04, production math/FS and real-device gates remain open.
 
 AI-first implementation and production record for an HTML5 casino game targeting Stake Engine. This repository is the single source of truth for product decisions, architecture, specifications, code, math, tests, agent instructions and asset metadata.

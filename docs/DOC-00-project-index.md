@@ -94,3 +94,8 @@ Readiness: functional architecture **implemented for local review**; candidate m
 ## Source policy
 
 Platform statements are based on official Stake Engine docs/repositories accessed 2026-10-18. Reproducible observations live in `reports/`. Volatile prices, versions and terms must be rechecked at procurement and again before submission. The referenced market-research DOCX was not present in the mounted project sources during this milestone, so no claim is presented as a comparison against that document.
+
+
+## M06 review package — 04.11.2026
+
+[Scope and verified continuation](m06/SCOPE_RU.md), [mobile composition and measurements](m06/MOBILE_COMPOSITION_RU.md), [motion brief](m06/CHARACTER_MOTION_BRIEF_RU.md), [media decision](m06/MEDIA_DELIVERY_DECISION_RU.md), [report](../reports/MILESTONE-06-REPORT.md). Two authored PNG candidates; no production math, FS or Stake release approval.

@@ -8,7 +8,7 @@ $('run').onclick=async()=>{
   const catalog=await fetch('./assets/m05/fixtures.json').then(r=>r.json());
   for(const c of catalog.cases)for(const mode of ['normal','fast','reduced','replay']) {
    $('progress').textContent=`${c.id} · ${mode} · ${report.cases.length}/48`;const frame=$('game');
-   frame.src=`./?fixture=${c.id}&speed=${mode==='fast'?'fast':'normal'}&motion=${mode==='reduced'?'reduced':'full'}&witch=candidate`;
+   frame.src=`./?fixture=${c.id}&speed=${mode==='fast'?'fast':'normal'}&motion=${mode==='reduced'?'reduced':'full'}&witch=${new URL(location.href).searchParams.has('m06')?'m06':'candidate'}`;
    await new Promise(resolve=>frame.onload=resolve);const d=frame.contentDocument;
    await until(()=>d.body.dataset.gameState==='ready'&&d.querySelectorAll('#bet-select option').length>0);
    const spin=d.querySelector('#spin-button');spin.click();spin.click(); // repeated input must not double-charge

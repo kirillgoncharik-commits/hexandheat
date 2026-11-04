@@ -1,0 +1,20 @@
+{
+  "tested": {
+    "environment": "Codex in-app browser, desktop Chromium156",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "viewportEmulation": true,
+    "layout": "7/7 PASS",
+    "actualControls": "48/48 PASS",
+    "cadence": "30 real-time loops per state at6/8/12; selected p95 IDLE15.8ms SW16.73ms",
+    "nativeWebmPreview": "both4s420x336120samples"
+  },
+  "notTested": {
+    "physicalIOS_Safari": "UNAVAILABLE",
+    "physicalAndroid_Chrome": "UNAVAILABLE",
+    "desktopSafari": "UNAVAILABLE",
+    "physicalMemoryThermalInputAV": "UNAVAILABLE",
+    "10Mbps_100msColdWarm": "UNAVAILABLE",
+    "physical30MinuteSoak": "UNAVAILABLE"
+  },
+  "artAcceptance": "PENDING PO/reviewer"
+}
