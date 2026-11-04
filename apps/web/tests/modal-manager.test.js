@@ -31,3 +31,11 @@ test('repeated opens are idempotent, reduced motion completes without changing f
   assert.equal(h.changes.length, 1); assert.equal(h.manager.state, 'OPEN');
   await h.manager.close(); assert.equal(h.trigger.focused, 1);
 });
+
+test('M06 modal owns the scene pause after entry and releases it for exit without losing visibility pause',async()=>{
+ let wall=0;const t=new SceneTransport({now:()=>wall,requestFrame:()=>1,cancelFrame:()=>{}});
+ const m=new ModalManager(t,{pauseScene:true,reducedMotion:()=>true});
+ const d={open:false,style:{setProperty(){}},showModal(){this.open=true;},close(){this.open=false;},querySelector(){return {focus(){}};}};
+ await m.open(d,null);assert.equal(t.paused,true);const before=t.now;wall+=1000;t.tick(wall);assert.equal(t.now,before);
+ t.pause('visibility');await m.close();assert.equal(t.paused,true);assert.equal(t.reasons.has('modal'),false);t.resume('visibility');assert.equal(t.paused,false);m.destroy();t.destroy();
+});

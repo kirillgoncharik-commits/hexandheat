@@ -1,0 +1,92 @@
+[
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/f14-normal.png",
+    "bytes": 46442,
+    "sha256": "c74a8aad59288550706b94e6c073fe374f85a1e79d4cf61055e71a1631892087",
+    "gitPath": "reports/m06/f14-normal.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-1366x768.png",
+    "bytes": 136400,
+    "sha256": "6d66f3c6784c9889631242daebb5ab40c261609dcc55882f7e12f355a4d73b91",
+    "gitPath": "reports/m06/m05-1366x768.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-1440x900.png",
+    "bytes": 178322,
+    "sha256": "e29c67be2523e0016ae498dafecc8d71260553fa45f086bdce9d967da79e9520",
+    "gitPath": "reports/m06/m05-1440x900.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-360x640.png",
+    "bytes": 45496,
+    "sha256": "705f10723d275e423f6153320eaf8c3049d2d20ef06fb1c9214252044d5ab5ec",
+    "gitPath": "reports/m06/m05-360x640.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-390x844.png",
+    "bytes": 60139,
+    "sha256": "ab999c422a6f54aba46853cc64c98870cab076ed3a316e00d50abbcadf7eaa95",
+    "gitPath": "reports/m06/m05-390x844.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-430x932.png",
+    "bytes": 67200,
+    "sha256": "014468dd8ca8bbaa1bd4f0178632dc5c61d3a0117e62451dd3040cee039b7c1a",
+    "gitPath": "reports/m06/m05-430x932.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-480x320.png",
+    "bytes": 28526,
+    "sha256": "99010d383d8a8329aff52f06e04dc9036321dc3c9ae4a6543a2ebaaa8032d2e2",
+    "gitPath": "reports/m06/m05-480x320.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m05-844x390.png",
+    "bytes": 49066,
+    "sha256": "a09cb3b9e7fc2df341050c56181568d2c4b5751c113a899ca06e209218609521",
+    "gitPath": "reports/m06/m05-844x390.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-1366x768.png",
+    "bytes": 138568,
+    "sha256": "2ddbaa962a136f01f1661852ac002e4a559e07448f4c3e5b2d71d295952a8135",
+    "gitPath": "reports/m06/m06-1366x768.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-1440x900.png",
+    "bytes": 180825,
+    "sha256": "d34bdf305179bc8675f9c8d16b4022f6fbef7e4fe83b184e1c90dde007a6ee45",
+    "gitPath": "reports/m06/m06-1440x900.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-360x640.png",
+    "bytes": 46894,
+    "sha256": "81876a8644ba1ac8da262055c63b38152a5498ff263f50fdbcd6d6b046be4018",
+    "gitPath": "reports/m06/m06-360x640.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-390x844.png",
+    "bytes": 63203,
+    "sha256": "bbe6175661b3a9c2ba0538f7c0d64cdabda858e13e0a406253db5922c6d6e6a0",
+    "gitPath": "reports/m06/m06-390x844.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-430x932.png",
+    "bytes": 72273,
+    "sha256": "811cf633a27adc2bcbdda910af3f83de263f2463b6593799235e65da4d0c4de2",
+    "gitPath": "reports/m06/m06-430x932.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-480x320.png",
+    "bytes": 29846,
+    "sha256": "74ab9d41604721fcf69cd82127d0329df410c6753c3af2b05a6298932a3c2052",
+    "gitPath": "reports/m06/m06-480x320.png"
+  },
+  {
+    "path": "/Users/kirill/.codex/.chatgpt-projects/g-p-6ad4c4b047988191897111b215163472/outputs/hexheat-m06/screenshots/m06-844x390.png",
+    "bytes": 49956,
+    "sha256": "99872aa5bae4752f932863d418de91cc20f8b58b7c34d97da3ca1e68d792411e",
+    "gitPath": "reports/m06/m06-844x390.png"
+  }
+]

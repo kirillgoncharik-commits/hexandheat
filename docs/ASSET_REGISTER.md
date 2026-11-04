@@ -34,3 +34,8 @@ No raw generations or masters. CI blocks files >1 MiB unless allow-listed test f
 ## M03 first-pass raster pack 2026-10-30
 
 33 runtime files registered with SHA256/bytes and pending rights review in assets/ASSET_MANIFEST.json: 20 witch frames, 12 item images, 1 environment. Original prompt set: assets/prompts/M03_PROMPTS.md. These are exploration assets, not approved masters. See docs/m03/ART_GUIDE_RU.md for identity/seam/crop issues and Spine deliverables.
+
+
+## M06 original-art motion candidates — 04.11.2026
+
+M06-PNG-MANIFEST and M06-NEUTRAL are registered in ASSET_MANIFEST v8. The nested media manifest hashes all208 PNG samples, exact6/8/12fps timestamps, original-v7 art references, new authored source curves, exporter, face landmarks, crop and controls. No old CMU motion arrays used; original AI-art entitlement and human acceptance remain pending. Reproduction and limits: docs/m06/CHARACTER_MOTION_BRIEF_RU.md and assets/prompts/M06_MOTION_SOURCE.md. No new paid generation or terms acceptance.

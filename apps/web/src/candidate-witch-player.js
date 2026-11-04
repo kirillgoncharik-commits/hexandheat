@@ -17,6 +17,7 @@ export class CandidateWitchPlayer {
   setEnabled(value){this.enabled=Boolean(value);this.last=-1;this.tick();}
   switchTo(state){this.state=state;this.fallback.switchTo(state);this.last=-1;this.tick();}
   tick(){
+    if(this.suspended)return;
     const active=this.enabled&&this.ready&&!this.failed&&this.state==='SMALL_WIN';this.canvas.hidden=!active;
     for(const node of this.container.children)if(node!==this.canvas)node.style.visibility=active?'hidden':'';
     this.container.dataset.candidate=active?'v7-small-win':this.failed?'unavailable':'fallback';if(!active)return;
@@ -24,5 +25,6 @@ export class CandidateWitchPlayer {
     try{this.stage.draw(retargetPose(this.clip,frame/30,this.bones));this.last=frame;}catch{this.failed=true;this.canvas.hidden=true;for(const n of this.container.children)if(n!==this.canvas)n.style.visibility='';}
   }
   setReducedMotion(value){this.reducedMotion=value;this.fallback.setReducedMotion(value);this.last=-1;this.tick();}
+  setSuspended(value){this.suspended=Boolean(value);this.fallback.setSuspended?.(value);}
   destroy(){this.destroyed=true;clearTimeout(this.timer);this.unsubscribe();this.stage?.destroy();this.fallback.destroy();this.canvas.remove();}
 }

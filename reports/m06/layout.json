@@ -1,0 +1,771 @@
+{
+  "version": "m06-layout-1",
+  "cases": [
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "hero": {
+        "x": 8,
+        "y": 52,
+        "width": 344,
+        "height": 180,
+        "bottom": 232
+      },
+      "board": {
+        "x": 43.203125,
+        "y": 241,
+        "width": 273.59375,
+        "height": 228,
+        "bottom": 469
+      },
+      "cell": {
+        "x": 47.203125,
+        "y": 245,
+        "width": 42.59375,
+        "height": 42.3984375,
+        "bottom": 287.3984375
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 45.03799437146583,
+          "maxFacePx": 45.10383744196412,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 44.92474036459983,
+          "maxFacePx": 45.103841775080866,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 118,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 52.5234375,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 72,
+          "height": 76
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 269,
+        "y": 531,
+        "width": 72,
+        "height": 76,
+        "bottom": 607
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "hero": {
+        "x": 8,
+        "y": 52,
+        "width": 374,
+        "height": 240,
+        "bottom": 292
+      },
+      "board": {
+        "x": 13,
+        "y": 335.3359375,
+        "width": 364,
+        "height": 303.328125,
+        "bottom": 638.6640625
+      },
+      "cell": {
+        "x": 17,
+        "y": 339.3359375,
+        "width": 57.6640625,
+        "height": 57.4609375,
+        "bottom": 396.796875
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 48.965726438744824,
+          "maxFacePx": 49.037311637484244,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 48.84259562895446,
+          "maxFacePx": 49.03731634848908,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 133,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 52.5234375,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 72,
+          "height": 76
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 299,
+        "y": 735,
+        "width": 72,
+        "height": 76,
+        "bottom": 811
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "hero": {
+        "x": 8,
+        "y": 52,
+        "width": 414,
+        "height": 265,
+        "bottom": 317
+      },
+      "board": {
+        "x": 13,
+        "y": 375.1640625,
+        "width": 404,
+        "height": 336.6640625,
+        "bottom": 711.828125
+      },
+      "cell": {
+        "x": 17,
+        "y": 379.1640625,
+        "width": 64.328125,
+        "height": 64.1328125,
+        "bottom": 443.296875
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 54.20270252845016,
+          "maxFacePx": 54.28194389817775,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 54.066402648093984,
+          "maxFacePx": 54.28194911303337,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 153,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 52.5234375,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 72,
+          "height": 76
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 339,
+        "y": 823,
+        "width": 72,
+        "height": 76,
+        "bottom": 899
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "hero": {
+        "x": 571.046875,
+        "y": 51,
+        "width": 264.953125,
+        "height": 249,
+        "bottom": 300
+      },
+      "board": {
+        "x": 168.921875,
+        "y": 55,
+        "width": 235.1953125,
+        "height": 196,
+        "bottom": 251
+      },
+      "cell": {
+        "x": 171.921875,
+        "y": 58,
+        "width": 37.359375,
+        "height": 37.1953125,
+        "bottom": 95.1953125
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 34.68882951294269,
+          "maxFacePx": 34.739542673663955,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 34.60159985294874,
+          "maxFacePx": 34.739546011084954,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 65,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 45.578125,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 60,
+          "height": 44
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 770,
+        "y": 315,
+        "width": 60,
+        "height": 44,
+        "bottom": 359
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 480,
+        "height": 320
+      },
+      "hero": {
+        "x": 242,
+        "y": 51,
+        "width": 230,
+        "height": 179,
+        "bottom": 230
+      },
+      "board": {
+        "x": 46.3984375,
+        "y": 55,
+        "width": 151.1953125,
+        "height": 126,
+        "bottom": 181
+      },
+      "cell": {
+        "x": 49.3984375,
+        "y": 58,
+        "width": 23.359375,
+        "height": 23.1953125,
+        "bottom": 81.1953125
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 30.112612515805647,
+          "maxFacePx": 30.15663549898764,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 30.036890360052215,
+          "maxFacePx": 30.15663839612965,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 65,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 45.578125,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 60,
+          "height": 44
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 406,
+        "y": 245,
+        "width": 60,
+        "height": 44,
+        "bottom": 289
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "hero": {
+        "x": 1007,
+        "y": 82.296875,
+        "width": 300,
+        "height": 527.703125,
+        "bottom": 610
+      },
+      "board": {
+        "x": 272.375,
+        "y": 117.296875,
+        "width": 501.2421875,
+        "height": 417.703125,
+        "bottom": 535
+      },
+      "cell": {
+        "x": 281.375,
+        "y": 126.296875,
+        "width": 77.203125,
+        "height": 76.734375,
+        "bottom": 203.03125
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 76.59077531194043,
+          "maxFacePx": 76.70274681264247,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 76.3981776549154,
+          "maxFacePx": 76.7027541814602,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 120,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 47.34375,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 68.421875,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 140,
+          "height": 66
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 1152,
+        "y": 631,
+        "width": 140,
+        "height": 66,
+        "bottom": 697
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    },
+    {
+      "status": "PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "hero": {
+        "x": 1044,
+        "y": 82.296875,
+        "width": 300,
+        "height": 659.703125,
+        "bottom": 742
+      },
+      "board": {
+        "x": 230.1796875,
+        "y": 117.296875,
+        "width": 659.640625,
+        "height": 549.703125,
+        "bottom": 667
+      },
+      "cell": {
+        "x": 239.1796875,
+        "y": 126.296875,
+        "width": 103.6015625,
+        "height": 103.140625,
+        "bottom": 229.4375
+      },
+      "clips": {
+        "IDLE": {
+          "minFacePx": 76.59077531194043,
+          "maxFacePx": 76.70274681264247,
+          "allFacesInside": true
+        },
+        "SMALL_WIN": {
+          "minFacePx": 76.3981776549154,
+          "maxFacePx": 76.7027541814602,
+          "allFacesInside": true
+        }
+      },
+      "targets": [
+        {
+          "id": "Game rules",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "Settings",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "bet-select",
+          "width": 120,
+          "height": 44
+        },
+        {
+          "id": "Fast",
+          "width": 47.34375,
+          "height": 44
+        },
+        {
+          "id": "replay-button",
+          "width": 68.421875,
+          "height": 44
+        },
+        {
+          "id": "spin-button",
+          "width": 140,
+          "height": 66
+        }
+      ],
+      "scroll": {
+        "x": false,
+        "y": false
+      },
+      "spin": {
+        "x": 1189,
+        "y": 763,
+        "width": 140,
+        "height": 66,
+        "bottom": 829
+      },
+      "money": [
+        {
+          "text": "US$9,000,000,000.00",
+          "overflow": false
+        },
+        {
+          "text": "US$0.00",
+          "overflow": false
+        }
+      ],
+      "after": {
+        "win": "US$0.20",
+        "multiplier": "×3",
+        "spinUnmoved": true,
+        "longMoney": [
+          {
+            "text": "US$8,999,999,999.20",
+            "overflow": false
+          },
+          {
+            "text": "US$0.20",
+            "overflow": false
+          }
+        ]
+      },
+      "modals": "PASS"
+    }
+  ],
+  "errors": [],
+  "status": "PASS",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+}

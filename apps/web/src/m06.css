@@ -1,0 +1,37 @@
+/* M06: full-width portrait hero above a square-cell 6×5 board. */
+.m06-character{position:absolute;width:100%;height:auto;left:50%;top:0;transform:translateX(-50%);filter:drop-shadow(0 8px 12px #0005)}
+.m06-character[hidden]{display:none!important}
+.media-review-note{font-size:11px;color:var(--muted)}
+dialog{overflow:auto;scroll-padding-top:58px}dialog [data-close]{position:sticky;top:0;z-index:3;background:#251a2e}
+#media-review-toggle{accent-color:var(--jade)}
+.qa-overlay{position:fixed;inset:0;pointer-events:none;z-index:50;border:4px solid #78e4ba77;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.qa-overlay output{display:block;position:absolute;top:48px;left:4px;max-width:310px;background:#100c16ed;color:#b0ffe0;font:10px/1.5 monospace;padding:5px;white-space:pre-wrap}
+@media(min-width:581px) and (min-height:501px){
+ .side-column{position:relative}.m06-character{width:150%;top:4%;max-width:none}.witch-stage{overflow:hidden}.cauldron-plaque{margin-top:0}
+}
+@media(max-width:580px) and (min-height:501px){
+ .game-shell{height:100svh;min-height:640px;padding:max(4px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));display:grid;grid-template-rows:44px minmax(0,1fr) 100px 12px;gap:4px}
+ .topbar{padding:0 2px}.subtitle{display:none}h1{font-size:24px;letter-spacing:1px}.header-actions{gap:4px}.brandline{gap:0}
+ .play-area{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:180px minmax(0,1fr);gap:4px;min-height:0}
+ .side-column{order:-1;display:block;position:relative;inset:auto;width:100%;height:auto;min-height:0;flex:none;border-radius:16px 16px 6px 6px;background:radial-gradient(ellipse at 50% 70%,#ac75442d,transparent 72%);overflow:hidden}
+ .witch-stage{position:absolute;inset:0;width:100%;height:100%;min-height:0;overflow:hidden;flex:none}
+ .witch-viewport{height:100%;min-height:0}.raster-container{inset:0;overflow:hidden}
+ .m06-character{width:100%;top:-12px}
+ .witch-rig{width:440px;height:566px;top:-103px;left:50%;inset-inline-start:50%;transform:translateX(-50%)!important}
+ .candidate-witch{width:535px;height:681px;top:-65px;left:50%;transform:translateX(-50%)}
+ .cauldron-plaque{position:absolute;left:2px;right:auto;bottom:3px;width:92px;min-height:44px;height:44px;margin:0;padding:2px 5px;gap:3px;border-radius:10px;background:#11201deb;box-shadow:0 4px 12px #0004}
+ .cauldron-plaque img{width:30px;height:38px}.cauldron-plaque strong{font-size:24px;line-height:1}.cauldron-plaque small{font-size:6px;letter-spacing:.4px}.cauldron-plaque p{display:none}
+ .board-frame{min-height:0;padding:4px;border-radius:10px;display:grid;grid-template-rows:minmax(0,1fr) 20px 22px}
+ .board-heading{display:none}.board-slot{min-height:0}.board-slot>.board{padding:3px;gap:2px}
+ .cascade-meter{padding:0 2px;font-size:10px}.cascade-meter strong{font-size:14px}.board-bottom{min-height:0;height:22px;font-size:9px;line-height:11px;overflow:hidden;margin:0;display:grid;place-items:center}
+ .controls{grid-template-rows:32px 44px;padding:8px;gap:4px 8px;border-radius:12px}.control-meter strong{font-size:clamp(10px,3.7vw,15px);line-height:1.05}.control-meter span{font-size:8px;margin-bottom:3px;letter-spacing:.5px}.primary-button{height:76px;min-height:76px}.status{min-height:0;height:12px;font-size:8px;line-height:12px;margin:0;overflow:hidden}.footer-row{display:none}
+}
+@media(max-width:580px) and (min-height:760px){.play-area{grid-template-rows:240px minmax(0,1fr)}.m06-character{top:-3px}}
+@media(max-width:580px) and (min-height:900px){.play-area{grid-template-rows:265px minmax(0,1fr)}}
+@media(max-height:500px){
+ .play-area{grid-template-columns:minmax(0,1fr) 32%;gap:6px}.side-column{position:relative;display:block;overflow:hidden}.witch-stage{position:absolute;inset:0;min-height:0;width:100%;height:100%}.witch-viewport{height:100%;min-height:0}.raster-container{inset:0}.m06-character{width:max(100%,230px);top:-16px}.cauldron-plaque{position:absolute;right:0;bottom:0;width:80px;min-height:38px;height:38px;padding:1px;gap:0;background:#11201deb}.cauldron-plaque img{width:25px;height:32px}.cauldron-plaque strong{font-size:22px}.cauldron-plaque small{font-size:6px;letter-spacing:0}.cauldron-plaque p{display:none}.witch-rig{height:566px;width:440px;top:-104px}.candidate-witch{height:681px;width:535px;top:-65px}.board-bottom{display:block}
+}
+/* Enlarged-text stress may scroll; controls remain reachable. */
+@media(max-width:580px){.text-stress .game-shell{height:auto;min-height:100svh;grid-template-rows:60px auto auto auto}.text-stress .play-area{grid-template-rows:240px 360px}.text-stress .controls{min-height:126px;height:auto}.text-stress .status{height:auto;white-space:normal}.text-stress .control-meter strong{font-size:18px}.text-stress .controls{grid-template-rows:minmax(48px,auto) 52px}}
+
+@media(max-width:600px) and (max-height:500px){.play-area{grid-template-columns:minmax(0,1fr) 230px}.m06-character{top:-10px}}

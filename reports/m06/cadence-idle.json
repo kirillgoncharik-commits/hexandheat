@@ -1,0 +1,43 @@
+{
+  "kind": "desktop-browser-wall-clock",
+  "activeMs": 120000.5,
+  "wallMs": 119997.59999999986,
+  "loops": 30,
+  "cases": [
+    {
+      "fps": 6,
+      "state": "IDLE",
+      "mode": "IDLE/6fps",
+      "changes": 721,
+      "missedPoses": 0,
+      "p95LateMs": 15.800000000090222,
+      "maxLateMs": 131.9000000000933,
+      "estimatedDecodedBytes": 27659520,
+      "failures": {}
+    },
+    {
+      "fps": 8,
+      "state": "IDLE",
+      "mode": "IDLE/8fps",
+      "changes": 961,
+      "missedPoses": 0,
+      "p95LateMs": 15.700000000098953,
+      "maxLateMs": 98.60000000009313,
+      "estimatedDecodedBytes": 36691200,
+      "failures": {}
+    },
+    {
+      "fps": 12,
+      "state": "IDLE",
+      "mode": "IDLE/12fps",
+      "changes": 1441,
+      "missedPoses": 0,
+      "p95LateMs": 15.800000000090222,
+      "maxLateMs": 81.90000000009331,
+      "estimatedDecodedBytes": 54754560,
+      "failures": {}
+    }
+  ],
+  "physicalDevices": "UNAVAILABLE",
+  "memoryMeasurement": "ESTIMATE ONLY"
+}

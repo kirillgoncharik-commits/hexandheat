@@ -1,0 +1,1 @@
+const select=document.querySelector('#size');select.onchange=()=>{const [w,h]=select.value.split('×').map(Number);for(const frame of document.querySelectorAll('iframe')){frame.style.width=w+'px';frame.style.height=h+'px';frame.parentElement.style.width=w+2+'px';}};

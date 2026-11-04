@@ -9,6 +9,7 @@ import { RigWitchPlayer } from "./rig-witch-player.js";
 import { RigWitchPlayer as PreviousRigPlayer } from "./rig-witch-player-v2.js";
 import { RasterWitchPlayer } from "./raster-witch.js";
 import { CandidateWitchPlayer } from './candidate-witch-player.js';
+import { PngSequencePlayer, decodeImage } from './png-sequence-player.js';
 import { ReviewRgs } from './review-rgs.js';
 import { BASE_RULES } from './m05-rules.js';
 import { SYMBOL_REGISTRY } from './symbol-registry.js';
@@ -49,6 +50,8 @@ elements.winLabel=document.querySelector('#win-label');
 const query=new URL(location.href).searchParams;
 document.body.dataset.layout=query.get('layout')==='B'?'B':'A';
 if(query.get('layout')==='before')document.querySelector('#m05-style').disabled=true;
+if(['before','m05'].includes(query.get('layout')))document.querySelector('#m06-style').disabled=true;
+if(query.get('text')==='large')document.documentElement.classList.add('text-stress');
 
 const locale = navigator.language || "en-US";
 const transport = new SceneTransport();
@@ -58,7 +61,7 @@ let presentation = null;
 let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 if(query.get('motion')==='reduced')reducedMotion=true;
 const ambient = new AmbientScene(document.querySelector('#ambient-scene'), transport, { reducedMotion });
-const modalManager = new ModalManager(transport, { reducedMotion: () => reducedMotion, onChange: open => { musicController.duck(open); elements.spin.disabled = busy || open; elements.replay.disabled = busy || open || !lastOutcome; } });
+const modalManager = new ModalManager(transport, { pauseScene:true, reducedMotion: () => reducedMotion, onChange: open => { musicController.duck(open); elements.spin.disabled = busy || open; elements.replay.disabled = busy || open || !lastOutcome; } });
 transport.start();
 let rgs = null;
 let session = null;
@@ -102,8 +105,14 @@ async function prepareWitchStage() {
     : new (new URL(location.href).searchParams.get('witch') === 'rig-v2' ? PreviousRigPlayer : RigWitchPlayer)(document.querySelector('.raster-container'), { reducedMotion, transport });
   rasterPlayer=new CandidateWitchPlayer(document.querySelector('.raster-container'),{transport,reducedMotion,fallback:rasterPlayer});
   rasterPlayer.setEnabled(query.get('witch')==='candidate');
+  const mediaOptions={transport,reducedMotion,fallback:rasterPlayer};
+  if(query.get('fault')==='media')mediaOptions.load=(path,signal)=>path.endsWith('neutral.png')?decodeImage(path,signal):Promise.reject(Error('Injected PNG decode failure'));
+  if(query.get('fault')==='manifest')mediaOptions.manifestUrl='./assets/m06/missing-manifest.json';
+  rasterPlayer=new PngSequencePlayer(document.querySelector('.raster-container'),mediaOptions);
+  rasterPlayer.setEnabled(query.get('witch')==='m06',{immediate:true});
   witchController = new WitchDanceController({
     transport,
+    seamWindowMs:50,
     onMissedSeam: data => director.record('witch.missedSeam', data),
     onLoop({ from, to }) {
       rasterPlayer.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to;
@@ -122,7 +131,7 @@ async function captureCandidate() {
   try {
     elements.status.textContent='Exporting candidate · 120 samples / 4 seconds · no wager';
     const {exportCandidate}=await import('./candidate-recording.js');
-    const blob=await exportCandidate(rasterPlayer),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='m05-small-win-candidate.webm';a.click();
+    const blob=await exportCandidate(rasterPlayer.fallback),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='m05-small-win-candidate.webm';a.click();
     const video=document.querySelector('#recording-preview');video.src=a.href;video.hidden=false;
     elements.status.textContent='4-second candidate export ready · 120 timestamped samples · art review pending';
   }catch(error){elements.status.textContent=error.message;}
@@ -282,16 +291,19 @@ async function initialize() {
     fixtureSelect.addEventListener('change',choose);choose();
   } else fixtureSelect.disabled=true;
   const candidateToggle=document.querySelector('#candidate-toggle');candidateToggle.checked=query.get('witch')==='candidate';
-  candidateToggle.addEventListener('change',()=>rasterPlayer.setEnabled(candidateToggle.checked));
+  candidateToggle.addEventListener('change',()=>{rasterPlayer.setEnabled(false);document.querySelector('#media-review-toggle').checked=false;rasterPlayer.fallback.setEnabled(candidateToggle.checked);});
+  const mediaToggle=document.querySelector('#media-review-toggle');mediaToggle.checked=query.get('witch')==='m06';
+  mediaToggle.addEventListener('change',()=>rasterPlayer.setEnabled(mediaToggle.checked));
   document.querySelector('#record-candidate').addEventListener('click',async()=>{
-    if(busy)return;await rasterPlayer.preload;if(!rasterPlayer.ready||rasterPlayer.failed){elements.status.textContent='Candidate source unavailable; fallback preserved.';return;}
-    await modalManager.close();candidateToggle.checked=true;rasterPlayer.setEnabled(true);recordPending=true;witchController.beginRound();witchController.request('SMALL_WIN');witchController.endRound();elements.status.textContent='Candidate recording starts on the next four-second seam · no wager';
+    if(busy)return;await rasterPlayer.fallback.preload;if(!rasterPlayer.fallback.ready||rasterPlayer.fallback.failed){elements.status.textContent='Candidate source unavailable; fallback preserved.';return;}
+    await modalManager.close();candidateToggle.checked=true;rasterPlayer.setEnabled(false);mediaToggle.checked=false;rasterPlayer.fallback.setEnabled(true);recordPending=true;witchController.beginRound();witchController.request('SMALL_WIN');witchController.endRound();elements.status.textContent='Candidate recording starts on the next four-second seam · no wager';
     recordUnsubscribe?.();recordUnsubscribe=transport.subscribe(({phaseMs})=>{if(!recordPending){recordUnsubscribe?.();recordUnsubscribe=null;return;}if(phaseMs<50&&witchController.active==='SMALL_WIN'){recordPending=false;captureCandidate();}},5);
   });
   if(query.has('compare')) {
-    await rasterPlayer.preload;await rasterPlayer.fallback.preload;
-    transport.pause('comparison');transport.time=Number(query.get('phase')??1200);rasterPlayer.switchTo('SMALL_WIN');rasterPlayer.fallback.tick();rasterPlayer.tick();
-    elements.status.textContent='Comparison pose · SMALL_WIN · 1.20 / 4.00s · no wager';elements.spin.disabled=true;
+    await rasterPlayer.fallback.preload;await rasterPlayer.fallback.fallback.preload;
+    if(query.get('witch')==='m06'){await rasterPlayer.prepare();await rasterPlayer.preload('IDLE');await rasterPlayer.preload('SMALL_WIN');}
+    transport.pause('comparison');transport.time=Number(query.get('phase')??1200);for(const key of rasterPlayer.readyCycles.keys())rasterPlayer.readyCycles.set(key,0);rasterPlayer.switchTo(query.get('state')??'SMALL_WIN');rasterPlayer.fallback.tick();rasterPlayer.tick();
+    elements.status.textContent='Comparison pose · no wager · art acceptance pending';elements.spin.disabled=true;
   }
   elements.spin.addEventListener("click", spin);
   elements.replay.addEventListener("click", replay);
@@ -350,6 +362,10 @@ async function initialize() {
       if (state === 'BONUS') modalManager.open(document.querySelector('#bonus-motion-dialog'));
     }
   };
+  if(query.has('qa')){
+    const {layoutMetrics}=await import('./m06-layout-metrics.js');const panel=document.createElement('aside');panel.className='qa-overlay';const output=document.createElement('output');panel.append(output);document.body.append(panel);
+    let last=-1;transport.subscribe(({now})=>{if(Math.floor(now/500)===last)return;last=Math.floor(now/500);const m=layoutMetrics(document,rasterPlayer.manifest);output.textContent=JSON.stringify({hero:m.hero.height,cell:m.cell.width,face:m.clips,scroll:m.scroll,media:rasterPlayer.diagnostics().mode},null,1);},50);
+  }
   // Explicit bounded F14 diagnostic: no real funds, no recurring autoplay.
   if(query.get('sequence')==='F14'&&rgs instanceof ReviewRgs){
     rgs.fixture='F06';

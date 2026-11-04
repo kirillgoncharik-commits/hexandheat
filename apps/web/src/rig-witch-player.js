@@ -19,7 +19,7 @@ export class RigWitchPlayer {
     this.unsubscribe=transport.subscribe(()=>this.tick(),2);
   }
   tick() {
-    if(!this.ready||this.destroyed)return;
+    if(!this.ready||this.destroyed||this.suspended)return;
     const now=this.transport.now;
     const frame=this.reducedMotion?0:Math.floor((now%4000)/1000*RIG_FPS);
     if(frame===this.lastFrame)return;
@@ -38,5 +38,6 @@ export class RigWitchPlayer {
     this.state=state;this.lastFrame=-1;this.fallback?.switchTo(state);this.container.dataset.state=state;
   }
   setReducedMotion(value) { this.reducedMotion=Boolean(value);this.lastFrame=-1;this.fallback?.setReducedMotion(value); }
+  setSuspended(value) { this.suspended=Boolean(value); }
   destroy() {this.destroyed=true;this.unsubscribe?.();this.fallback?.destroy();this.canvas.remove();}
 }

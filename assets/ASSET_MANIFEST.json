@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 7,
+  "version": 8,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -1186,6 +1186,38 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Human art and rights review pending; v7 shoulder repair candidate; no native-editor or production approval",
         "prompt_file": "assets/prompts/M04_SHOULDER_REPAIR.md"
+      }
+    },
+    {
+      "id": "M06-PNG-MANIFEST",
+      "status": "exploration",
+      "uri": "apps/web/assets/m06/manifest.json",
+      "bytes": 151044,
+      "sha256": "fd3a0c03054385e64ed47c0120353285ead98c75a5ba443b5641750bb02a8445",
+      "mime": "application/json",
+      "provenance": {
+        "creator_or_tool": "Node.js 24.9.0 / @napi-rs/canvas / sharp; original authored motion on registered v7 art",
+        "model_version": null,
+        "created_at": "2026-11-04",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Original project art reused; original AI-source entitlement/rights review and human art acceptance remain pending. No new purchases or terms accepted.",
+        "prompt_file": "assets/prompts/M06_MOTION_SOURCE.md"
+      }
+    },
+    {
+      "id": "M06-NEUTRAL",
+      "status": "exploration",
+      "uri": "apps/web/assets/m06/neutral.png",
+      "bytes": 54908,
+      "sha256": "f570a434044961a9f36ff7ad5836b2d7ba62451f28eedae0b20fc94d402552eb",
+      "mime": "image/png",
+      "provenance": {
+        "creator_or_tool": "Node.js 24.9.0 / @napi-rs/canvas / sharp; original authored motion on registered v7 art",
+        "model_version": null,
+        "created_at": "2026-11-04",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Original project art reused; original AI-source entitlement/rights review and human art acceptance remain pending. No new purchases or terms accepted.",
+        "prompt_file": "assets/prompts/M06_MOTION_SOURCE.md"
       }
     }
   ]

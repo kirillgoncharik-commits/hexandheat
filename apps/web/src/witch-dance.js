@@ -36,6 +36,7 @@ export class WitchDanceController {
     onAccent = () => {},
     onRequest = () => {},
     onMissedSeam = () => {},
+    seamWindowMs = 1000,
     transport = null
   } = {}) {
     for (const state of Object.values(WITCH_STATES)) {
@@ -55,6 +56,7 @@ export class WitchDanceController {
     this.onRequest = onRequest;
     this.onMissedSeam = onMissedSeam;
     this.transport = transport;
+    this.seamWindowMs = seamWindowMs;
     this.roundGeneration = 0;
     this.activeOwner = 0;
     this.peak = 0;
@@ -74,11 +76,9 @@ export class WitchDanceController {
       this.enteredAt = this.transport.now;
       this.unsubscribe = this.transport.subscribe(({ now, cycle, phaseMs }) => {
         if (cycle <= this.lastCycle) return;
-        // The first raster pose is the common neutral anchor for the full first
-        // second. A late frame can still stitch there, never in a later pose.
-        // Retrying within that window avoids a whole extra loop when frame
-        // jitter crosses the previous entry's minimum 4000ms only slightly late.
-        if (phaseMs >= 1000) {
+        // Legacy four-pose media holds neutral for a second. M06 supplies a
+        // 50ms window so a late callback cannot cut into its authored gesture.
+        if (phaseMs >= this.seamWindowMs) {
           if (this.lastMissedCycle !== cycle) this.onMissedSeam({ cycle, lateMs: phaseMs });
           this.lastMissedCycle = cycle; return;
         }
