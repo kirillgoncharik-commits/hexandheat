@@ -109,7 +109,7 @@ async function prepareWitchStage() {
     : new (new URL(location.href).searchParams.get('witch') === 'rig-v2' ? PreviousRigPlayer : RigWitchPlayer)(document.querySelector('.raster-container'), { reducedMotion, transport });
   rasterPlayer=new CandidateWitchPlayer(document.querySelector('.raster-container'),{transport,reducedMotion,fallback:rasterPlayer});
   rasterPlayer.setEnabled(query.get('witch')==='candidate');
-  const mediaOptions={transport,reducedMotion,fallback:rasterPlayer};
+  const mediaOptions={transport,reducedMotion:reducedMotion||calmCharacter,fallback:rasterPlayer};
   if(query.get('fault')==='media')mediaOptions.load=(path,signal)=>path.endsWith('neutral.png')?decodeImage(path,signal):Promise.reject(Error('Injected PNG decode failure'));
   if(query.get('fault')==='manifest')mediaOptions.manifestUrl='./assets/m06/missing-manifest.json';
   rasterPlayer=new PngSequencePlayer(document.querySelector('.raster-container'),mediaOptions);

@@ -1,0 +1,534 @@
+[
+  {
+    "board": {
+      "height": 549.703125,
+      "width": 659.640625,
+      "x": 230.1796875,
+      "y": 117.296875
+    },
+    "cell": {
+      "height": 103.140625,
+      "width": 103.6015625,
+      "x": 239.1796875,
+      "y": 126.296875
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      1440,
+      900
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 382,
+        "x": 806,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 1192,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 1248,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 1300,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 120,
+        "x": 484.4296875,
+        "y": 783.25
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 68.421875,
+        "x": 932.171875,
+        "y": 774
+      },
+      {
+        "height": 66,
+        "id": "spin-button",
+        "width": 140,
+        "x": 1189,
+        "y": 763
+      }
+    ],
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "board": {
+      "height": 417.703125,
+      "width": 501.2421875,
+      "x": 272.375,
+      "y": 117.296875
+    },
+    "cell": {
+      "height": 76.734375,
+      "width": 77.203125,
+      "x": 281.375,
+      "y": 126.296875
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      1366,
+      768
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 382,
+        "x": 769,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 1155,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 1211,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 1263,
+        "y": 20.1484375
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 120,
+        "x": 447.4296875,
+        "y": 651.25
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 68.421875,
+        "x": 895.171875,
+        "y": 642
+      },
+      {
+        "height": 66,
+        "id": "spin-button",
+        "width": 140,
+        "x": 1152,
+        "y": 631
+      }
+    ],
+    "viewport": [
+      1366,
+      768
+    ]
+  },
+  {
+    "board": {
+      "height": 228,
+      "width": 273.59375,
+      "x": 43.203125,
+      "y": 241
+    },
+    "cell": {
+      "height": 42.3984375,
+      "width": 42.59375,
+      "x": 47.203125,
+      "y": 245
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      360,
+      640
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 196,
+        "x": 10,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 210,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 259,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 306,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 118,
+        "x": 17,
+        "y": 565
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 52.5234375,
+        "x": 208.4765625,
+        "y": 565
+      },
+      {
+        "height": 76,
+        "id": "spin-button",
+        "width": 72,
+        "x": 269,
+        "y": 531
+      }
+    ],
+    "viewport": [
+      360,
+      640
+    ]
+  },
+  {
+    "board": {
+      "height": 303.328125,
+      "width": 364,
+      "x": 13,
+      "y": 335.3359375
+    },
+    "cell": {
+      "height": 57.4609375,
+      "width": 57.6640625,
+      "x": 17,
+      "y": 339.3359375
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      390,
+      844
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 226,
+        "x": 10,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 240,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 289,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 336,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 133,
+        "x": 17,
+        "y": 769
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 52.5234375,
+        "x": 238.4765625,
+        "y": 769
+      },
+      {
+        "height": 76,
+        "id": "spin-button",
+        "width": 72,
+        "x": 299,
+        "y": 735
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "board": {
+      "height": 336.6640625,
+      "width": 404,
+      "x": 13,
+      "y": 375.1640625
+    },
+    "cell": {
+      "height": 64.1328125,
+      "width": 64.328125,
+      "x": 17,
+      "y": 379.1640625
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      430,
+      932
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 266,
+        "x": 10,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 280,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 329,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 376,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 153,
+        "x": 17,
+        "y": 857
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 52.5234375,
+        "x": 278.4765625,
+        "y": 857
+      },
+      {
+        "height": 76,
+        "id": "spin-button",
+        "width": 72,
+        "x": 339,
+        "y": 823
+      }
+    ],
+    "viewport": [
+      430,
+      932
+    ]
+  },
+  {
+    "board": {
+      "height": 196,
+      "width": 235.1953125,
+      "x": 168.921875,
+      "y": 55
+    },
+    "cell": {
+      "height": 37.1953125,
+      "width": 37.359375,
+      "x": 171.921875,
+      "y": 58
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      844,
+      390
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 679,
+        "x": 8,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 691,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 740,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 792,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 65,
+        "x": 604.421875,
+        "y": 315
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 45.578125,
+        "x": 719.421875,
+        "y": 315
+      },
+      {
+        "height": 44,
+        "id": "spin-button",
+        "width": 60,
+        "x": 770,
+        "y": 315
+      }
+    ],
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "board": {
+      "height": 126,
+      "width": 151.1953125,
+      "x": 46.3984375,
+      "y": 55
+    },
+    "cell": {
+      "height": 23.1953125,
+      "width": 23.359375,
+      "x": 49.3984375,
+      "y": 58
+    },
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      480,
+      320
+    ],
+    "targets": [
+      {
+        "height": 44,
+        "id": "fixture-select",
+        "width": 320,
+        "x": 8,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "scenario-next",
+        "width": 44,
+        "x": 332,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 381,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "",
+        "width": 44,
+        "x": 428,
+        "y": 4
+      },
+      {
+        "height": 44,
+        "id": "bet-select",
+        "width": 65,
+        "x": 240.421875,
+        "y": 245
+      },
+      {
+        "height": 44,
+        "id": "replay-button",
+        "width": 45.578125,
+        "x": 355.421875,
+        "y": 245
+      },
+      {
+        "height": 44,
+        "id": "spin-button",
+        "width": 60,
+        "x": 406,
+        "y": 245
+      }
+    ],
+    "viewport": [
+      480,
+      320
+    ]
+  }
+]

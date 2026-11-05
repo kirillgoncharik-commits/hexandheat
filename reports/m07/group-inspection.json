@@ -1,0 +1,39 @@
+{
+  "allWinning": 16,
+  "focused": [
+    {
+      "position": 0,
+      "symbol": "L1"
+    },
+    {
+      "position": 5,
+      "symbol": "L1"
+    },
+    {
+      "position": 7,
+      "symbol": "L1"
+    },
+    {
+      "position": 12,
+      "symbol": "L1"
+    },
+    {
+      "position": 14,
+      "symbol": "L1"
+    },
+    {
+      "position": 19,
+      "symbol": "L1"
+    },
+    {
+      "position": 21,
+      "symbol": "L1"
+    },
+    {
+      "position": 28,
+      "symbol": "L1"
+    }
+  ],
+  "formula": "8 ×US$0.20 × 1 = US$0.201/2",
+  "marker": "field.group · 1346.1 ms · round 1"
+}
