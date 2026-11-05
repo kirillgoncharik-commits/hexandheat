@@ -50,13 +50,27 @@ export class BoardPlayer {
       cell.style.opacity = ''; cell.style.transform = '';
     }
   }
+  clearFocus() {
+    this.element.removeAttribute('data-focus');this.element.removeAttribute('data-group-focus');
+    for(const cell of this.cells){cell?.classList.remove('is-group-focus');cell?.style.removeProperty('--group-color');cell?.style.removeProperty('--win-pulse');}
+  }
+  focusGroups(groups, active=null) {
+    this.element.dataset.focus='true';this.element.dataset.groupFocus=String(active!==null);
+    const colors=['#f0cb87','#9ce8cd','#d6b7f4'];
+    for(let p=0;p<this.cells.length;p++){
+      const i=groups.findIndex(g=>g.positions.includes(p)),cell=this.cells[p];
+      cell.classList.toggle('is-group-focus',active===i);if(i>=0)cell.style.setProperty('--group-color',colors[i%3]);
+    }
+  }
+  pulse(value){for(const c of this.cells)c.style.setProperty('--win-pulse',String(.4+.6*value));}
   async reveal(state, tokens, signal) {
+    this.clearFocus();
     this.render(state);
     await this.transport.tween(tokens.reveal, p => {
       this.cells.forEach((cell, i) => {
         const q = easeOut(Math.max(0, Math.min(1, (p - Math.floor(i / 5) * 0.035) / 0.825)));
         cell.style.opacity = String(this.reducedMotion ? 1 : q);
-        cell.style.transform = this.reducedMotion ? '' : `translateY(${(1 - q) * -32}px)`;
+        cell.style.transform = this.reducedMotion ? '' : `translateY(${(1 - q) * -this.element.clientHeight}px)`;
       });
     }, { signal });
     this.render(state);
@@ -64,6 +78,7 @@ export class BoardPlayer {
   async cascade(previous, next, tokens, signal, record = () => {}) {
     const startAt = this.transport.now;
     const removed = new Set(previous.removedPositions ?? previous.highlightedPositions); const oldCells = [...this.cells];
+    record('field.remove',{positions:[...removed]});
     await this.transport.tween(tokens.remove, p => {
       for (const position of removed) {
         const cell = oldCells[position];
@@ -71,21 +86,23 @@ export class BoardPlayer {
       }
     }, { signal, startAt });
     if (signal?.aborted) throw new DOMException('Cascade aborted', 'AbortError');
+    this.clearFocus();
     const moves = []; const retained = new Set();
-    const rowHeight = this.element.clientHeight / 5;
+    const rowHeight = (this.cells[0]?.getBoundingClientRect().height??this.element.clientHeight/5) + (parseFloat(getComputedStyle(this.element).rowGap)||0);
     for (let col = 0; col < 6; col++) {
       const plan = planColumn(previous.board[col], next.board[col], [...removed].filter(p => Math.floor(p / 5) === col).map(p => p % 5));
       if (!plan.compatible) record('board.reconcile', { column: col, reason: 'legacy showcase target has no compatible survivor suffix' });
       for (const cellPlan of plan.cells) {
         const position = col * 5 + cellPlan.row;
         const node = cellPlan.from === null ? this.make(cellPlan.symbol, position) : oldCells[col * 5 + cellPlan.from];
-        retained.add(node); this.place(node, position); node.classList.remove('is-winning');
+        retained.add(node); this.place(node, position); node.classList.remove('is-winning','is-potion-active','is-group-focus');node.style.removeProperty('--group-color');node.style.removeProperty('--win-pulse');node.style.opacity='';node.style.transform='';
         this.cells[position] = node; this.element.append(node);
-        const offset = cellPlan.from === null ? -(cellPlan.row + 1) * rowHeight : (cellPlan.from - cellPlan.row) * rowHeight;
+        const offset = cellPlan.from === null ? -plan.cells.filter(c=>c.from===null).length * rowHeight : (cellPlan.from - cellPlan.row) * rowHeight;
         moves.push({ node, offset, col });
       }
     }
     oldCells.filter(node => !retained.has(node)).forEach(node => node.remove());
+    record('field.fall',{survivors:moves.filter(m=>m.offset!==0).length});
     const duration = tokens.fall + 5 * tokens.stagger;
     await this.transport.tween(duration, p => {
       for (const move of moves) {

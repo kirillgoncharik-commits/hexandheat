@@ -99,3 +99,7 @@ Platform statements are based on official Stake Engine docs/repositories accesse
 ## M06 review package — 04.11.2026
 
 [Scope and verified continuation](m06/SCOPE_RU.md), [mobile composition and measurements](m06/MOBILE_COMPOSITION_RU.md), [motion brief](m06/CHARACTER_MOTION_BRIEF_RU.md), [media decision](m06/MEDIA_DELIVERY_DECISION_RU.md), [report](../reports/MILESTONE-06-REPORT.md). Two authored PNG candidates; no production math, FS or Stake release approval.
+
+## M07 — 05.11.2026
+
+[Scope/status](m07/VISUAL_BETA_SCOPE_RU.md), [field choreography](m07/FIELD_CHOREOGRAPHY_RU.md), [motion concepts](m07/MOTION_REFERENCE_RU.md), [scenario matrix](m07/SCENARIO_MATRIX_RU.md). Issue #33 continues PR #32. Human art and device acceptance remain OPEN.

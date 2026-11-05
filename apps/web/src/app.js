@@ -10,6 +10,7 @@ import { RigWitchPlayer as PreviousRigPlayer } from "./rig-witch-player-v2.js";
 import { RasterWitchPlayer } from "./raster-witch.js";
 import { CandidateWitchPlayer } from './candidate-witch-player.js';
 import { PngSequencePlayer, decodeImage } from './png-sequence-player.js';
+import { mountScenarioReview } from './review-sequence.js';
 import { ReviewRgs } from './review-rgs.js';
 import { BASE_RULES } from './m05-rules.js';
 import { SYMBOL_REGISTRY } from './symbol-registry.js';
@@ -47,6 +48,7 @@ elements.cascadeWin=document.querySelector('#cascade-value');
 elements.cascadeLabel=document.querySelector('#cascade-label');
 elements.potionNote=document.querySelector('#potion-note');
 elements.winLabel=document.querySelector('#win-label');
+elements.groupExplanation=document.querySelector('#group-explanation');
 const query=new URL(location.href).searchParams;
 document.body.dataset.layout=query.get('layout')==='B'?'B':'A';
 if(query.get('layout')==='before')document.querySelector('#m05-style').disabled=true;
@@ -58,6 +60,8 @@ const transport = new SceneTransport();
 const director = new CueDirector(transport);
 const boardPlayer = new BoardPlayer(elements.board, transport);
 let presentation = null;
+let scenarioReview=null;
+let calmCharacter=!query.has('witch')||query.get('witch')==='still';
 let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 if(query.get('motion')==='reduced')reducedMotion=true;
 const ambient = new AmbientScene(document.querySelector('#ambient-scene'), transport, { reducedMotion });
@@ -109,7 +113,8 @@ async function prepareWitchStage() {
   if(query.get('fault')==='media')mediaOptions.load=(path,signal)=>path.endsWith('neutral.png')?decodeImage(path,signal):Promise.reject(Error('Injected PNG decode failure'));
   if(query.get('fault')==='manifest')mediaOptions.manifestUrl='./assets/m06/missing-manifest.json';
   rasterPlayer=new PngSequencePlayer(document.querySelector('.raster-container'),mediaOptions);
-  rasterPlayer.setEnabled(query.get('witch')==='m06',{immediate:true});
+  rasterPlayer.setEnabled(calmCharacter||query.get('witch')==='m06',{immediate:true});
+  if(calmCharacter)rasterPlayer.setReducedMotion(true);
   witchController = new WitchDanceController({
     transport,
     seamWindowMs:50,
@@ -155,6 +160,7 @@ function setBusy(value, source = "spin") {
   elements.spin.disabled = value || Boolean(modalManager.active);
   elements.betSelect.disabled = value;
   document.querySelector('#fixture-select').disabled=value;
+  scenarioReview?.setBusy(value);
   elements.replay.disabled = value || Boolean(modalManager.active) || !lastOutcome;
   if (value) {
     elements.debugGameState.textContent = source === "replay" ? "REPLAY · REQUEST" : "SPIN · REQUEST";
@@ -194,6 +200,10 @@ async function presentOutcome(outcome, source) {
     document.querySelector('#result-amount').textContent = formatMoney(outcome.payoutMicro, outcome.currency, locale);
     await modalManager.open(document.querySelector('#result-dialog'), elements.spin);
   }
+  if(rgs instanceof ReviewRgs){
+    const c=rgs.catalog.cases.find(c=>c.id===outcome.fixtureId);
+    document.querySelector('#scenario-diagnostics').textContent=JSON.stringify({case:outcome.fixtureId,run:scenarioReview?{seed:scenarioReview.sequence.seed,cursor:scenarioReview.sequence.cursor}:null,bookHash:c?.sha256,configHash:outcome.configHash,expectedGroups:outcome.events.filter(e=>e.type==='win').map(e=>e.groups),paidTotal:outcome.payoutMicro,multiplierTransitions:outcome.events.filter(e=>e.type==='multiplier'),terminal:{board:finalState.board,paid:finalState.winMicro,multiplier:finalState.multiplier},sampleOutcomes:true,curatedNotDistribution:true},null,2);
+  }
   return finalState;
 }
 
@@ -208,6 +218,7 @@ async function spin(options = {}) {
     if (betMicro > session.balanceMicro) { elements.status.textContent = "Insufficient balance. Choose a smaller amount."; return; }
     outcome = await rgs.play({ betMicro });
     lastOutcome = outcome;
+    scenarioReview?.accepted();
     updateWallet();
     await presentOutcome(outcome, "spin");
     await rgs.settle(outcome.id);
@@ -229,6 +240,7 @@ async function spin(options = {}) {
     witchController.endRound({ failed });
     if (failed) musicController.setState(MUSIC_STATES.BASE);
     setBusy(false);
+    scenarioReview?.ready();
   }
 }
 
@@ -256,10 +268,10 @@ async function replay() {
 async function initialize() {
   elements.fast.checked=query.get('speed')==='fast';
   const useMock = query.get('rgs') !== 'local';
-  rgs = useMock ? new ReviewRgs({fixture:query.get('fixture')??'F06',...(query.has('long')?{balanceMicro:9_000_000_000_000_000}:{})}) : new StakeRgs({ config: launchConfigFromUrl() });
+  rgs = useMock ? new ReviewRgs({fixture:query.get('fixture')??'B05',...(query.has('long')?{balanceMicro:9_000_000_000_000_000}:{})}) : new StakeRgs({ config: launchConfigFromUrl() });
   if (typeof rgs.initialize === "function") await rgs.initialize();
   session = rgs.getSession();
-  elements.rgsSource.textContent = useMock ? 'Verified M05 samples · no real funds' : 'Stake-compatible local RGS';
+  elements.rgsSource.textContent = useMock ? 'M07 curated samples · no real funds · not RTP distribution' : 'Stake-compatible local RGS';
   await prepareWitchStage();
   for (const betMicro of session.betLevels) {
     const option = document.createElement("option");
@@ -285,15 +297,16 @@ async function initialize() {
   }
   const fixtureSelect=document.querySelector('#fixture-select');
   if(useMock) {
-    for(const c of rgs.catalog.cases){const option=document.createElement('option');option.value=c.id;option.textContent=`${c.id} · ${c.purpose}`;fixtureSelect.append(option);}
-    fixtureSelect.value=rgs.fixture;
-    const choose=()=>{rgs.fixture=fixtureSelect.value;const c=rgs.catalog.cases.find(c=>c.id===rgs.fixture);elements.betSelect.value=String(c.betMicro);updateWallet();if(!lastOutcome){renderState(createInitialState(rgs.getFixturePreview()));elements.fixtureLabel.textContent=`${c.id} · 6 × 5`;}else elements.fixtureLabel.textContent=`${lastOutcome.fixtureId} · NEXT ${c.id}`;};
-    fixtureSelect.addEventListener('change',choose);choose();
+    scenarioReview=mountScenarioReview({rgs,query,elements,updateWallet,renderPreview(c){
+      if(!lastOutcome){renderState(createInitialState(rgs.getFixturePreview()));elements.fixtureLabel.textContent=`${c.id} · 6 × 5`;}
+      else elements.fixtureLabel.textContent=`${lastOutcome.fixtureId} · NEXT ${c.id}`;
+    }});
   } else fixtureSelect.disabled=true;
   const candidateToggle=document.querySelector('#candidate-toggle');candidateToggle.checked=query.get('witch')==='candidate';
-  candidateToggle.addEventListener('change',()=>{rasterPlayer.setEnabled(false);document.querySelector('#media-review-toggle').checked=false;rasterPlayer.fallback.setEnabled(candidateToggle.checked);});
+  candidateToggle.addEventListener('change',()=>{calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(false);document.querySelector('#media-review-toggle').checked=false;rasterPlayer.fallback.setEnabled(candidateToggle.checked);});
   const mediaToggle=document.querySelector('#media-review-toggle');mediaToggle.checked=query.get('witch')==='m06';
-  mediaToggle.addEventListener('change',()=>rasterPlayer.setEnabled(mediaToggle.checked));
+  mediaToggle.addEventListener('change',()=>{calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(mediaToggle.checked);});
+  const calmToggle=document.querySelector('#calm-character');calmToggle.checked=calmCharacter;calmToggle.addEventListener('change',()=>{calmCharacter=calmToggle.checked;rasterPlayer.setEnabled(calmCharacter||mediaToggle.checked);rasterPlayer.setReducedMotion(calmCharacter||reducedMotion);});
   document.querySelector('#record-candidate').addEventListener('click',async()=>{
     if(busy)return;await rasterPlayer.fallback.preload;if(!rasterPlayer.fallback.ready||rasterPlayer.fallback.failed){elements.status.textContent='Candidate source unavailable; fallback preserved.';return;}
     await modalManager.close();candidateToggle.checked=true;rasterPlayer.setEnabled(false);mediaToggle.checked=false;rasterPlayer.fallback.setEnabled(true);recordPending=true;witchController.beginRound();witchController.request('SMALL_WIN');witchController.endRound();elements.status.textContent='Candidate recording starts on the next four-second seam · no wager';
@@ -330,7 +343,7 @@ async function initialize() {
   const reduceToggle = document.querySelector('#reduce-toggle'); reduceToggle.checked = reducedMotion;
   function motionPolicy(value) {
     reducedMotion = value; document.documentElement.classList.toggle('reduce-motion', value);
-    rasterPlayer.setReducedMotion(value); presentation.setReducedMotion(value); ambient.setReducedMotion(value);
+    rasterPlayer.setReducedMotion(value||calmCharacter); presentation.setReducedMotion(value); ambient.setReducedMotion(value);
   }
   motionPolicy(reducedMotion);
   reduceToggle.addEventListener('change', () => motionPolicy(reduceToggle.checked));
@@ -362,6 +375,8 @@ async function initialize() {
       if (state === 'BONUS') modalManager.open(document.querySelector('#bonus-motion-dialog'));
     }
   };
+  if(useMock&&query.has('inspect')){const {mountFieldInspector}=await import('./field-inspector.js');mountFieldInspector(transport,director);}
+  if(!useMock){document.querySelector('#scenario-review').hidden=true;document.querySelector('#review-diagnostics').hidden=true;}
   if(query.has('qa')){
     const {layoutMetrics}=await import('./m06-layout-metrics.js');const panel=document.createElement('aside');panel.className='qa-overlay';const output=document.createElement('output');panel.append(output);document.body.append(panel);
     let last=-1;transport.subscribe(({now})=>{if(Math.floor(now/500)===last)return;last=Math.floor(now/500);const m=layoutMetrics(document,rasterPlayer.manifest);output.textContent=JSON.stringify({hero:m.hero.height,cell:m.cell.width,face:m.clips,scroll:m.scroll,media:rasterPlayer.diagnostics().mode},null,1);},50);

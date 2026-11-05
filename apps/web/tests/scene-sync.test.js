@@ -145,3 +145,12 @@ test('real CueDirector event playback preserves sample outcomes in Normal, Fast,
   }
   results.forEach(result => assert.deepEqual(result, results[0]));
 });
+
+
+test('deadline and completed required read hold in the same delayed tick prefer completion; a stalled participant still falls back',async()=>{
+ const c=clock(),director=new CueDirector(c.transport);let fallback=0;
+ const done=director.run({id:'same-tick',duration:250,required:[s=>c.transport.wait(250,{signal:s})],fallback:()=>fallback++});
+ await flush();c.to(2000);assert.equal(await done,'complete');assert.equal(fallback,0);
+ const stalled=director.run({id:'stalled-after-jank',duration:250,required:[()=>new Promise(()=>{})],fallback:()=>fallback++});
+ await flush();c.to(4000);assert.equal(await stalled,'fallback');assert.equal(fallback,1);
+});

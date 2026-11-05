@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 8,
+  "version": 9,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -1218,6 +1218,22 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Original project art reused; original AI-source entitlement/rights review and human art acceptance remain pending. No new purchases or terms accepted.",
         "prompt_file": "assets/prompts/M06_MOTION_SOURCE.md"
+      }
+    },
+    {
+      "id": "M07-SMALL-KEYPOSES-V1",
+      "status": "exploration",
+      "sha256": "c5bf785fa8b79283782a8d2f1ed2f09315b3f18f7d74da8931cef3d3891a377a",
+      "bytes": 218288,
+      "uri": "apps/web/assets/m07/small-win-keyposes-v1.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; Pillow WebP packaging",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Inherited original-art entitlement review OPEN; key-pose concepts only; no animation/art acceptance",
+        "prompt_file": "assets/prompts/M07_KEYPOSES.md"
       }
     }
   ]

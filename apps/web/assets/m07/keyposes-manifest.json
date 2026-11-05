@@ -1,0 +1,28 @@
+{
+  "version": "m07-keyposes-1",
+  "status": "PRODUCED — READY FOR ART REVIEW; NOT ANIMATION",
+  "tool": "built-in image_gen",
+  "date": "2026-11-05",
+  "originalSource": "hexheat-m07-media/small-win-keyposes-v1.png",
+  "sourceSha256": "173c15bd42470913e6179f15820f96798a7022fe8e0efaf489fc31bcd3b36100",
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "reference": "apps/web/assets/m06/neutral.png",
+  "preview": "small-win-keyposes-v1.webp",
+  "previewSha256": "c5bf785fa8b79283782a8d2f1ed2f09315b3f18f7d74da8931cef3d3891a377a",
+  "encoding": "Pillow WebP quality90 method6; no pixel retouching",
+  "review": [
+    "identity",
+    "shoulder/elbow/wrist projections",
+    "five fingers",
+    "silhouette at phone size",
+    "gesture direction",
+    "pose1/pose8 seam differs; not a loop"
+  ],
+  "artAcceptance": "PENDING",
+  "fullSmallWinLoop": "NOT PRODUCED",
+  "statesBeyondReference": "NOT PRODUCED",
+  "licensing": "Original project art reused as identity input; inherited entitlement review remains OPEN. No external video downloaded or used as generation input."
+}
