@@ -1,0 +1,24 @@
+{
+  "manifest": {
+    "fixtureVersion": "m07-fixtures-1",
+    "productionReady": false,
+    "sourceCommit": "c324728cb7c4d7a9c3d59796f6dc57e686fc51c9",
+    "version": "m07-field-review-2"
+  },
+  "actual": {
+    "balance": "US$100.90",
+    "cells": 30,
+    "media": "neutral-reduced",
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      390,
+      844
+    ],
+    "spinDisabled": false,
+    "viewport": [
+      390,
+      844
+    ]
+  }
+}

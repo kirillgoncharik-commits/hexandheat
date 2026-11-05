@@ -25,3 +25,9 @@ Final visual QA found that enabling calm mode after starting manifest loading ab
 Completed browser evidence:11/11 safety checks PASS (F14 Normal/Fast; protected SMALL/BIG→LOSS Normal/Fast; missing media/manifest;200ms jank;500ms modal pause; seeded playlist/replay). Seven target viewports show no main-path scroll, targets≥44px and portrait cells≥42px. B11/B06/B09 and max-bet F11 were exercised across all seven sizes; cap remains paid25000.00 with30 cells and enabled Spin. Marker inspector confirms16 winning positions and only8 L1 focused in golden group1. Initial-calm fix:4/4 B05 controls PASS; default canvas visible and data-media=neutral-reduced. See JSON/screenshots in reports/m07.
 
 Runtime CI atc98edc8 succeeded: https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/41994533432 . Version10 deployment is preserved in deployment-v10.json; final source/deployment receipt follows the calm initialization fix. Full visual beta remains OPEN.
+
+## Final publication
+
+Existing review Site version11 succeeded. Runtime GitHub `c324728cb7c4d7a9c3d59796f6dc57e686fc51c9`; separate Site source `0a61f7bda018708e75769a6dee831ed0c2c90ec4`. Live manifest confirms m07-field-review-2 / runtime SHA. Published B05 smoke: paid1.90, balance100.90, multiplier2,30 cells, ready Spin, neutral-reduced PNG mode;390×844 without scroll. `published-smoke.json`, `mobile-v11.jpg`, `deployment.json`. Runtime CI succeeded: https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/42005550294 . Draft PR #34 stays open above #32; no merge or automatic issue closure. This receipt update changes no runtime.
+
+Review: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site/?fixture=B05 ; varied manual rounds: ?mode=varied&seed=m07 ; new key-pose concepts: /m07-art.html . Next decision remains golden-field and key-pose art review, not full milestone acceptance.
