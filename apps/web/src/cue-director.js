@@ -16,8 +16,15 @@ export class CueDirector {
     this.controllers.add(controller); this.record('cue.start', { id, duration, deadlineMs: duration + budget });
     let status = 'complete';
     try {
-      const work = Promise.all(required.map(fn => Promise.resolve().then(() => fn(controller.signal))));
-      const timeout = this.transport.wait(duration + budget, { signal: deadline.signal }).then(() => { throw new Error('Cue deadline exceeded'); });
+      let workDone=false;
+      const work = Promise.all(required.map(fn => Promise.resolve().then(() => fn(controller.signal)))).then(value=>{workDone=true;return value;});
+      const timeout = this.transport.wait(duration + budget, { signal: deadline.signal }).then(async () => {
+        // A delayed frame can finish the read hold AND the watchdog in one tick.
+        // Drain that tick's promise jobs before declaring a stalled participant.
+        // This changes neither the active-time deadline nor an unfinished hold.
+        await new Promise(resolve=>setTimeout(resolve,0));
+        if(!workDone)throw new Error('Cue deadline exceeded');
+      });
       const cancellation = new Promise((_, reject) => controller.signal.addEventListener('abort', () => reject(new DOMException('Cue aborted', 'AbortError')), { once: true }));
       await Promise.race([work, timeout, cancellation]);
     } catch (error) {

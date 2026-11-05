@@ -4,6 +4,10 @@
 
 Every agent must start with: (1) `README.md`, (2) this file, (3) `docs/DOC-00-project-index.md`, (4) its assigned issue, and (5) every specification listed under that issue’s **Required reading**. If instructions conflict, stop and ask the Product Owner; never silently choose a different product direction.
 
+## M07 implementation authorization effective 2026-11-05
+
+PO requested «погнали работать над новым майлстоуном» with the M07 visual-beta brief. Issue #33 continues actual PR #32 head7392b93 above open PR #30; a dedicated stacked branch is required, superseding the historical bootstrap-main branching rule for this continuation. Bounded field/scenario code, original character key-pose concepts and the existing sample review Site update are authorized. New economics/production math, FS, purchases/terms and Stake submission are outside this package. M06 movement is REWORK; concept poses, tests or deployment cannot confer human art/device acceptance. Do not auto-merge earlier PRs.
+
 ## M04 implementation authorization effective 2026-11-01
 
 Product Owner explicitly requested: «начинаем разработку кода, арта и документации по мл 4». M04.1 implementation, original raster refinement and documentation are now authorized under Issue #20 and docs/m04/. Continue the existing M03 implementation stack in a separate branch; the M04 scope PR #22 is a documentation input. Do not auto-merge older PRs. This bounded start supersedes NOT STARTED/proposed implementation gates in the scope documents. Full 4000ms witch body cycles, including IDLE, remain required. Production math sign-off, paid tools, commercial terms, live Stake operations/submission and real-device certification retain their separate gates. The review build uses explicit sample outcomes.

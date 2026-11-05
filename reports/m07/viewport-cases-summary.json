@@ -1,0 +1,154 @@
+{
+  "source": "published Site v10; field/tokens unchanged by subsequent initial-character fix",
+  "cases": [
+    {
+      "id": "B11",
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          1366,
+          768
+        ],
+        [
+          360,
+          640
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          844,
+          390
+        ],
+        [
+          480,
+          320
+        ]
+      ],
+      "paid": "3.20",
+      "scroll": "none",
+      "terminalCells": 30,
+      "status": "PASS"
+    },
+    {
+      "id": "B06",
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          1366,
+          768
+        ],
+        [
+          360,
+          640
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          844,
+          390
+        ],
+        [
+          480,
+          320
+        ]
+      ],
+      "paid": "1.30",
+      "scroll": "none",
+      "terminalCells": 30,
+      "status": "PASS"
+    },
+    {
+      "id": "B09",
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          1366,
+          768
+        ],
+        [
+          360,
+          640
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          844,
+          390
+        ],
+        [
+          480,
+          320
+        ]
+      ],
+      "paid": "1.10",
+      "scroll": "none",
+      "terminalCells": 30,
+      "status": "PASS"
+    },
+    {
+      "id": "F11 (bet 5)",
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          1366,
+          768
+        ],
+        [
+          360,
+          640
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          844,
+          390
+        ],
+        [
+          480,
+          320
+        ]
+      ],
+      "paid": "25000.00",
+      "scroll": "none",
+      "terminalCells": 30,
+      "status": "PASS"
+    }
+  ],
+  "evidence": "B11/B06/B09 observations from the browser audit sequence; cap-viewports.json retains full cap observations. Browser tool reset interrupted collection of detailed per-case rectangles; baseline viewports.json and screenshots were already saved."
+}

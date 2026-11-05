@@ -1,0 +1,87 @@
+{
+  "landmarkPolicy": "coarse visual rectangles, +/-15-25 source pixels, not anatomy acceptance",
+  "sourceCanvas": 1254,
+  "padding": 32,
+  "sourceLandmarks": {
+    "canonical": {
+      "face": [
+        550,
+        155,
+        750,
+        382
+      ],
+      "leftHand": [
+        154,
+        504,
+        352,
+        632
+      ],
+      "rightHand": [
+        698,
+        636,
+        898,
+        750
+      ]
+    },
+    "weight": {
+      "face": [
+        548,
+        171,
+        728,
+        392
+      ],
+      "leftHand": [
+        126,
+        474,
+        330,
+        610
+      ],
+      "rightHand": [
+        695,
+        650,
+        902,
+        766
+      ]
+    },
+    "accent": {
+      "face": [
+        545,
+        160,
+        738,
+        387
+      ],
+      "leftHand": [
+        78,
+        592,
+        294,
+        748
+      ],
+      "rightHand": [
+        723,
+        568,
+        932,
+        685
+      ]
+    },
+    "release": {
+      "face": [
+        530,
+        164,
+        728,
+        394
+      ],
+      "leftHand": [
+        151,
+        503,
+        372,
+        652
+      ],
+      "rightHand": [
+        679,
+        628,
+        876,
+        744
+      ]
+    }
+  }
+}

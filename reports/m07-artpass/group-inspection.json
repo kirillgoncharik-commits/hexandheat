@@ -1,0 +1,47 @@
+{
+  "focused": [
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    },
+    {
+      "border": "rgba(0, 0, 0, 0)",
+      "shadow": "none",
+      "symbol": "L1"
+    }
+  ],
+  "highlightCount": 16,
+  "primary": "8+US$0.20",
+  "secondary": "Множитель ×1 · группа 1/2"
+}

@@ -1,0 +1,185 @@
+{
+  "policy": "coarse visual rectangles, +/-15-25 source pixels, not anatomy acceptance",
+  "cases": [
+    {
+      "cell": 104.3359375,
+      "faceHeight": 54.76934749620638,
+      "handsVisible": true,
+      "pose": "canonical",
+      "scroll": [
+        1440,
+        900
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "visible": true
+    },
+    {
+      "cell": 104.3359375,
+      "faceHeight": 53.3216995447648,
+      "handsVisible": true,
+      "pose": "weight",
+      "scroll": [
+        1440,
+        900
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "visible": true
+    },
+    {
+      "cell": 104.3359375,
+      "faceHeight": 54.76934749620638,
+      "handsVisible": true,
+      "pose": "accent",
+      "scroll": [
+        1440,
+        900
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "visible": true
+    },
+    {
+      "cell": 104.3359375,
+      "faceHeight": 55.49317147192716,
+      "handsVisible": true,
+      "pose": "release",
+      "scroll": [
+        1440,
+        900
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "visible": true
+    },
+    {
+      "cell": 42.3984375,
+      "faceHeight": 50.95201654969651,
+      "handsVisible": true,
+      "pose": "canonical",
+      "scroll": [
+        360,
+        640
+      ],
+      "viewport": [
+        360,
+        640
+      ],
+      "visible": true
+    },
+    {
+      "cell": 42.3984375,
+      "faceHeight": 49.605267213581186,
+      "handsVisible": true,
+      "pose": "weight",
+      "scroll": [
+        360,
+        640
+      ],
+      "viewport": [
+        360,
+        640
+      ],
+      "visible": true
+    },
+    {
+      "cell": 42.3984375,
+      "faceHeight": 50.95201654969651,
+      "handsVisible": true,
+      "pose": "accent",
+      "scroll": [
+        360,
+        640
+      ],
+      "viewport": [
+        360,
+        640
+      ],
+      "visible": true
+    },
+    {
+      "cell": 42.3984375,
+      "faceHeight": 51.62539121775418,
+      "handsVisible": true,
+      "pose": "release",
+      "scroll": [
+        360,
+        640
+      ],
+      "viewport": [
+        360,
+        640
+      ],
+      "visible": true
+    },
+    {
+      "cell": 57.4609375,
+      "faceHeight": 55.39502916350531,
+      "handsVisible": true,
+      "pose": "canonical",
+      "scroll": [
+        390,
+        844
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "visible": true
+    },
+    {
+      "cell": 57.4609375,
+      "faceHeight": 53.93084337063733,
+      "handsVisible": true,
+      "pose": "weight",
+      "scroll": [
+        390,
+        844
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "visible": true
+    },
+    {
+      "cell": 57.4609375,
+      "faceHeight": 55.39502916350531,
+      "handsVisible": true,
+      "pose": "accent",
+      "scroll": [
+        390,
+        844
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "visible": true
+    },
+    {
+      "cell": 57.4609375,
+      "faceHeight": 56.1271220599393,
+      "handsVisible": true,
+      "pose": "release",
+      "scroll": [
+        390,
+        844
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "visible": true
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-export const MOTION_VERSION = 'm04.1-1';
+export const MOTION_VERSION = 'm07-artpass-1';
 export const MOTION = Object.freeze({
-  normal: Object.freeze({ reveal: 420, win: 750, multiplier: 500, remove: 180, fall: 400, finalWin: 450, stagger: 28, count: 250, read: 450 }),
-  fast: Object.freeze({ reveal: 180, win: 310, multiplier: 250, remove: 100, fall: 220, finalWin: 250, stagger: 12, count: 60, read: 250 })
+  normal: Object.freeze({ reveal: 420, win: 750, multiplier: 500, remove: 180, fall: 400, finalWin: 450, stagger: 28, count: 250, read: 450, focus: 140, groupRead: 680, settle: 80 }),
+  fast: Object.freeze({ reveal: 180, win: 310, multiplier: 250, remove: 100, fall: 220, finalWin: 250, stagger: 12, count: 60, read: 250, focus: 60, groupRead: 250, settle: 40 })
 });
 export const easeOut = p => 1 - (1 - p) ** 3;
 export const TIER_PRIORITY = Object.freeze({ IDLE: 0, SMALL_WIN: 1, MEDIUM_WIN: 2, BIG_WIN: 3, BONUS: 4 });

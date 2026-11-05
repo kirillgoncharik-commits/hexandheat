@@ -110,7 +110,8 @@ export class AdaptiveMusicController {
       const now = Math.max(this.context.currentTime + 0.008, sceneAt === undefined ? this.context.currentTime : this.sceneTimeToAudio(sceneAt));
       const oscillator = this.context.createOscillator();
       const gain = this.context.createGain();
-      oscillator.frequency.value = kind === "POTION" ? 660 : 440;
+      oscillator.frequency.value = ({POTION:660,WIN:440,REVEAL:180,LAND:220,DISSOLVE:310,MEDIUM:550,BIG:770,SOFT:330})[kind]??440;
+      oscillator.type=kind==='DISSOLVE'?'triangle':'sine';
       gain.gain.setValueAtTime(0.04, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
       oscillator.connect(gain);

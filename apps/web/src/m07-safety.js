@@ -1,0 +1,27 @@
+const $=id=>document.getElementById(id),pause=ms=>new Promise(r=>setTimeout(r,ms)),need=(ok,m)=>{if(!ok)throw Error(m);};
+async function until(fn){const at=performance.now();while(!fn()){if(performance.now()-at>45000)throw Error('Safety check timeout');await pause(15);}}
+async function load(query){const frame=$('game');frame.src='./?'+query;await new Promise(r=>frame.onload=r);await until(()=>frame.contentWindow.hexHeatReview&&frame.contentDocument.body.dataset.gameState==='ready');return {w:frame.contentWindow,d:frame.contentDocument};}
+async function closeResult(d){if(d.querySelector('#result-dialog').open){d.querySelector('#result-dialog [data-close]').click();await until(()=>!d.querySelector('#result-dialog').open);}}
+async function spin(d){d.querySelector('#spin-button').click();await until(()=>d.body.dataset.gameState==='ready');await closeResult(d);}
+$('run').onclick=async()=>{
+ $('run').disabled=true;const report={version:'m07-safety-1',clock:'real wall-clock',cases:[],errors:[]};
+ try{
+  for(const speed of ['normal','fast']){
+   $('progress').textContent='F14 · '+speed;const {w,d}=await load(`witch=m06&sequence=F14&speed=${speed}`);await until(()=>d.body.dataset.f14Result);const result=JSON.parse(d.body.dataset.f14Result);need(result.sourceOutcome==='F01'&&!result.spinDisabled&&result.bodyState==='SMALL_WIN','F14 ownership');need(!w.hexHeatReview.director.trace.some(e=>e.generation===2&&e.type==='field.group'),'F14 foreign FX');report.cases.push({id:'F14',speed,status:'PASS',result});
+  }
+  for(const [fixture,state] of [['B19','SMALL_WIN'],['B16','BIG_WIN']])for(const speed of ['normal','fast']){
+   $('progress').textContent=fixture+'→LOSS · '+speed;const {w,d}=await load(`fixture=${fixture}&witch=m06&speed=${speed}`);await spin(d);await until(()=>w.hexHeatReview.witch.active===state&&!w.hexHeatReview.transport.paused);const before=d.querySelector('#win-value').textContent;const picker=d.querySelector('#fixture-select');picker.value='B01';picker.dispatchEvent(new Event('change'));need(d.querySelector('#win-value').textContent===before,'selection erased previous result');await spin(d);need(w.hexHeatReview.witch.active===state,'protected body cut short');need(w.hexHeatReview.witch.pending===null,'old pending reaction');need(!w.hexHeatReview.director.trace.some(e=>e.generation===2&&e.type==='field.group'),'foreign group cue');need(d.querySelectorAll('.is-winning,.potion-flight').length===0,'foreign winning DOM');need(!d.querySelector('#spin-button').disabled,'loss locked Spin');const info=JSON.parse(d.querySelector('#scenario-diagnostics').textContent);need(info.paidTotal===0&&info.terminal.multiplier===1,'loss terminal');report.cases.push({id:fixture+'→LOSS',speed,status:'PASS',body:w.hexHeatReview.witch.active,newPaid:0});
+  }
+  for(const fault of ['media','manifest','jank']){
+   $('progress').textContent='fault · '+fault;const {w,d}=await load(`fixture=B05&witch=m06&speed=fast&fault=${fault}`);await spin(d);const info=JSON.parse(d.querySelector('#scenario-diagnostics').textContent);need(info.paidTotal===1900000&&info.terminal.multiplier===2,'failure changed outcome');need(!d.querySelector('#spin-button').disabled,'failure locked Spin');need(d.querySelectorAll('#board .symbol').length===30,'failure board');report.cases.push({id:'fault-'+fault,status:'PASS',paid:info.paidTotal,multiplier:2,media:w.hexHeatReview.character.diagnostics().mode});
+  }
+  $('progress').textContent='modal pause';{
+   const {w,d}=await load('fixture=B05&witch=still');d.querySelector('#spin-button').click();await until(()=>w.hexHeatReview.director.trace.some(e=>e.type==='field.group'));d.querySelector('[data-open="settings-dialog"]').click();await until(()=>d.querySelector('#settings-dialog').open&&w.hexHeatReview.transport.paused);const now=w.hexHeatReview.transport.now;await pause(500);need(w.hexHeatReview.transport.now===now,'modal clock moved');d.querySelector('#settings-dialog [data-close]').click();await until(()=>!d.querySelector('#settings-dialog').open);await until(()=>d.body.dataset.gameState==='ready');const trace=w.hexHeatReview.director.trace;need(trace.filter(e=>e.type==='field.potionImpact').length===1,'duplicate Potion after resume');report.cases.push({id:'modal-mid-group',status:'PASS',pausedWallMs:500,onePotionImpact:true});
+  }
+  $('progress').textContent='manual seeded playlist';{
+   const {d}=await load('mode=varied&seed=safety-42&witch=still&speed=fast');await spin(d);const first=JSON.parse(d.querySelector('#scenario-diagnostics').textContent),balance=d.querySelector('#balance-value').textContent;d.querySelector('#replay-button').click();await until(()=>d.body.dataset.gameState==='ready');await closeResult(d);need(d.querySelector('#balance-value').textContent===balance,'playlist replay changed wallet');const replay=JSON.parse(d.querySelector('#scenario-diagnostics').textContent);need(first.case===replay.case&&first.bookHash===replay.bookHash,'playlist replay changed book');await spin(d);const second=JSON.parse(d.querySelector('#scenario-diagnostics').textContent);need(first.case!==second.case,'playlist repeats selected case');report.cases.push({id:'manual-playlist-replay',status:'PASS',first:first.case,second:second.case,replayBookUnchanged:true});
+  }
+  report.status='PASS';
+ }catch(e){report.status='FAIL';report.errors.push(e.stack??e.message);}
+ $('results').textContent=JSON.stringify(report,null,2);$('progress').textContent=report.status+' · '+report.cases.length;$('run').disabled=false;document.body.dataset.qaStatus=report.status;
+};

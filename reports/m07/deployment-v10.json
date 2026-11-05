@@ -1,0 +1,22 @@
+{
+  "runtimeSource": "c98edc8dc4c95550ebad7965f33acf500307798a",
+  "siteSource": "b71e79e5a8d18f1fbd0dfcba7e2fdc4ae258a8dd",
+  "version": 10,
+  "savedVersion": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_46aad7e50eec8191904e72ce2a843884",
+  "deployment": {
+    "id": "appgdep_6aec405952f88191a604fbdc4ddcd9d7",
+    "project_id": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+    "title": "Hex & Heat M03",
+    "version_id": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_46aad7e50eec8191904e72ce2a843884",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae43bec02248191866ae51ec7721ec1",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-05T08:37:58.117536+00:00"
+  },
+  "notes": "Field/scenario review passed. Final visual QA identified initial neutral PNG policy aborting manifest; follow-up version fixes initial character selection only."
+}

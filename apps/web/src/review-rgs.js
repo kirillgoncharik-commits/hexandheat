@@ -5,7 +5,11 @@ export class ReviewRgs {
     this.catalog=catalog;this.fixture=fixture;this.balanceMicro=balanceMicro;this.pending=null;this.history=new Map();this.serial=0;
     this.metrics={playCalls:0,settleCalls:0,replayCalls:0};
   }
-  async initialize() {if(!this.catalog){const r=await fetch('./assets/m05/fixtures.json');if(!r.ok)throw Error('Fixture catalog unavailable');this.catalog=await r.json();}}
+  async initialize() {if(!this.catalog){
+    const packs=await Promise.all(['m05','m07'].map(async version=>{const r=await fetch(`./assets/${version}/fixtures.json`);if(!r.ok)throw Error('Fixture catalog unavailable');return r.json();}));
+    this.visualCatalog=packs[1];this.catalog={...packs[0],cases:[...packs[1].cases,...packs[0].cases]};
+    if(!this.catalog.cases.some(c=>c.id===this.fixture))throw Error('Unknown review case');
+  }}
   getSession(){return {currency:'USD',balanceMicro:this.balanceMicro,betLevels:[10_000,50_000,100_000,500_000,1_000_000,2_000_000,5_000_000]};}
   getFixturePreview(){return this.catalog.cases.find(c=>c.id===this.fixture).book.events[0].board;}
   outcome(fixture,betMicro,id='review') {

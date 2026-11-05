@@ -1,0 +1,27 @@
+{
+  "runtimeSource": "c324728cb7c4d7a9c3d59796f6dc57e686fc51c9",
+  "siteSource": "0a61f7bda018708e75769a6dee831ed0c2c90ec4",
+  "version": 11,
+  "savedVersion": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_9ca86cdde6f4819198f089ed126f8945",
+  "deployment": {
+    "id": "appgdep_6aec51a6fea481919ae7246c75dc39b1",
+    "project_id": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+    "title": "Hex & Heat M03",
+    "version_id": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_9ca86cdde6f4819198f089ed126f8945",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae43bec02248191866ae51ec7721ec1",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-05T09:51:46.638436+00:00"
+  },
+  "ci": "https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/42005550294",
+  "audience": "public, preserved",
+  "artAcceptance": "OPEN — M06 REWORK; M07 key poses PENDING",
+  "deviceAcceptance": "OPEN",
+  "visualBetaAccepted": false,
+  "productionReady": false
+}

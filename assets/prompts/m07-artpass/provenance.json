@@ -1,0 +1,164 @@
+{
+  "version": "m07-artpass-concept-2",
+  "date": "2026-11-05",
+  "tool": "OpenAI built-in image_gen",
+  "modelVersion": null,
+  "modelVersionNote": "not exposed by tool",
+  "paidPlanOrEntitlement": "not independently verified; inherited project rights review OPEN",
+  "termsUrl": "https://openai.com/policies/terms-of-use/",
+  "status": "PRODUCED — CONCEPT ART REVIEW OPEN",
+  "artAccepted": false,
+  "productionAnimation": false,
+  "externalPerformerOrVideoInput": false,
+  "humanRetouch": "none; only non-destructive file copies",
+  "originalReference": {
+    "path": "apps/web/assets/m06/neutral.png",
+    "sha256": "f570a434044961a9f36ff7ad5836b2d7ba62451f28eedae0b20fc94d402552eb"
+  },
+  "selected": [
+    {
+      "id": "canonical",
+      "path": "hexheat-m07-artpass-media/canonical.png",
+      "sha256": "d6b850d450ec3c16d264b490cef0b5a457729c1718830b86d3bf9264c8f1ad6f",
+      "bytes": 1686210,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1240,
+        1254
+      ],
+      "prompt": "01-canonical-initial-prompt.txt + 02-canonical-correction-prompt.txt",
+      "source": "original M06 neutral → canonical-initial → corrected canonical"
+    },
+    {
+      "id": "weight",
+      "path": "hexheat-m07-artpass-media/weight.png",
+      "sha256": "b269f4fe6ad68b4d3f8d580133b8089700b5ce2ed3cf1f6e8cc2b34cbcc713fb",
+      "bytes": 1678372,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1244,
+        1254
+      ],
+      "prompt": "weight-prompt.txt",
+      "source": "canonical.png"
+    },
+    {
+      "id": "accent",
+      "path": "hexheat-m07-artpass-media/accent.png",
+      "sha256": "e0c98764da400fa8f176bd8cf2b45372ecf19ee52772cfbf89b34110a883182a",
+      "bytes": 1699018,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1240,
+        1254
+      ],
+      "prompt": "accent-prompt.txt",
+      "source": "canonical.png"
+    },
+    {
+      "id": "release",
+      "path": "hexheat-m07-artpass-media/release.png",
+      "sha256": "4af260c5e49edf68044ad39f0bc25ad2f0242d456fc39b70d6dd96b627d901cd",
+      "bytes": 1611562,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1253,
+        1254
+      ],
+      "prompt": "release-prompt.txt",
+      "source": "canonical.png"
+    },
+    {
+      "id": "seam",
+      "path": "hexheat-m07-artpass-media/seam.png",
+      "sha256": "d6b850d450ec3c16d264b490cef0b5a457729c1718830b86d3bf9264c8f1ad6f",
+      "bytes": 1686210,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1240,
+        1254
+      ],
+      "prompt": null,
+      "source": "byte-identical copy of canonical.png"
+    }
+  ],
+  "notSelected": [
+    "canonical-initial.png"
+  ],
+  "canonicalSeamEquality": "exact PNG bytes and SHA-256 match; no independent seam generation",
+  "suggestedSteppedHoldsMs": [
+    {
+      "at": 0,
+      "pose": "canonical"
+    },
+    {
+      "at": 550,
+      "pose": "weight"
+    },
+    {
+      "at": 1350,
+      "pose": "accent"
+    },
+    {
+      "at": 2150,
+      "pose": "release"
+    },
+    {
+      "at": 3150,
+      "pose": "canonical"
+    },
+    {
+      "at": 4000,
+      "pose": "canonical"
+    }
+  ],
+  "limits": [
+    "Four separate redrawn key concepts, not 6–12 FPS or a smooth 4000ms loop.",
+    "Same1254×1254 canvas. Raw master alpha touches top/bottom image boundary; hat-tip framing needs art review/display padding.",
+    "Leading palm and gaze now point screen-left/down; eyes remain visibly open.",
+    "Both hands visually occupy upper60% canvas; actual game crop must be checked by scene owner.",
+    "Face proportions, curl pattern and embroidery vary slightly across redrawn poses; no fully registered identity acceptance.",
+    "Hands show coherent palm/thumb/finger connections at displayed master scale; no certified anatomy or human five-finger acceptance. Supporting hand has natural finger/thumb occlusions.",
+    "Exact same endpoint PNG establishes identical endpoint artwork only; continuous motion velocity/in-betweens are not produced or verified."
+  ]
+}

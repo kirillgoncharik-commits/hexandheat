@@ -1,0 +1,1043 @@
+{
+  "version": "m07-verification-1",
+  "configHash": "ef29d030a553ca6a24678bdbb1123f29d932f6ba1256f11b4389847c7644b6d3",
+  "resolver": "unchanged resolve_round",
+  "verifier": "independent verify_outcome, every generated book",
+  "cases": {
+    "B01": {
+      "sha256": "c2c5408dc5b6409d0236214ee52bf3a11cae2ed7bd760c1254134158bdeaadf2",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "B02": {
+      "sha256": "d7a1946b2d745ac83a07e9f182302351b90bc8bae86af9725134b030824ec603",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "B03": {
+      "sha256": "cae49d22e9c6386f99c76d118998836e4e012cc2cf14f0f447359f6e80a8580f",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "B04": {
+      "sha256": "abc3eeb2c41192c47fe3b8fb4c5dde43bc50c16385e0a83b8d1b155d1fb5158b",
+      "payoutUnits": 2750,
+      "status": "PASS"
+    },
+    "B05": {
+      "sha256": "cbc51b442f069f0c78c56de2dee3652b768ee4f7477c33ed0746dfd3aa7707b5",
+      "payoutUnits": 190,
+      "status": "PASS"
+    },
+    "B06": {
+      "sha256": "38d7f3dbfd31171240396431ed69e856473508a91f9381aa817add989138fec6",
+      "payoutUnits": 130,
+      "status": "PASS"
+    },
+    "B07": {
+      "sha256": "5b6b6ee7a9f574405077fbc0cf3d730e5fd123fa7b4e3ed2ff4c4a0b3e372aee",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "B08": {
+      "sha256": "c85a6a83c497acb0e9c1466e21285dac186b22eacbaaec6ac6063b6fc5621a88",
+      "payoutUnits": 130,
+      "status": "PASS"
+    },
+    "B09": {
+      "sha256": "66d22219d66e6189738ea47c0e333d8675c94d9375421c7efc96204abd7e974d",
+      "payoutUnits": 110,
+      "status": "PASS"
+    },
+    "B10": {
+      "sha256": "c572953557ac78194ca6e93ea945ab1a2477a899c2695c40dde684bea3311b36",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "B11": {
+      "sha256": "3e10b19de2a542b0aa8c4007a77e29b1c576b116d5334de4cf47b2cf6a39ee9d",
+      "payoutUnits": 320,
+      "status": "PASS"
+    },
+    "B12": {
+      "sha256": "5410cbf75d8acc3628d42badf2cf31726178b498ac2cc089d5d06aa8c81c117a",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "B13": {
+      "sha256": "b2b1ff5409b473c600b6393229fe95c97a38189d3ac37f445c282fcce9eb9991",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "B14": {
+      "sha256": "4acc3c57fe5a4e26e2ce672b6af47a1e113b1541ed810a11493880219aad36e1",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "B14-EQUAL": {
+      "sha256": "b8cbca738550621d171d27b6f07ebd5c1fb847b55dea4f0790c3efd8e052bdd4",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "B15": {
+      "sha256": "8d9c7a56d5ed3085990b526f96e28b79360085decf6a9640dfe2cf9b7e5c4228",
+      "payoutUnits": 500,
+      "status": "PASS"
+    },
+    "B16": {
+      "sha256": "cb17dbaa1a7c6aa91f106d41db0134bd8c001d86c441cb3bc273949d9f691ffe",
+      "payoutUnits": 1200,
+      "status": "PASS"
+    },
+    "B17": {
+      "sha256": "11b011642def8d0d1d69326a08253352016b4978ee4958363869f0f308d70b87",
+      "payoutUnits": 390,
+      "status": "PASS"
+    },
+    "B17-4": {
+      "sha256": "60157facba9b2161303935ba3b734b46f9b625cfe3b39deadc5eeb7cf942d89c",
+      "payoutUnits": 400,
+      "status": "PASS"
+    },
+    "B17-4A": {
+      "sha256": "d890d50a9fa696919bb9c542c3aa73d1df2ae9f55a0e7191c14025eced5a57be",
+      "payoutUnits": 410,
+      "status": "PASS"
+    },
+    "B17-10B": {
+      "sha256": "9bf02e8239ac7991fdc34c93018b7b679a30d8f1ae1187cc7506e958892a0344",
+      "payoutUnits": 990,
+      "status": "PASS"
+    },
+    "B17-10": {
+      "sha256": "221c8f12e81b22b527241845d4198cc9ddd5230ab975ce06e746176eed1a6b4a",
+      "payoutUnits": 1000,
+      "status": "PASS"
+    },
+    "B17-10A": {
+      "sha256": "56f86d9b38c7caffd3522617cec9fb718519157a8b4e04557d2512633488ffef",
+      "payoutUnits": 1010,
+      "status": "PASS"
+    },
+    "B18": {
+      "sha256": "d3e63ef0d648b82685104f578c150e8e55c30ecfce79a0972ee0a7c36603ccfc",
+      "payoutUnits": 4000,
+      "status": "PASS"
+    },
+    "B19": {
+      "sha256": "e517198aec1948dd7433340c9df704d2979dc9f00e1b2f5f60e72cc403c1cfd9",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "B20": {
+      "sha256": "c3db4d6abb03cffc5ee117136520126f0b615b6b21b5f23e49027e8af89b0e2b",
+      "payoutUnits": 130,
+      "status": "PASS"
+    },
+    "B20-LARGE": {
+      "sha256": "e223b877562ea9436f81a56fea4df5d221c28c6a49803a5cc3394f3b28a7fdbc",
+      "payoutUnits": 190,
+      "status": "PASS"
+    },
+    "T-L1-8": {
+      "sha256": "d5bf67636b7db07045a712ddf79955f169e85cb6b99af34d3e32cbd3b2b4d053",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L1-8-7": {
+      "sha256": "fdaf281e33cab826bd116161c4aed70e453a5cf9f5b0bfb0317f5c067648f4b0",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-L1-8-8": {
+      "sha256": "06cf2fa7cf1a4db391ad43c833492abd40fe9d8c2ccee11a06e312475d3218fc",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L1-8-9": {
+      "sha256": "6ec43d70aa34dceb7b0a4bfd00047d81cb35540895b533c2fac320122a62a228",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "T-L1-10": {
+      "sha256": "0dcb272e94ec3e1d57e185332c6efc274fd58566cfcceff6f8bc8390112bcb6d",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L1-10-9": {
+      "sha256": "9abbf5a44b5ca0e22f09be50c41c11209cb16cdaf3a849d1cdba20ac112462e2",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L1-10-10": {
+      "sha256": "612e1b1c1c8909eadb0254782b6da7ce9d5c457c329a4174c35c148962eda4a4",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L1-10-11": {
+      "sha256": "b6f4f1d77ecd1039b5c59820499e65ce7880afffc8b892223891bd3b24e4c730",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "T-L1-12": {
+      "sha256": "691a949731db796a09a3a00f27166ccd5882e295f226095a0ddfff7b5ae54f5f",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L1-12-11": {
+      "sha256": "bae084bf07d3621511585261224d2a4861439f9a89fd8bc310da423220b7b8e3",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L1-12-12": {
+      "sha256": "935118c75166f9d22c64feb63a39cbc80ae8546687131bf95699f7ca8f0d9875",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L1-12-13": {
+      "sha256": "560552eed4b36710442a51842449ed6c5f22cd087a23e83aa0ee5ba3d0dfdf01",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "T-L1-15": {
+      "sha256": "48257d4bcb9fc5205f0c78d689c36ef3982862d7240282400181dacab42cb95d",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-L1-15-14": {
+      "sha256": "8459bdfcedc62b322c4238e8f86b0bdd99d27a82988c7b5eb22e8e8649c97ca1",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L1-15-15": {
+      "sha256": "ff572db2e254c553e569ed71ecde34d1942d681fc97f12a0ecd9e84aa91d9d34",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-L1-15-16": {
+      "sha256": "c5cfcd1b00782687bbdf8918b4cb25c77f038d15798e93e027cdd2d65b555109",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "T-L1-20": {
+      "sha256": "c741672af43409c16d6787c9b3de9c2fd56e86d3d9469b1160df85b82d22b118",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "Q-L1-20-19": {
+      "sha256": "ed162c6743670869750f4a896ea62fc06449dc4dc7e2a265a5b649192f239d10",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-L1-20-20": {
+      "sha256": "d20f53dd4298278301e69898ce6e7f61a9f6c4628cc39ca0852713d2cf3935cc",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "Q-L1-20-21": {
+      "sha256": "c55ebaf6d0e9ed1ac27519b9d0fefbe72c7e44fc9d6649e2802d7f7b8e056596",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "T-L2-8": {
+      "sha256": "87ef91807fb9530bfea98278caf5acd6eae93207a9ac1a46662fe97c642986c4",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L2-8-7": {
+      "sha256": "3e2e3a6421d28051bdc86e6d439c265bc5e89fc4a1082117cf93aa291819b283",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-L2-8-8": {
+      "sha256": "c23d5faa9fadc568bcb04db7f5bb1e32863f45717f5120985d15c4e3175ad9c3",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L2-8-9": {
+      "sha256": "11290f2eebba454f77a75972196ca97bd61281e667097d4bb896c8b2fb023c7e",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "T-L2-10": {
+      "sha256": "5c5fdb69cd73f51cfdceea96fde6bbb2a6eac39dbaee9ab43b4d58d4d503bce6",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L2-10-9": {
+      "sha256": "fc59513847cd2cfe717d84d5a4388f45360778a7e4c55a524c704ca554bd8c53",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L2-10-10": {
+      "sha256": "e328e2a64794be92d54dfa2a2483efb072427a41b26b7fe8cbecd70acd8ccb82",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L2-10-11": {
+      "sha256": "7ed50cf524374a25572b646f7b6bd2a5b8ffc7152cf6878001a76d308bb88d1f",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "T-L2-12": {
+      "sha256": "76b1815cf77779c7df4a89ec6a1c391425480b43c1945a1380c510c595024a9a",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-L2-12-11": {
+      "sha256": "1619524197f57ca0890eadaf865fe8f8535d4e3178fe1bfad966b039fa6313f4",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L2-12-12": {
+      "sha256": "c7bdb7381516939c752c9f69ad12614eb5d532dbec31d946badfa7101397195c",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-L2-12-13": {
+      "sha256": "7d16606038c48af7a3a8b9a4f54a17e3636a39aa0b6d39bb984b55a841069017",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "T-L2-15": {
+      "sha256": "3c215ed9ad0ca21da68d09fc2285893bba7bfca33fde1cfbeb8c4ba564b1e16c",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-L2-15-14": {
+      "sha256": "2fed37c22fb57d58690e9b9165f065fbb193cec2cf609fe2b68377ab35eb8cbb",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-L2-15-15": {
+      "sha256": "4cffabaca88c935e8725e0e0ca9c6f4db678ada57a8b4653e774e98f87de0728",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-L2-15-16": {
+      "sha256": "bd1808f9c4ad58b91547105dfd5dbf446cc12e34b36a75ad96da50de84687de5",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "T-L2-20": {
+      "sha256": "72d9bcd1748f72feccf7d041c4d565b5464e1f73591158ed76ffed8161b7915d",
+      "payoutUnits": 300,
+      "status": "PASS"
+    },
+    "Q-L2-20-19": {
+      "sha256": "b5f35ef6f9ca972da68159dc92618c39dca679661b079f12a18c9e8fc596711a",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-L2-20-20": {
+      "sha256": "8d09a5ee0000e67ea8eef77a3d7589fcc3b59f2f4c0fa0953e620f82b0b63d33",
+      "payoutUnits": 300,
+      "status": "PASS"
+    },
+    "Q-L2-20-21": {
+      "sha256": "736c3b611bcee3d97a97b559e06ce4571f20c9a6f349b72427291d0bd5c23dd2",
+      "payoutUnits": 300,
+      "status": "PASS"
+    },
+    "T-L3-8": {
+      "sha256": "fc60603ff7efee76bf25b08019ab0195f3e6dc18ba8ce8efe2e4f41f10d5edd7",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L3-8-7": {
+      "sha256": "74ce5d8a83269381ce940c35552cd3d6e03c91108d84cd06e7991cd4d5264dbf",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-L3-8-8": {
+      "sha256": "670ade7a602b165642239c64f71f3b530a56596688a68d0da908d0bad9d0f895",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L3-8-9": {
+      "sha256": "b47949e0c19efd52223b7410ce64cd9b0d48908a2976db1959172feed928ab2f",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "T-L3-10": {
+      "sha256": "50d5986716d2270296d263e93249561a26d1625d59510e2c6c9258056cf933a0",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L3-10-9": {
+      "sha256": "72aa7dc78ab8eb098aad93865e63e2a1dd63f83b5321e88e2b74342a5c619d12",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L3-10-10": {
+      "sha256": "36d713cc8322c29f16343df87e434089bc6dfbf3de7d4bce4a8ab690c5d4e36a",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L3-10-11": {
+      "sha256": "75ba45c7eefc85da2807900a0d2e01371f73845eda88bc466215fbb88d7519b0",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "T-L3-12": {
+      "sha256": "00e0def10fc265402df85acc461255fbea4fa75ec64537e1626d6e7f48b7c7a9",
+      "payoutUnits": 70,
+      "status": "PASS"
+    },
+    "Q-L3-12-11": {
+      "sha256": "487c29648fb0f167435d32a679ce9ae6a01080854ca9d474fbe023c42003ff98",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L3-12-12": {
+      "sha256": "99e6123ad18c927d3761befdef0c11ffa3164ba59956d56d11a91ba656eff43d",
+      "payoutUnits": 70,
+      "status": "PASS"
+    },
+    "Q-L3-12-13": {
+      "sha256": "e75ece0d1d2d515dba27de01d95e2d3bff44708b874947710d8ec677c334086b",
+      "payoutUnits": 70,
+      "status": "PASS"
+    },
+    "T-L3-15": {
+      "sha256": "f2cafc47e8f409d26ee0a0bd051ecdd0bcbb29f392ccf829850c5d9ef5aa5da7",
+      "payoutUnits": 140,
+      "status": "PASS"
+    },
+    "Q-L3-15-14": {
+      "sha256": "e3935f074ddfefe3c691029bd6f65de0b002add155cd82eb6422e841613df872",
+      "payoutUnits": 70,
+      "status": "PASS"
+    },
+    "Q-L3-15-15": {
+      "sha256": "70f0a2f97a1e5f130c0ee2b32fb208fe46e55084b23a1b68b50b6dbc780ed138",
+      "payoutUnits": 140,
+      "status": "PASS"
+    },
+    "Q-L3-15-16": {
+      "sha256": "36e408806ae1798e4763cab7db7855d288334dcecb16ab57bd35ad92192ff2eb",
+      "payoutUnits": 140,
+      "status": "PASS"
+    },
+    "T-L3-20": {
+      "sha256": "b2a44067c57c90fa1af2f59d29c6fad04fbfe5e6ce4317387aad87bbea95023c",
+      "payoutUnits": 350,
+      "status": "PASS"
+    },
+    "Q-L3-20-19": {
+      "sha256": "e72655a5939ab1797218cf798c26a4010c9322675f03ed042906049a20cb77c2",
+      "payoutUnits": 140,
+      "status": "PASS"
+    },
+    "Q-L3-20-20": {
+      "sha256": "d114d11bbe183e230b926a9b54761d040af1ca03a0bfb943a16022403eaf7d16",
+      "payoutUnits": 350,
+      "status": "PASS"
+    },
+    "Q-L3-20-21": {
+      "sha256": "6e21767dcc8545bf0f259f70f5306434d481f4d33ee2d747597f0f015703332a",
+      "payoutUnits": 350,
+      "status": "PASS"
+    },
+    "T-L4-8": {
+      "sha256": "8ee6f5b3e406687c5ceaae1e2fb1ace2790466718d310f9b6414f69f22c3ecee",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L4-8-7": {
+      "sha256": "3bc17a07b0fb97e174c3da1fc7b95b26b3695bb6e82228fcf452b24319fbf6c6",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-L4-8-8": {
+      "sha256": "d4e8dfb12b056d87c51f552a7dd4c448fa926943555381802665b0e0add28b64",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L4-8-9": {
+      "sha256": "772ed3b18ec72d1d1c39f6e8e11e85733f47383b5b9eae13d5f0177c2860e65e",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "T-L4-10": {
+      "sha256": "3f82c3f090a5a35f4282dc257425361481b2b8833e1bc8a09faa2fcd740542b1",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L4-10-9": {
+      "sha256": "7a5e92e6bad5d816a3b8d13db8e465761d16653999255ea02063d1f4312a4cbe",
+      "payoutUnits": 20,
+      "status": "PASS"
+    },
+    "Q-L4-10-10": {
+      "sha256": "be0c2ad91c7510d1f129445b39c388eac6cb8a6250eb265c49c2d32db1b47594",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L4-10-11": {
+      "sha256": "e263b12fa1556359b21e9d98002cf2e57b740047a24a4ff9d83389be33497a40",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "T-L4-12": {
+      "sha256": "3808dd2b43f1521f400071ce816e95f4d3d216f723f2a6d3aef8cf384b08ae02",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-L4-12-11": {
+      "sha256": "2a1ed864c21cfb93e746939c84498aa57fd9bbeafc14b2e5d0a9cbaf5eb47ab8",
+      "payoutUnits": 40,
+      "status": "PASS"
+    },
+    "Q-L4-12-12": {
+      "sha256": "ca5eead24a15735954513e07bde4c64a114c3a3d2dadc2d79bdcc31387914592",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-L4-12-13": {
+      "sha256": "5236236f1667e744ff9ea0ee32c108614f17734e567760391da4f9d34c2d7832",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "T-L4-15": {
+      "sha256": "7281e8eca04ce329590cb6517565ce289592e165de045e5ba6a49da4968fe266",
+      "payoutUnits": 160,
+      "status": "PASS"
+    },
+    "Q-L4-15-14": {
+      "sha256": "e71880381e03989b0771de8518c363ec0417d0e1d09914cc2b9d891933b15ef8",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-L4-15-15": {
+      "sha256": "742713976272de3b805677354d1a353a155974258a9f47cb7de568e6e8f4dc32",
+      "payoutUnits": 160,
+      "status": "PASS"
+    },
+    "Q-L4-15-16": {
+      "sha256": "d0907b87696bf01e607bbde98c599041f22ba7c76e53b043f28619478dc7fe0d",
+      "payoutUnits": 160,
+      "status": "PASS"
+    },
+    "T-L4-20": {
+      "sha256": "c0c18323e9c3b716b2164506d5c231f389abc31783c503970c5a76bef2e8838c",
+      "payoutUnits": 400,
+      "status": "PASS"
+    },
+    "Q-L4-20-19": {
+      "sha256": "0b54bb7e3890c583ee84000786075d02dd48ae2b08fdd9b305b35b8b68efaf62",
+      "payoutUnits": 160,
+      "status": "PASS"
+    },
+    "Q-L4-20-20": {
+      "sha256": "acb7ee0ce9802e620829da27188f86d60ac1c72658ba2288e57e7ef5acfaedf3",
+      "payoutUnits": 400,
+      "status": "PASS"
+    },
+    "Q-L4-20-21": {
+      "sha256": "8839511b2325897c0e24f06c53ccb91b14623357183b499d0357a20d7ab3ce9c",
+      "payoutUnits": 400,
+      "status": "PASS"
+    },
+    "T-L5-8": {
+      "sha256": "e8560f612f3d42bd39bbd811393abd5f975379f8453c70c7b75b2ccc56d4ab2b",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L5-8-7": {
+      "sha256": "c1b8a6f17f5e991865ae728ee1e730a8aeedbe88ba36bfdd1b83486550c26371",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-L5-8-8": {
+      "sha256": "057e0692aa964728a5d0f2ff697caf2925417fccf2ec33ef9f15e867baa8440a",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L5-8-9": {
+      "sha256": "4cfa18b4c878354c0cc5a711da85e4f846b53fbb85e2cd00cd0e5d2633028377",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "T-L5-10": {
+      "sha256": "0f699f15be38636b943204cadfc7c571a17434b25937faab6b34b0a13ba2ce60",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L5-10-9": {
+      "sha256": "0ef392fe30ed69d6f7ebfc0fdf68b692d1aed07d31b6c3552b366c3542ea6b35",
+      "payoutUnits": 30,
+      "status": "PASS"
+    },
+    "Q-L5-10-10": {
+      "sha256": "1eb690e806ffaa283be463e8f6b27f127b553ee0c5608ad50c261d2129961640",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L5-10-11": {
+      "sha256": "59905daa6fea6d9370ec36b40792a3b70b7d819ff4d735d4e32e2b20a188228a",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "T-L5-12": {
+      "sha256": "dc64c760f73cf8eefdda1100dec9c282442726da0eef8307b212fc28add3192e",
+      "payoutUnits": 90,
+      "status": "PASS"
+    },
+    "Q-L5-12-11": {
+      "sha256": "78f558ff826cd0f728cf07bd5b409cd1162d2afa89945d3f2bded91825b89f02",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-L5-12-12": {
+      "sha256": "599f828bea76161e1bd2c4c51c7ecd690cba885d7a773875f66098e5ca16814e",
+      "payoutUnits": 90,
+      "status": "PASS"
+    },
+    "Q-L5-12-13": {
+      "sha256": "2772c9160e5ffe3823a4fe10f860c9cee0568d831b89dc9a7f719e656f0a8fc4",
+      "payoutUnits": 90,
+      "status": "PASS"
+    },
+    "T-L5-15": {
+      "sha256": "2ba5c2132c31cccf8ce06049da09cd40d370da487ab265e02c4eee465b2fd764",
+      "payoutUnits": 180,
+      "status": "PASS"
+    },
+    "Q-L5-15-14": {
+      "sha256": "258e975c8fb5c0cf916b21b4e46a67737e8d4e81cf53cd27905e5e552a8aede3",
+      "payoutUnits": 90,
+      "status": "PASS"
+    },
+    "Q-L5-15-15": {
+      "sha256": "e464409fa87f8bf78989a804197084dde2815f54d05ff34fe1aa9f6d4cd255c1",
+      "payoutUnits": 180,
+      "status": "PASS"
+    },
+    "Q-L5-15-16": {
+      "sha256": "d3b29c63de0153ca4276f1c284f5ce517cfd22329e9de532d54bb69852a3a728",
+      "payoutUnits": 180,
+      "status": "PASS"
+    },
+    "T-L5-20": {
+      "sha256": "c9e67506579e5e40842b7c68174e7901747f6e84601b7263ed1c3685d591cebd",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "Q-L5-20-19": {
+      "sha256": "b9f1d2783ad8f1b57a539f7d9de188fe7d87aed78d65a0e6566291af421b0f8e",
+      "payoutUnits": 180,
+      "status": "PASS"
+    },
+    "Q-L5-20-20": {
+      "sha256": "75af81b555915c21380feff4eeb34ad6d1336a7f0a274805cf16a741d2040583",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "Q-L5-20-21": {
+      "sha256": "62fb9d42a182decf182c52c31832b93998b1938c3dbbe70027fcc168d636d47e",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "T-H1-8": {
+      "sha256": "4de552502f6d5c0eb0a632e0cc4d3363979464cc52b61163ac03c20978629725",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-H1-8-7": {
+      "sha256": "363cffdfc284ab04de408c27c0649861edc267ff469d7deac01fedf6abb674bd",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-H1-8-8": {
+      "sha256": "36a2c7502bd3058c10ae2f61999cdfed0d82bc5aaa85d29f5d04bf6efeb0e035",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-H1-8-9": {
+      "sha256": "69fa47fd68ae09707f234cd87327ef4941f1d8c85025d31ec38dac3c8bbd2a59",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "T-H1-10": {
+      "sha256": "bb21b4b8569a4a0ccf6778d02d23a60c321d73aa4ec71e9841b79a457813b4e7",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H1-10-9": {
+      "sha256": "d3cb76a97e885d55eb99a703eb92f0b56d15ba295c1006a148c32e804a9f22ce",
+      "payoutUnits": 50,
+      "status": "PASS"
+    },
+    "Q-H1-10-10": {
+      "sha256": "da324d1834f1b5e7ade10fc3edea1be5f212bf4982236dd4cb21698cf01a3c3f",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H1-10-11": {
+      "sha256": "0b35d92899343b1f5c8e0c584c9185af8ee9dd5d6687b59f55f66385f6eb9142",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "T-H1-12": {
+      "sha256": "6477c3e47ebf4594bd02bf6b0d6e5670f7421298fd1bcf3cf3adcf35f730970d",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H1-12-11": {
+      "sha256": "72da5b4d0adec832324a409e448823347d28e84064e13413a5c5c66e58691ffa",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H1-12-12": {
+      "sha256": "5afb839cb1841467f646c1d4812b63344316da7a49e72583f912db240f50113e",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H1-12-13": {
+      "sha256": "0187cf4bca5911542d791da03e403a47f3f40d9256a53c2d9914fde9d401a04a",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "T-H1-15": {
+      "sha256": "69a9daf42b4e84ecb47b9d8ba67de9fe99def036f18d280dd160b297fc54c85d",
+      "payoutUnits": 500,
+      "status": "PASS"
+    },
+    "Q-H1-15-14": {
+      "sha256": "2b57e50d00dca5e619def71bb2e3e16ca3ca6c56d954413afe49fb9d7cf6887e",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H1-15-15": {
+      "sha256": "cbc070ae1de7261c7ddf5001bfa122f34ee7aa94da428a47319a35eb4054ba6b",
+      "payoutUnits": 500,
+      "status": "PASS"
+    },
+    "Q-H1-15-16": {
+      "sha256": "b4836c93ada684d4672885778f83a39fe50e6541ef6737b07a3d6733d96eaf66",
+      "payoutUnits": 500,
+      "status": "PASS"
+    },
+    "T-H1-20": {
+      "sha256": "3378950bdbc07541745fd28a8dc094f7782c8655055d1401aad83c4dd6232b41",
+      "payoutUnits": 1500,
+      "status": "PASS"
+    },
+    "Q-H1-20-19": {
+      "sha256": "a63fe22df6a4b7b7bea38e293e8ab12f101debb04dd2bd21717c278accfd03b8",
+      "payoutUnits": 500,
+      "status": "PASS"
+    },
+    "Q-H1-20-20": {
+      "sha256": "38e852a3e6a06123f291ce2fa0be0cc1ceb0da1cf16e1e448afbbae460678516",
+      "payoutUnits": 1500,
+      "status": "PASS"
+    },
+    "Q-H1-20-21": {
+      "sha256": "55e9c4b959ecc2496537f761053ce0c4f7fbc7b14b0b446cdb27d6b302a56cd4",
+      "payoutUnits": 1500,
+      "status": "PASS"
+    },
+    "T-H2-8": {
+      "sha256": "eb3e07654eeff548fe650331c60c69a02e1d4e6fedfbca26fb93a9b5b73d50fb",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-H2-8-7": {
+      "sha256": "b4882cd89f3cb1f533a947cba39b50c400b7df6a009b5c63fedbb5f5b4455c57",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-H2-8-8": {
+      "sha256": "bd20a07e132c1e1d7bb4a46e87df91beb9e34f156f5af4b9edb8e44b771c830c",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-H2-8-9": {
+      "sha256": "0c32ae0683be7e3705c3bb1bf7794b3d6a84529ce6963df547aa58aeda32132b",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "T-H2-10": {
+      "sha256": "855d016c3c96cb5ef834c5a960e3dff89154f0980f8909cd52e0d4a6ea289e69",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-H2-10-9": {
+      "sha256": "d8ebcf6c82c7961aba3ba1d1b70e4aa721e73746dbdbe0c842569c18de0b13e2",
+      "payoutUnits": 60,
+      "status": "PASS"
+    },
+    "Q-H2-10-10": {
+      "sha256": "5e2efd9adbd63b8d5a9e9eceac4ea0c81c653f6c5e0ddb950c9b0ba7ab0561b9",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-H2-10-11": {
+      "sha256": "70714eaf46a23e2dbd73562ff10654d5104fc9f2d25435b049b9dd48ec1e5f8f",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "T-H2-12": {
+      "sha256": "6732713861142d854bba05fc0c3a4ce94adbcf5e83fb380dc5d90f6cdb32cba8",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "Q-H2-12-11": {
+      "sha256": "47cdec2bab038a6653d774b7464effafd491b5ddc9d7336a07b1536ab0a64c75",
+      "payoutUnits": 120,
+      "status": "PASS"
+    },
+    "Q-H2-12-12": {
+      "sha256": "45d688880c4c5461418c015b00ea19483b261976bfc0dd27d406e65f2af3aba9",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "Q-H2-12-13": {
+      "sha256": "2fe77ad8411abbe9f616bee100edc71b5fb7e58f8f76eec58c1cbd53b9f290dc",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "T-H2-15": {
+      "sha256": "288cac462ff669bba63b602aa5566611a7f75ff0e02845af64f10486f1e2fbd9",
+      "payoutUnits": 650,
+      "status": "PASS"
+    },
+    "Q-H2-15-14": {
+      "sha256": "1a946d39a400af612c360aff9ad138d28978a9c4dacb5407b372d6a9fb220dde",
+      "payoutUnits": 250,
+      "status": "PASS"
+    },
+    "Q-H2-15-15": {
+      "sha256": "2e40e9f006dfd93be471894fce70b5c54030408c731499a3aacd629a107a5658",
+      "payoutUnits": 650,
+      "status": "PASS"
+    },
+    "Q-H2-15-16": {
+      "sha256": "68d17ce8ef207d9457efcd651afce6a766e86a80bd12af67bc1993e030a53b5d",
+      "payoutUnits": 650,
+      "status": "PASS"
+    },
+    "T-H2-20": {
+      "sha256": "a7ada92bf7ec1854145e03f642511c5fbc3077bef0e7573de7f98e9edf4f52ca",
+      "payoutUnits": 2000,
+      "status": "PASS"
+    },
+    "Q-H2-20-19": {
+      "sha256": "03885c596ab34f62bd8c8223c224bd8fb8145b669724676b0458f72ef7adad1b",
+      "payoutUnits": 650,
+      "status": "PASS"
+    },
+    "Q-H2-20-20": {
+      "sha256": "6b79abe92919f40014bd15c2e847ce79ef38cfafe0a5179fc3bc66658ecf1c7e",
+      "payoutUnits": 2000,
+      "status": "PASS"
+    },
+    "Q-H2-20-21": {
+      "sha256": "709d2a8336a139917d8dd594b5b9e749226b78c2a4dee3158c8c85575d6b3175",
+      "payoutUnits": 2000,
+      "status": "PASS"
+    },
+    "T-H3-8": {
+      "sha256": "0c3e1bc71c531fb61184ecb74319c1299aaba3adeeafd4ce057dfa8a695f2236",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-H3-8-7": {
+      "sha256": "0cad1efa2dff74bf9b9d2b41ab8682e505997be7a511ead0a99900e8d46150b5",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-H3-8-8": {
+      "sha256": "7e7ac62be32dd8765797a6a3b5493f1b330a84316c7c99e661eefba2b5503238",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-H3-8-9": {
+      "sha256": "86ee27e9ed62d4d8ca22d0caf3c868b6390ebdaafdcdd02cad1282c34e2a4669",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "T-H3-10": {
+      "sha256": "0f79eb43297c89e2981441af4d630f91494b5b8fcbcf8afbdfcdc60b9af3d7a2",
+      "payoutUnits": 150,
+      "status": "PASS"
+    },
+    "Q-H3-10-9": {
+      "sha256": "3575c60e507b1e6832e36d7384781c4271239d5cc6a88bd44392ca5c99906246",
+      "payoutUnits": 80,
+      "status": "PASS"
+    },
+    "Q-H3-10-10": {
+      "sha256": "5cd2bfe038bd0ec7395c441422b59f6e8c5367657477252672bc4fde34b40bb3",
+      "payoutUnits": 150,
+      "status": "PASS"
+    },
+    "Q-H3-10-11": {
+      "sha256": "66983a2b029c14487b684cbc3af7a8c1582246216a791a96b449b4a0ab5a09f0",
+      "payoutUnits": 150,
+      "status": "PASS"
+    },
+    "T-H3-12": {
+      "sha256": "28fb5f3584a7d24141a1457941f7dbafc912819a2c551de8cf296a651cb161b6",
+      "payoutUnits": 330,
+      "status": "PASS"
+    },
+    "Q-H3-12-11": {
+      "sha256": "e52ba78bde700b075a887056c12ebbef9061191a4c662a217df81b4514dc169c",
+      "payoutUnits": 150,
+      "status": "PASS"
+    },
+    "Q-H3-12-12": {
+      "sha256": "b0dc5aeb8d2d42102d0ebec763026e69df00cd03c334bc392c3fa512deb3a096",
+      "payoutUnits": 330,
+      "status": "PASS"
+    },
+    "Q-H3-12-13": {
+      "sha256": "2cc1adea309130a8cb4e39b8d573629e175aee6e500e69736e3004b240234d05",
+      "payoutUnits": 330,
+      "status": "PASS"
+    },
+    "T-H3-15": {
+      "sha256": "1a4f620ed5781797b113cd2b327df005b59e08400796af5661e0c23812b74a93",
+      "payoutUnits": 850,
+      "status": "PASS"
+    },
+    "Q-H3-15-14": {
+      "sha256": "bb09856e987f7873d2949e5d4eba568b535e0997f80aab2b5bbdc3140789cb54",
+      "payoutUnits": 330,
+      "status": "PASS"
+    },
+    "Q-H3-15-15": {
+      "sha256": "f1459ce03a258fb202bb802005d4a9ea0cb988d197b2e609fd60f116111faa83",
+      "payoutUnits": 850,
+      "status": "PASS"
+    },
+    "Q-H3-15-16": {
+      "sha256": "5bdc3511583fe64ecc883782b0b275271b2721cf6485e3c77628a896fc36e213",
+      "payoutUnits": 850,
+      "status": "PASS"
+    },
+    "T-H3-20": {
+      "sha256": "f48263fabcd3da001502abf4cd26920032949080077386a4bca047254723830b",
+      "payoutUnits": 2750,
+      "status": "PASS"
+    },
+    "Q-H3-20-19": {
+      "sha256": "562a6520e78f8f1f9812ac65851656fc85fa30619fa33e931a437b2216edd2f2",
+      "payoutUnits": 850,
+      "status": "PASS"
+    },
+    "Q-H3-20-20": {
+      "sha256": "47da1c54f66a4b3e355242f0928e209493640683ec8619a51cd095f0d82c37c6",
+      "payoutUnits": 2750,
+      "status": "PASS"
+    },
+    "Q-H3-20-21": {
+      "sha256": "739b562e524b3c44653cab1f0b233ab0db2a0f9101ef3de92515bdc63f963afb",
+      "payoutUnits": 2750,
+      "status": "PASS"
+    },
+    "T-H4-8": {
+      "sha256": "f88912f23706e912adc88fcdcc3e41585151569129c76437b2a75f2b49ec94c6",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H4-8-7": {
+      "sha256": "7beaabf278d5fa5cf628e4488c40f1d018239b7cc11e34a6b47938d0b923d607",
+      "payoutUnits": 0,
+      "status": "PASS"
+    },
+    "Q-H4-8-8": {
+      "sha256": "0227430a677c417d6e9888d058c6e8305d005f2db59a4b98949df216cac5370a",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H4-8-9": {
+      "sha256": "c56ba614c791bb43dcfbf979d405fb87356576118e3a4e1d7922ab8ae76610e6",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "T-H4-10": {
+      "sha256": "08c4c77aab0b24fdea8f2e99770aa04a4b282c80ef854f9fe5d8115410650fa9",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H4-10-9": {
+      "sha256": "c2b667e330c135ea9849cb9a25d64b182480874758e500602675c900ca6d0bd5",
+      "payoutUnits": 100,
+      "status": "PASS"
+    },
+    "Q-H4-10-10": {
+      "sha256": "f5b097ceb7d5755f14706f29640f230b0791c638d8e6339196d2eb426037a967",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H4-10-11": {
+      "sha256": "a1ffaa5f25daa9ff3d777c9a7f610f828d9d2b76f4374ab18bcc72fbcd804b79",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "T-H4-12": {
+      "sha256": "4db3ec40ee5194f1ca773cc5d18489206228c10c8632893e6c822b477df8f291",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "Q-H4-12-11": {
+      "sha256": "50d5e90da6473b737eee0e8e81cd8cad79f19b41e88b922ea57c93cd75d434c2",
+      "payoutUnits": 200,
+      "status": "PASS"
+    },
+    "Q-H4-12-12": {
+      "sha256": "9d6c8e26bcb1b881cfd8353bcc3dbeb228a1f3fbcfb89c30bcce75246e6db8b3",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "Q-H4-12-13": {
+      "sha256": "9181aef7a142261c19d832ffe97d55b282aeb0e5daa69f4ca0acc68630d1f2a6",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "T-H4-15": {
+      "sha256": "753781e12158aa4462466cb9f41c110c87b4a4337a0f9719cdc9086c107091a8",
+      "payoutUnits": 1200,
+      "status": "PASS"
+    },
+    "Q-H4-15-14": {
+      "sha256": "b66294958b3865fa37dbc27c92cc7a5d80e32b686be9d2a81bc3b83aca3e0b43",
+      "payoutUnits": 450,
+      "status": "PASS"
+    },
+    "Q-H4-15-15": {
+      "sha256": "97af5fe1ec1b0332238875237eae724b8f0411a3651b15d8b562d5ab4635e06a",
+      "payoutUnits": 1200,
+      "status": "PASS"
+    },
+    "Q-H4-15-16": {
+      "sha256": "572e69ac10fd1d7b1ed98c7346b51260a7509a1869e410ff35177e466ce72c7f",
+      "payoutUnits": 1200,
+      "status": "PASS"
+    },
+    "T-H4-20": {
+      "sha256": "b095fc7d18f38343c13a61a77e4fb5a02408d6daba8abe2fc4b653d77110343e",
+      "payoutUnits": 4000,
+      "status": "PASS"
+    },
+    "Q-H4-20-19": {
+      "sha256": "b89e36495e32d04feff0ffa1be676a95d7a576b1efc9fa328428bbe2ef9c0caf",
+      "payoutUnits": 1200,
+      "status": "PASS"
+    },
+    "Q-H4-20-20": {
+      "sha256": "6e22746ec9a907fc8fac2b85ef52be10db2ba9b3aa9e46a5401a2dccca10ca7e",
+      "payoutUnits": 4000,
+      "status": "PASS"
+    },
+    "Q-H4-20-21": {
+      "sha256": "d839de5fd0a03ef6cbd98bc27038bf71acdad63feb76ffbe218be930e2e1934e",
+      "payoutUnits": 4000,
+      "status": "PASS"
+    }
+  }
+}

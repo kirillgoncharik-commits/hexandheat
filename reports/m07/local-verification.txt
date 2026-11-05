@@ -1,0 +1,133 @@
+
+== repository policy ==
+Repository validation passed: 16 controlled documents
+
+== controlled-document tests ==
+test_asset_manifest_matches_registered_raster_outputs (test_blueprint.BlueprintTests) ... ok
+test_functional_prototype_is_primitive (test_blueprint.BlueprintTests) ... ok
+test_validator_passes (test_blueprint.BlueprintTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.073s
+
+OK
+
+== math and replay tests ==
+test_candidate_inputs_are_explicitly_unbalanced (test_engine.FunctionalMathTests) ... ok
+test_highest_threshold_only_and_simultaneous_groups (test_engine.FunctionalMathTests) ... ok
+test_independent_verifier_rejects_tampered_payout (test_engine.FunctionalMathTests) ... ok
+test_max_win_caps_immediately_but_records_potion_state (test_engine.FunctionalMathTests) ... ok
+test_non_paying_board_does_not_activate_potion (test_engine.FunctionalMathTests) ... ok
+test_outcome_is_deeply_immutable_and_replay_is_exact (test_engine.FunctionalMathTests) ... ok
+test_potion_applies_to_next_cascade_then_round_resets (test_engine.FunctionalMathTests) ... ok
+test_seed_is_deterministic_and_distinct (test_engine.FunctionalMathTests) ... ok
+test_seeded_report_is_reproducible_and_disclaimed (test_engine.FunctionalMathTests) ... ok
+test_weighted_book_is_immutable_canonical_and_ticket_selected (test_engine.FunctionalMathTests) ... ok
+test_cap_allocates_two_groups_in_generator_order_without_changing_payout (test_m05.M05Tests) ... ok
+test_f13_independent_rejection (test_m05.M05Tests) ... ok
+test_reproducible_independently_verified_catalog (test_m05.M05Tests) ... ok
+test_every_input_reproduces_full_book_and_independent_checks (test_m07.M07Tests) ... ok
+test_scatter_geometry_chain_and_potion_meanings (test_m07.M07Tests) ... ok
+test_event_mapping_is_deterministic_and_contiguous (test_stake_adapter.StakeAdapterTests) ... ok
+test_publish_sources_match_lookup_and_reject_tampering (test_stake_adapter.StakeAdapterTests) ... ok
+test_sdk_pins_and_compatibility_patch_are_explicit (test_stake_adapter.StakeAdapterTests) ... ok
+test_six_required_outcomes_are_math_verified_and_stake_compatible (test_stake_adapter.StakeAdapterTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.816s
+
+OK
+
+== browser-domain tests ==
+
+> hexandheat-web-prototype@0.1.0 test
+> node --test
+
+✔ pagehide followed by visibility callbacks cannot suspend or reopen a destroyed audio context (7.331ms)
+✔ temporary stems start together and transition on beat-aligned gain ramps (1.260666ms)
+✔ mute and resume are presentation-only and survive suspended contexts (0.138917ms)
+✔ audio initialization failure degrades without throwing into game flow (0.105708ms)
+✔ scene-owned audio beats, deduplicated impacts and hidden/muted cues never replay a backlog (0.291ms)
+✔ ambient loop closes without a brightness or position jump (11.68975ms)
+✔ scenery uses paused scene time and resumes without accumulating wall time (0.2925ms)
+✔ plate cover geometry stays aligned on desktop and mobile (0.106ms)
+✔ mock RGS returns a frozen precomputed outcome with a valid 6x5 board (1.459459ms)
+✔ normal, fast, and replay playback converge on the same domain snapshot (0.857459ms)
+✔ witch cues are presentation-only and deterministic for spin, fast play, and replay (1.181541ms)
+✔ replay performs no new play or settlement and cannot change the wallet (0.64725ms)
+✔ mock RGS cycles fixtures deterministically and scales authoritative amounts (0.173167ms)
+✔ outcome validation fails closed on malformed board and multiplier continuity (0.164125ms)
+✔ mock RGS validates a fixture before mutating wallet or sequence state (0.168542ms)
+✔ domain reducer keeps event input immutable and formats six-decimal API units (54.471958ms)
+✔ expressive rig retains five closed cycles and continuous shared seam velocity (12.702708ms)
+✔ all 600 poses preserve intended foot contact while authored steps actually lift the free foot (5.435625ms)
+✔ choreography adds asymmetric wrists, larger hip travel and independent skirt parts (20.8295ms)
+✔ M05 F01–F12: original math IDs, every group, exact payout and authoritative removals survive the complete mapping (12.68325ms)
+✔ F05, F08, F09, F11 and F12 retain their boundary meanings (36.217917ms)
+✔ F13 rejects unknown IDs/events, row aliasing, indices, groups, Potion reuse and payout mutation (2.823667ms)
+✔ Potion removal uses authoritative union; survivors never keep the activated bottle (1.660542ms)
+✔ F01–F12 real CueDirector agrees in Normal/Fast/Reduced/local replay with pause and 200ms jank (154.237042ms)
+✔ F14 Normal/Fast: a new loss clears pending/one-shot ownership without cutting the active body (1.378542ms)
+✔ deterministic 3600-round data soak has no payout drift, duplicate settlement or replay debit (345.7565ms)
+✔ cancelled M05 presentation releases its barrier and repeats the identical outcome (2.488959ms)
+✔ M06 full PNG sets retain actual unique poses, timestamps, alpha, source integrity and face landmarks (73.21075ms)
+✔ New authored IDLE and SMALL_WIN share pose and C1 velocity at the four-second seam (6.999375ms)
+✔ M07: all 207 independently produced books map and replay with exact groups, terminal boards and Potion semantics (66.757917ms)
+✔ M07: golden round and ordinary tier boundaries are genuine pinned outcomes (1.98125ms)
+✔ M07: seeded manual playlist survives URL cursor and cannot change a replay or debit twice (3.918916ms)
+✔ M07: all 27 scenarios × Normal/Fast/Reduced/Replay complete shared-clock presentation without fallback (282.364458ms)
+✔ close during opening followed by a new open cannot let stale callbacks steal focus (3.074083ms)
+✔ repeated opens are idempotent, reduced motion completes without changing focus ownership (0.389875ms)
+✔ M06 modal owns the scene pause after entry and releases it for exit without losing visibility pause (0.678417ms)
+✔ PNG timestamps, cadence, short fade, seam and 30 active minutes have no accumulated drift (34.559791ms)
+✔ PNG decode is bounded, ordered and fails closed before a partial set can play (8.915084ms)
+✔ PNG lifecycle: seam enable, pause/resume, five-state neutral coverage, reduced resources, cleanup (7.92275ms)
+✔ destroy during PNG preload and decode error never activate stale resources or block the scheduler (6.724917ms)
+✔ a late decoded set waits for a seam, and M06 rejects a 200ms late body transition (2.024958ms)
+✔ four raster frames cover exactly one 4000ms cycle for every state (0.803458ms)
+✔ each state has four existing distinct raster source files (0.4245ms)
+✔ all 30 screen records have valid outgoing routes and content contracts (0.662083ms)
+✔ bind skin reconstructs registered source pixels without per-layer aspect scaling (31.792416ms)
+✔ real source crops retain raw seams and preserve prepared loop endpoints separately (4.627375ms)
+✔ all retargeted poses are finite, close the seam and encode source forearm foreshortening (802.215625ms)
+✔ shoulder seam belongs to the chest and the shared body triangles never duplicate coverage (25.704875ms)
+✔ alpha mesh keeps a narrow transparent slit open even when coarse corners are opaque (2.101125ms)
+✔ weighted Spine data reproduces preview positions with noScale bone inheritance (101.363042ms)
+✔ all subscribers share one timestamp in deterministic priority order; 30-minute phase has no drift (74.835ms)
+✔ visibility pauses active-time tween, including overlapping pause reasons (1.049084ms)
+✔ aborted renderer tween releases listeners without committing a late end state (0.410834ms)
+✔ barrier waits for every required participant, times out in active time and rejects missing participants (4.50775ms)
+✔ replacing a round cancels pending barriers without stale fallback or listeners (0.290791ms)
+✔ all 25 ordered body transitions respect a full 4000ms seam, including lower tiers in a new round (0.47425ms)
+✔ new loss removes an unstarted old BIG and lets an already started BIG finish exactly once (0.058833ms)
+✔ late foreground callbacks defer a body change to a future seam instead of entering mid-pose (0.059083ms)
+✔ sparse frames can stitch at the shared neutral pose and jitter never shortens the protected full cycle (0.054833ms)
+✔ tumble retains valid survivor identities and flags noncanonical sample boards without inventing a target (0.41525ms)
+✔ anchored sub-timelines catch up in the same sparse frame without adding a new artificial delay (0.2305ms)
+✔ a win read hold starts after the final value is actually visible in a sparse frame (18.553917ms)
+✔ real CueDirector event playback preserves sample outcomes in Normal, Fast, Replay and Reduced Motion (17.508333ms)
+✔ deadline and completed required read hold in the same delayed tick prefer completion; a stalled participant still falls back (2.188417ms)
+✔ all generated Stake books map to deterministic presentation outcomes (13.458166ms)
+✔ Stake RGS client uses authenticate/play/end-round/replay without replay wager (1.189292ms)
+✔ Stake event mapping rejects payout disagreement instead of correcting it (0.278125ms)
+✔ native video controller preloads and crossfades without a black-frame stop (1.547ms)
+✔ decode failure keeps the existing layer active and reports a fallback (1.050584ms)
+✔ all reactions wait for the complete 4000ms cycle before changing state (1.255792ms)
+✔ rapid win escalation selects the strongest next loop, without false BONUS (0.16125ms)
+✔ long cascade chain keeps the active dance looping until round completion (0.10675ms)
+✔ BIG win waits for the current SMALL loop seam instead of interrupting it (0.119333ms)
+✔ BONUS is reserved for bonusStart; errors clear unplayed requests (0.131542ms)
+✔ fast/replay event bursts cannot alter frozen payouts or skip the chosen dance tier (0.115042ms)
+✔ 30 FPS produces 120 actual skeletal samples per four-second clip, with five distinct choreographies (6.516292ms)
+✔ all state seams are identical and the foot anchor stays fixed throughout every animation (5.406ms)
+✔ Spine import candidate has valid bone/slot references, 121 closed keys and a four-second endpoint (10.732834ms)
+ℹ tests 78
+ℹ suites 0
+ℹ pass 78
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1400.3235
+
+Milestone verification passed.

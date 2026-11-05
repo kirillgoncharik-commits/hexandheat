@@ -1,0 +1,334 @@
+{
+  "version": "m07-actual-controls-1",
+  "clock": "4× active clock; not performance measurement",
+  "errors": [
+    "Error: unexpected fallback\n    at need (http://127.0.0.1:4177/src/m07-qa.js:2:113)\n    at $.onclick (http://127.0.0.1:4177/src/m07-qa.js:35:4)"
+  ],
+  "status": "FAIL",
+  "failureTrace": [
+    {
+      "at": 16.7,
+      "type": "witch.seam",
+      "generation": 0,
+      "from": null,
+      "to": "IDLE"
+    },
+    {
+      "at": 121.4,
+      "type": "round.begin",
+      "generation": 1
+    },
+    {
+      "at": 121.4,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal",
+      "duration": 180,
+      "deadlineMs": 1180
+    },
+    {
+      "at": 121.4,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal",
+      "marker": "boardReveal.start"
+    },
+    {
+      "at": 375.8,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-0/boardReveal"
+    },
+    {
+      "at": 375.8,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "duration": 370,
+      "deadlineMs": 1370
+    },
+    {
+      "at": 375.8,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "marker": "win.start"
+    },
+    {
+      "at": 443,
+      "type": "field.paid",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "paid": 5000000,
+      "total": 5000000
+    },
+    {
+      "at": 508.2,
+      "type": "field.group",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "group": 0,
+      "symbol": "H1",
+      "positions": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10,
+        12,
+        14,
+        17,
+        19,
+        21,
+        24,
+        26,
+        28
+      ],
+      "paid": 5000000
+    },
+    {
+      "at": 1898.6,
+      "type": "cue.error",
+      "generation": 1,
+      "id": "round-1/event-1/win",
+      "error": "Cue deadline exceeded"
+    },
+    {
+      "at": 1898.6,
+      "type": "cue.fallback",
+      "generation": 1,
+      "id": "round-1/event-1/win"
+    },
+    {
+      "at": 1898.6,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-2/cascade",
+      "duration": 420,
+      "deadlineMs": 3420
+    },
+    {
+      "at": 1898.6,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-2/cascade",
+      "marker": "cascade.start"
+    },
+    {
+      "at": 2290.2,
+      "type": "board.settled",
+      "generation": 1,
+      "id": "round-1/event-2/cascade"
+    },
+    {
+      "at": 2355,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-2/cascade"
+    },
+    {
+      "at": 2355,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-3/win",
+      "duration": 370,
+      "deadlineMs": 1370
+    },
+    {
+      "at": 2355,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-3/win",
+      "marker": "win.start"
+    },
+    {
+      "at": 2419.8,
+      "type": "field.paid",
+      "generation": 1,
+      "id": "round-1/event-3/win",
+      "paid": 5000000,
+      "total": 10000000
+    },
+    {
+      "at": 2610.6,
+      "type": "field.group",
+      "generation": 1,
+      "id": "round-1/event-3/win",
+      "group": 0,
+      "symbol": "H1",
+      "positions": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        15,
+        16,
+        20,
+        21,
+        25,
+        26
+      ],
+      "paid": 5000000
+    },
+    {
+      "at": 2875,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-3/win"
+    },
+    {
+      "at": 2875,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-4/cascade",
+      "duration": 420,
+      "deadlineMs": 1420
+    },
+    {
+      "at": 2875,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-4/cascade",
+      "marker": "cascade.start"
+    },
+    {
+      "at": 3260.2,
+      "type": "board.settled",
+      "generation": 1,
+      "id": "round-1/event-4/cascade"
+    },
+    {
+      "at": 3327.8,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-4/cascade"
+    },
+    {
+      "at": 3327.8,
+      "type": "cue.start",
+      "generation": 1,
+      "id": "round-1/event-5/finalWin",
+      "duration": 250,
+      "deadlineMs": 1250
+    },
+    {
+      "at": 3327.8,
+      "type": "marker",
+      "generation": 1,
+      "id": "round-1/event-5/finalWin",
+      "marker": "finalWin.start"
+    },
+    {
+      "at": 3589,
+      "type": "cue.complete",
+      "generation": 1,
+      "id": "round-1/event-5/finalWin"
+    },
+    {
+      "at": 4057,
+      "type": "witch.missedSeam",
+      "generation": 1,
+      "cycle": 1,
+      "lateMs": 57
+    }
+  ],
+  "wallDurationMs": 113283,
+  "completedCount": 85,
+  "lastCompleted": "B17-10",
+  "completedModes": [
+    "B01:normal",
+    "B01:fast",
+    "B01:reduced",
+    "B01:replay",
+    "B02:normal",
+    "B02:fast",
+    "B02:reduced",
+    "B02:replay",
+    "B03:normal",
+    "B03:fast",
+    "B03:reduced",
+    "B03:replay",
+    "B04:normal",
+    "B04:fast",
+    "B04:reduced",
+    "B04:replay",
+    "B05:normal",
+    "B05:fast",
+    "B05:reduced",
+    "B05:replay",
+    "B06:normal",
+    "B06:fast",
+    "B06:reduced",
+    "B06:replay",
+    "B07:normal",
+    "B07:fast",
+    "B07:reduced",
+    "B07:replay",
+    "B08:normal",
+    "B08:fast",
+    "B08:reduced",
+    "B08:replay",
+    "B09:normal",
+    "B09:fast",
+    "B09:reduced",
+    "B09:replay",
+    "B10:normal",
+    "B10:fast",
+    "B10:reduced",
+    "B10:replay",
+    "B11:normal",
+    "B11:fast",
+    "B11:reduced",
+    "B11:replay",
+    "B12:normal",
+    "B12:fast",
+    "B12:reduced",
+    "B12:replay",
+    "B13:normal",
+    "B13:fast",
+    "B13:reduced",
+    "B13:replay",
+    "B14:normal",
+    "B14:fast",
+    "B14:reduced",
+    "B14:replay",
+    "B14-EQUAL:normal",
+    "B14-EQUAL:fast",
+    "B14-EQUAL:reduced",
+    "B14-EQUAL:replay",
+    "B15:normal",
+    "B15:fast",
+    "B15:reduced",
+    "B15:replay",
+    "B16:normal",
+    "B16:fast",
+    "B16:reduced",
+    "B16:replay",
+    "B17:normal",
+    "B17:fast",
+    "B17:reduced",
+    "B17:replay",
+    "B17-4:normal",
+    "B17-4:fast",
+    "B17-4:reduced",
+    "B17-4:replay",
+    "B17-4A:normal",
+    "B17-4A:fast",
+    "B17-4A:reduced",
+    "B17-4A:replay",
+    "B17-10B:normal",
+    "B17-10B:fast",
+    "B17-10B:reduced",
+    "B17-10B:replay",
+    "B17-10:normal"
+  ],
+  "rawSha256": "b9f0a0bab34516f96bdf057016e78fb399b264299e79f42eebe92c38dfb3ab88",
+  "rawSavedOutsideGit": "outputs/hexheat-m07/qa-raw/controls-second-failure.json"
+}

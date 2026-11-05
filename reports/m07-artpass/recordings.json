@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "path": "outputs/hexheat-m07-artpass/HexHeat_Gameplay_Normal.webm",
+      "sha256": "e6e5d9ef3e5eefb05ff3a653d503ece7ba3bc1190557c874e4bf3b5b00d73758",
+      "bytes": 1072717
+    },
+    {
+      "path": "outputs/hexheat-m07-artpass/HexHeat_Gameplay_Fast.webm",
+      "sha256": "387cda21dcec8c8937a7444071e7522ddbccb1616682908c3a5f4e6b600b7946",
+      "bytes": 460476
+    },
+    {
+      "path": "outputs/hexheat-m07-artpass/HexHeat_SMALL_WIN_stepped_v2.webm",
+      "sha256": "d5b182dbc65bc3ac152f3ced0833b7688b722e165f83439a484c0e3ec3527dfe",
+      "bytes": 752349,
+      "source": "4 redrawn keys / intended4000ms timed study; native MediaRecorder export"
+    }
+  ],
+  "notes": "Silent native browser screenshot captures with original wall timestamps; approximately12 capture fps, not renderer/source fps or hardware measurement.0.8s final hold added. Animatic is four drawings with timed holds, not smooth production animation."
+}

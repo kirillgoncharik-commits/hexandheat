@@ -4,8 +4,8 @@ const uint=value=>{const bytes=[];do{bytes.unshift(value%256);value=Math.floor(v
 const size=value=>{for(let n=1;n<=8;n++)if(value<2**(7*n)-1){const out=new Uint8Array(n);let v=value;for(let i=n-1;i>=0;i--){out[i]=v%256;v=Math.floor(v/256);}out[0]|=1<<(8-n);return out;}throw Error('EBML size exceeds range');};
 const el=(id,payload)=>concat([uint(id),size(payload.length),payload]);
 const u=(id,value)=>el(id,uint(value)),s=(id,text)=>el(id,new TextEncoder().encode(text));
-export function muxCandidateWebm(chunks,width,height) {
- const f=new Uint8Array(8);new DataView(f.buffer).setFloat64(0,4000,false);
+export function muxCandidateWebm(chunks,width,height,durationMs=4000) {
+ const f=new Uint8Array(8);new DataView(f.buffer).setFloat64(0,durationMs,false);
  const header=el(0x1a45dfa3,concat([u(0x4286,1),u(0x42f7,1),u(0x42f2,4),u(0x42f3,8),s(0x4282,'webm'),u(0x4287,2),u(0x4285,2)]));
  const info=el(0x1549a966,concat([u(0x2ad7b1,1000000),el(0x4489,f),s(0x4d80,'HexHeat M05'),s(0x5741,'HexHeat M05')]));
  const tracks=el(0x1654ae6b,el(0xae,concat([u(0xd7,1),u(0x73c5,1),u(0x83,1),s(0x86,'V_VP8'),u(0x23e383,33333333),el(0xe0,concat([u(0xb0,width),u(0xba,height)]))])));
