@@ -1,0 +1,25 @@
+{
+  "manifest": {
+    "productionReady": false,
+    "sourceCommit": "15af8654a1ed06a46c4f071c6f85bf0742da6ac4",
+    "studyVersion": "m07-study-2",
+    "version": "m07-artpass-1"
+  },
+  "actual": {
+    "balance": "US$100.90",
+    "cells": 30,
+    "multiplier": "×2",
+    "paid": "US$1.90",
+    "scroll": [
+      390,
+      844
+    ],
+    "spinDisabled": false,
+    "studyPose": "canonical",
+    "studyVisible": "visible",
+    "viewport": [
+      390,
+      844
+    ]
+  }
+}

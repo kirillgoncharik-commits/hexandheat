@@ -1,0 +1,52 @@
+{
+  "milestone": "M07 art pass after v11 review",
+  "version": 12,
+  "runtime_commit": "15af8654a1ed06a46c4f071c6f85bf0742da6ac4",
+  "site_source_commit": "a74403a21e9f1cadb12ce6405ac19f23258c9366",
+  "saved_version": {
+    "id": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_dd2b5cfaa9108191bb02e8745fafa4fd",
+    "project_id": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+    "version_number": 12,
+    "source": {
+      "commit_sha": "a74403a21e9f1cadb12ce6405ac19f23258c9366"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_0000000069f48246a8de51185eb2ccd1",
+      "content_hash": "sha256:e1ff553f5fb9c01672610f1844ed46f0224fba05ab6c1bc2a0692f347e9142ec",
+      "size_bytes": 26951680,
+      "file_count": 401
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6aec8066d9308191bf0a70fdd0d8b7bc",
+    "project_id": "appgprj_6ae43bec02248191866ae51ec7721ec1",
+    "title": "Hex & Heat M03",
+    "version_id": "appgprj_6ae43bec02248191866ae51ec7721ec1~appgver_dd2b5cfaa9108191bb02e8745fafa4fd",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://hex-and-heat-m03.kirill-goncharik.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae43bec02248191866ae51ec7721ec1",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-05T13:11:17.727051+00:00"
+  },
+  "audience": "public (preserved)",
+  "productionReady": false,
+  "runtime_ci": {
+    "status": "success",
+    "url": "https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/42032915191"
+  },
+  "published_smoke": "published-smoke.json",
+  "published_screenshot": "published-study-390.jpg",
+  "acceptance": {
+    "technical": "verified for review",
+    "human_art": "OPEN",
+    "smooth_animation_and_remaining_body_family": "OPEN",
+    "physical_device_validation": "NOT RUN"
+  }
+}

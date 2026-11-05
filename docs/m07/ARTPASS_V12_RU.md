@@ -32,3 +32,7 @@ Coarse face/hand rectangles измерены визуально с погреш�
 Фактические результаты сохраняются в reports/m07-artpass; старые viewport-картинки из ранних v10/v11 receipts не считаются свежим просмотром текущего renderer. Проверяются B05/B06/B09/B11/B14/B15/B16/B18, сложные группы Fast/Reduced, zero/sub-bet/equal, cap/F14, replay без debit, исходы и terminal30 cells. Отдельно новый body study/crop/seam и цельные browser gameplay captures Normal/Fast.
 
 Силуэты/крупные кисти доступны для PO. Визуальные прямоугольники или PASS не доказывают, что все пальцы художественно приняты. Полная visual beta, production in-betweens/family и physical iOS/Android/thermal/input/30min soak не объявляются закрытыми. Детальная перерисовка low-symbol орнамента/тонкой синей колбы и окончательная световая интеграция окружения остаются следующим art polish, а не автоматически выполненными G/H.
+
+## Публикация
+
+На прежнем публичном review Site опубликована версия12: runtime15af8654a1ed06a46c4f071c6f85bf0742da6ac4, Site source a74403a21e9f1cadb12ce6405ac19f23258c9366. CI PASS; свежий Spin B05 на опубликованном390×844 study завершился paid1.90,×2,balance100.90,30 cells, видимым персонажем и доступным Spin без прокрутки. Точные native receipts и screenshot — reports/m07-artpass/deployment.json, published-smoke.json, published-study-390.jpg. Следующий commit содержит только отчёт публикации; runtime тот же. Статус: IMPLEMENTED / VERIFIED FOR REVIEW, human art/device acceptance OPEN, productionReady=false.

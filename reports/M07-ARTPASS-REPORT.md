@@ -22,4 +22,8 @@ Silent full browser-gameplay captures Normal/Fast are saved outside Git in outpu
 
 Field and motion study are IMPLEMENTED / TECHNICALLY VERIFIED FOR REVIEW. Human art acceptance, full motion registration/anatomy, smooth in-betweens and MEDIUM/BIG/BONUS body family remain OPEN. Detailed low-symbol ornament/blue-vial repaint and final environment lighting are future polish. Real iOS/Android/thermal/input/AV/30min soak and participant comprehension are NOT RUN. No production math/FS/live recovery/sessionless replay, purchases/terms or Stake submission. productionReady=false.
 
-Exact final runtime/Site source and publication receipt are appended after deployment. Earlier v11/v10 screenshots are historical, not fresh acceptance evidence.
+## Published version 12
+
+Published successfully on 2026-11-05 at13:11:17 UTC to the existing public review Site: https://hex-and-heat-m03.kirill-goncharik.chatgpt.site. Runtime15af8654a1ed06a46c4f071c6f85bf0742da6ac4; Site source a74403a21e9f1cadb12ce6405ac19f23258c9366. Native version/deployment identifiers and archive hash are retained in m07-artpass/deployment.json. Audience unchanged; productionReady=false.
+
+Published390×844 B05 Normal smoke confirms source15af865, study m07-study-2 visible,30 cells, final paid1.90, multiplier×2, balance100.90, ready Spin and no scroll. Evidence: m07-artpass/published-smoke.json and published-study-390.jpg. Runtime CI PASS: https://github.com/kirillgoncharik-commits/hexandheat/actions/runs/42032915191. A subsequent receipt-only commit records publication without changing the deployed runtime. Earlier v11/v10 screenshots remain historical.
