@@ -1,0 +1,102 @@
+{
+  "version": "m07-safety-1",
+  "clock": "real wall-clock",
+  "cases": [
+    {
+      "id": "F14",
+      "speed": "normal",
+      "status": "PASS",
+      "result": {
+        "speed": "normal",
+        "retainedBeforeNewRound": "US$0.60",
+        "retainedAfterSelection": "US$0.60",
+        "win": "US$0.00",
+        "multiplier": "×1",
+        "cascade": "Без выигрыша",
+        "bodyState": "SMALL_WIN",
+        "spinDisabled": false,
+        "sourceOutcome": "F01"
+      }
+    },
+    {
+      "id": "F14",
+      "speed": "fast",
+      "status": "PASS",
+      "result": {
+        "speed": "fast",
+        "retainedBeforeNewRound": "US$0.60",
+        "retainedAfterSelection": "US$0.60",
+        "win": "US$0.00",
+        "multiplier": "×1",
+        "cascade": "Без выигрыша",
+        "bodyState": "SMALL_WIN",
+        "spinDisabled": false,
+        "sourceOutcome": "F01"
+      }
+    },
+    {
+      "id": "B19→LOSS",
+      "speed": "normal",
+      "status": "PASS",
+      "body": "SMALL_WIN",
+      "newPaid": 0
+    },
+    {
+      "id": "B19→LOSS",
+      "speed": "fast",
+      "status": "PASS",
+      "body": "SMALL_WIN",
+      "newPaid": 0
+    },
+    {
+      "id": "B16→LOSS",
+      "speed": "normal",
+      "status": "PASS",
+      "body": "BIG_WIN",
+      "newPaid": 0
+    },
+    {
+      "id": "B16→LOSS",
+      "speed": "fast",
+      "status": "PASS",
+      "body": "BIG_WIN",
+      "newPaid": 0
+    },
+    {
+      "id": "fault-media",
+      "status": "PASS",
+      "paid": 1900000,
+      "multiplier": 2,
+      "media": "neutral-error"
+    },
+    {
+      "id": "fault-manifest",
+      "status": "PASS",
+      "paid": 1900000,
+      "multiplier": 2,
+      "media": "legacy-manifest-error"
+    },
+    {
+      "id": "fault-jank",
+      "status": "PASS",
+      "paid": 1900000,
+      "multiplier": 2,
+      "media": "neutral-loading"
+    },
+    {
+      "id": "modal-mid-group",
+      "status": "PASS",
+      "pausedWallMs": 500,
+      "onePotionImpact": true
+    },
+    {
+      "id": "manual-playlist-replay",
+      "status": "PASS",
+      "first": "B15",
+      "second": "B20",
+      "replayBookUnchanged": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

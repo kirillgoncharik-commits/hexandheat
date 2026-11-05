@@ -11,6 +11,7 @@ import { RasterWitchPlayer } from "./raster-witch.js";
 import { CandidateWitchPlayer } from './candidate-witch-player.js';
 import { PngSequencePlayer, decodeImage } from './png-sequence-player.js';
 import { mountScenarioReview } from './review-sequence.js';
+import {KeyPoseStudy} from './key-pose-study.js';
 import { ReviewRgs } from './review-rgs.js';
 import { BASE_RULES } from './m05-rules.js';
 import { SYMBOL_REGISTRY } from './symbol-registry.js';
@@ -49,6 +50,7 @@ elements.cascadeLabel=document.querySelector('#cascade-label');
 elements.potionNote=document.querySelector('#potion-note');
 elements.winLabel=document.querySelector('#win-label');
 elements.groupExplanation=document.querySelector('#group-explanation');
+elements.payoutBand=document.querySelector('.payout-band');
 const query=new URL(location.href).searchParams;
 document.body.dataset.layout=query.get('layout')==='B'?'B':'A';
 if(query.get('layout')==='before')document.querySelector('#m05-style').disabled=true;
@@ -61,7 +63,8 @@ const director = new CueDirector(transport);
 const boardPlayer = new BoardPlayer(elements.board, transport);
 let presentation = null;
 let scenarioReview=null;
-let calmCharacter=!query.has('witch')||query.get('witch')==='still';
+let calmCharacter=!query.has('witch')||['still','study'].includes(query.get('witch'));
+let studyPlayer=null;
 let reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 if(query.get('motion')==='reduced')reducedMotion=true;
 const ambient = new AmbientScene(document.querySelector('#ambient-scene'), transport, { reducedMotion });
@@ -115,12 +118,13 @@ async function prepareWitchStage() {
   rasterPlayer=new PngSequencePlayer(document.querySelector('.raster-container'),mediaOptions);
   rasterPlayer.setEnabled(calmCharacter||query.get('witch')==='m06',{immediate:true});
   if(calmCharacter)rasterPlayer.setReducedMotion(true);
+  if(query.get('witch')==='study')studyPlayer=new KeyPoseStudy(document.querySelector('.raster-container'),{transport,reducedMotion});
   witchController = new WitchDanceController({
     transport,
     seamWindowMs:50,
     onMissedSeam: data => director.record('witch.missedSeam', data),
     onLoop({ from, to }) {
-      rasterPlayer.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to;
+      rasterPlayer.switchTo(to);studyPlayer?.switchTo(to); elements.witchStage.dataset.state = to.toLowerCase(); elements.witchStateLabel.textContent = to;
       if(recordPending&&to==='SMALL_WIN'){recordPending=false;captureCandidate();}
       director.record('witch.seam', { from, to });
       if (to === 'IDLE' && !witchController.roundOpen && !witchController.pending) musicController.setState(MUSIC_STATES.BASE);
@@ -196,8 +200,10 @@ async function presentOutcome(outcome, source) {
     }
   });
   if (outcome.payoutMicro >= outcome.betMicro * 10) {
-    document.querySelector('#result-heading').textContent=outcome.events.at(-1).capped?'Sample cap reached · 5000×':'Big win';
+    document.querySelector('#result-heading').textContent=outcome.events.at(-1).capped?'Максимальная выплата':'Большой выигрыш';
     document.querySelector('#result-amount').textContent = formatMoney(outcome.payoutMicro, outcome.currency, locale);
+    document.querySelector('#result-ratio').textContent=`${outcome.payoutMicro/outcome.betMicro}× ставки`;
+    document.querySelector('#result-dialog').dataset.tier=outcome.events.at(-1).capped?'cap':'big';
     await modalManager.open(document.querySelector('#result-dialog'), elements.spin);
   }
   if(rgs instanceof ReviewRgs){
@@ -302,11 +308,12 @@ async function initialize() {
       else elements.fixtureLabel.textContent=`${lastOutcome.fixtureId} · NEXT ${c.id}`;
     }});
   } else fixtureSelect.disabled=true;
+  const endStudy=()=>{studyPlayer?.destroy();studyPlayer=null;};
   const candidateToggle=document.querySelector('#candidate-toggle');candidateToggle.checked=query.get('witch')==='candidate';
-  candidateToggle.addEventListener('change',()=>{calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(false);document.querySelector('#media-review-toggle').checked=false;rasterPlayer.fallback.setEnabled(candidateToggle.checked);});
+  candidateToggle.addEventListener('change',()=>{endStudy();calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(false);document.querySelector('#media-review-toggle').checked=false;rasterPlayer.fallback.setEnabled(candidateToggle.checked);});
   const mediaToggle=document.querySelector('#media-review-toggle');mediaToggle.checked=query.get('witch')==='m06';
-  mediaToggle.addEventListener('change',()=>{calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(mediaToggle.checked);});
-  const calmToggle=document.querySelector('#calm-character');calmToggle.checked=calmCharacter;calmToggle.addEventListener('change',()=>{calmCharacter=calmToggle.checked;rasterPlayer.setEnabled(calmCharacter||mediaToggle.checked);rasterPlayer.setReducedMotion(calmCharacter||reducedMotion);});
+  mediaToggle.addEventListener('change',()=>{endStudy();calmCharacter=false;document.querySelector('#calm-character').checked=false;rasterPlayer.setReducedMotion(reducedMotion);rasterPlayer.setEnabled(mediaToggle.checked);});
+  const calmToggle=document.querySelector('#calm-character');calmToggle.checked=calmCharacter;calmToggle.addEventListener('change',()=>{endStudy();calmCharacter=calmToggle.checked;rasterPlayer.setEnabled(calmCharacter||mediaToggle.checked);rasterPlayer.setReducedMotion(calmCharacter||reducedMotion);});
   document.querySelector('#record-candidate').addEventListener('click',async()=>{
     if(busy)return;await rasterPlayer.fallback.preload;if(!rasterPlayer.fallback.ready||rasterPlayer.fallback.failed){elements.status.textContent='Candidate source unavailable; fallback preserved.';return;}
     await modalManager.close();candidateToggle.checked=true;rasterPlayer.setEnabled(false);mediaToggle.checked=false;rasterPlayer.fallback.setEnabled(true);recordPending=true;witchController.beginRound();witchController.request('SMALL_WIN');witchController.endRound();elements.status.textContent='Candidate recording starts on the next four-second seam · no wager';
@@ -315,7 +322,8 @@ async function initialize() {
   if(query.has('compare')) {
     await rasterPlayer.fallback.preload;await rasterPlayer.fallback.fallback.preload;
     if(query.get('witch')==='m06'){await rasterPlayer.prepare();await rasterPlayer.preload('IDLE');await rasterPlayer.preload('SMALL_WIN');}
-    transport.pause('comparison');transport.time=Number(query.get('phase')??1200);for(const key of rasterPlayer.readyCycles.keys())rasterPlayer.readyCycles.set(key,0);rasterPlayer.switchTo(query.get('state')??'SMALL_WIN');rasterPlayer.fallback.tick();rasterPlayer.tick();
+    if(studyPlayer)await studyPlayer.preload;
+    transport.pause('comparison');transport.time=Number(query.get('phase')??1200);for(const key of rasterPlayer.readyCycles.keys())rasterPlayer.readyCycles.set(key,0);rasterPlayer.switchTo(query.get('state')??'SMALL_WIN');studyPlayer?.switchTo(query.get('state')??'SMALL_WIN');rasterPlayer.fallback.tick();rasterPlayer.tick();
     elements.status.textContent='Comparison pose · no wager · art acceptance pending';elements.spin.disabled=true;
   }
   elements.spin.addEventListener("click", spin);
@@ -336,14 +344,14 @@ async function initialize() {
   });
   document.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => modalManager.open(document.getElementById(button.dataset.open), button)));
   document.querySelectorAll('dialog').forEach(dialog => {
-    dialog.querySelector('[data-close]')?.addEventListener('click', () => modalManager.close(dialog));
+    dialog.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click', () => modalManager.close(dialog)));
     dialog.addEventListener('cancel', event => { event.preventDefault(); modalManager.close(dialog); });
     dialog.addEventListener('click', event => { if (event.target === dialog) modalManager.close(dialog); });
   });
   const reduceToggle = document.querySelector('#reduce-toggle'); reduceToggle.checked = reducedMotion;
   function motionPolicy(value) {
     reducedMotion = value; document.documentElement.classList.toggle('reduce-motion', value);
-    rasterPlayer.setReducedMotion(value||calmCharacter); presentation.setReducedMotion(value); ambient.setReducedMotion(value);
+    rasterPlayer.setReducedMotion(value||calmCharacter);studyPlayer?.setReducedMotion(value); presentation.setReducedMotion(value); ambient.setReducedMotion(value);
   }
   motionPolicy(reducedMotion);
   reduceToggle.addEventListener('change', () => motionPolicy(reduceToggle.checked));
@@ -351,12 +359,12 @@ async function initialize() {
   preference?.addEventListener('change', event => { reduceToggle.checked = event.matches; motionPolicy(event.matches); });
   window.addEventListener('pagehide', event => {
     transport.pause('pagehide'); musicController.suspend();
-    if (!event.persisted) { modalManager.destroy(); presentation.destroy(); witchController.destroy(); rasterPlayer.destroy(); ambient.destroy(); musicController.destroy(); transport.destroy(); }
+    if (!event.persisted) { modalManager.destroy(); presentation.destroy(); witchController.destroy(); rasterPlayer.destroy();studyPlayer?.destroy(); ambient.destroy(); musicController.destroy(); transport.destroy(); }
   });
   window.addEventListener('pageshow', event => { if (event.persisted) { transport.resume('pagehide'); musicController.restore(); } });
   if (document.hidden) { transport.pause('visibility'); musicController.suspend(); }
   window.hexHeatReview = {
-    transport, director, witch: witchController, character: rasterPlayer, ambient, modal: modalManager, music: musicController,
+    transport, director, witch: witchController, character: rasterPlayer, study:studyPlayer, ambient, modal: modalManager, music: musicController,
     exportTrace: () => JSON.stringify({ version: 'm04.1-1', trace: director.trace }, null, 2),
     async playFixture(index) {
       if (busy || modalManager.active || transport.paused) return false;

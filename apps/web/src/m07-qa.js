@@ -19,8 +19,9 @@ $('run').onclick=async()=>{
    const originalInitial=[...d.querySelectorAll('#board .symbol')].map(n=>({node:n,p:+n.dataset.position,s:n.dataset.symbol}));
    const spin=d.querySelector('#spin-button');spin.click();spin.click();
    // Capture real DOM group focus, Potion origin/impact, and persistent survivor instances.
-   const seen={groups:[],potionOrigins:[],survivors:[]};let lastKey='',reveal=true;
+   const seen={groups:[],potionOrigins:[],survivors:[],maxParticles:0};let lastKey='',reveal=true;
    const inspect=w.setInterval(()=>{
+    seen.maxParticles=Math.max(seen.maxParticles,d.querySelectorAll('.dissolve-spark').length);
     const host=d.querySelector('#group-explanation');if(!host.hidden){const key=host.textContent;if(key!==lastKey){lastKey=key;seen.groups.push({label:key,positions:[...d.querySelectorAll('.is-group-focus')].map(n=>+n.dataset.position)});}}
     for(const node of d.querySelectorAll('.potion-flight'))if(!seen.potionOrigins.includes(+node.dataset.position))seen.potionOrigins.push(+node.dataset.position);
     if(reveal&&w.hexHeatReview.director.trace.some(e=>e.type==='board.settled')){reveal=false;for(const old of originalInitial)if(old.node.isConnected)seen.survivors.push({from:old.p,to:+old.node.dataset.position,symbol:old.s,winClass:old.node.classList.contains('is-winning'),potionClass:old.node.classList.contains('is-potion-active')});}
@@ -34,7 +35,8 @@ $('run').onclick=async()=>{
    const terminal=c.expected.events.filter(e=>e.board).at(-1).board.flat(),actual=[...d.querySelectorAll('#board .symbol')].sort((a,b)=>+a.dataset.position-+b.dataset.position).map(n=>n.dataset.symbol);need(JSON.stringify(actual)===JSON.stringify(terminal),'terminal board');need(d.querySelectorAll('#board .symbol').length===30,'30 cells');need(d.querySelector('#multiplier-value').textContent===`×${c.expected.events.at(-1).finalMultiplier}`,'terminal multiplier');
    need(!w.hexHeatReview.director.trace.some(e=>['cue.fallback','board.reconcile'].includes(e.type)),'unexpected fallback');
    const expectedGroups=c.expected.events.filter(e=>e.type==='win').flatMap(e=>e.groups.map(g=>g.positions));
-   for(const group of seen.groups)need(expectedGroups.some(p=>JSON.stringify(p)===JSON.stringify(group.positions)),'incorrect group focus');need(d.querySelectorAll('.potion-flight').length===0,'flight cleanup');
+   for(const group of seen.groups)need(expectedGroups.some(p=>JSON.stringify(p)===JSON.stringify(group.positions)),'incorrect group focus');need(d.querySelectorAll('.potion-flight,.dissolve-spark').length===0,'effect cleanup');need(seen.maxParticles<=12,'particle budget');need(d.querySelector('#cascade-value').textContent===expected,'final band is not round paid');need(d.querySelector('#potion-note').textContent==='','stale Potion hint');
+   const bowl=d.querySelector('.cauldron-vessel img').getBoundingClientRect();for(const impact of w.hexHeatReview.director.trace.filter(e=>e.type==='field.potionImpact'&&e.target)){need(Math.abs(impact.target.x-(bowl.x+bowl.width*.5))<1&&Math.abs(impact.target.y-(bowl.y+bowl.height*.36))<1,'Potion missed bowl');}
    // Selection cannot replace settled outcome. Replay stays on the settled book.
    const picker=d.querySelector('#fixture-select');picker.value='B01';picker.dispatchEvent(new Event('change'));need(d.querySelector('#win-value').textContent===expected,'selection erased result');
    const trace=w.hexHeatReview.director.trace.filter(e=>e.type.startsWith('field.'));

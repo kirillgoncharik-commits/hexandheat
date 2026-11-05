@@ -22,7 +22,7 @@ def main():
     if destination.exists():shutil.rmtree(destination)
     destination.mkdir(parents=True,exist_ok=True)
     for path in source.rglob('*'):
-        if not path.is_file() or any(p in {'tests','scripts'} for p in path.relative_to(source).parts) or path.name in {'README.md','package.json'}:continue
+        if not path.is_file() or any(p in {'tests','scripts','.cache'} for p in path.relative_to(source).parts) or path.name in {'README.md','package.json'}:continue
         target=destination/path.relative_to(source);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,target)
     rules=json.loads((source/'assets/m05/rules.json').read_text());fixtures=json.loads((source/'assets/m05/fixtures.json').read_text());assets=json.loads((ROOT/'assets/ASSET_MANIFEST.json').read_text())
     files={str(p.relative_to(destination)):digest(p) for p in sorted(destination.rglob('*')) if p.is_file() and p.name!='review-manifest.json'}

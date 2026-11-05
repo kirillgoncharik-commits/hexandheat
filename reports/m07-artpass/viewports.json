@@ -1,0 +1,100 @@
+[
+  {
+    "cell": 104.3359375,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      1440,
+      900
+    ],
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "cell": 77.9375,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      1366,
+      768
+    ],
+    "viewport": [
+      1366,
+      768
+    ]
+  },
+  {
+    "cell": 42.3984375,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      360,
+      640
+    ],
+    "viewport": [
+      360,
+      640
+    ]
+  },
+  {
+    "cell": 57.4609375,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      390,
+      844
+    ],
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "cell": 64.1328125,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      430,
+      932
+    ],
+    "viewport": [
+      430,
+      932
+    ]
+  },
+  {
+    "cell": 37.796875,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "cell": 23.796875,
+    "minTarget": 44,
+    "paid": "US$1.90",
+    "potionHint": "",
+    "scroll": [
+      480,
+      320
+    ],
+    "viewport": [
+      480,
+      320
+    ]
+  }
+]

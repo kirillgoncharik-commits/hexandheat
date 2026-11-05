@@ -1,6 +1,6 @@
 {
   "$schema": "../docs/schemas/asset-manifest.schema.json",
-  "version": 9,
+  "version": 10,
   "assets": [
     {
       "id": "M03-ATELIER",
@@ -1234,6 +1234,134 @@
         "terms_url": "https://openai.com/policies/terms-of-use/",
         "rights_review": "Inherited original-art entitlement review OPEN; key-pose concepts only; no animation/art acceptance",
         "prompt_file": "assets/prompts/M07_KEYPOSES.md"
+      }
+    },
+    {
+      "id": "M07-STUDY-CANONICAL",
+      "status": "exploration",
+      "sha256": "bc23f3783e7aab69cdc1b33e136c84ff7164ba885a6685b4cac3a3ba376940dd",
+      "bytes": 83832,
+      "uri": "apps/web/assets/m07-study/canonical.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; deterministic Pillow encoding/padding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept study only; inherited art entitlement OPEN; no human anatomy/art acceptance",
+        "prompt_file": "assets/prompts/m07-artpass/01-canonical-initial-prompt.txt"
+      }
+    },
+    {
+      "id": "M07-STUDY-WEIGHT",
+      "status": "exploration",
+      "sha256": "ed85f82df8a5565cc7070d61c7e815afd3f8fab28b78abb5d8afbff315a0c7cb",
+      "bytes": 87804,
+      "uri": "apps/web/assets/m07-study/weight.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; deterministic Pillow encoding/padding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept study only; inherited art entitlement OPEN; no human anatomy/art acceptance",
+        "prompt_file": "assets/prompts/m07-artpass/weight-prompt.txt"
+      }
+    },
+    {
+      "id": "M07-STUDY-ACCENT",
+      "status": "exploration",
+      "sha256": "1d568d3d6361ea121ba2af8d766d0f10ce2d4e0768fe6f7945a7fd1f7a76ee90",
+      "bytes": 88802,
+      "uri": "apps/web/assets/m07-study/accent.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; deterministic Pillow encoding/padding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept study only; inherited art entitlement OPEN; no human anatomy/art acceptance",
+        "prompt_file": "assets/prompts/m07-artpass/accent-prompt.txt"
+      }
+    },
+    {
+      "id": "M07-STUDY-RELEASE",
+      "status": "exploration",
+      "sha256": "03680e7045aa9f4779e0055b410b45c444c83083eec66d3e4dce75f96deb5b1f",
+      "bytes": 81968,
+      "uri": "apps/web/assets/m07-study/release.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; deterministic Pillow encoding/padding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept study only; inherited art entitlement OPEN; no human anatomy/art acceptance",
+        "prompt_file": "assets/prompts/m07-artpass/release-prompt.txt"
+      }
+    },
+    {
+      "id": "M07-STUDY-CANONICAL-DETAIL",
+      "status": "exploration",
+      "sha256": "b3500711ee45d4f3642b0f12be7b8a649e2c20fb4aad441e67c9c7c10fdee6df",
+      "bytes": 297204,
+      "uri": "apps/web/assets/m07-study/canonical-detail.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; full-resolution WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept only; hand anatomy/identity and inherited rights review OPEN",
+        "prompt_file": "assets/prompts/m07-artpass/provenance.json"
+      }
+    },
+    {
+      "id": "M07-STUDY-WEIGHT-DETAIL",
+      "status": "exploration",
+      "sha256": "178aa05e88105f5705b5ef344761765508f38c7d77d31672123ee73100b7993e",
+      "bytes": 306690,
+      "uri": "apps/web/assets/m07-study/weight-detail.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; full-resolution WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept only; hand anatomy/identity and inherited rights review OPEN",
+        "prompt_file": "assets/prompts/m07-artpass/provenance.json"
+      }
+    },
+    {
+      "id": "M07-STUDY-ACCENT-DETAIL",
+      "status": "exploration",
+      "sha256": "e65b9a7da35a74ccc38a29a050b922a4a80478cda0c49e1a13643a5291ee064a",
+      "bytes": 310116,
+      "uri": "apps/web/assets/m07-study/accent-detail.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; full-resolution WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept only; hand anatomy/identity and inherited rights review OPEN",
+        "prompt_file": "assets/prompts/m07-artpass/provenance.json"
+      }
+    },
+    {
+      "id": "M07-STUDY-RELEASE-DETAIL",
+      "status": "exploration",
+      "sha256": "90687389aee1ddacedc27762e1b1e8427eecf92de28f79a69a1c421e5929a201",
+      "bytes": 281802,
+      "uri": "apps/web/assets/m07-study/release-detail.webp",
+      "mime": "image/webp",
+      "provenance": {
+        "creator_or_tool": "OpenAI built-in image_gen; full-resolution WebP encoding",
+        "model_version": null,
+        "created_at": "2026-11-05",
+        "terms_url": "https://openai.com/policies/terms-of-use/",
+        "rights_review": "Concept only; hand anatomy/identity and inherited rights review OPEN",
+        "prompt_file": "assets/prompts/m07-artpass/provenance.json"
       }
     }
   ]

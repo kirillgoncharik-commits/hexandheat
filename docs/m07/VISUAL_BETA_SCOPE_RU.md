@@ -33,3 +33,7 @@ C. Новый лист восьми перерисованных ключевы�
 | Полная visual beta acceptance | OPEN |
 
 Golden field review и key-pose review — конкретные следующие точки решения. Производство пяти циклов из непроверенного листа не выдаётся за завершение C/D. M07 в целом не закрыт. Реальные средства отсутствуют; curated outcomes не моделируют hit rate/RTP. Production math/LUT/FS/live recovery/public replay/Stake submission остаются отдельными задачами. Production autoplay, bonus buy и покупки не добавлены.
+
+## Continuation after v11 art review
+
+See [art-pass response](ARTPASS_V12_RU.md) and [current report](../../reports/M07-ARTPASS-REPORT.md). Field hierarchy/material/tier staging reworked; four corrected keys and timed4s study produced. Human art/device acceptance remains OPEN; no smooth-family production claim.

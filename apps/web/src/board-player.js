@@ -1,3 +1,4 @@
+import {landingOffset} from './field-art.js';
 import { easeOut } from './motion-tokens.js';
 import {SYMBOL_REGISTRY, LEGACY_SYMBOLS, symbolInfo} from './symbol-registry.js';
 
@@ -47,19 +48,19 @@ export class BoardPlayer {
       }
       cell.classList.toggle('is-winning', state.highlightedPositions.includes(p));
       cell.classList.toggle('is-potion-active', state.activatedPotions?.some(v=>v.position===p)??false);
-      cell.style.opacity = ''; cell.style.transform = '';
+      cell.style.opacity = ''; cell.style.transform = '';cell.style.filter='';cell.style.maskImage='';cell.style.removeProperty('--dissolve');delete cell.dataset.dissolving;cell.querySelectorAll('.dissolve-spark').forEach(n=>n.remove());
     }
   }
   clearFocus() {
     this.element.removeAttribute('data-focus');this.element.removeAttribute('data-group-focus');
-    for(const cell of this.cells){cell?.classList.remove('is-group-focus');cell?.style.removeProperty('--group-color');cell?.style.removeProperty('--win-pulse');}
+    for(const cell of this.cells){cell?.classList.remove('is-group-focus');cell?.style.removeProperty('--group-color');cell?.style.removeProperty('--win-pulse');if(cell){cell.style.maskImage='';cell.style.removeProperty('--dissolve');delete cell.dataset.dissolving;cell.querySelectorAll('.dissolve-spark').forEach(n=>n.remove());}}
   }
   focusGroups(groups, active=null) {
     this.element.dataset.focus='true';this.element.dataset.groupFocus=String(active!==null);
-    const colors=['#f0cb87','#9ce8cd','#d6b7f4'];
+    const color='#f0cb87';
     for(let p=0;p<this.cells.length;p++){
       const i=groups.findIndex(g=>g.positions.includes(p)),cell=this.cells[p];
-      cell.classList.toggle('is-group-focus',active===i);if(i>=0)cell.style.setProperty('--group-color',colors[i%3]);
+      cell.classList.toggle('is-group-focus',active===i);if(i>=0)cell.style.setProperty('--group-color',color);
     }
   }
   pulse(value){for(const c of this.cells)c.style.setProperty('--win-pulse',String(.4+.6*value));}
@@ -78,13 +79,21 @@ export class BoardPlayer {
   async cascade(previous, next, tokens, signal, record = () => {}) {
     const startAt = this.transport.now;
     const removed = new Set(previous.removedPositions ?? previous.highlightedPositions); const oldCells = [...this.cells];
+    const sparks=[];
+    if(!this.reducedMotion){const positions=[...removed];for(let i=0;i<Math.min(12,positions.length);i++){const cell=oldCells[positions[Math.floor(i*positions.length/Math.min(12,positions.length))]];if(cell){const spark=document.createElement('i');spark.className='dissolve-spark';spark.setAttribute('aria-hidden','true');cell.append(spark);sparks.push(spark);}}}
     record('field.remove',{positions:[...removed]});
     await this.transport.tween(tokens.remove, p => {
       for (const position of removed) {
         const cell = oldCells[position];
-        if (cell) { cell.style.opacity = String(1 - p); cell.style.transform = this.reducedMotion ? '' : `scale(${1 - p * 0.15})`; }
+        if (cell) {
+          cell.dataset.dissolving='true';cell.style.setProperty('--dissolve',String(Math.sin(p*Math.PI)));
+          cell.style.opacity = String(p<.22?1:1-(p-.22)/.78);
+          cell.style.maskImage=this.reducedMotion?'':`linear-gradient(to top,transparent ${Math.max(0,p*130-25)}%,#000 ${Math.min(100,p*130+10)}%)`;
+        }
       }
+      for(let i=0;i<sparks.length;i++){sparks[i].style.transform=`translate(${Math.sin(i*2.4)*p*8}px,${-p*20}px)`;sparks[i].style.opacity=String(Math.sin(p*Math.PI));}
     }, { signal, startAt });
+    sparks.forEach(n=>n.remove());
     if (signal?.aborted) throw new DOMException('Cascade aborted', 'AbortError');
     this.clearFocus();
     const moves = []; const retained = new Set();
@@ -107,8 +116,8 @@ export class BoardPlayer {
     await this.transport.tween(duration, p => {
       for (const move of moves) {
         const local = Math.max(0, Math.min(1, (p * duration - move.col * tokens.stagger) / tokens.fall));
-        move.node.style.transform = this.reducedMotion ? '' : `translateY(${move.offset * (1 - easeOut(local))}px)`;
-        move.node.style.opacity = String(this.reducedMotion ? 1 : Math.min(1, local * 4));
+        move.node.style.transform = this.reducedMotion ? '' : `translateY(${landingOffset(move.offset,local,rowHeight)}px)`;
+        move.node.style.opacity = '1';
       }
     }, { signal, startAt: startAt + tokens.remove });
     this.render(next); record('board.settled');

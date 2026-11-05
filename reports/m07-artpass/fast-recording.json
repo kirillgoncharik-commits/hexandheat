@@ -1,0 +1,173 @@
+{
+  "width": 1280,
+  "height": 720,
+  "mode": "fast",
+  "fixture": "B05",
+  "frames": [
+    {
+      "file": "f0000.jpg",
+      "at": 0
+    },
+    {
+      "file": "f0001.jpg",
+      "at": 156
+    },
+    {
+      "file": "f0002.jpg",
+      "at": 255
+    },
+    {
+      "file": "f0003.jpg",
+      "at": 363
+    },
+    {
+      "file": "f0004.jpg",
+      "at": 465
+    },
+    {
+      "file": "f0005.jpg",
+      "at": 510
+    },
+    {
+      "file": "f0006.jpg",
+      "at": 567
+    },
+    {
+      "file": "f0007.jpg",
+      "at": 672
+    },
+    {
+      "file": "f0008.jpg",
+      "at": 766
+    },
+    {
+      "file": "f0009.jpg",
+      "at": 878
+    },
+    {
+      "file": "f0010.jpg",
+      "at": 981
+    },
+    {
+      "file": "f0011.jpg",
+      "at": 1019
+    },
+    {
+      "file": "f0012.jpg",
+      "at": 1087
+    },
+    {
+      "file": "f0013.jpg",
+      "at": 1191
+    },
+    {
+      "file": "f0014.jpg",
+      "at": 1273
+    },
+    {
+      "file": "f0015.jpg",
+      "at": 1393
+    },
+    {
+      "file": "f0016.jpg",
+      "at": 1498
+    },
+    {
+      "file": "f0017.jpg",
+      "at": 1603
+    },
+    {
+      "file": "f0018.jpg",
+      "at": 1707
+    },
+    {
+      "file": "f0019.jpg",
+      "at": 1779
+    },
+    {
+      "file": "f0020.jpg",
+      "at": 1808
+    },
+    {
+      "file": "f0021.jpg",
+      "at": 1912
+    },
+    {
+      "file": "f0022.jpg",
+      "at": 2017
+    },
+    {
+      "file": "f0023.jpg",
+      "at": 2123
+    },
+    {
+      "file": "f0024.jpg",
+      "at": 2225
+    },
+    {
+      "file": "f0025.jpg",
+      "at": 2283
+    },
+    {
+      "file": "f0026.jpg",
+      "at": 2330
+    },
+    {
+      "file": "f0027.jpg",
+      "at": 2432
+    },
+    {
+      "file": "f0028.jpg",
+      "at": 2502
+    },
+    {
+      "file": "f0029.jpg",
+      "at": 2534
+    },
+    {
+      "file": "f0030.jpg",
+      "at": 2639
+    },
+    {
+      "file": "f0031.jpg",
+      "at": 2685
+    },
+    {
+      "file": "f0032.jpg",
+      "at": 2742
+    },
+    {
+      "file": "f0033.jpg",
+      "at": 2788
+    },
+    {
+      "file": "f0034.jpg",
+      "at": 2847
+    },
+    {
+      "file": "f0035.jpg",
+      "at": 2951
+    },
+    {
+      "file": "final.jpg",
+      "at": 3040
+    },
+    {
+      "file": "final.jpg",
+      "at": 3807
+    }
+  ],
+  "durationMs": 3840,
+  "averageCaptureFps": 11.842105263157894,
+  "method": "native browser screenshots with actual wall timestamps; silent;0.8s final hold",
+  "terminal": {
+    "balance": "US$100.90",
+    "multiplier": "×2",
+    "paid": "US$1.90"
+  },
+  "video": {
+    "path": "outputs/hexheat-m07-artpass/HexHeat_Gameplay_Fast.webm",
+    "sha256": "387cda21dcec8c8937a7444071e7522ddbccb1616682908c3a5f4e6b600b7946",
+    "bytes": 460476
+  }
+}

@@ -1,5 +1,7 @@
 # Hex & Heat: Witch’s Wild Mixer
 
+> M07 art pass / Issue #33 — [v11 review response](docs/m07/ARTPASS_V12_RU.md): clear round-paid finale, warm group focus, readable payout band, bowl Potion impact, dissolve/landing and distinct MEDIUM/BIG presentation. `/m07-art.html` now shows four corrected key drawings and an honest4s stepped study; `?witch=study` is opt-in in the main scene. Human art/device acceptance remains OPEN.
+
 > M07 / Issue #33 — field choreography and varied verified sample rounds. The main selector exposes B01–B20, variants and old F cases; «Разные раунды» advances on each manual Spin with seed/cursor in URL. Default neutral character keeps field review clear. [Scope/status](docs/m07/VISUAL_BETA_SCOPE_RU.md), [scenario matrix](docs/m07/SCENARIO_MATRIX_RU.md), [field timing](docs/m07/FIELD_CHOREOGRAPHY_RU.md). `/m07-art.html` contains eight new key-pose concepts, not a produced loop; art acceptance and physical devices remain OPEN. `productionReady=false`.
 
 > M06 / Issue #31 — full-width mobile hero and two new authored PNG candidates on original v7 art. IDLE6fps/40ms + SMALL_WIN12fps/20ms; Settings → M06, or `?witch=m06`. Old renderer retained; other three states use the same neutral portrait in PNG mode. [M06 report](reports/MILESTONE-06-REPORT.md), [source/scope](docs/m06/SCOPE_RU.md), [delivery decision](docs/m06/MEDIA_DELIVERY_DECISION_RU.md). Human art/physical-device acceptance remains OPEN; `productionReady=false`.

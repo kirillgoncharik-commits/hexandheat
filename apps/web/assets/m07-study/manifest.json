@@ -1,0 +1,195 @@
+{
+  "version": "m07-study-2",
+  "status": "STEPPED CONCEPT — ART REVIEW OPEN",
+  "durationMs": 4000,
+  "productionAnimation": false,
+  "artAccepted": false,
+  "sourceFps": "4 distinct key drawings, timed holds; no in-betweens",
+  "encoding": "uniform32px transparent padding,624x624 WebP quality91/method6; no pose retouching",
+  "poses": [
+    {
+      "id": "canonical",
+      "path": "./assets/m07-study/canonical.webp",
+      "sha256": "bc23f3783e7aab69cdc1b33e136c84ff7164ba885a6685b4cac3a3ba376940dd",
+      "bytes": 83832,
+      "master": "hexheat-m07-artpass-media/canonical.png",
+      "masterSha256": "d6b850d450ec3c16d264b490cef0b5a457729c1718830b86d3bf9264c8f1ad6f",
+      "width": 624,
+      "height": 624,
+      "detailPath": "./assets/m07-study/canonical-detail.webp",
+      "detailSha256": "b3500711ee45d4f3642b0f12be7b8a649e2c20fb4aad441e67c9c7c10fdee6df",
+      "detailBytes": 297204,
+      "detailWidth": 1254
+    },
+    {
+      "id": "weight",
+      "path": "./assets/m07-study/weight.webp",
+      "sha256": "ed85f82df8a5565cc7070d61c7e815afd3f8fab28b78abb5d8afbff315a0c7cb",
+      "bytes": 87804,
+      "master": "hexheat-m07-artpass-media/weight.png",
+      "masterSha256": "b269f4fe6ad68b4d3f8d580133b8089700b5ce2ed3cf1f6e8cc2b34cbcc713fb",
+      "width": 624,
+      "height": 624,
+      "detailPath": "./assets/m07-study/weight-detail.webp",
+      "detailSha256": "178aa05e88105f5705b5ef344761765508f38c7d77d31672123ee73100b7993e",
+      "detailBytes": 306690,
+      "detailWidth": 1254
+    },
+    {
+      "id": "accent",
+      "path": "./assets/m07-study/accent.webp",
+      "sha256": "1d568d3d6361ea121ba2af8d766d0f10ce2d4e0768fe6f7945a7fd1f7a76ee90",
+      "bytes": 88802,
+      "master": "hexheat-m07-artpass-media/accent.png",
+      "masterSha256": "e0c98764da400fa8f176bd8cf2b45372ecf19ee52772cfbf89b34110a883182a",
+      "width": 624,
+      "height": 624,
+      "detailPath": "./assets/m07-study/accent-detail.webp",
+      "detailSha256": "e65b9a7da35a74ccc38a29a050b922a4a80478cda0c49e1a13643a5291ee064a",
+      "detailBytes": 310116,
+      "detailWidth": 1254
+    },
+    {
+      "id": "release",
+      "path": "./assets/m07-study/release.webp",
+      "sha256": "03680e7045aa9f4779e0055b410b45c444c83083eec66d3e4dce75f96deb5b1f",
+      "bytes": 81968,
+      "master": "hexheat-m07-artpass-media/release.png",
+      "masterSha256": "4af260c5e49edf68044ad39f0bc25ad2f0242d456fc39b70d6dd96b627d901cd",
+      "width": 624,
+      "height": 624,
+      "detailPath": "./assets/m07-study/release-detail.webp",
+      "detailSha256": "90687389aee1ddacedc27762e1b1e8427eecf92de28f79a69a1c421e5929a201",
+      "detailBytes": 281802,
+      "detailWidth": 1254
+    }
+  ],
+  "timeline": [
+    {
+      "at": 0,
+      "pose": "canonical"
+    },
+    {
+      "at": 550,
+      "pose": "weight"
+    },
+    {
+      "at": 1350,
+      "pose": "accent"
+    },
+    {
+      "at": 2150,
+      "pose": "release"
+    },
+    {
+      "at": 3150,
+      "pose": "weight"
+    },
+    {
+      "at": 3650,
+      "pose": "canonical"
+    },
+    {
+      "at": 4000,
+      "pose": "canonical"
+    }
+  ],
+  "seam": {
+    "first": "canonical",
+    "last": "canonical",
+    "sameBytes": true,
+    "velocity": "step holds at ends, not a smooth C1 animation"
+  },
+  "notes": [
+    "Screen-left/down gesture; raised hands",
+    "Eyes open in selected poses",
+    "Minor face/curl/ornament drift remains",
+    "Hat tip meets source edge; padded preview does not reconstruct missing art",
+    "Full hand anatomy and artistic camera registration remain human-review tasks"
+  ],
+  "landmarkPolicy": "coarse visual rectangles, +/-15-25 source pixels, not anatomy acceptance",
+  "sourceCanvas": 1254,
+  "padding": 32,
+  "sourceLandmarks": {
+    "canonical": {
+      "face": [
+        550,
+        155,
+        750,
+        382
+      ],
+      "leftHand": [
+        154,
+        504,
+        352,
+        632
+      ],
+      "rightHand": [
+        698,
+        636,
+        898,
+        750
+      ]
+    },
+    "weight": {
+      "face": [
+        548,
+        171,
+        728,
+        392
+      ],
+      "leftHand": [
+        126,
+        474,
+        330,
+        610
+      ],
+      "rightHand": [
+        695,
+        650,
+        902,
+        766
+      ]
+    },
+    "accent": {
+      "face": [
+        545,
+        160,
+        738,
+        387
+      ],
+      "leftHand": [
+        78,
+        592,
+        294,
+        748
+      ],
+      "rightHand": [
+        723,
+        568,
+        932,
+        685
+      ]
+    },
+    "release": {
+      "face": [
+        530,
+        164,
+        728,
+        394
+      ],
+      "leftHand": [
+        151,
+        503,
+        372,
+        652
+      ],
+      "rightHand": [
+        679,
+        628,
+        876,
+        744
+      ]
+    }
+  }
+}

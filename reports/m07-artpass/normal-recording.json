@@ -1,0 +1,333 @@
+{
+  "width": 1280,
+  "height": 720,
+  "mode": "normal",
+  "fixture": "B05",
+  "frames": [
+    {
+      "file": "f0000.jpg",
+      "at": 0
+    },
+    {
+      "file": "f0001.jpg",
+      "at": 142
+    },
+    {
+      "file": "f0002.jpg",
+      "at": 205
+    },
+    {
+      "file": "f0003.jpg",
+      "at": 242
+    },
+    {
+      "file": "f0004.jpg",
+      "at": 294
+    },
+    {
+      "file": "f0005.jpg",
+      "at": 342
+    },
+    {
+      "file": "f0006.jpg",
+      "at": 411
+    },
+    {
+      "file": "f0007.jpg",
+      "at": 517
+    },
+    {
+      "file": "f0008.jpg",
+      "at": 594
+    },
+    {
+      "file": "f0009.jpg",
+      "at": 723
+    },
+    {
+      "file": "f0010.jpg",
+      "at": 823
+    },
+    {
+      "file": "f0011.jpg",
+      "at": 928
+    },
+    {
+      "file": "f0012.jpg",
+      "at": 1034
+    },
+    {
+      "file": "f0013.jpg",
+      "at": 1100
+    },
+    {
+      "file": "f0014.jpg",
+      "at": 1136
+    },
+    {
+      "file": "f0015.jpg",
+      "at": 1238
+    },
+    {
+      "file": "f0016.jpg",
+      "at": 1340
+    },
+    {
+      "file": "f0017.jpg",
+      "at": 1446
+    },
+    {
+      "file": "f0018.jpg",
+      "at": 1548
+    },
+    {
+      "file": "f0019.jpg",
+      "at": 1601
+    },
+    {
+      "file": "f0020.jpg",
+      "at": 1648
+    },
+    {
+      "file": "f0021.jpg",
+      "at": 1754
+    },
+    {
+      "file": "f0022.jpg",
+      "at": 1856
+    },
+    {
+      "file": "f0023.jpg",
+      "at": 1963
+    },
+    {
+      "file": "f0024.jpg",
+      "at": 2068
+    },
+    {
+      "file": "f0025.jpg",
+      "at": 2106
+    },
+    {
+      "file": "f0026.jpg",
+      "at": 2170
+    },
+    {
+      "file": "f0027.jpg",
+      "at": 2273
+    },
+    {
+      "file": "f0028.jpg",
+      "at": 2363
+    },
+    {
+      "file": "f0029.jpg",
+      "at": 2479
+    },
+    {
+      "file": "f0030.jpg",
+      "at": 2584
+    },
+    {
+      "file": "f0031.jpg",
+      "at": 2614
+    },
+    {
+      "file": "f0032.jpg",
+      "at": 2687
+    },
+    {
+      "file": "f0033.jpg",
+      "at": 2791
+    },
+    {
+      "file": "f0034.jpg",
+      "at": 2832
+    },
+    {
+      "file": "f0035.jpg",
+      "at": 2866
+    },
+    {
+      "file": "f0036.jpg",
+      "at": 3001
+    },
+    {
+      "file": "f0037.jpg",
+      "at": 3057
+    },
+    {
+      "file": "f0038.jpg",
+      "at": 3087
+    },
+    {
+      "file": "f0039.jpg",
+      "at": 3118
+    },
+    {
+      "file": "f0040.jpg",
+      "at": 3141
+    },
+    {
+      "file": "f0041.jpg",
+      "at": 3203
+    },
+    {
+      "file": "f0042.jpg",
+      "at": 3304
+    },
+    {
+      "file": "f0043.jpg",
+      "at": 3373
+    },
+    {
+      "file": "f0044.jpg",
+      "at": 3408
+    },
+    {
+      "file": "f0045.jpg",
+      "at": 3515
+    },
+    {
+      "file": "f0046.jpg",
+      "at": 3616
+    },
+    {
+      "file": "f0047.jpg",
+      "at": 3724
+    },
+    {
+      "file": "f0048.jpg",
+      "at": 3823
+    },
+    {
+      "file": "f0049.jpg",
+      "at": 3876
+    },
+    {
+      "file": "f0050.jpg",
+      "at": 3926
+    },
+    {
+      "file": "f0051.jpg",
+      "at": 4032
+    },
+    {
+      "file": "f0052.jpg",
+      "at": 4133
+    },
+    {
+      "file": "f0053.jpg",
+      "at": 4238
+    },
+    {
+      "file": "f0054.jpg",
+      "at": 4342
+    },
+    {
+      "file": "f0055.jpg",
+      "at": 4384
+    },
+    {
+      "file": "f0056.jpg",
+      "at": 4442
+    },
+    {
+      "file": "f0057.jpg",
+      "at": 4548
+    },
+    {
+      "file": "f0058.jpg",
+      "at": 4636
+    },
+    {
+      "file": "f0059.jpg",
+      "at": 4756
+    },
+    {
+      "file": "f0060.jpg",
+      "at": 4790
+    },
+    {
+      "file": "f0061.jpg",
+      "at": 4860
+    },
+    {
+      "file": "f0062.jpg",
+      "at": 4963
+    },
+    {
+      "file": "f0063.jpg",
+      "at": 5068
+    },
+    {
+      "file": "f0064.jpg",
+      "at": 5143
+    },
+    {
+      "file": "f0065.jpg",
+      "at": 5275
+    },
+    {
+      "file": "f0066.jpg",
+      "at": 5376
+    },
+    {
+      "file": "f0067.jpg",
+      "at": 5477
+    },
+    {
+      "file": "f0068.jpg",
+      "at": 5583
+    },
+    {
+      "file": "f0069.jpg",
+      "at": 5649
+    },
+    {
+      "file": "f0070.jpg",
+      "at": 5682
+    },
+    {
+      "file": "f0071.jpg",
+      "at": 5786
+    },
+    {
+      "file": "f0072.jpg",
+      "at": 5892
+    },
+    {
+      "file": "f0073.jpg",
+      "at": 5997
+    },
+    {
+      "file": "f0074.jpg",
+      "at": 6104
+    },
+    {
+      "file": "f0075.jpg",
+      "at": 6152
+    },
+    {
+      "file": "final.jpg",
+      "at": 6205
+    },
+    {
+      "file": "final.jpg",
+      "at": 6972
+    }
+  ],
+  "durationMs": 7005,
+  "averageCaptureFps": 12.24818694601128,
+  "method": "native browser screenshots with actual wall timestamps; silent;0.8s final hold",
+  "terminal": {
+    "balance": "US$100.90",
+    "multiplier": "×2",
+    "paid": "US$1.90"
+  },
+  "video": {
+    "path": "outputs/hexheat-m07-artpass/HexHeat_Gameplay_Normal.webm",
+    "sha256": "e6e5d9ef3e5eefb05ff3a653d503ece7ba3bc1190557c874e4bf3b5b00d73758",
+    "bytes": 1072717
+  }
+}
